@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Riscos em ECOS</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <nav class="nav-container">
+            <div class="logo">Catálogo de<span> Riscos</span></div>
+            <ul class="nav-links">
+                <li><a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">Início</a></li>
+                <li><a href="#tutorial" onclick="scrollToTutorial()">Como utilizar</a></li>
+                <li><a href="#catalogo" onclick="scrollToCatalog()">Catálogo</a></li>
+                <li><a href="#contato" onclick="scrollToContact()">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <article class="hero-text">
+                <h1>Catálogo de Riscos sobre Gerência de Riscos em Ecossistemas de Software</h1>
+                <p>Uma ferramenta baseada nos riscos identificados a partir de um Mapeamento Sistemático da Literatura (MSL) sobre gerência de riscos em Ecossistemas de Software (ECOS), com o objetivo de correlacionar esses riscos as soluções também identificadas.</p>
+                <div class="hero-btns">
+                    <button class="btn-primary" onclick="scrollToTutorial()">Como utilizar</button>
+                    <button class="btn-secondary" onclick="scrollToContact()">Contato</button>
+                </div>
+            </article>
+            
+            <aside class="hero-image">
+                <div class="image-placeholder">
+                    <img src="risk.png" alt="Ilustração de Riscos" class="hero-img">
+                </div>
+            </aside>
+        </div>
+    </section>
+
+    <section id="tutorial" class="tutorial-section">
+        <div class="tutorial-container">
+            <article class="tutorial-text-header">
+                <h2>Como utilizar a ferramenta?</h2>
+                <p>O catálogo foi projetado para ser intuitivo e fácil de usar. Nele, você pode navegar pelas dimensões de riscos técnicos, sociais e de negócios, explorando os que são específicos de cada área.</p>
+                <p>Utilize a barra de busca para encontrar palavras-chave. Ao identificar um risco, a ferramenta apresentará automaticamente a análise e as soluções sugeridas baseadas no MSL.</p>
+            </article>
+
+            <div class="tutorial-image-box">
+                <img src="comoutilizar.png" alt="Como utilizar o catálogo" class="img-tutorial-full">
+            </div>
+
+            <button class="btn-primary" onclick="scrollToCatalog()">Ir para o Catálogo</button>
+        </div>
+    </section>
+
+    <main id="catalogo">
+        <header class="section-header">
+            <h2>Catálogo de Riscos sobre Gerência de Riscos em Ecossistemas de Software</h2>
+            <p>Filtre por dimensão ou pesquise termos específicos do risco.</p>
+        </header>
+
+        <section class="controls">
+            <div class="search-wrapper">
+                <input type="text" id="searchInput" placeholder="Pesquisar...">
+            </div>
+            
+            <div class="filter-buttons">
+                <button class="btn-filter active" data-filter="todos">Todos</button>
+                <button class="btn-filter" data-filter="Técnicos">Técnicos</button>
+                <button class="btn-filter" data-filter="Sociais">Sociais</button>
+                <button class="btn-filter" data-filter="Negócio">Negócio</button>
+            </div>
+        </section>
+
+        <section id="riscosContainer" class="riscos-grid">
+            </section>
+    </main>
+
+    <footer id="contato" class="contact-section">
+        <div class="contact-card-callout">
+            <h3>Entre em contato</h3>
+            <p>
+                Para dúvidas ou sugestões, entre em contato! <br>
+                Se está interessado pelo tema e quer se aprofundar, será um prazer conversar e trocar ideias com você.
+            </p>
+            
+            <div class="contact-details">
+                <span class="contact-name">Gabriele Campos</span>
+                <a href="mailto:gabbcampos64@gmail.com" class="email-link-btn">gabbcampos64@gmail.com</a>
+            </div>
+        </div>
+        
+        <div class="footer-credits">
+            <p>&copy; 2026 Catálogo de Riscos ECOS.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
