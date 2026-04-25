@@ -277,13 +277,31 @@
         .demo-solution-name {
             font-size: 0.82rem;
             font-weight: 700;
-            color: #4ade80;
+            color: #38bdf8;
             margin-bottom: 5px;
         }
         .demo-solution-desc {
             font-size: 0.85rem;
             color: #94a3b8;
             line-height: 1.5;
+        }
+
+        /* TAGS DE ESTUDOS PRIMÁRIOS */
+        .demo-studies-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 4px;
+        }
+        .demo-study-tag {
+            background: rgba(56,189,248,0.08);
+            border: 1px solid rgba(56,189,248,0.2);
+            color: #38bdf8;
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 5px 12px;
+            border-radius: 6px;
+            letter-spacing: 0.3px;
         }
 
         /* RODAPÉ DE NAVEGAÇÃO (= .panel-footer) */
@@ -650,13 +668,16 @@
     <header class="navbar">
         <nav class="nav-container">
             <div class="logo">Catálogo de<span> Riscos</span></div>
-            <ul class="nav-links">
-                <li><a href="index.html">Início</a></li>
-                <li><a href="sobre.html">Sobre</a></li>
-                <li><a href="comoutilizar.html">Como utilizar</a></li>
-                <li><a href="index.html#catalogo">Catálogo</a></li>
-                <li><a href="index.html#contato">Contato</a></li>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" onclick="closeMenu()">Início</a></li>
+                <li><a href="sobre.html" onclick="closeMenu()">Sobre</a></li>
+                <li><a href="comoutilizar.html" onclick="closeMenu()">Como utilizar</a></li>
+                <li><a href="index.html#catalogo" onclick="closeMenu()">Catálogo</a></li>
+                <li><a href="index.html#contato" onclick="closeMenu()">Contato</a></li>
             </ul>
+            <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMenu()">
+                <span></span><span></span><span></span>
+            </button>
         </nav>
     </header>
 
@@ -737,7 +758,7 @@
                                      onmouseenter="showHint('sei', event)"
                                      onmouseleave="hideHint()">
                                     <div class="demo-card-title">
-                                        <span>🔍</span> Análise SEI — Classificação do Risco
+                                        <span>Taxonomia de Risco SEI
                                     </div>
                                     <div class="demo-grid-2">
                                         <div>
@@ -759,12 +780,12 @@
                                 <div class="demo-inner-card"
                                      onmouseenter="showHint('ecos', event)"
                                      onmouseleave="hideHint()">
-                                    <div class="demo-card-title green">
-                                        <span>🌐</span> Contexto do Ecossistema
+                                    <div class="demo-card-title">
+                                        <span>ECOS mais Propício ao Risco
                                     </div>
-                                    <span class="demo-field-label">ECOS mais propício a este risco</span>
-                                    <span class="demo-field-value accent">Híbrido / Aberto</span>
-                                    <div class="demo-just-box green" style="margin-top:14px;">
+                                    <span class="demo-field-label"></span>
+                                    <span class="demo-field-value">Híbrido / Aberto</span>
+                                    <div class="demo-just-box" style="margin-top:14px;">
                                         <div class="demo-just-label">Por que este ecossistema?</div>
                                         <p>A interconexão e o uso massivo de bibliotecas de terceiros nesses ecossistemas criam vetores críticos para a injeção de código malicioso durante o desenvolvimento e distribuição. Essa dependência estrutural permite que falhas upstream comprometam toda a rede integrada.</p>
                                     </div>
@@ -774,30 +795,38 @@
                                 <div class="demo-inner-card"
                                      onmouseenter="showHint('metrica', event)"
                                      onmouseleave="hideHint()">
-                                    <div class="demo-card-title green">
-                                        <span>📊</span> Métrica de Saúde Atingida
+                                    <div class="demo-card-title">
+                                        <span>Métrica de Saúde Atingida pelo Risco
                                     </div>
-                                    <span class="demo-field-label">Métrica impactada pelo risco</span>
+                                    <span class="demo-field-label"></span>
                                     <span class="demo-field-value">Robustez</span>
+                                    <div class="demo-just-box" style="margin-top:14px;">
+                                        <div class="demo-just-label">Por que esta métrica?</div>
+                                        <p>A robustez, conforme proposta por Iansiti e Levien (2004), mede a capacidade do ecossistema de sobreviver a perturbações. O comprometimento da cadeia de suprimentos representa uma ameaça direta à sobrevivência do ECOS, pois falhas introduzidas em componentes centrais podem propagar-se de forma sistêmica e comprometer a continuidade do ecossistema como um todo.</p>
+                                    </div>
                                 </div>
 
                                 <!-- BLOCO 2c: Processo de Valor -->
                                 <div class="demo-inner-card"
                                      onmouseenter="showHint('processo', event)"
                                      onmouseleave="hideHint()">
-                                    <div class="demo-card-title green">
-                                        <span>⚡</span> Processo de Valor Ameaçado
+                                    <div class="demo-card-title">
+                                        <span>Processo de Valor Ameaçado pelo Risco
                                     </div>
-                                    <span class="demo-field-label">Processo ameaçado pelo risco</span>
+                                    <span class="demo-field-label"></span>
                                     <span class="demo-field-value">Criação e entrega de valor</span>
+                                    <div class="demo-just-box" style="margin-top:14px;">
+                                        <div class="demo-just-label">Por que este processo?</div>
+                                        <p>Segundo Burström et al. (2022), a criação e entrega de valor correspondem ao processo pelo qual o ecossistema produz e disponibiliza soluções de software para seus participantes. O comprometimento da cadeia de suprimentos afeta diretamente esse processo, pois introduz falhas e artefatos maliciosos nos próprios produtos entregues, inviabilizando a confiança nas entregas do ecossistema.</p>
+                                    </div>
                                 </div>
 
                                 <!-- BLOCO 3: Soluções -->
                                 <div class="demo-inner-card"
                                      onmouseenter="showHint('solucoes', event)"
                                      onmouseleave="hideHint()">
-                                    <div class="demo-card-title purple">
-                                        <span>🛠️</span> Soluções Identificadas na Literatura
+                                    <div class="demo-card-title">
+                                        <span>Soluções Identificadas na Literatura
                                     </div>
                                     <div class="demo-solutions-list">
                                         <div class="demo-solution-item">
@@ -815,6 +844,23 @@
                                     </div>
                                 </div>
 
+                                <!-- BLOCO 4: Estudos Primários -->
+                                <div class="demo-inner-card"
+                                     onmouseenter="showHint('estudos', event)"
+                                     onmouseleave="hideHint()">
+                                    <div class="demo-card-title">
+                                        <span>Estudos Primários que Identificaram este Risco
+                                    </div>
+                                    <div class="demo-studies-tags">
+                                        <span class="demo-study-tag">E02</span>
+                                        <span class="demo-study-tag">E05</span>
+                                        <span class="demo-study-tag">E08</span>
+                                        <span class="demo-study-tag">E10</span>
+                                        <span class="demo-study-tag">E15</span>
+                                        <span class="demo-study-tag">E19</span>
+                                    </div>
+                                </div>
+
                             </div><!-- /demo-panel-body -->
 
                             <!-- RODAPÉ DE NAVEGAÇÃO -->
@@ -825,15 +871,6 @@
                             </div>
 
                         </div><!-- /card-demo-wrapper -->
-
-                        <!-- HINT BOX ESTÁTICO -->
-                        <div class="hint-box">
-                            <span class="hint-icon" id="hint-icon">👆</span>
-                            <div>
-                                <p class="hint-label" id="hint-label"></p>
-                                <p class="hint-text" id="hint-text">Passe o mouse sobre qualquer seção do card acima para ver o que ela significa e de qual teoria ela é derivada.</p>
-                            </div>
-                        </div>
 
                     </div><!-- /panel-card -->
 
@@ -852,9 +889,9 @@
                                 </p>
                             </div>
 
-                            <div class="gloss-card accent-green">
+                            <div class="gloss-card accent-blue">
                                 <div class="gloss-header">
-                                    <span class="gloss-badge green">Análise SEI</span>
+                                    <span class="gloss-badge blue">Análise SEI</span>
                                     <span class="gloss-sub">Classe · Elemento · Área de desafio</span>
                                     <span class="ref-tag">Software Engineering Institute</span>
                                 </div>
@@ -863,9 +900,9 @@
                                 </p>
                             </div>
 
-                            <div class="gloss-card accent-amber">
+                            <div class="gloss-card accent-blue">
                                 <div class="gloss-header">
-                                    <span class="gloss-badge amber">ECOS mais propício</span>
+                                    <span class="gloss-badge blue">ECOS mais propício</span>
                                     <span class="gloss-sub">Aberto · Proprietário · Híbrido</span>
                                     <span class="ref-tag">Manikas (2016)</span>
                                 </div>
@@ -874,9 +911,9 @@
                                 </p>
                             </div>
 
-                            <div class="gloss-card accent-teal">
+                            <div class="gloss-card accent-blue">
                                 <div class="gloss-header">
-                                    <span class="gloss-badge teal">Métrica de saúde</span>
+                                    <span class="gloss-badge blue">Métrica de saúde</span>
                                     <span class="gloss-sub">Robustez · Produtividade · Criação de Nichos</span>
                                     <span class="ref-tag">Iansiti e Levien (2004)</span>
                                 </div>
@@ -885,9 +922,9 @@
                                 </p>
                             </div>
 
-                            <div class="gloss-card accent-coral">
+                            <div class="gloss-card accent-blue">
                                 <div class="gloss-header">
-                                    <span class="gloss-badge coral">Processo de valor ameaçado</span>
+                                    <span class="gloss-badge blue">Processo de valor ameaçado</span>
                                     <span class="gloss-sub">Criação · Entrega · Captura</span>
                                     <span class="ref-tag">Burström et al.</span>
                                 </div>
@@ -946,7 +983,7 @@
 
                 </div><!-- /tabs-wrapper -->
 
-                <div class="cta-area">
+                <div style="text-align: center; margin-top: 60px;">
                     <a href="index.html#catalogo" class="btn-primary">Ir para o Catálogo</a>
                 </div>
 
@@ -1017,6 +1054,11 @@
                 icon: '🛠️',
                 label: 'Soluções Identificadas na Literatura',
                 text: 'Práticas, frameworks e ferramentas propostos e/ou validados nos estudos primários do MSL para mitigar este risco. Cada solução tem um código identificador (S01–S21) e uma descrição do mecanismo de ação.'
+            },
+            estudos: {
+                icon: '📚',
+                label: 'Estudos Primários',
+                text: 'Códigos dos estudos do MSL que identificaram e analisaram este risco. Cada código (E01–E35) corresponde a um artigo científico incluído no mapeamento sistemático. Os estudos são a fonte empírica de cada risco e solução do catálogo.'
             }
         };
 
@@ -1027,11 +1069,6 @@
         function showHint(key, event) {
             const h = hints[key];
             if (!h) return;
-
-            // Atualiza hint box estático
-            document.getElementById('hint-icon').textContent  = h.icon;
-            document.getElementById('hint-label').textContent = h.label;
-            document.getElementById('hint-text').textContent  = h.text;
 
             // Atualiza tooltip flutuante
             document.getElementById('tooltipIcon').textContent  = h.icon;
@@ -1078,6 +1115,14 @@
 
         function setFilter(dim) {
             localStorage.setItem('ecos-filter', dim);
+        }
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('open');
+            document.getElementById('hamburger').classList.toggle('active');
+        }
+        function closeMenu() {
+            document.getElementById('navLinks').classList.remove('open');
+            document.getElementById('hamburger').classList.remove('active');
         }
     </script>
 
