@@ -891,12 +891,12 @@
 
                             <div class="gloss-card accent-blue">
                                 <div class="gloss-header">
-                                    <span class="gloss-badge blue">Análise SEI</span>
+                                    <span class="gloss-badge blue">Taxonomia de Risco SEI</span>
                                     <span class="gloss-sub">Classe · Elemento · Área de desafio</span>
                                     <span class="ref-tag">Software Engineering Institute</span>
                                 </div>
                                 <p class="gloss-text">
-                                    Taxonomia do <strong>Software Engineering Institute</strong>. A <strong>Classe</strong> indica o tipo geral do risco sob a ótica da engenharia; o <strong>Elemento</strong> detalha qual aspecto técnico ou organizacional está envolvido; a <strong>Área de desafio</strong> aponta se o problema se manifesta na arquitetura do produto ou nos processos de desenvolvimento.
+                                    Taxonomia de Risco <strong>Software Engineering Institute</strong>. A <strong>Classe</strong> indica o tipo geral do risco sob a ótica da engenharia; o <strong>Elemento</strong> detalha qual aspecto técnico ou organizacional está envolvido; a <strong>Área de desafio</strong> aponta se o problema se manifesta na arquitetura do produto ou nos processos de desenvolvimento.
                                 </p>
                             </div>
 
@@ -926,10 +926,10 @@
                                 <div class="gloss-header">
                                     <span class="gloss-badge blue">Processo de valor ameaçado</span>
                                     <span class="gloss-sub">Criação · Entrega · Captura</span>
-                                    <span class="ref-tag">Burström et al.</span>
+                                    <span class="ref-tag">Burström et al. (2022)</span>
                                 </div>
                                 <p class="gloss-text">
-                                    Baseado em <strong>Burström et al.</strong>. <strong>Criação de valor</strong>: o que o ECOS produz para gerar valor real (componentes, funcionalidades). <strong>Entrega de valor</strong>: como esse valor chega ao cliente — infraestrutura, distribuição, integração técnica. <strong>Captura de valor</strong>: como o ECOS se sustenta financeiramente — receita, licenças, monetização.
+                                    Baseado em <strong>Burström et al. (2022)</strong>. <strong>Criação de valor</strong>: o que o ECOS produz para gerar valor real (componentes, funcionalidades). <strong>Entrega de valor</strong>: como esse valor chega ao cliente seja infraestrutura, distribuição, integração técnica. <strong>Captura de valor</strong>: como o ECOS se sustenta financeiramente sendo receita, licenças e monetização.
                                 </p>
                             </div>
 
@@ -1006,59 +1006,59 @@
         /* ── Dicionário de hints ── */
         const hints = {
             header: {
-                icon: '📄',
+                
                 label: 'Cabeçalho do risco',
                 text: 'Apresenta o identificador único, a dimensão de classificação e a descrição completa do risco. É o ponto de entrada para toda a análise, consolidando os achados dos estudos primários do MSL.'
             },
             id: {
-                icon: '🔖',
+                
                 label: 'Identificador do risco',
                 text: 'Código único do risco no catálogo (R01–R24). Permite referenciá-lo diretamente no artigo científico base (Campos et al., 2025) e no material suplementar disponível no Zenodo.'
             },
             dim: {
-                icon: '📂',
+                
                 label: 'Dimensão do risco em ECOS',
                 text: 'Classifica o risco em Técnico, Social ou Negócio, seguindo Oliveira e Alves (2021). Define a natureza do problema e orienta quem deve priorizar sua análise.'
             },
             title: {
-                icon: '📋',
+                
                 label: 'Nome do risco',
-                text: 'Nome conciso que identifica o fenômeno de risco. Derivado da codificação qualitativa (inicial, focalizada e axial) dos 35 estudos primários analisados no MSL.'
+                text: 'Nome derivado da codificação no MSL com base nos 35 estudos analisados.'
             },
             desc: {
-                icon: '📝',
+                
                 label: 'Descrição do risco',
                 text: 'Explica como e por que o risco ocorre no contexto de ECOS. Sintetiza os achados dos estudos primários que identificaram e descreveram este risco.'
             },
             sei: {
-                icon: '🔍',
-                label: 'Análise SEI — Classificação do Risco',
-                text: 'Taxonomia do Software Engineering Institute. A Classe indica o tipo geral do risco; o Elemento detalha o aspecto técnico ou organizacional envolvido; a Área de Desafio aponta se o problema se manifesta na arquitetura do produto ou nos processos de desenvolvimento.'
+                
+                label: 'Taxonomia de Risco SEI',
+                text: 'Taxonomia do Risco do Software Engineering Institute (SEI) . A Classe indica o tipo geral do risco; o Elemento detalha o aspecto técnico ou organizacional envolvido; a Área de Desafio aponta se o problema se manifesta na arquitetura do produto ou nos processos de desenvolvimento.'
             },
             ecos: {
-                icon: '🌐',
-                label: 'Contexto do Ecossistema',
+                
+                label: 'ECOS mais Propício ao Risco',
                 text: 'Tipo de ecossistema onde este risco ocorre com maior frequência: Aberto (ex: NPM, Maven), Proprietário (ex: iOS) ou Híbrido (ex: Android). Baseado na tipologia de Manikas (2016). A justificativa explica o vínculo entre a estrutura do ECOS e a manifestação do risco.'
             },
             metrica: {
-                icon: '📊',
+                
                 label: 'Métrica de Saúde Atingida',
                 text: 'Aspecto da saúde do ECOS mais prejudicado: Robustez (resistência a perturbações), Produtividade (eficiência na geração de valor) ou Criação de Nichos (capacidade de atrair novos participantes). Base teórica: Iansiti e Levien (2004).'
             },
             processo: {
-                icon: '⚡',
+                
                 label: 'Processo de Valor Ameaçado',
                 text: 'Identifica qual etapa do ciclo de valor do ECOS é mais impactada: Criação de valor (o que é produzido), Entrega de valor (como chega ao cliente) ou Captura de valor (como o ECOS se sustenta financeiramente). Baseado em Burström et al. (2022).'
             },
             solucoes: {
-                icon: '🛠️',
+                
                 label: 'Soluções Identificadas na Literatura',
                 text: 'Práticas, frameworks e ferramentas propostos e/ou validados nos estudos primários do MSL para mitigar este risco. Cada solução tem um código identificador (S01–S21) e uma descrição do mecanismo de ação.'
             },
             estudos: {
-                icon: '📚',
+                
                 label: 'Estudos Primários',
-                text: 'Códigos dos estudos do MSL que identificaram e analisaram este risco. Cada código (E01–E35) corresponde a um artigo científico incluído no mapeamento sistemático. Os estudos são a fonte empírica de cada risco e solução do catálogo.'
+                text: 'Códigos dos estudos do MSL que identificaram e analisaram este risco. Cada código (E01–E35) corresponde a um estudo incluído que são a fonte de cada risco e solução do catálogo.'
             }
         };
 
