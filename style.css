@@ -618,7 +618,7 @@ main { padding: 120px 5%; }
 
 /* ── CORPO DO PAINEL ── */
 .panel-body {
-    padding: 20px 28px 0;
+    padding: 20px 28px 24px;
     overflow-y: auto;
     flex: 1;
     display: flex;
