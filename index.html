@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catálogo de Riscos em ECOS</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,10 +14,11 @@
         <nav class="nav-container">
             <div class="logo">Catálogo de<span> Riscos</span></div>
             <ul class="nav-links">
-                <li><a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">Início</a></li>
-                <li><a href="#tutorial" onclick="scrollToTutorial()">Como utilizar</a></li>
-                <li><a href="#catalogo" onclick="scrollToCatalog()">Catálogo</a></li>
-                <li><a href="#contato" onclick="scrollToContact()">Contato</a></li>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="comoutilizar.html">Como utilizar</a></li>
+                <li><a href="index.html#catalogo">Catálogo</a></li>
+                <li><a href="index.html#contato">Contato</a></li>
             </ul>
         </nav>
     </header>
@@ -24,37 +26,66 @@
     <section class="hero" id="inicio">
         <div class="hero-content">
             <article class="hero-text">
+                <div class="hero-context">
+                    <span class="hero-subtitle" style="
+                        color: #38bdf8;
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 8px;
+                        font-size: 0.78rem;
+                        letter-spacing: 2px;
+                        font-weight: 700;
+                        text-transform: uppercase;
+                        padding: 6px 14px;
+                        border: 1px solid rgba(56,189,248,0.25);
+                        border-radius: 100px;
+                        background: rgba(56,189,248,0.07);
+                        margin-bottom: 24px;
+                    ">
+                        <i class="fas fa-layer-group" style="font-size:0.7rem;"></i>
+                        Baseado em um Mapeamento Sistemático da Literatura (MSL)
+                    </span>
+                </div>
+
                 <h1>Catálogo de Riscos sobre Gerência de Riscos em Ecossistemas de Software</h1>
-                <p>Uma ferramenta baseada nos riscos identificados a partir de um Mapeamento Sistemático da Literatura (MSL) sobre gerência de riscos em Ecossistemas de Software (ECOS), com o objetivo de correlacionar esses riscos as soluções também identificadas.</p>
+                
+                <p>Uma ferramenta que organiza, classifica e correlaciona riscos identificados na Gerência de Riscos em Ecossistemas de Software (ECOS) com soluções validadas pela literatura. Desenvolvida a partir de um Mapeamento Sistemático (MSL), nossa plataforma transforma evidências acadêmicas em suporte prático para pesquisadores e profissionais.</p>
+                
                 <div class="hero-btns">
-                    <button class="btn-primary" onclick="scrollToTutorial()">Como utilizar</button>
-                    <button class="btn-secondary" onclick="scrollToContact()">Contato</button>
+                    <button class="btn-primary" onclick="document.getElementById('catalogo').scrollIntoView({behavior: 'smooth'})">
+                        Explorar o Catálogo
+                    </button>
+                    <a href="sobre.html" style="text-decoration: none;">
+                        <button class="btn-primary">Sobre o catálogo</button>
+                    </a>
                 </div>
             </article>
-            
+                
             <aside class="hero-image">
-                <div class="image-placeholder">
-                    <img src="risk.png" alt="Ilustração de Riscos" class="hero-img">
+                <div class="image-wrapper">
+                    <div class="image-placeholder">
+                        <img src="risk.png" alt="Ilustração de Riscos" class="hero-img">
+                    </div>
+                    
+                    <div class="stats-bar">
+                        <div class="stat-unit">
+                            <span class="stat-number">24</span>
+                            <span class="stat-label">Riscos mapeados</span>
+                        </div>
+                        <div class="stat-unit">
+                            <span class="stat-number">21</span>
+                            <span class="stat-label">Soluções identificadas</span>
+                        </div>
+                        <div class="stat-unit">
+                            <span class="stat-number">35</span>
+                            <span class="stat-label">Estudos primários</span>
+                        </div>
+                    </div>
                 </div>
             </aside>
         </div>
     </section>
-
-    <section id="tutorial" class="tutorial-section">
-        <div class="tutorial-container">
-            <article class="tutorial-text-header">
-                <h2>Como utilizar a ferramenta?</h2>
-                <p>O catálogo foi projetado para ser intuitivo e fácil de usar. Nele, você pode navegar pelas dimensões de riscos técnicos, sociais e de negócios, explorando os que são específicos de cada área.</p>
-                <p>Utilize a barra de busca para encontrar palavras-chave. Ao identificar um risco, a ferramenta apresentará automaticamente a análise e as soluções sugeridas baseadas no MSL.</p>
-            </article>
-
-            <div class="tutorial-image-box">
-                <img src="comoutilizar.png" alt="Como utilizar o catálogo" class="img-tutorial-full">
-            </div>
-
-            <button class="btn-primary" onclick="scrollToCatalog()">Ir para o Catálogo</button>
-        </div>
-    </section>
+        </section>
 
     <main id="catalogo">
         <header class="section-header">
@@ -64,7 +95,7 @@
 
         <section class="controls">
             <div class="search-wrapper">
-                <input type="text" id="searchInput" placeholder="Pesquisar...">
+                <input type="text" id="searchInput" placeholder="Pesquisar risco...">
             </div>
             
             <div class="filter-buttons">
@@ -75,26 +106,123 @@
             </div>
         </section>
 
-        <section id="riscosContainer" class="riscos-grid">
-            </section>
+        <section id="riscosContainer" class="riscos-grid"></section>
     </main>
 
-    <footer id="contato" class="contact-section">
-        <div class="contact-card-callout">
-            <h3>Entre em contato</h3>
-            <p>
-                Para dúvidas ou sugestões, entre em contato! <br>
-                Se está interessado pelo tema e quer se aprofundar, será um prazer conversar e trocar ideias com você.
-            </p>
-            
-            <div class="contact-details">
-                <span class="contact-name">Gabriele Campos</span>
-                <a href="mailto:gabbcampos64@gmail.com" class="email-link-btn">gabbcampos64@gmail.com</a>
+    <div id="sidePanel" class="side-panel">
+        <!-- CABEÇALHO DO PAINEL -->
+        <div class="panel-header">
+            <div class="panel-header-meta">
+                <span id="riskId" class="id-tag"></span>
+                <span id="riskDim" class="risk-dim-tag"></span>
             </div>
+            <h2 id="riskTitle"></h2>
+            <p id="riskCenario" class="panel-desc"></p>
+            <button onclick="closeSidePanel()" class="close-btn">&times;</button>
         </div>
-        
-        <div class="footer-credits">
-            <p>&copy; 2026 Catálogo de Riscos ECOS.</p>
+
+        <!-- CORPO DO PAINEL -->
+        <div class="panel-body">
+
+            <!-- BLOCO 1: Análise SEI -->
+            <div class="panel-card">
+                <div class="panel-card-title">
+                    <span>Taxonomia de Risco SEI
+                </div>
+                <div class="panel-grid-2">
+                    <div>
+                        <span class="field-label">Classe do Risco</span>
+                        <span class="field-value" id="riskClassSEI"></span>
+                    </div>
+                    <div>
+                        <span class="field-label">Elemento do Risco</span>
+                        <span class="field-value" id="riskElementoSEI"></span>
+                    </div>
+                </div>
+                <div style="margin-top: 16px;">
+                    <span class="field-label">Área de Desafio</span>
+                    <span class="field-value" id="riskDesafio"></span>
+                </div>
+                <div id="riskJustificationBox" class="justification-box" style="margin-top:14px; display:none;">
+                    <div class="justification-label">Por que essa classificação?</div>
+                    <p id="riskJustification"></p>
+                </div>
+            </div>
+
+            <!-- BLOCO 2a: ECOS mais propício -->
+            <div class="panel-card">
+                <div class="panel-card-title" style="color: #4ade80;">
+                    <span>ECOS mais Propício ao Risco
+                </div>
+                <span class="field-label"></span>
+                <span class="field-value ecos-value" id="riskEcos"></span>
+                <div id="riskEcosJustBox" class="justification-box green" style="margin-top:14px; display:none;">
+                    <div class="justification-label">Por que este ecossistema?</div>
+                    <p id="riskEcosJust"></p>
+                </div>
+            </div>
+
+            <!-- BLOCO 2b: Métrica de Saúde -->
+            <div class="panel-card">
+                <div class="panel-card-title" style="color: #4ade80;">
+                    <span>Métrica de Saúde Atingida pelo Risco
+                </div>
+                <span class="field-label"></span>
+                <span class="field-value" id="riskMetric"></span>
+                <div id="riskMetricJustBox" class="justification-box green" style="margin-top:14px; display:none;">
+                    <div class="justification-label">Por que esta métrica?</div>
+                    <p id="riskMetricJust"></p>
+                </div>
+            </div>
+
+            <!-- BLOCO 2c: Processo de Valor -->
+            <div class="panel-card">
+                <div class="panel-card-title" style="color: #4ade80;">
+                    <span>Processo de Valor Ameaçado pelo Risco
+                </div>
+                <span class="field-label"></span>
+                <span class="field-value" id="riskProcesso"></span>
+                <div id="riskProcessoJustBox" class="justification-box green" style="margin-top:14px; display:none;">
+                    <div class="justification-label">Por que este processo?</div>
+                    <p id="riskProcessoJust"></p>
+                </div>
+            </div>
+
+            <!-- BLOCO 3: Soluções -->
+            <div class="panel-card">
+                <div class="panel-card-title" style="color: #4ade80;">
+                    <span>Soluções Identificadas na Literatura
+                </div>
+                <div id="riskSolutions" class="solutions-list"></div>
+            </div>
+
+            <!-- BLOCO 4: Estudos Primários -->
+            <div class="panel-card" id="primaryStudiesBlock" style="display:none;">
+                <div class="panel-card-title" style="color: #fb923c;">
+                    <span>Estudos Primários que Identificaram este Risco
+                </div>
+                <div id="riskStudies" class="studies-tags"></div>
+            </div>
+
+        </div>
+
+        <!-- RODAPÉ DE NAVEGAÇÃO -->
+        <div class="panel-footer">
+            <button id="btnAnterior" class="nav-btn" onclick="navegarRisco(-1)">← Anterior</button>
+            <span id="navCount" class="nav-count"></span>
+            <button id="btnProximo" class="nav-btn nav-btn-primary" onclick="navegarRisco(1)">Próximo →</button>
+        </div>
+    </div>
+
+    <div id="overlay" class="overlay" onclick="closeSidePanel()"></div>
+
+    <footer id="contato" class="contact-section">
+        <div class="contact-inner">
+            <p class="contact-name">Gabriele Campos</p>
+            <a href="mailto:gabbcampos64@gmail.com" class="email-link-btn">gabbcampos64@gmail.com</a>
+            <p class="contact-desc">Para dúvidas, sugestões ou colaborações sobre o catálogo e a pesquisa de<br>gerência de riscos em ECOS, entre em contato.</p>
+            <div class="footer-divider"></div>
+            <p class="footer-credits">© 2026 Catálogo de Riscos ECOS · Artigo publicado no SBSI 2026</p>
         </div>
     </footer>
 
