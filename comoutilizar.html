@@ -670,9 +670,9 @@
             <div class="logo">Catálogo de<span> Riscos</span></div>
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html" onclick="closeMenu()">Início</a></li>
-                <li><a href="sobre.html" onclick="closeMenu()">Sobre</a></li>
                 <li><a href="comoutilizar.html" onclick="closeMenu()">Como utilizar</a></li>
                 <li><a href="index.html#catalogo" onclick="closeMenu()">Catálogo</a></li>
+                <li><a href="sobre.html" onclick="closeMenu()">Sobre</a></li>
                 <li><a href="index.html#contato" onclick="closeMenu()">Contato</a></li>
             </ul>
             <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMenu()">
@@ -865,9 +865,15 @@
 
                             <!-- RODAPÉ DE NAVEGAÇÃO -->
                             <div class="demo-panel-footer">
-                                <button class="demo-nav-btn" disabled>← Anterior</button>
-                                <span class="demo-nav-count">1 de 24</span>
-                                <button class="demo-nav-btn primary">Próximo →</button>
+                                <button class="demo-nav-btn" disabled
+                                        onmouseenter="showHint('navAnterior', event)"
+                                        onmouseleave="hideHint()">← Anterior</button>
+                                <span class="demo-nav-count demo-hoverable"
+                                      onmouseenter="showHint('navCount', event)"
+                                      onmouseleave="hideHint()">1 de 24</span>
+                                <button class="demo-nav-btn primary"
+                                        onmouseenter="showHint('navProximo', event)"
+                                        onmouseleave="hideHint()">Próximo →</button>
                             </div>
 
                         </div><!-- /card-demo-wrapper -->
@@ -1058,6 +1064,21 @@
                 
                 label: 'Estudos Primários',
                 text: 'Códigos dos estudos do MSL que identificaram e analisaram este risco. Cada código (E01–E35) corresponde a um estudo incluído que são a fonte de cada risco e solução do catálogo.'
+            },
+            navAnterior: {
+                
+                label: 'Botão Anterior',
+                text: 'Navega para o risco anterior na lista. Fica desabilitado quando o primeiro risco está sendo exibido.'
+            },
+            navProximo: {
+                
+                label: 'Botão Próximo',
+                text: 'Navega para o próximo risco sem fechar o painel. Ao filtrar por dimensão, a navegação respeita apenas os riscos do filtro ativo.'
+            },
+            navCount: {
+                
+                label: 'Posição na lista',
+                text: 'Indica qual risco está sendo exibido em relação ao total disponível. Por exemplo, "14 de 24" significa o 14º risco de um total de 24 mapeados no catálogo.'
             }
         };
 
