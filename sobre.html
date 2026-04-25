@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre o Catálogo | Gerência de Riscos em ECOS</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="navbar">
+        <nav class="nav-container">
+            <div class="logo">Catálogo de<span> Riscos</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="comoutilizar.html">Como utilizar</a></li>
+                <li><a href="index.html#catalogo">Catálogo</a></li>
+                <li><a href="index.html#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+        <section id="sobre" class="sobre-section">
+            <div class="sobre-container">
+                <header class="sobre-header">
+                    <span class="tag-small" style="
+                        color: #38bdf8;
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 8px;
+                        font-size: 0.78rem;
+                        letter-spacing: 2px;
+                        font-weight: 700;
+                        text-transform: uppercase;
+                        padding: 6px 14px;
+                        border: 1px solid rgba(56,189,248,0.25);
+                        border-radius: 100px;
+                        background: rgba(56,189,248,0.07);
+                        margin-bottom: 24px;
+                    ">
+                        <i class="fas fa-book" style="font-size:0.7rem;"></i>
+                        SOBRE O CATÁLOGO
+                    </span>
+                    <h2>O que é este catálogo e como foi construído?</h2>
+                </header>
+
+                <div class="sobre-grid">
+                    <article class="sobre-text">
+                        <p>Este catálogo foi desenvolvido a partir de um <strong>Mapeamento Sistemático da Literatura (MSL)</strong>, conduzido entre janeiro e julho de 2025, no qual foram analisados 710 estudos, dos quais 35 foram selecionados. </p>
+                        <p>Cada risco é descrito a partir de múltiplas perspectivas teóricas, integrando classificações da Taxonomia de Risco do Software Engineering Institute (SEI), a identificação do ecossistema mais propício ao risco com base na tipologia de Manikas (2016), métricas de saúde propostas por Iansiti e Levien (2004) e o processo de valor ameaçado descrito por Burström et al. (2022).</p>
+                        <p>O objetivo é oferecer ao usuário, seja ele pesquisador ou profissional, uma visão integrada dos riscos, conectando-os as soluções já propostas e validadas na literatura.</p>
+
+                        <p class="citation">Este catálogo está associado ao artigo Challenges and Solutions of Risk Management in Software Ecosystems (Campos et al., 2025), submetido ao Simpósio Brasileiro de Sistemas de Informação (SBSI) 2026.</p>
+            
+                        <div class="sobre-btns">
+                            <a href="comoutilizar.html" class="btn-primary">Como utilizar</a>
+                            <a href="index.html#catalogo" class="btn-primary">Catálogo</a>
+                        </div>
+                    </article>
+                    <aside class="sobre-cards">
+                        <div class="card-dim tecnico">
+                            <h3>Dimensão Técnica</h3>
+                            <p>Riscos ligados a vulnerabilidades, dependências, segurança de código, compatibilidade de versões e infraestrutura de desenvolvimento (R01–R11).</p>
+                        </div>
+                        <div class="card-dim social">
+                            <h3>Dimensão Social</h3>
+                            <p>Riscos envolvendo confiança, governança, comunicação entre atores, sobrecarga de mantenedores e ameaças internas (R12–R18).</p>
+                        </div>
+                        <div class="card-dim negocio">
+                            <h3>Dimensão de Negócio</h3>
+                            <p>Riscos relacionados a documentação, custos de migração, percepção de valor, fragmentação de plataforma e descontinuidade do ECOS (R19–R24).</p>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    
+
+</body>
+</html>
