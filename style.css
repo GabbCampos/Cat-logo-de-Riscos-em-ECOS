@@ -868,17 +868,17 @@ main { padding: 120px 5%; }
 /* ── 11. CONTATO / FOOTER ─────────────────────────────────── */
 
 .contact-section {
-    padding: 80px 5% 60px;
+    padding: 56px 5% 40px;
     background-color: var(--bg-body);
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    border-top: 1px solid rgba(56, 189, 248, 0.12);
 }
 
 .contact-inner {
     width: 100%;
-    max-width: 600px;
+    max-width: 520px;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -892,54 +892,71 @@ main { padding: 120px 5%; }
 
 .contact-inner::before { display: none; }
 
+.footer-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    border-radius: 100px;
+    padding: 5px 14px;
+    margin-bottom: 28px;
+}
+
 .contact-name {
     font-size: 1.1rem;
     font-weight: 700;
     color: var(--text-high);
     letter-spacing: -0.2px;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
 .email-link-btn {
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: var(--accent);
     text-decoration: none;
     font-weight: 500;
-    padding: 0;
-    border: none;
+    padding: 8px 20px;
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    border-radius: 8px;
     background: none;
-    transition: opacity 0.2s;
+    transition: background 0.2s, border-color 0.2s;
     display: inline-block;
     margin-bottom: 20px;
 }
 
 .email-link-btn:hover {
-    opacity: 0.75;
+    background: rgba(56, 189, 248, 0.08);
+    border-color: rgba(56, 189, 248, 0.45);
     transform: none;
     box-shadow: none;
-    background: none;
-    border: none;
+    opacity: 1;
 }
 
 .contact-desc {
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     color: var(--text-low);
     line-height: 1.75;
-    max-width: 480px;
-    margin: 0 auto 28px;
+    max-width: 420px;
+    margin: 0 auto 32px;
 }
 
 .footer-divider {
     width: 100%;
+    max-width: 480px;
     height: 1px;
-    background: rgba(255,255,255,0.06);
-    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.07);
+    margin-bottom: 22px;
 }
 
 .footer-credits {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: var(--text-low);
-    opacity: 0.5;
+    opacity: 0.45;
     text-align: center;
 }
 
