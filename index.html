@@ -13,13 +13,16 @@
     <header class="navbar">
         <nav class="nav-container">
             <div class="logo">Catálogo de<span> Riscos</span></div>
-            <ul class="nav-links">
-                <li><a href="index.html">Início</a></li>
-                <li><a href="sobre.html">Sobre</a></li>
-                <li><a href="comoutilizar.html">Como utilizar</a></li>
-                <li><a href="index.html#catalogo">Catálogo</a></li>
-                <li><a href="index.html#contato">Contato</a></li>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" onclick="closeMenu()">Início</a></li>
+                <li><a href="sobre.html" onclick="closeMenu()">Sobre</a></li>
+                <li><a href="comoutilizar.html" onclick="closeMenu()">Como utilizar</a></li>
+                <li><a href="index.html#catalogo" onclick="closeMenu()">Catálogo</a></li>
+                <li><a href="index.html#contato" onclick="closeMenu()">Contato</a></li>
             </ul>
+            <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMenu()">
+                <span></span><span></span><span></span>
+            </button>
         </nav>
     </header>
 
@@ -151,12 +154,12 @@
 
             <!-- BLOCO 2a: ECOS mais propício -->
             <div class="panel-card">
-                <div class="panel-card-title" style="color: #4ade80;">
+                <div class="panel-card-title">
                     <span>ECOS mais Propício ao Risco
                 </div>
                 <span class="field-label"></span>
                 <span class="field-value ecos-value" id="riskEcos"></span>
-                <div id="riskEcosJustBox" class="justification-box green" style="margin-top:14px; display:none;">
+                <div id="riskEcosJustBox" class="justification-box" style="margin-top:14px; display:none;">
                     <div class="justification-label">Por que este ecossistema?</div>
                     <p id="riskEcosJust"></p>
                 </div>
@@ -164,12 +167,12 @@
 
             <!-- BLOCO 2b: Métrica de Saúde -->
             <div class="panel-card">
-                <div class="panel-card-title" style="color: #4ade80;">
+                <div class="panel-card-title">
                     <span>Métrica de Saúde Atingida pelo Risco
                 </div>
                 <span class="field-label"></span>
                 <span class="field-value" id="riskMetric"></span>
-                <div id="riskMetricJustBox" class="justification-box green" style="margin-top:14px; display:none;">
+                <div id="riskMetricJustBox" class="justification-box" style="margin-top:14px; display:none;">
                     <div class="justification-label">Por que esta métrica?</div>
                     <p id="riskMetricJust"></p>
                 </div>
@@ -177,12 +180,12 @@
 
             <!-- BLOCO 2c: Processo de Valor -->
             <div class="panel-card">
-                <div class="panel-card-title" style="color: #4ade80;">
+                <div class="panel-card-title">
                     <span>Processo de Valor Ameaçado pelo Risco
                 </div>
                 <span class="field-label"></span>
                 <span class="field-value" id="riskProcesso"></span>
-                <div id="riskProcessoJustBox" class="justification-box green" style="margin-top:14px; display:none;">
+                <div id="riskProcessoJustBox" class="justification-box" style="margin-top:14px; display:none;">
                     <div class="justification-label">Por que este processo?</div>
                     <p id="riskProcessoJust"></p>
                 </div>
@@ -190,7 +193,7 @@
 
             <!-- BLOCO 3: Soluções -->
             <div class="panel-card">
-                <div class="panel-card-title" style="color: #4ade80;">
+                <div class="panel-card-title">
                     <span>Soluções Identificadas na Literatura
                 </div>
                 <div id="riskSolutions" class="solutions-list"></div>
@@ -198,7 +201,7 @@
 
             <!-- BLOCO 4: Estudos Primários -->
             <div class="panel-card" id="primaryStudiesBlock" style="display:none;">
-                <div class="panel-card-title" style="color: #fb923c;">
+                <div class="panel-card-title">
                     <span>Estudos Primários que Identificaram este Risco
                 </div>
                 <div id="riskStudies" class="studies-tags"></div>
@@ -227,5 +230,17 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById('navLinks');
+            const btn = document.getElementById('hamburger');
+            nav.classList.toggle('open');
+            btn.classList.toggle('active');
+        }
+        function closeMenu() {
+            document.getElementById('navLinks').classList.remove('open');
+            document.getElementById('hamburger').classList.remove('active');
+        }
+    </script>
 </body>
 </html>
