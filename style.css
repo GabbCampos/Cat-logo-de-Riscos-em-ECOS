@@ -477,6 +477,14 @@ main { padding: 120px 5%; }
     font-size: 0.9rem;
 }
 
+/* Cor do ID acompanha a dimensão do card */
+.card.tecnicos .id-tag,
+.card.tecnico  .id-tag { color: var(--color-tecnicos); }
+.card.sociais  .id-tag,
+.card.social   .id-tag { color: var(--color-sociais); }
+.card.negocio  .id-tag,
+.card.negocios .id-tag { color: var(--color-negocio); }
+
 .dimensao-tag {
     font-size: 0.7rem;
     text-transform: uppercase;
