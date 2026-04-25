@@ -702,11 +702,11 @@
 
                     <!-- NAV TABS -->
                     <div class="tab-nav">
-                        <button class="tab-btn active" onclick="showTab('card', this)">
-                            <i class="fas fa-eye" style="margin-right:6px;"></i>Exemplo de card
-                        </button>
-                        <button class="tab-btn" onclick="showTab('glossario', this)">
+                        <button class="tab-btn active" onclick="showTab('glossario', this)">
                             <i class="fas fa-book-open" style="margin-right:6px;"></i>Glossário dos campos
+                        </button>
+                        <button class="tab-btn" onclick="showTab('card', this)">
+                            <i class="fas fa-eye" style="margin-right:6px;"></i>Exemplo de card
                         </button>
                         <button class="tab-btn" onclick="showTab('perfis', this)">
                             <i class="fas fa-user" style="margin-right:6px;"></i>Por onde começar?
@@ -714,7 +714,7 @@
                     </div>
 
                     <!-- TAB 1: CARD EXEMPLO -->
-                    <div class="tab-panel active" id="panel-card">
+                    <div class="tab-panel" id="panel-card">
 
                         <div class="hover-legend">
                             <span class="hover-legend-dot"></span>
@@ -876,7 +876,7 @@
 
 
                     <!-- TAB 2: GLOSSÁRIO -->
-                    <div class="tab-panel" id="panel-glossario">
+                    <div class="tab-panel active" id="panel-glossario">
                         <div class="glossary-grid">
 
                             <div class="gloss-card accent-blue">
