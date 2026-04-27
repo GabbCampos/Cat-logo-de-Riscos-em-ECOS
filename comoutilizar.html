@@ -672,8 +672,65 @@
             .page-hero-strip h2 { font-size: clamp(1.7rem, 5vw, 2.4rem); }
         }
 
-        /* ── Mobile (≤768px) ── */
+        /* ── Painel de hint mobile (substitui o tooltip em touch) ── */
+        .mobile-hint-panel {
+            display: none;
+        }
+
         @media (max-width: 768px) {
+            /* Painel fixo na base da tela para mostrar hints ao tocar */
+            .mobile-hint-panel {
+                display: block;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                z-index: 3000;
+                background: #0f172a;
+                border-top: 1px solid rgba(56,189,248,0.25);
+                border-radius: 16px 16px 0 0;
+                padding: 16px 20px 24px;
+                transform: translateY(100%);
+                transition: transform 0.28s cubic-bezier(0.34, 1.2, 0.64, 1);
+                box-shadow: 0 -8px 40px rgba(0,0,0,0.5);
+                max-height: 55vh;
+                overflow-y: auto;
+            }
+            .mobile-hint-panel.visible {
+                transform: translateY(0);
+            }
+            .mobile-hint-panel-handle {
+                width: 36px;
+                height: 4px;
+                background: rgba(255,255,255,0.15);
+                border-radius: 2px;
+                margin: 0 auto 14px;
+            }
+            .mobile-hint-panel-label {
+                font-size: 0.65rem;
+                font-weight: 800;
+                text-transform: uppercase;
+                letter-spacing: 1.5px;
+                color: #38bdf8;
+                margin-bottom: 8px;
+            }
+            .mobile-hint-panel-text {
+                font-size: 0.9rem;
+                color: rgba(255,255,255,0.72);
+                line-height: 1.6;
+                margin: 0;
+            }
+            .mobile-hint-overlay {
+                display: none;
+                position: fixed;
+                inset: 0;
+                z-index: 2999;
+                background: rgba(0,0,0,0.35);
+            }
+            .mobile-hint-overlay.visible {
+                display: block;
+            }
+
             .methodology-section { padding: calc(var(--nav-height, 64px) + 24px) 4% 60px; }
 
             /* Tooltip flutuante — oculto em touch */
@@ -686,8 +743,29 @@
             .tab-nav { flex-wrap: wrap; }
             .tab-btn { flex: 1 1 calc(50% - 6px); font-size: 0.8rem; padding: 10px 10px; white-space: normal; text-align: center; }
 
-            /* Card demo header */
-            .demo-panel-header { padding: 20px 18px 18px; }
+            /* Card demo — indicação visual de toque */
+            .demo-inner-card {
+                cursor: pointer;
+                position: relative;
+            }
+            .demo-inner-card::after {
+                content: '↗';
+                position: absolute;
+                top: 12px;
+                right: 14px;
+                font-size: 0.7rem;
+                color: rgba(56,189,248,0.45);
+                pointer-events: none;
+            }
+            .demo-panel-header { padding: 20px 18px 18px; cursor: pointer; }
+            .demo-panel-header::after {
+                content: 'Toque para saber mais ↗';
+                display: block;
+                font-size: 0.65rem;
+                color: rgba(56,189,248,0.5);
+                margin-top: 8px;
+                letter-spacing: 0.5px;
+            }
             .demo-panel-header h2 { font-size: 1.1rem; }
             .demo-panel-desc { font-size: 0.83rem; }
 
@@ -700,7 +778,7 @@
 
             /* Rodapé nav do card demo */
             .demo-panel-footer { padding: 12px 16px; flex-wrap: wrap; gap: 8px; }
-            .demo-nav-btn { padding: 8px 12px; font-size: 0.8rem; }
+            .demo-nav-btn { padding: 8px 12px; font-size: 0.8rem; cursor: pointer; }
 
             /* Glossário */
             .gloss-card { padding: 16px 18px; }
@@ -715,8 +793,6 @@
             /* Remove sublinhado pontilhado em touch */
             .demo-hoverable,
             .demo-hoverable-white { border-bottom: none; cursor: default; }
-
-            .demo-inner-card { cursor: default; }
         }
 
         /* ── Mobile pequeno (≤480px) ── */
@@ -808,7 +884,8 @@
                             <!-- CABEÇALHO -->
                             <div class="demo-panel-header"
                                  onmouseenter="showHint('header', event)"
-                                 onmouseleave="hideHint()">
+                                 onmouseleave="hideHint()"
+                                 onclick="showMobileHint('header')">
                                 <div class="demo-panel-header-meta">
                                     <span class="demo-id-tag demo-hoverable"
                                           onmouseenter="showHint('id', event); event.stopPropagation();"
@@ -835,7 +912,8 @@
                                 <!-- BLOCO 1: Análise SEI -->
                                 <div class="demo-inner-card"
                                      onmouseenter="showHint('sei', event)"
-                                     onmouseleave="hideHint()">
+                                     onmouseleave="hideHint()"
+                                     onclick="showMobileHint('sei')">
                                     <div class="demo-card-title">
                                         <span>Taxonomia de Risco SEI
                                     </div>
@@ -858,7 +936,8 @@
                                 <!-- BLOCO 2a: ECOS mais propício -->
                                 <div class="demo-inner-card"
                                      onmouseenter="showHint('ecos', event)"
-                                     onmouseleave="hideHint()">
+                                     onmouseleave="hideHint()"
+                                     onclick="showMobileHint('ecos')">
                                     <div class="demo-card-title">
                                         <span>ECOS mais Propício ao Risco
                                     </div>
@@ -873,7 +952,8 @@
                                 <!-- BLOCO 2b: Métrica de Saúde -->
                                 <div class="demo-inner-card"
                                      onmouseenter="showHint('metrica', event)"
-                                     onmouseleave="hideHint()">
+                                     onmouseleave="hideHint()"
+                                     onclick="showMobileHint('metrica')">
                                     <div class="demo-card-title">
                                         <span>Métrica de Saúde Atingida pelo Risco
                                     </div>
@@ -888,7 +968,8 @@
                                 <!-- BLOCO 2c: Processo de Valor -->
                                 <div class="demo-inner-card"
                                      onmouseenter="showHint('processo', event)"
-                                     onmouseleave="hideHint()">
+                                     onmouseleave="hideHint()"
+                                     onclick="showMobileHint('processo')">
                                     <div class="demo-card-title">
                                         <span>Processo de Valor Ameaçado pelo Risco
                                     </div>
@@ -903,7 +984,8 @@
                                 <!-- BLOCO 3: Soluções -->
                                 <div class="demo-inner-card"
                                      onmouseenter="showHint('solucoes', event)"
-                                     onmouseleave="hideHint()">
+                                     onmouseleave="hideHint()"
+                                     onclick="showMobileHint('solucoes')">
                                     <div class="demo-card-title">
                                         <span>Soluções Identificadas na Literatura
                                     </div>
@@ -926,7 +1008,8 @@
                                 <!-- BLOCO 4: Estudos Primários -->
                                 <div class="demo-inner-card"
                                      onmouseenter="showHint('estudos', event)"
-                                     onmouseleave="hideHint()">
+                                     onmouseleave="hideHint()"
+                                     onclick="showMobileHint('estudos')">
                                     <div class="demo-card-title">
                                         <span>Estudos Primários que Identificaram este Risco
                                     </div>
@@ -946,13 +1029,16 @@
                             <div class="demo-panel-footer">
                                 <button class="demo-nav-btn" disabled
                                         onmouseenter="showHint('navAnterior', event)"
-                                        onmouseleave="hideHint()">← Anterior</button>
+                                        onmouseleave="hideHint()"
+                                        onclick="showMobileHint('navAnterior')">← Anterior</button>
                                 <span class="demo-nav-count demo-hoverable"
                                       onmouseenter="showHint('navCount', event)"
-                                      onmouseleave="hideHint()">1 de 24</span>
+                                      onmouseleave="hideHint()"
+                                      onclick="showMobileHint('navCount')">1 de 24</span>
                                 <button class="demo-nav-btn primary"
                                         onmouseenter="showHint('navProximo', event)"
-                                        onmouseleave="hideHint()">Próximo →</button>
+                                        onmouseleave="hideHint()"
+                                        onclick="showMobileHint('navProximo')">Próximo →</button>
                             </div>
 
                         </div><!-- /card-demo-wrapper -->
@@ -1087,6 +1173,14 @@
         </div>
     </div>
 
+    <!-- OVERLAY E PAINEL DE HINT MOBILE -->
+    <div class="mobile-hint-overlay" id="mobileHintOverlay" onclick="closeMobileHint()"></div>
+    <div class="mobile-hint-panel" id="mobileHintPanel">
+        <div class="mobile-hint-panel-handle"></div>
+        <div class="mobile-hint-panel-label" id="mobileHintLabel"></div>
+        <p class="mobile-hint-panel-text" id="mobileHintText"></p>
+    </div>
+
     <script>
         /* ── Dicionário de hints ── */
         const hints = {
@@ -1161,7 +1255,10 @@
             }
         };
 
-        /* ── Tooltip flutuante ── */
+        /* ── Detecta touch ── */
+        const isTouchDevice = () => window.matchMedia('(max-width: 768px)').matches || ('ontouchstart' in window);
+
+        /* ── Tooltip flutuante (desktop) ── */
         const tooltip = document.getElementById('hintTooltip');
         let hideTimer;
 
@@ -1169,7 +1266,12 @@
             const h = hints[key];
             if (!h) return;
 
-            // Atualiza tooltip flutuante
+            if (isTouchDevice()) {
+                /* Em touch: mostra o painel fixo na base */
+                showMobileHint(key);
+                return;
+            }
+
             document.getElementById('tooltipIcon').textContent  = h.icon;
             document.getElementById('tooltipLabel').textContent = h.label;
             document.getElementById('tooltipText').textContent  = h.text;
@@ -1180,6 +1282,7 @@
         }
 
         function hideHint() {
+            if (isTouchDevice()) return; /* Touch: fechamento via overlay */
             hideTimer = setTimeout(() => {
                 tooltip.classList.remove('visible');
             }, 80);
@@ -1203,6 +1306,31 @@
         document.addEventListener('mousemove', (e) => {
             if (tooltip.classList.contains('visible')) positionTooltip(e);
         });
+
+        /* ── Painel mobile ── */
+        function showMobileHint(key) {
+            const h = hints[key];
+            if (!h) return;
+            document.getElementById('mobileHintLabel').textContent = h.label;
+            document.getElementById('mobileHintText').textContent  = h.text;
+            document.getElementById('mobileHintPanel').classList.add('visible');
+            document.getElementById('mobileHintOverlay').classList.add('visible');
+        }
+
+        function closeMobileHint() {
+            document.getElementById('mobileHintPanel').classList.remove('visible');
+            document.getElementById('mobileHintOverlay').classList.remove('visible');
+        }
+
+        /* Fechar painel mobile ao deslizar para baixo */
+        (function() {
+            const panel = document.getElementById('mobileHintPanel');
+            let startY = 0;
+            panel.addEventListener('touchstart', e => { startY = e.touches[0].clientY; }, { passive: true });
+            panel.addEventListener('touchend', e => {
+                if (e.changedTouches[0].clientY - startY > 60) closeMobileHint();
+            }, { passive: true });
+        })();
 
         /* ── Tabs ── */
         function showTab(name, btn) {
