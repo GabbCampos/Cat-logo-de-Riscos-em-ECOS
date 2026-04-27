@@ -437,7 +437,8 @@
         }
 
         /* ── Hover legend ── */
-        .hover-legend {
+        .hover-legend,
+        .hover-legend-touch {
             display: flex;
             align-items: center;
             gap: 10px;
@@ -464,6 +465,11 @@
             0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 0 rgba(56,189,248,0.4); }
             50%       { opacity: 0.6; transform: scale(0.8); box-shadow: 0 0 0 4px rgba(56,189,248,0); }
         }
+
+        /* A versão touch fica oculta por padrão; aparece só quando JS detecta touch */
+        .hover-legend-touch { display: none; }
+        body.touch-device .hover-legend       { display: none; }
+        body.touch-device .hover-legend-touch { display: flex; }
 
         /* ── Glossário ── */
         .glossary-grid { display: grid; gap: 14px; }
@@ -742,9 +748,7 @@
             color: rgba(56,189,248,0.45);
             pointer-events: none;
         }
-        /* Oculta tooltip flutuante em qualquer dispositivo touch */
         body.touch-device .hint-tooltip { display: none !important; }
-        body.touch-device .hover-legend { display: none; }
         body.touch-device .demo-hoverable,
         body.touch-device .demo-hoverable-white { border-bottom: none; cursor: default; }
 
@@ -763,9 +767,6 @@
 
             /* Tooltip flutuante — oculto em mobile pequeno */
             .hint-tooltip { display: none !important; }
-
-            /* Hover legend — oculto em mobile */
-            .hover-legend { display: none; }
 
             /* Tab nav — wrap para 2 colunas */
             .tab-nav { flex-wrap: wrap; }
@@ -880,6 +881,10 @@
                         <div class="hover-legend">
                             <span class="hover-legend-dot"></span>
                             Passe o mouse ou toque sobre cada seção para entender o que ela representa
+                        </div>
+                        <div class="hover-legend-touch">
+                            <span class="hover-legend-dot"></span>
+                            Toque sobre cada seção para entender o que ela representa
                         </div>
 
                         <!-- ══════════════════════════════════════
