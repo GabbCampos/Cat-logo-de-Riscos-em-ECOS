@@ -681,7 +681,7 @@
         /* ── Painel de hint touch (substitui o tooltip em touch) ── */
         /* JS adiciona .touch-device ao body quando detecta dispositivo touch */
         .mobile-hint-panel {
-            display: none;
+            display: block;
             position: fixed;
             bottom: 0;
             left: 0;
@@ -691,17 +691,16 @@
             border-top: 1px solid rgba(56,189,248,0.25);
             border-radius: 16px 16px 0 0;
             padding: 16px 20px 24px;
-            transform: translateY(100%);
+            transform: translateY(110%);
             transition: transform 0.28s cubic-bezier(0.34, 1.2, 0.64, 1);
             box-shadow: 0 -8px 40px rgba(0,0,0,0.5);
             max-height: 55vh;
             overflow-y: auto;
-        }
-        body.touch-device .mobile-hint-panel {
-            display: block;
+            pointer-events: none;
         }
         .mobile-hint-panel.visible {
             transform: translateY(0);
+            pointer-events: auto;
         }
         .mobile-hint-panel-handle {
             width: 36px;
@@ -725,14 +724,18 @@
             margin: 0;
         }
         .mobile-hint-overlay {
-            display: none;
+            display: block;
             position: fixed;
             inset: 0;
             z-index: 2999;
             background: rgba(0,0,0,0.35);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.22s;
         }
         .mobile-hint-overlay.visible {
-            display: block;
+            opacity: 1;
+            pointer-events: auto;
         }
         /* Indicação visual de toque (apenas em touch) */
         body.touch-device .demo-inner-card {
