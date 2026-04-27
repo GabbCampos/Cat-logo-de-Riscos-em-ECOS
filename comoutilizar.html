@@ -897,6 +897,7 @@
 
                             <!-- CABEÇALHO -->
                             <div class="demo-panel-header"
+                                 data-hint="header"
                                  onmouseenter="showHint('header', event)"
                                  onmouseleave="hideHint()"
                                  onclick="showMobileHint('header')">
@@ -925,6 +926,7 @@
 
                                 <!-- BLOCO 1: Análise SEI -->
                                 <div class="demo-inner-card"
+                                     data-hint="sei"
                                      onmouseenter="showHint('sei', event)"
                                      onmouseleave="hideHint()"
                                      onclick="showMobileHint('sei')">
@@ -949,6 +951,7 @@
 
                                 <!-- BLOCO 2a: ECOS mais propício -->
                                 <div class="demo-inner-card"
+                                     data-hint="ecos"
                                      onmouseenter="showHint('ecos', event)"
                                      onmouseleave="hideHint()"
                                      onclick="showMobileHint('ecos')">
@@ -965,6 +968,7 @@
 
                                 <!-- BLOCO 2b: Métrica de Saúde -->
                                 <div class="demo-inner-card"
+                                     data-hint="metrica"
                                      onmouseenter="showHint('metrica', event)"
                                      onmouseleave="hideHint()"
                                      onclick="showMobileHint('metrica')">
@@ -981,6 +985,7 @@
 
                                 <!-- BLOCO 2c: Processo de Valor -->
                                 <div class="demo-inner-card"
+                                     data-hint="processo"
                                      onmouseenter="showHint('processo', event)"
                                      onmouseleave="hideHint()"
                                      onclick="showMobileHint('processo')">
@@ -997,6 +1002,7 @@
 
                                 <!-- BLOCO 3: Soluções -->
                                 <div class="demo-inner-card"
+                                     data-hint="solucoes"
                                      onmouseenter="showHint('solucoes', event)"
                                      onmouseleave="hideHint()"
                                      onclick="showMobileHint('solucoes')">
@@ -1021,6 +1027,7 @@
 
                                 <!-- BLOCO 4: Estudos Primários -->
                                 <div class="demo-inner-card"
+                                     data-hint="estudos"
                                      onmouseenter="showHint('estudos', event)"
                                      onmouseleave="hideHint()"
                                      onclick="showMobileHint('estudos')">
@@ -1042,14 +1049,17 @@
                             <!-- RODAPÉ DE NAVEGAÇÃO -->
                             <div class="demo-panel-footer">
                                 <button class="demo-nav-btn" disabled
+                                        data-hint="navAnterior"
                                         onmouseenter="showHint('navAnterior', event)"
                                         onmouseleave="hideHint()"
                                         onclick="showMobileHint('navAnterior')">← Anterior</button>
                                 <span class="demo-nav-count demo-hoverable"
+                                      data-hint="navCount"
                                       onmouseenter="showHint('navCount', event)"
                                       onmouseleave="hideHint()"
                                       onclick="showMobileHint('navCount')">1 de 24</span>
                                 <button class="demo-nav-btn primary"
+                                        data-hint="navProximo"
                                         onmouseenter="showHint('navProximo', event)"
                                         onmouseleave="hideHint()"
                                         onclick="showMobileHint('navProximo')">Próximo →</button>
@@ -1346,6 +1356,18 @@
             document.getElementById('mobileHintPanel').classList.remove('visible');
             document.getElementById('mobileHintOverlay').classList.remove('visible');
         }
+
+        /* ── Bind touchend em todos os elementos com data-hint ──
+           Garante funcionamento em tablet/mobile sem depender de onclick */
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('[data-hint]').forEach(function(el) {
+                el.addEventListener('touchend', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    showMobileHint(el.getAttribute('data-hint'));
+                }, { passive: false });
+            });
+        });
 
         /* Fechar painel mobile ao deslizar para baixo */
         (function() {
