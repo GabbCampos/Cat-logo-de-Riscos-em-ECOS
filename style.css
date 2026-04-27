@@ -40,6 +40,10 @@
 
 /* ── 2. BASE ──────────────────────────────────────────────── */
 
+html {
+    overflow-x: hidden;
+}
+
 body {
     font-family: 'Inter', sans-serif;
     background-color: var(--bg-body);
@@ -47,6 +51,7 @@ body {
     line-height: 1.6;
     scroll-behavior: smooth;
     overflow-x: hidden;
+    max-width: 100vw;
 }
 
 /* Justificação global de parágrafos e textos descritivos */
@@ -130,6 +135,7 @@ h1, h2, h3, h4, h5, h6,
     border-bottom: 1px solid rgba(56, 189, 248, 0.08);
     display: flex;
     align-items: center;
+    box-sizing: border-box;
 }
 
 .nav-container {
@@ -139,6 +145,7 @@ h1, h2, h3, h4, h5, h6,
     width: 100%;
     max-width: 1400px;
     margin: 0 auto;
+    min-width: 0;
 }
 
 .logo {
@@ -146,6 +153,8 @@ h1, h2, h3, h4, h5, h6,
     font-weight: 800;
     color: var(--text-high);
     letter-spacing: -1px;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .logo span { color: var(--accent); }
@@ -184,6 +193,7 @@ h1, h2, h3, h4, h5, h6,
     width: 100%;
     margin: 0 auto;
     align-items: center;
+    min-width: 0;
 }
 
 /* Contexto / subtítulo acima do h1 */
@@ -207,6 +217,8 @@ h1, h2, h3, h4, h5, h6,
     margin-bottom: 1.5rem;
     line-height: 1.1;
     letter-spacing: -2px;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .hero-text p {
@@ -255,6 +267,8 @@ h1, h2, h3, h4, h5, h6,
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
     position: relative;
     z-index: 10;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .stat-unit {
@@ -283,6 +297,7 @@ h1, h2, h3, h4, h5, h6,
 
 .sobre-section {
     padding: 100px 5%;
+    padding-top: calc(var(--nav-height) + 60px);
     background-color: var(--bg-body);
     color: var(--text-high);
 }
@@ -295,9 +310,10 @@ h1, h2, h3, h4, h5, h6,
 .sobre-header { margin-bottom: 60px; }
 
 .sobre-header h2 {
-    font-size: 3rem;
+    font-size: clamp(1.8rem, 4vw, 3rem);
     line-height: 1.1;
     margin-bottom: 2rem;
+    word-break: break-word;
 }
 
 .sobre-grid {
@@ -343,7 +359,7 @@ h1, h2, h3, h4, h5, h6,
 
 /* ── 7. CATÁLOGO — CONTROLES E GRID ──────────────────────── */
 
-main { padding: 120px 5%; }
+main { padding: 120px 5%; max-width: 100%; box-sizing: border-box; }
 
 .section-header { text-align: center; margin-bottom: 60px; }
 
@@ -374,6 +390,7 @@ main { padding: 120px 5%; }
     font-size: 1rem;
     outline: none;
     transition: border-color 0.3s, box-shadow 0.3s;
+    box-sizing: border-box;
 }
 
 #searchInput:focus {
@@ -410,7 +427,7 @@ main { padding: 120px 5%; }
 /* Grid de cards */
 .riscos-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(350px, 100%), 1fr));
     gap: 2.5rem;
 }
 
@@ -435,6 +452,8 @@ main { padding: 120px 5%; }
     flex-direction: column;
     position: relative;
     overflow: hidden;
+    min-width: 0;
+    word-break: break-word;
 }
 
 .card:hover {
@@ -1052,7 +1071,7 @@ main { padding: 120px 5%; }
 /* ── TABLET (≤900px) ── */
 @media (max-width: 900px) {
     .riscos-grid {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
         gap: 1.5rem;
     }
 
@@ -1069,6 +1088,8 @@ main { padding: 120px 5%; }
 
     /* ── Navbar mobile ── */
     .hamburger { display: flex; }
+
+    .logo { font-size: 1.15rem; }
 
     .nav-links {
         display: flex;
@@ -1111,6 +1132,7 @@ main { padding: 120px 5%; }
         padding-bottom: 56px;
         padding-left: 5%;
         padding-right: 5%;
+        min-height: auto;
     }
 
     .hero-content { gap: 2.5rem; }
@@ -1151,7 +1173,7 @@ main { padding: 120px 5%; }
     .stat-label  { font-size: 0.6rem; }
 
     /* ── Seção Sobre mobile ── */
-    .sobre-section { padding: 80px 5% 60px; }
+    .sobre-section { padding: calc(var(--nav-height) + 40px) 5% 60px; }
     .sobre-header  { margin-bottom: 40px; }
     .sobre-header h2 { font-size: 1.85rem; }
     .sobre-text p  { font-size: 1rem; }
@@ -1259,6 +1281,8 @@ main { padding: 120px 5%; }
     .gloss-header { flex-wrap: wrap; gap: 8px; }
 }
 
+
+
 /* ── MOBILE PEQUENO (≤480px) ── */
 @media (max-width: 480px) {
     .hero {
@@ -1284,7 +1308,7 @@ main { padding: 120px 5%; }
     .nav-btn { text-align: center; }
     .nav-count { text-align: center; }
 
-    .sobre-section { padding: 72px 4% 48px; }
+    .sobre-section { padding: calc(var(--nav-height) + 32px) 4% 48px; }
     .sobre-header h2 { font-size: 1.55rem; }
 
     main { padding: 90px 4% 48px; }
