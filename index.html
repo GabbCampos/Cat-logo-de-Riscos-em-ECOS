@@ -269,14 +269,14 @@
             </span>
 
             <p class="contact-desc" style="margin: 0 auto 32px; max-width: 520px; font-size: 0.87rem; line-height: 1.6; color: #94a3b8; text-align: center;">
-                Para dúvidas, sugestões ou colaborações sobre o catálogo de riscos em ECOS, entre em contato com os autores.
+                Para dúvidas, sugestões ou colaborações sobre o catálogo e a pesquisa de gerência de riscos em ECOS, entre em contato com os autores.
             </p>
 
             <div class="team-grid">
 
                 <div class="team-card">
                     <div class="team-avatar">
-                        <img src="gabriele.png" alt="Gabriele Campos" style="width:100%; height:100%; object-fit:cover; object-position: center top; border-radius:50%;">
+                        <img src="gabriele.jpg" alt="Gabriele Campos" style="width:100%; height:100%; object-fit:cover; object-position: center top; border-radius:50%;">
                     </div>
                     <p class="team-name">Gabriele Campos</p>
                     <a href="mailto:gabbcampos64@gmail.com" class="team-email">gabbcampos64@gmail.com</a>
@@ -284,7 +284,7 @@
 
                 <div class="team-card">
                     <div class="team-avatar">
-                        <img src="ismael.png" alt="Ismael Silva" style="width:100%; height:100%; object-fit:cover; object-position: center top; border-radius:50%;">
+                        <img src="ismael.jpeg" alt="Ismael Silva" style="width:100%; height:100%; object-fit:cover; object-position: center top; border-radius:50%;">
                     </div>
                     <p class="team-name">Ismael Silva</p>
                     <a href="mailto:frismaellsilva180@gmail.com" class="team-email">frismaellsilva180@gmail.com</a>
@@ -360,6 +360,49 @@
             .team-email:hover {
                 opacity: 1;
                 text-decoration: underline;
+            }
+
+            /* ── Tablet ── */
+            @media (max-width: 768px) {
+                .team-grid {
+                    gap: 24px;
+                }
+                .team-avatar {
+                    width: 76px;
+                    height: 76px;
+                }
+                .team-name {
+                    font-size: 0.78rem;
+                }
+                .team-email {
+                    font-size: 0.65rem;
+                }
+            }
+
+            /* ── Mobile ── */
+            @media (max-width: 540px) {
+                .team-grid {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 28px 16px;
+                    width: 100%;
+                }
+                .team-card {
+                    gap: 8px;
+                }
+                .team-avatar {
+                    width: 80px;
+                    height: 80px;
+                }
+                .team-name {
+                    font-size: 0.82rem;
+                    white-space: normal;
+                }
+                .team-email {
+                    font-size: 0.67rem;
+                    white-space: normal;
+                    word-break: break-all;
+                }
             }
         </style>
     </footer>
