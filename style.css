@@ -1400,3 +1400,47 @@ main { padding: 120px 5%; max-width: 100%; box-sizing: border-box; }
     border-radius: 0;
     margin-top: 0;
 }
+/* ── Links de estudos e soluções ── */
+.study-tag {
+    display: block;
+    margin-bottom: 8px;
+}
+.study-tag-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--text-mid, #94a3b8);
+    text-decoration: none;
+    font-size: 0.78rem;
+    line-height: 1.4;
+    padding: 5px 10px;
+    background: rgba(56,189,248,0.05);
+    border: 1px solid rgba(56,189,248,0.12);
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.study-tag-link:hover {
+    background: rgba(56,189,248,0.12);
+    color: #38bdf8;
+    border-color: rgba(56,189,248,0.3);
+}
+.study-doi-badge {
+    font-size: 0.7rem;
+    opacity: 0.6;
+    flex-shrink: 0;
+}
+.study-doi-link {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 6px;
+    font-size: 0.7rem;
+    color: #38bdf8;
+    opacity: 0.65;
+    text-decoration: none;
+    transition: opacity 0.2s;
+    vertical-align: middle;
+}
+.study-doi-link:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
