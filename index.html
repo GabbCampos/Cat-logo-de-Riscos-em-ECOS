@@ -7,12 +7,74 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* ── Logo refinada ── */
+        .logo {
+            display: flex !important;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+        .logo-icon {
+            font-size: 1.4rem;
+            color: #38bdf8;
+            line-height: 1;
+            filter: drop-shadow(0 0 6px rgba(56,189,248,0.55));
+        }
+        .logo-text {
+            color: #e2e8f0;
+            font-weight: 600;
+            font-size: 0.88rem;
+            letter-spacing: 0.01em;
+        }
+        .logo-highlight {
+            color: #38bdf8;
+            font-weight: 800;
+        }
+        .logo-sub {
+            color: #94a3b8;
+            font-weight: 400;
+            font-size: 0.82rem;
+        }
+
+        /* ── Hero centralizado ── */
+        .hero-content {
+            flex-direction: column !important;
+            align-items: center !important;
+            text-align: center !important;
+        }
+        .hero-text {
+            max-width: 760px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .hero-text h1,
+        .hero-text p {
+            text-align: left !important;
+        }
+        .hero-btns {
+            justify-content: center !important;
+        }
+        .hero-image {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        .image-wrapper {
+            max-width: 520px;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
 
     <header class="navbar">
         <nav class="nav-container">
-            <div class="logo">Catálogo de<span> Riscos</span></div>
+            <div class="logo">
+                <span class="logo-icon">⬡</span>
+                <span class="logo-text">Catálogo de <span class="logo-highlight">Riscos em ECOS</span></span>
+            </div>
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html" onclick="closeMenu()">Início</a></li>
                 <li><a href="comoutilizar.html" onclick="closeMenu()">Como utilizar</a></li>
@@ -29,30 +91,9 @@
     <section class="hero" id="inicio">
         <div class="hero-content">
             <article class="hero-text">
-                <div class="hero-context">
-                    <span class="hero-subtitle" style="
-                        color: #38bdf8;
-                        display: inline-flex;
-                        align-items: center;
-                        gap: 8px;
-                        font-size: 0.78rem;
-                        letter-spacing: 2px;
-                        font-weight: 700;
-                        text-transform: uppercase;
-                        padding: 6px 14px;
-                        border: 1px solid rgba(56,189,248,0.25);
-                        border-radius: 100px;
-                        background: rgba(56,189,248,0.07);
-                        margin-bottom: 24px;
-                    ">
-                        <i class="fas fa-layer-group" style="font-size:0.7rem;"></i>
-                        Baseado em um Mapeamento Sistemático da Literatura (MSL)
-                    </span>
-                </div>
-
-                <h1>Catálogo de Riscos sobre Gerência de Riscos em Ecossistemas de Software</h1>
+                <h1>Catálogo de Riscos em Ecossistemas de Software</h1>
                 
-                <p>Uma ferramenta que organiza, classifica e correlaciona riscos identificados na Gerência de Riscos em Ecossistemas de Software (ECOS) com soluções validadas pela literatura. Desenvolvida a partir de um Mapeamento Sistemático (MSL), nossa plataforma transforma evidências acadêmicas em suporte prático para pesquisadores e profissionais.</p>
+                <p>Uma ferramenta que organiza, classifica e correlaciona riscos identificados em Ecossistemas de Software (ECOS) com soluções validadas pela literatura. Desenvolvida a partir de um Mapeamento Sistemático da Literatura (MSL), nossa plataforma transforma evidências acadêmicas em suporte prático para pesquisadores e profissionais.</p>
                 
                 <div class="hero-btns">
                     <button class="btn-primary" onclick="document.getElementById('catalogo').scrollIntoView({behavior: 'smooth'})">
@@ -92,7 +133,7 @@
 
     <main id="catalogo">
         <header class="section-header">
-            <h2>Catálogo de Riscos sobre Gerência de Riscos em Ecossistemas de Software</h2>
+            <h2>Catálogo de Riscos em Ecossistemas de Software</h2>
             <p>Filtre por dimensão ou pesquise termos específicos do risco.</p>
         </header>
 
@@ -219,18 +260,108 @@
 
     <div id="overlay" class="overlay" onclick="closeSidePanel()"></div>
 
-    <footer id="contato" class="contact-section">
-        <div class="contact-inner">
-            <span class="footer-badge">
+    <footer id="contato" class="contact-section" style="padding: 48px 24px 32px;">
+        <div class="contact-inner" style="max-width: 860px; margin: 0 auto;">
+
+            <span class="footer-badge" style="margin-bottom: 12px; display: inline-flex;">
                 <svg width="11" height="11" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="#38bdf8" stroke-width="1.5"/><path d="M8 5v3.5l2 1.2" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round"/></svg>
                 Contato
             </span>
-            <p class="contact-name">Gabriele Campos</p>
-            <a href="mailto:gabbcampos64@gmail.com" class="email-link-btn">gabbcampos64@gmail.com</a>
-            <p class="contact-desc">Para dúvidas, sugestões ou colaborações sobre o catálogo e a pesquisa de gerência de riscos em ECOS, entre em contato.</p>
-            <div class="footer-divider"></div>
-            <p class="footer-credits">© 2026 Catálogo de Riscos sobre Gerência de Riscos em Ecossistemas de Software · Artigo publicado no SBSI 2026</p>
+
+            <p class="contact-desc" style="margin: 0 auto 32px; max-width: 520px; font-size: 0.87rem; line-height: 1.6; color: #94a3b8; text-align: center;">
+                Para dúvidas, sugestões ou colaborações sobre o catálogo de riscos em ECOS, entre em contato com os autores.
+            </p>
+
+            <div class="team-grid">
+
+                <div class="team-card">
+                    <div class="team-avatar">
+                        <img src="gabriele.png" alt="Gabriele Campos" style="width:100%; height:100%; object-fit:cover; object-position: center top; border-radius:50%;">
+                    </div>
+                    <p class="team-name">Gabriele Campos</p>
+                    <a href="mailto:gabbcampos64@gmail.com" class="team-email">gabbcampos64@gmail.com</a>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-avatar">
+                        <img src="ismael.png" alt="Ismael Silva" style="width:100%; height:100%; object-fit:cover; object-position: center top; border-radius:50%;">
+                    </div>
+                    <p class="team-name">Ismael Silva</p>
+                    <a href="mailto:frismaellsilva180@gmail.com" class="team-email">frismaellsilva180@gmail.com</a>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-avatar">
+                        <img src="paulo.png" alt="Paulo Malcher" style="width:100%; height:100%; object-fit:cover; object-position: center top; border-radius:50%;">
+                    </div>
+                    <p class="team-name">Paulo Malcher</p>
+                    <a href="mailto:paulo.malcher@ufra.edu.br" class="team-email">paulo.malcher@ufra.edu.br</a>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-avatar">
+                        <img src="rodrigo.png" alt="Rodrigo Santos" style="width:100%; height:100%; object-fit:cover; object-position: center top; border-radius:50%;">
+                    </div>
+                    <p class="team-name">Rodrigo Santos</p>
+                    <a href="mailto:rps@uniriotec.br" class="team-email">rps@uniriotec.br</a>
+                </div>
+
+            </div>
+
+            <div class="footer-divider" style="margin: 24px 0 16px;"></div>
+            <p class="footer-credits" style="font-size: 0.75rem; color: #475569; text-align: center; margin: 0;">© 2026 Catálogo de Riscos em Ecossistemas de Software · Artigo publicado no SBSI 2026</p>
         </div>
+
+        <style>
+            .team-grid {
+                display: flex;
+                flex-wrap: nowrap;
+                gap: 40px;
+                justify-content: center;
+                margin-bottom: 0;
+            }
+            .team-card {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+            .team-avatar {
+                width: 88px;
+                height: 88px;
+                border-radius: 50%;
+                overflow: hidden;
+                box-shadow: 0 0 0 3px rgba(56,189,248,0.2), 0 6px 20px rgba(0,0,0,0.4);
+                border: 2px solid rgba(56,189,248,0.15);
+                transition: transform 0.25s ease, box-shadow 0.25s ease;
+                flex-shrink: 0;
+            }
+            .team-avatar:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 0 0 3px rgba(56,189,248,0.45), 0 10px 28px rgba(0,0,0,0.5);
+            }
+            .team-name {
+                font-size: 0.85rem;
+                font-weight: 700;
+                color: #e2e8f0;
+                margin: 0;
+                text-align: center;
+                white-space: nowrap;
+            }
+            .team-email {
+                font-size: 0.71rem;
+                color: #38bdf8;
+                text-decoration: none;
+                text-align: center;
+                opacity: 0.75;
+                transition: opacity 0.2s;
+                white-space: nowrap;
+            }
+            .team-email:hover {
+                opacity: 1;
+                text-decoration: underline;
+            }
+        </style>
     </footer>
 
     <script src="script.js"></script>
