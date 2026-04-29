@@ -442,7 +442,7 @@ const dadosRiscos = [
     {
         id: "R24",
         risco: "Descontinuidade ou morte do ecossistema",
-        descricao: "Ocorre devido a ausência de conhecimento sobre as peculiaridades dos ECOS, aliada à falta de mecanismos de governança, o que pode levar à obsolescência e, em última instância, à extinção do ECOS",
+        descricao: "Ocorre devido a ausência de conhecimento sobre as peculiaridades dos ECOS, aliada a falta de mecanismos de governança, o que pode levar à obsolescência e, em última instância, à extinção do ECOS",
         cenario: "",
         dimensao: "Negócio",
         classeSEI: "Risco de Ambiente de Desenvolvimento",
