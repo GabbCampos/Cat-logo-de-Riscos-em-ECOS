@@ -1,6 +1,72 @@
 /**
  * DADOS DO CATÁLOGO - 24 RISCOS COMPLETOS
  */
+
+// ── Mapa de Estudos Primários (E## → título + DOI) ──
+const estudosMapa = {
+    "E01": { titulo: "Strategic Patterns to Foster the Evolution of Emerging Software Ecosystems", doi: "https://doi.org/10.1002/smr.2747" },
+    "E02": { titulo: "A Graph-Based Approach for Software Functionality Classification on the Web", doi: "https://doi.org/10.1007/978-981-96-0576-7_5" },
+    "E03": { titulo: "Understanding Abandonment and Slowdown Dynamics in the Maven Ecosystem", doi: "https://doi.org/10.1109/MSR66628.2025.00065" },
+    "E04": { titulo: "Impact of Minimum Viable Product on Software Ecosystem Failure", doi: "https://doi.org/10.1016/j.infsof.2024.107612" },
+    "E05": { titulo: "OSS Malicious Package Analysis in the Wild", doi: "https://doi.org/10.1109/DSN64029.2025.00045" },
+    "E06": { titulo: "A Framework for Software Vendor Selection by Applying Inconsistency and Conflict Removal (ICR) Method", doi: "https://doi.org/10.1007/s13198-023-02190-x" },
+    "E07": { titulo: "A Cast of Thousands: How the IDEAS Productivity Project Has Advanced Software Productivity and Sustainability", doi: "https://doi.org/10.1109/MCSE.2024.3383799" },
+    "E08": { titulo: "Modeling Interconnected Social and Technical Risks in Open Source Software Ecosystems", doi: "https://doi.org/10.1177/26339137241231912" },
+    "E09": { titulo: "Maven Unzipped: Exploring the Impact of Library Packaging on the Ecosystem", doi: "https://doi.org/10.1109/ICSME58944.2024.00016" },
+    "E10": { titulo: "Lessons from the Long Tail: Analysing Unsafe Dependency Updates across Software Ecosystems", doi: "https://doi.org/10.1145/3611643.36130" },
+    "E11": { titulo: "On the Discoverability of NPM Vulnerabilities in Node.js Projects", doi: "https://doi.org/10.1145/3571848" },
+    "E12": { titulo: "Understanding the Role of External Pull Requests in the NPM Ecosystem", doi: "https://doi.org/10.1007/s10664-023-10315-w" },
+    "E13": { titulo: "Vulnerability Management in Linux Distributions: An Empirical Study on Debian and Fedora", doi: "https://doi.org/10.1007/s10664-022-10267-7" },
+    "E14": { titulo: "Maintenance Cost of Software Ecosystem Updates", doi: "https://doi.org/10.1016/j.procs.2023.03.077" },
+    "E15": { titulo: "An Empirical Study of Artifacts and Security Risks in the Pre-trained Model Supply Chain", doi: "https://doi.org/10.1145/3560835.3564547" },
+    "E16": { titulo: "smartPip: A Smart Approach to Resolving Python Dependency Conflict Issues", doi: "https://doi.org/10.1145/3551349.3560437" },
+    "E17": { titulo: "Goals within Trust-based Digital Ecosystems", doi: "https://doi.org/10.1109/SESoS-WDES52566.2021.00006" },
+    "E18": { titulo: "Software Ecosystems Governance - An Analysis of SAP and GNOME Platforms", doi: "https://doi.org/10.1109/SEAA53835.2021.00045" },
+    "E19": { titulo: "TrustSECO: A Distributed Infrastructure for Providing Trust in the Software Ecosystem", doi: "https://doi.org/10.1007/978-3-030-79022-6_11" },
+    "E20": { titulo: "Technical Leverage in a Software Ecosystem: Development Opportunities and Security Risks", doi: "https://doi.org/10.1109/ICSE43902.2021.00125" },
+    "E21": { titulo: "Do Scaling Agile Frameworks Address Global Software Development Risks? An Empirical Study", doi: "https://doi.org/10.1016/j.jss.2020.110823" },
+    "E22": { titulo: "Software Reuse Cuts Both Ways: An Empirical Analysis of Its Relationship with Security Vulnerabilities", doi: "https://doi.org/10.1016/j.jss.2020.110653" },
+    "E23": { titulo: "Open Source Software Supply Chain for Reliability Assurance of Operating Systems", doi: "https://doi.org/10.13328/j.cnki.jos.006070" },
+    "E24": { titulo: "An Empirical Comparison of Dependency Network Evolution in Seven Software Packaging Ecosystems", doi: "https://doi.org/10.1007/s10664-017-9589-y" },
+    "E25": { titulo: "Risks and Assets: A Qualitative Study of a Software Ecosystem in the Mining Industry", doi: "https://doi.org/10.1145/3338906.3340443" },
+    "E26": { titulo: "Which Factors Affect the Evangelist's Support During Training Sessions in Mobile Software Ecosystems?", doi: "https://doi.org/10.1145/3241403.3241427" },
+    "E27": { titulo: "An Exploratory Study on Library Aging by Monitoring Client Usage in a Software Ecosystem", doi: "https://doi.org/10.1109/SANER.2017.7884643" },
+    "E28": { titulo: "Towards a Multi-criteria Decision Support Method for Consumer Electronics Software Ecosystems", doi: "https://doi.org/10.1002/smr.1785" },
+    "E29": { titulo: "The Influence of Developer Multi-homing on Competition between Software Ecosystems", doi: "https://doi.org/10.1016/j.jss.2015.08.053" },
+    "E30": { titulo: "Intelligently Transparent Software Ecosystems", doi: "https://doi.org/10.1109/MS.2015.156" },
+    "E31": { titulo: "Tracing Known Security Vulnerabilities in Software Repositories – A Semantic Web Enabled Modeling Approach", doi: "https://doi.org/10.1016/j.scico.2016.01.005" },
+    "E32": { titulo: "On Using Markov Decision Processes to Model Integration Solutions for Disparate Resources in Software Ecosystems", doi: "https://doi.org/10.5220/0005346902600267" },
+    "E33": { titulo: "Variability Mechanisms in Software Ecosystems", doi: "https://doi.org/10.1016/j.infsof.2014.05.00" },
+    "E34": { titulo: "Software Ecosystems Risks", doi: "https://doi.org/10.5220/0004589904170422" },
+    "E35": { titulo: "Analyses of Two End-user Software Vulnerability Exposure Metrics", doi: "https://doi.org/10.1109/ARES.2012.33" },
+};
+
+// ── Mapa de Soluções (S## → nome completo + DOI do estudo de origem) ──
+const solucoesMapa = {
+    "S01": { nome: "Framework HIN e Metapath2Vec para classificação de pacotes", doi: "" },
+    "S02": { nome: "Framework para seleção de fornecedores de software em ECOS", doi: "" },
+    "S03": { nome: "Framework para modelagem de riscos sociotécnicos em ECOS", doi: "https://doi.org/10.1177/26339137241231912" },
+    "S04": { nome: "Framework conceitual de mecanismos de variabilidade em ECOS", doi: "" },
+    "S05": { nome: "Framework distribuído TrustSECO para registrar e calcular fatos de confiança", doi: "" },
+    "S06": { nome: "Intelligent Software Assurance and Monitoring (ISAM)", doi: "" },
+    "S07": { nome: "Framework SE-GPS baseado em Web Semântica para rastreamento de vulnerabilidades", doi: "" },
+    "S08": { nome: "Modelo de representação de metas e anti-metas baseadas em confiança", doi: "" },
+    "S09": { nome: "Modelo conceitual de governança de ECOS para mitigar riscos", doi: "" },
+    "S10": { nome: "Modelo de technical leverage para avaliar riscos de dependências em ECOS", doi: "" },
+    "S11": { nome: "Modelo teórico sobre relação entre reutilização de software e riscos de segurança", doi: "" },
+    "S12": { nome: "Modelo de envelhecimento de bibliotecas baseado em uso de clientes", doi: "" },
+    "S13": { nome: "Modelo baseado em processos de decisão de Markov para identificar riscos", doi: "" },
+    "S14": { nome: "Assegurar a robustez da plataforma para mitigar riscos no ECOS", doi: "" },
+    "S15": { nome: "Atrair, manter e apoiar atores para mitigar riscos de engajamento e conflitos", doi: "" },
+    "S16": { nome: "Adotar mecanismos de segurança em hubs de modelos pré-treinados", doi: "" },
+    "S17": { nome: "Uso de Service Level Agreements (SLA) como prática de gerência de riscos", doi: "" },
+    "S18": { nome: "Ferramenta DepReveal para descoberta e análise de vulnerabilidades em projetos NPM", doi: "" },
+    "S19": { nome: "Ferramenta smartPip para mitigar conflitos de dependências em ECOS Python", doi: "" },
+    "S20": { nome: "Método de gerenciamento da confiabilidade da cadeia de suprimentos de software", doi: "" },
+    "S21": { nome: "Método multicritério para seleção de tipos de ECOS e decisões estratégicas", doi: "" },
+};
+
+
 const dadosRiscos = [
     {
         id: "R01",
@@ -412,7 +478,7 @@ const dadosRiscos = [
         desafio: "Sem modelo de processo padronizado (processo)",
         justificativaSEI: "A perda de controle da plataforma ou a fragmentação do ecossistema são riscos que emergem do sistema de desenvolvimento do ECOS, especificamente da ausência de padrões e mecanismos de controle que garantam a coerência e a integridade da plataforma ao longo do tempo. A classificação no elemento Sistema de Desenvolvimento reflete que o problema reside na arquitetura e nos processos que governam como o sistema é construído e evoluído, permitindo que modificações externas não controladas gerem inconsistências e fragmentação.",
         ecos: "Híbrido",
-        justificativa: "Ecossistemas híbridos são especialmente vulneráveis a fragmentação porque combinam componentes proprietários, que tendem a ser mais controlados com componentes abertos, que podem ser modificados por desenvolvedores externos sem supervisão centralizada. Essa dualidade torna difícil manter a coerência e o controle da plataforma, aumentando o risco de que ramificações não coordenadas gerem fragmentação que comprometa a unidade do ecossistema.",
+        justificativa: "Ecossistemas híbridos são especialmente vulneráveis à fragmentação porque combinam componentes proprietários, que tendem a ser mais controlados com componentes abertos, que podem ser modificados por desenvolvedores externos sem supervisão centralizada. Essa dualidade torna difícil manter a coerência e o controle da plataforma, aumentando o risco de que ramificações não coordenadas gerem fragmentação que comprometa a unidade do ecossistema.",
         metrica: "Robustez; Criação de Nichos",
         justificativaMetrica: "A fragmentação do ecossistema compromete a robustez (Iansiti e Levien, 2004) ao criar inconsistências estruturais que reduzem a capacidade do ECOS de funcionar de forma coesa diante de perturbações. A criação de nichos também é afetada, pois a fragmentação dificulta a interoperabilidade e a colaboração entre participantes, desincentivando a especialização e a diversificação que enriquecem o ecossistema.",
         processoValor: "Criação e entrega de valor",
@@ -450,9 +516,9 @@ const dadosRiscos = [
         desafio: "Sem modelo de processo padronizado (processo)",
         justificativaSEI: "A descontinuidade ou morte do ecossistema representa o risco mais abrangente do ECOS, resultante do acúmulo de falhas no processo de desenvolvimento e na governança ao longo do tempo. A classificação no elemento Processo de Desenvolvimento reflete que a ausência de processos padronizados e de mecanismos de governança adequados, que deveriam orientar o ciclo de vida do ecossistema, é a principal causa raiz desse risco. Sem processos que garantam a sustentabilidade e a evolução contínua do ECOS, a obsolescência e a extinção tornam-se desfechos inevitáveis.",
         ecos: "Aberto",
-        justificativa: "Ecossistemas de código aberto são especialmente vulneráveis a descontinuidade porque dependem de contribuições voluntárias e de modelos de governança informais que, na ausência de mecanismos formais de sustentação, tendem a se deteriorar com o tempo. A falta de estruturas institucionais que garantam a continuidade do ECOS torna esses ecossistemas propensos a obsolescência quando o interesse ou a capacidade dos mantenedores diminui.",
+        justificativa: "Ecossistemas de código aberto são especialmente vulneráveis a descontinuidade porque dependem de contribuições voluntárias e de modelos de governança informais que, na ausência de mecanismos formais de sustentação, tendem a se deteriorar com o tempo. A falta de estruturas institucionais que garantam a continuidade do ECOS torna esses ecossistemas propensos à obsolescência quando o interesse ou a capacidade dos mantenedores diminui.",
         metrica: "Robustez",
-        justificativaMetrica: "A descontinuidade ou morte do ecossistema representa a falha total da robustez do ECOS (Iansiti e Levien, 2004). A robustez mede a capacidade do ecossistema de sobreviver a perturbações; sua ausência completa , evidenciada pela extinção do ECOS, indica que o sistema falhou em desenvolver os mecanismos necessários para resistir as pressões acumuladas ao longo do tempo. Prevenir esse risco é, portanto, o objetivo final da gestão da robustez do ecossistema.",
+        justificativaMetrica: "A descontinuidade ou morte do ecossistema representa a falha total da robustez do ECOS (Iansiti e Levien, 2004). A robustez mede a capacidade do ecossistema de sobreviver a perturbações; sua ausência completa , evidenciada pela extinção do ECOS, indica que o sistema falhou em desenvolver os mecanismos necessários para resistir às pressões acumuladas ao longo do tempo. Prevenir esse risco é, portanto, o objetivo final da gestão da robustez do ecossistema.",
         processoValor: "Captura de valor",
         justificativaProcesso: "A descontinuidade do ECOS inviabiliza permanentemente o processo de captura de valor (Burström et al., 2022), pois extingue a plataforma que viabilizava a criação, entrega e apropriação dos benefícios por seus participantes. A morte do ecossistema representa a falha irreversível de todos os processos de valor, tornando este o risco de negócio mais crítico e de maior impacto para todos os atores envolvidos.",
         solucoes: "S15 (Prática de Atrair e Reter Atores): A ausência de mecanismos de governança pode levar à extinção. A retenção de participantes é crucial para a sustentabilidade",
@@ -559,14 +625,21 @@ function renderizarPainel(item) {
         item.solucoes.split('/').forEach(sol => {
             const s = sol.trim();
             if (!s) return;
-            // Separar nome da solução da descrição: "S01 (Nome): Descrição"
-            const match = s.match(/^(S\d+\s*\([^)]+\))\s*[:\-]?\s*(.*)$/i);
+            const match = s.match(/^(S\d+)\s*\(([^)]+)\)\s*[:\-]?\s*(.*)$/i);
             const div = document.createElement('div');
             div.className = 'solution-item';
             if (match) {
+                const sId = match[1].trim();       // ex: S01
+                const sNome = match[2].trim();     // ex: Framework HIN; Metapath2Vec
+                const sDesc = match[3].trim();
+                const solInfo = solucoesMapa[sId];
+                const nomeFinal = solInfo ? solInfo.nome : sNome;
+                const linkDOI = solInfo && solInfo.doi
+                    ? `<a href="${solInfo.doi}" target="_blank" rel="noopener" class="study-doi-link" title="Ver estudo de origem">↗ DOI</a>`
+                    : '';
                 div.innerHTML = `
-                    <div class="solution-name">${match[1].trim()}</div>
-                    <div class="solution-desc">${match[2].trim()}</div>
+                    <div class="solution-name">${nomeFinal} ${linkDOI}</div>
+                    <div class="solution-desc">${sDesc}</div>
                 `;
             } else {
                 div.innerHTML = `<div class="solution-desc">${s}</div>`;
@@ -575,15 +648,22 @@ function renderizarPainel(item) {
         });
     }
 
-    // — Bloco 4: Estudos Primários (se existirem no dado) —
+    // — Bloco 4: Estudos Primários —
     const studiesBlock = document.getElementById('primaryStudiesBlock');
     const studiesContainer = document.getElementById('riskStudies');
     if (item.estudos && item.estudos.length) {
         studiesContainer.innerHTML = '';
-        item.estudos.forEach(e => {
+        item.estudos.forEach(eId => {
+            const info = estudosMapa[eId];
             const tag = document.createElement('span');
             tag.className = 'study-tag';
-            tag.innerText = e;
+            if (info) {
+                tag.innerHTML = info.doi
+                    ? `<a href="${info.doi}" target="_blank" rel="noopener" class="study-tag-link" title="${info.titulo}">${info.titulo} <span class="study-doi-badge">↗</span></a>`
+                    : `<span title="${info.titulo}">${info.titulo}</span>`;
+            } else {
+                tag.innerText = eId;
+            }
             studiesContainer.appendChild(tag);
         });
         studiesBlock.style.display = 'block';
@@ -692,4 +772,4 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 100);
         }
     }
-});
+})
