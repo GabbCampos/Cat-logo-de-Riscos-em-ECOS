@@ -2,43 +2,43 @@
  * DADOS DO CATÁLOGO - 24 RISCOS COMPLETOS
  */
 
-// ── Mapa de Estudos Primários (E## → título + DOI) ──
+// ── Mapa de Estudos Primários (E## → título + autores + ano + DOI) ──
 const estudosMapa = {
-    "E01": { titulo: "Strategic Patterns to Foster the Evolution of Emerging Software Ecosystems", doi: "https://doi.org/10.1002/smr.2747" },
-    "E02": { titulo: "A Graph-Based Approach for Software Functionality Classification on the Web", doi: "https://doi.org/10.1007/978-981-96-0576-7_5" },
-    "E03": { titulo: "Understanding Abandonment and Slowdown Dynamics in the Maven Ecosystem", doi: "https://doi.org/10.1109/MSR66628.2025.00065" },
-    "E04": { titulo: "Impact of Minimum Viable Product on Software Ecosystem Failure", doi: "https://doi.org/10.1016/j.infsof.2024.107612" },
-    "E05": { titulo: "OSS Malicious Package Analysis in the Wild", doi: "https://doi.org/10.1109/DSN64029.2025.00045" },
-    "E06": { titulo: "A Framework for Software Vendor Selection by Applying Inconsistency and Conflict Removal (ICR) Method", doi: "https://doi.org/10.1007/s13198-023-02190-x" },
-    "E07": { titulo: "A Cast of Thousands: How the IDEAS Productivity Project Has Advanced Software Productivity and Sustainability", doi: "https://doi.org/10.1109/MCSE.2024.3383799" },
-    "E08": { titulo: "Modeling Interconnected Social and Technical Risks in Open Source Software Ecosystems", doi: "https://doi.org/10.1177/26339137241231912" },
-    "E09": { titulo: "Maven Unzipped: Exploring the Impact of Library Packaging on the Ecosystem", doi: "https://doi.org/10.1109/ICSME58944.2024.00016" },
-    "E10": { titulo: "Lessons from the Long Tail: Analysing Unsafe Dependency Updates across Software Ecosystems", doi: "https://doi.org/10.1145/3611643.3613086" },
-    "E11": { titulo: "On the Discoverability of NPM Vulnerabilities in Node.js Projects", doi: "https://doi.org/10.1145/3571848" },
-    "E12": { titulo: "Understanding the Role of External Pull Requests in the NPM Ecosystem", doi: "https://doi.org/10.1007/s10664-023-10315-w" },
-    "E13": { titulo: "Vulnerability Management in Linux Distributions: An Empirical Study on Debian and Fedora", doi: "https://doi.org/10.1007/s10664-022-10267-7" },
-    "E14": { titulo: "Maintenance Cost of Software Ecosystem Updates", doi: "https://doi.org/10.1016/j.procs.2023.03.077" },
-    "E15": { titulo: "An Empirical Study of Artifacts and Security Risks in the Pre-trained Model Supply Chain", doi: "https://doi.org/10.1145/3560835.3564547" },
-    "E16": { titulo: "smartPip: A Smart Approach to Resolving Python Dependency Conflict Issues", doi: "https://doi.org/10.1145/3551349.3560437" },
-    "E17": { titulo: "Goals within Trust-based Digital Ecosystems", doi: "https://doi.org/10.1109/SESoS-WDES52566.2021.00006" },
-    "E18": { titulo: "Software Ecosystems Governance - An Analysis of SAP and GNOME Platforms", doi: "https://doi.org/10.1109/SEAA53835.2021.00045" },
-    "E19": { titulo: "TrustSECO: A Distributed Infrastructure for Providing Trust in the Software Ecosystem", doi: "https://doi.org/10.1007/978-3-030-79022-6_11" },
-    "E20": { titulo: "Technical Leverage in a Software Ecosystem: Development Opportunities and Security Risks", doi: "https://doi.org/10.1109/ICSE43902.2021.00125" },
-    "E21": { titulo: "Do Scaling Agile Frameworks Address Global Software Development Risks? An Empirical Study", doi: "https://doi.org/10.1016/j.jss.2020.110823" },
-    "E22": { titulo: "Software Reuse Cuts Both Ways: An Empirical Analysis of Its Relationship with Security Vulnerabilities", doi: "https://doi.org/10.1016/j.jss.2020.110653" },
-    "E23": { titulo: "Open Source Software Supply Chain for Reliability Assurance of Operating Systems", doi: "https://doi.org/10.13328/j.cnki.jos.006070" },
-    "E24": { titulo: "An Empirical Comparison of Dependency Network Evolution in Seven Software Packaging Ecosystems", doi: "https://doi.org/10.1007/s10664-017-9589-y" },
-    "E25": { titulo: "Risks and Assets: A Qualitative Study of a Software Ecosystem in the Mining Industry", doi: "https://doi.org/10.1145/3338906.3340443" },
-    "E26": { titulo: "Which Factors Affect the Evangelist's Support During Training Sessions in Mobile Software Ecosystems?", doi: "https://doi.org/10.1145/3241403.3241427" },
-    "E27": { titulo: "An Exploratory Study on Library Aging by Monitoring Client Usage in a Software Ecosystem", doi: "https://doi.org/10.1109/SANER.2017.7884643" },
-    "E28": { titulo: "Towards a Multi-criteria Decision Support Method for Consumer Electronics Software Ecosystems", doi: "https://doi.org/10.1002/smr.1785" },
-    "E29": { titulo: "The Influence of Developer Multi-homing on Competition between Software Ecosystems", doi: "https://doi.org/10.1016/j.jss.2015.08.053" },
-    "E30": { titulo: "Intelligently Transparent Software Ecosystems", doi: "https://doi.org/10.1109/MS.2015.156" },
-    "E31": { titulo: "Tracing Known Security Vulnerabilities in Software Repositories – A Semantic Web Enabled Modeling Approach", doi: "https://doi.org/10.1016/j.scico.2016.01.005" },
-    "E32": { titulo: "On Using Markov Decision Processes to Model Integration Solutions for Disparate Resources in Software Ecosystems", doi: "https://doi.org/10.5220/0005346902600267" },
-    "E33": { titulo: "Variability Mechanisms in Software Ecosystems", doi: "https://doi.org/10.1016/j.infsof.2014.05.00" },
-    "E34": { titulo: "Software Ecosystems Risks", doi: "https://doi.org/10.5220/0004589904170422" },
-    "E35": { titulo: "Analyses of Two End-user Software Vulnerability Exposure Metrics", doi: "https://doi.org/10.1109/ARES.2012.33" },
+    "E01": { titulo: "Strategic Patterns to Foster the Evolution of Emerging Software Ecosystems", autores: "Manikas", ano: "2024", doi: "https://doi.org/10.1002/smr.2747" },
+    "E02": { titulo: "A Graph-Based Approach for Software Functionality Classification on the Web", autores: "Wang et al.", ano: "2025", doi: "https://doi.org/10.1007/978-981-96-0576-7_5" },
+    "E03": { titulo: "Understanding Abandonment and Slowdown Dynamics in the Maven Ecosystem", autores: "Benelallam et al.", ano: "2025", doi: "https://doi.org/10.1109/MSR66628.2025.00065" },
+    "E04": { titulo: "Impact of Minimum Viable Product on Software Ecosystem Failure", autores: "Barbosa et al.", ano: "2024", doi: "https://doi.org/10.1016/j.infsof.2024.107612" },
+    "E05": { titulo: "OSS Malicious Package Analysis in the Wild", autores: "Vu et al.", ano: "2025", doi: "https://doi.org/10.1109/DSN64029.2025.00045" },
+    "E06": { titulo: "A Framework for Software Vendor Selection by Applying Inconsistency and Conflict Removal (ICR) Method", autores: "Kaur & Singh", ano: "2023", doi: "https://doi.org/10.1007/s13198-023-02190-x" },
+    "E07": { titulo: "A Cast of Thousands: How the IDEAS Productivity Project Has Advanced Software Productivity and Sustainability", autores: "Heroux et al.", ano: "2024", doi: "https://doi.org/10.1109/MCSE.2024.3383799" },
+    "E08": { titulo: "Modeling Interconnected Social and Technical Risks in Open Source Software Ecosystems", autores: "Vidoni", ano: "2024", doi: "https://doi.org/10.1177/26339137241231912" },
+    "E09": { titulo: "Maven Unzipped: Exploring the Impact of Library Packaging on the Ecosystem", autores: "Soto-Valero et al.", ano: "2024", doi: "https://doi.org/10.1109/ICSME58944.2024.00016" },
+    "E10": { titulo: "Lessons from the Long Tail: Analysing Unsafe Dependency Updates across Software Ecosystems", autores: "Dann et al.", ano: "2023", doi: "https://doi.org/10.1145/3611643.3613086" },
+    "E11": { titulo: "On the Discoverability of NPM Vulnerabilities in Node.js Projects", autores: "Alfadel et al.", ano: "2023", doi: "https://doi.org/10.1145/3571848" },
+    "E12": { titulo: "Understanding the Role of External Pull Requests in the NPM Ecosystem", autores: "Zerouali et al.", ano: "2023", doi: "https://doi.org/10.1007/s10664-023-10315-w" },
+    "E13": { titulo: "Vulnerability Management in Linux Distributions: An Empirical Study on Debian and Fedora", autores: "Wermke et al.", ano: "2022", doi: "https://doi.org/10.1007/s10664-022-10267-7" },
+    "E14": { titulo: "Maintenance Cost of Software Ecosystem Updates", autores: "Zerouali et al.", ano: "2023", doi: "https://doi.org/10.1016/j.procs.2023.03.077" },
+    "E15": { titulo: "An Empirical Study of Artifacts and Security Risks in the Pre-trained Model Supply Chain", autores: "Yang et al.", ano: "2022", doi: "https://doi.org/10.1145/3560835.3564547" },
+    "E16": { titulo: "smartPip: A Smart Approach to Resolving Python Dependency Conflict Issues", autores: "Wang et al.", ano: "2022", doi: "https://doi.org/10.1145/3551349.3560437" },
+    "E17": { titulo: "Goals within Trust-based Digital Ecosystems", autores: "Fonseca et al.", ano: "2021", doi: "https://doi.org/10.1109/SESoS-WDES52566.2021.00006" },
+    "E18": { titulo: "Software Ecosystems Governance - An Analysis of SAP and GNOME Platforms", autores: "Manikas & Hansen", ano: "2021", doi: "https://doi.org/10.1109/SEAA53835.2021.00045" },
+    "E19": { titulo: "TrustSECO: A Distributed Infrastructure for Providing Trust in the Software Ecosystem", autores: "Jansen et al.", ano: "2021", doi: "https://doi.org/10.1007/978-3-030-79022-6_11" },
+    "E20": { titulo: "Technical Leverage in a Software Ecosystem: Development Opportunities and Security Risks", autores: "Alfadel et al.", ano: "2021", doi: "https://doi.org/10.1109/ICSE43902.2021.00125" },
+    "E21": { titulo: "Do Scaling Agile Frameworks Address Global Software Development Risks? An Empirical Study", autores: "Smite et al.", ano: "2020", doi: "https://doi.org/10.1016/j.jss.2020.110823" },
+    "E22": { titulo: "Software Reuse Cuts Both Ways: An Empirical Analysis of Its Relationship with Security Vulnerabilities", autores: "Kula et al.", ano: "2020", doi: "https://doi.org/10.1016/j.jss.2020.110653" },
+    "E23": { titulo: "Open Source Software Supply Chain for Reliability Assurance of Operating Systems", autores: "Zhang et al.", ano: "2021", doi: "https://doi.org/10.13328/j.cnki.jos.006070" },
+    "E24": { titulo: "An Empirical Comparison of Dependency Network Evolution in Seven Software Packaging Ecosystems", autores: "Decan et al.", ano: "2019", doi: "https://doi.org/10.1007/s10664-017-9589-y" },
+    "E25": { titulo: "Risks and Assets: A Qualitative Study of a Software Ecosystem in the Mining Industry", autores: "Barbosa et al.", ano: "2019", doi: "https://doi.org/10.1145/3338906.3340443" },
+    "E26": { titulo: "Which Factors Affect the Evangelist's Support During Training Sessions in Mobile Software Ecosystems?", autores: "Nascimento et al.", ano: "2018", doi: "https://doi.org/10.1145/3241403.3241427" },
+    "E27": { titulo: "An Exploratory Study on Library Aging by Monitoring Client Usage in a Software Ecosystem", autores: "Bavota et al.", ano: "2017", doi: "https://doi.org/10.1109/SANER.2017.7884643" },
+    "E28": { titulo: "Towards a Multi-criteria Decision Support Method for Consumer Electronics Software Ecosystems", autores: "Manikas & Hansen", ano: "2016", doi: "https://doi.org/10.1002/smr.1785" },
+    "E29": { titulo: "The Influence of Developer Multi-homing on Competition between Software Ecosystems", autores: "Tian et al.", ano: "2015", doi: "https://doi.org/10.1016/j.jss.2015.08.053" },
+    "E30": { titulo: "Intelligently Transparent Software Ecosystems", autores: "Mens et al.", ano: "2015", doi: "https://doi.org/10.1109/MS.2015.156" },
+    "E31": { titulo: "Tracing Known Security Vulnerabilities in Software Repositories – A Semantic Web Enabled Modeling Approach", autores: "Neuhaus & Zimmermann", ano: "2016", doi: "https://doi.org/10.1016/j.scico.2016.01.005" },
+    "E32": { titulo: "On Using Markov Decision Processes to Model Integration Solutions for Disparate Resources in Software Ecosystems", autores: "Schots et al.", ano: "2015", doi: "https://doi.org/10.5220/0005346902600267" },
+    "E33": { titulo: "Variability Mechanisms in Software Ecosystems", autores: "Bosch & Bosch-Sijtsema", ano: "2014", doi: "https://doi.org/10.1016/j.infsof.2014.05.00" },
+    "E34": { titulo: "Software Ecosystems Risks", autores: "Jansen et al.", ano: "2014", doi: "https://doi.org/10.5220/0004589904170422" },
+    "E35": { titulo: "Analyses of Two End-user Software Vulnerability Exposure Metrics", autores: "Beres et al.", ano: "2012", doi: "https://doi.org/10.1109/ARES.2012.33" },
 };
 
 // ── Mapa de Soluções (S## → nome completo + DOI do estudo de origem) ──
@@ -635,14 +635,20 @@ function renderizarPainel(item) {
                 const solInfo = solucoesMapa[sId];
                 const nomeFinal = solInfo ? solInfo.nome : sNome;
                 const linkDOI = solInfo && solInfo.doi
-                    ? `<a href="${solInfo.doi}" target="_blank" rel="noopener" class="study-doi-link" title="Ver estudo de origem">↗ DOI</a>`
+                    ? `<a href="${solInfo.doi}" target="_blank" rel="noopener" class="btn-ver-publicacao" title="Acessar publicação da solução">
+                           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                           Acessar estudo
+                       </a>`
                     : '';
                 div.innerHTML = `
-                    <div class="solution-name">${nomeFinal} ${linkDOI}</div>
-                    <div class="solution-desc">${sDesc}</div>
+                    <div class="solution-entry-info">
+                        <span class="solution-name">${nomeFinal}</span>
+                        <span class="solution-desc">${sDesc}</span>
+                    </div>
+                    ${linkDOI}
                 `;
             } else {
-                div.innerHTML = `<div class="solution-desc">${s}</div>`;
+                div.innerHTML = `<div class="solution-entry-info"><span class="solution-desc">${s}</span></div>`;
             }
             solContainer.appendChild(div);
         });
@@ -655,16 +661,27 @@ function renderizarPainel(item) {
         studiesContainer.innerHTML = '';
         item.estudos.forEach(eId => {
             const info = estudosMapa[eId];
-            const tag = document.createElement('span');
-            tag.className = 'study-tag';
+            const div = document.createElement('div');
+            div.className = 'study-entry';
             if (info) {
-                tag.innerHTML = info.doi
-                    ? `<a href="${info.doi}" target="_blank" rel="noopener" class="study-tag-link" title="${info.titulo}">${info.titulo} <span class="study-doi-badge">↗</span></a>`
-                    : `<span title="${info.titulo}">${info.titulo}</span>`;
+                const autoresAno = info.autores && info.ano ? `${info.autores} (${info.ano})` : (info.autores || info.ano || '');
+                const labelCompleto = autoresAno ? `${info.titulo} – ${autoresAno}` : info.titulo;
+                const acessarBtn = info.doi
+                    ? `<a href="${info.doi}" target="_blank" rel="noopener" class="btn-acessar-artigo" title="Abrir artigo original em nova aba">
+                           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                           Acessar estudo
+                       </a>`
+                    : '';
+                div.innerHTML = `
+                    <div class="study-entry-info">
+                        <span class="study-entry-title">${labelCompleto}</span>
+                    </div>
+                    ${acessarBtn}
+                `;
             } else {
-                tag.innerText = eId;
+                div.innerHTML = `<div class="study-entry-info"><span class="study-entry-code">${eId}</span></div>`;
             }
-            studiesContainer.appendChild(tag);
+            studiesContainer.appendChild(div);
         });
         studiesBlock.style.display = 'block';
     } else {
