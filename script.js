@@ -293,7 +293,7 @@ const dadosRiscos = [
         justificativaMetrica: "A perda de confiança compromete duas dimensões centrais de saúde do ECOS segundo Iansiti e Levien (2004). A criação de nichos é afetada porque a desconfiança desincentiva novos participantes a adotar e contribuir com o ecossistema. A robustez é reduzida porque um ECOS cujos participantes não confiam nos pacotes disponíveis torna-se frágil e propenso ao abandono, comprometendo sua capacidade de sobreviver a perturbações.",
         processoValor: "Captura de valor",
         justificativaProcesso: "A confiança entre os atores é um pré-requisito para que o valor gerado no ECOS seja efetivamente capturado (Burström et al., 2022). Quando pacotes maliciosos ou enganosos minam essa confiança, os participantes passam a questionar a legitimidade das soluções disponíveis, dificultando a adoção, a monetização e a apropriação sustentável dos benefícios do ecossistema.",
-        solucoes: "Modelos de receita compartilhada (RevShare).",
+        solucoes: "S05 (Framework TrustSECO): Registra fatos de confiança. / S08 (Modelo de Metas e Anti-Metas): Favorece a análise de riscos ligados a motivações maliciosas ou falhas intencionais, o que ajuda a prevenir a perda de confiança.",
         estudos: ["E02", "E13", "E19"]
     },
     {
