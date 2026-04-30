@@ -729,23 +729,41 @@ main { padding: 120px 5%; max-width: 100%; box-sizing: border-box; }
 }
 
 .solution-item {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
     background: rgba(15,23,42,0.5);
     border: 1px solid rgba(255,255,255,0.06);
     border-radius: 10px;
-    padding: 14px 16px;
+    padding: 10px 14px;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.solution-item:hover {
+    background: rgba(74,222,128,0.04);
+    border-color: rgba(74,222,128,0.15);
+}
+
+.solution-entry-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+    min-width: 0;
 }
 
 .solution-name {
-    font-size: 0.82rem;
+    font-size: 0.77rem;
     font-weight: 700;
     color: #4ade80;
-    margin-bottom: 5px;
+    letter-spacing: 0.2px;
 }
 
 .solution-desc {
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     color: var(--text-low);
-    line-height: 1.5;
+    line-height: 1.45;
 }
 
 /* ── TAGS DE ESTUDOS ── */
@@ -1444,3 +1462,102 @@ main { padding: 120px 5%; max-width: 100%; box-sizing: border-box; }
     opacity: 1;
     text-decoration: underline;
 }
+/* ── Estudos Primários: novo layout por entrada ── */
+.studies-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.study-entry {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 14px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 8px;
+    transition: background 0.2s, border-color 0.2s;
+}
+.study-entry:hover {
+    background: rgba(56,189,248,0.05);
+    border-color: rgba(56,189,248,0.18);
+}
+.study-entry-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+    min-width: 0;
+}
+.study-entry-code {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #38bdf8;
+    opacity: 0.8;
+}
+.study-entry-title {
+    font-size: 0.79rem;
+    color: #cbd5e1;
+    line-height: 1.45;
+}
+
+/* ── Botão "Acessar artigo" nos estudos primários ── */
+.btn-acessar-artigo {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    flex-shrink: 0;
+    padding: 5px 11px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #94a3b8;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+    white-space: nowrap;
+    margin-top: 2px;
+}
+.btn-acessar-artigo:hover {
+    background: rgba(56,189,248,0.1);
+    border-color: rgba(56,189,248,0.3);
+    color: #38bdf8;
+}
+
+/* ── Botão "Ver publicação" nas soluções ── */
+.btn-ver-publicacao {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    flex-shrink: 0;
+    padding: 5px 11px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #94a3b8;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+    white-space: nowrap;
+    margin-top: 2px;
+}
+.btn-ver-publicacao:hover {
+    background: rgba(56,189,248,0.1);
+    border-color: rgba(56,189,248,0.3);
+    color: #38bdf8;
+}
+
+/* Cor do botão de publicação conforme dimensão */
+#sidePanel.tecnicos .btn-ver-publicacao:hover { color: var(--color-tecnicos); border-color: rgba(56,189,248,0.3); }
+#sidePanel.sociais  .btn-ver-publicacao:hover { color: var(--color-sociais);  border-color: rgba(251,191,36,0.3);  }
+#sidePanel.negocio  .btn-ver-publicacao:hover { color: var(--color-negocio);  border-color: rgba(74,222,128,0.3);  }
+
+/* Cor do botão de artigo conforme dimensão */
+#sidePanel.tecnicos .btn-acessar-artigo:hover { color: var(--color-tecnicos); border-color: rgba(56,189,248,0.3); }
+#sidePanel.sociais  .btn-acessar-artigo:hover { color: var(--color-sociais);  border-color: rgba(251,191,36,0.3);  }
+#sidePanel.negocio  .btn-acessar-artigo:hover { color: var(--color-negocio);  border-color: rgba(74,222,128,0.3);  }
