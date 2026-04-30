@@ -266,42 +266,90 @@
             margin: 0;
         }
 
-        /* SOLUÇÕES (= .solutions-list / .solution-item) */
+        /* SOLUÇÕES — flex, idêntico ao painel real */
         .demo-solutions-list { display: flex; flex-direction: column; gap: 10px; }
         .demo-solution-item {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
             background: rgba(15,23,42,0.5);
             border: 1px solid rgba(255,255,255,0.06);
             border-radius: 10px;
-            padding: 14px 16px;
+            padding: 10px 14px;
+            transition: background 0.2s, border-color 0.2s;
+        }
+        .demo-solution-item:hover {
+            background: rgba(74,222,128,0.04);
+            border-color: rgba(74,222,128,0.15);
+        }
+        .demo-solution-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            flex: 1;
+            min-width: 0;
         }
         .demo-solution-name {
-            font-size: 0.82rem;
+            font-size: 0.77rem;
             font-weight: 700;
             color: #38bdf8;
-            margin-bottom: 5px;
+            letter-spacing: 0.2px;
         }
         .demo-solution-desc {
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             color: #94a3b8;
-            line-height: 1.5;
+            line-height: 1.45;
         }
 
-        /* TAGS DE ESTUDOS PRIMÁRIOS */
-        .demo-studies-tags {
+        /* ESTUDOS PRIMÁRIOS — flex, idêntico ao painel real */
+        .demo-studies-list { display: flex; flex-direction: column; gap: 10px; }
+        .demo-study-entry {
             display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 4px;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 10px 14px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 8px;
+            transition: background 0.2s, border-color 0.2s;
         }
-        .demo-study-tag {
-            background: rgba(56,189,248,0.08);
-            border: 1px solid rgba(56,189,248,0.2);
-            color: #38bdf8;
-            font-size: 0.78rem;
+        .demo-study-entry:hover {
+            background: rgba(56,189,248,0.05);
+            border-color: rgba(56,189,248,0.18);
+        }
+        .demo-study-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            flex: 1;
+            min-width: 0;
+        }
+        .demo-study-title {
+            font-size: 0.79rem;
+            color: #cbd5e1;
+            line-height: 1.45;
+        }
+
+        /* BOTÃO COMPARTILHADO (visual, sem link real no demo) */
+        .demo-btn-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            flex-shrink: 0;
+            padding: 5px 11px;
+            font-size: 0.72rem;
             font-weight: 600;
-            padding: 5px 12px;
+            color: #94a3b8;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.1);
             border-radius: 6px;
-            letter-spacing: 0.3px;
+            white-space: nowrap;
+            margin-top: 2px;
+            cursor: default;
+            font-family: inherit;
+            user-select: none;
         }
 
         /* RODAPÉ DE NAVEGAÇÃO (= .panel-footer) */
@@ -1015,16 +1063,25 @@
                                     </div>
                                     <div class="demo-solutions-list">
                                         <div class="demo-solution-item">
-                                            <div class="demo-solution-name">S01 (Framework HIN; Metapath2Vec)</div>
-                                            <div class="demo-solution-desc">Reduz a exposição a bibliotecas maliciosas, fortalecendo a cadeia de suprimentos.</div>
+                                            <div class="demo-solution-info">
+                                                <span class="demo-solution-name">Framework HIN e Metapath2Vec para classificação de pacotes</span>
+                                                <span class="demo-solution-desc">Reduz a exposição a bibliotecas maliciosas, fortalecendo a cadeia de suprimentos.</span>
+                                            </div>
+                                            <span class="demo-btn-link"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> Acessar estudo</span>
                                         </div>
                                         <div class="demo-solution-item">
-                                            <div class="demo-solution-name">S05 (Framework TrustSECO)</div>
-                                            <div class="demo-solution-desc">Registra e calcula fatos de confiança, apoiando a detecção de vulnerabilidades.</div>
+                                            <div class="demo-solution-info">
+                                                <span class="demo-solution-name">Framework distribuído TrustSECO para registrar e calcular fatos de confiança</span>
+                                                <span class="demo-solution-desc">Registra e calcula fatos de confiança, apoiando a detecção de vulnerabilidades.</span>
+                                            </div>
+                                            <span class="demo-btn-link"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> Acessar estudo</span>
                                         </div>
                                         <div class="demo-solution-item">
-                                            <div class="demo-solution-name">S20 (Método de Gerenciamento)</div>
-                                            <div class="demo-solution-desc">Utiliza grafos de conhecimento para identificar vulnerabilidades e calcular escores de confiabilidade na cadeia.</div>
+                                            <div class="demo-solution-info">
+                                                <span class="demo-solution-name">Método de gerenciamento da confiabilidade da cadeia de suprimentos de software</span>
+                                                <span class="demo-solution-desc">Utiliza grafos de conhecimento para identificar vulnerabilidades e calcular escores de confiabilidade na cadeia.</span>
+                                            </div>
+                                            <span class="demo-btn-link"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> Acessar estudo</span>
                                         </div>
                                     </div>
                                 </div>
@@ -1038,13 +1095,43 @@
                                     <div class="demo-card-title">
                                         <span>Estudos Primários que Identificaram este Risco
                                     </div>
-                                    <div class="demo-studies-tags">
-                                        <span class="demo-study-tag">E02</span>
-                                        <span class="demo-study-tag">E05</span>
-                                        <span class="demo-study-tag">E08</span>
-                                        <span class="demo-study-tag">E10</span>
-                                        <span class="demo-study-tag">E15</span>
-                                        <span class="demo-study-tag">E19</span>
+                                    <div class="demo-studies-list">
+                                        <div class="demo-study-entry">
+                                            <div class="demo-study-info">
+                                                <span class="demo-study-title">A Graph-Based Approach for Software Functionality Classification on the Web – Wang et al. (2025)</span>
+                                            </div>
+                                            <span class="demo-btn-link"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> Acessar estudo</span>
+                                        </div>
+                                        <div class="demo-study-entry">
+                                            <div class="demo-study-info">
+                                                <span class="demo-study-title">OSS Malicious Package Analysis in the Wild – Vu et al. (2025)</span>
+                                            </div>
+                                            <span class="demo-btn-link"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> Acessar estudo</span>
+                                        </div>
+                                        <div class="demo-study-entry">
+                                            <div class="demo-study-info">
+                                                <span class="demo-study-title">Modeling Interconnected Social and Technical Risks in Open Source Software Ecosystems – Vidoni (2024)</span>
+                                            </div>
+                                            <span class="demo-btn-link"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> Acessar estudo</span>
+                                        </div>
+                                        <div class="demo-study-entry">
+                                            <div class="demo-study-info">
+                                                <span class="demo-study-title">Lessons from the Long Tail: Analysing Unsafe Dependency Updates across Software Ecosystems – Dann et al. (2023)</span>
+                                            </div>
+                                            <span class="demo-btn-link"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> Acessar estudo</span>
+                                        </div>
+                                        <div class="demo-study-entry">
+                                            <div class="demo-study-info">
+                                                <span class="demo-study-title">An Empirical Study of Artifacts and Security Risks in the Pre-trained Model Supply Chain – Yang et al. (2022)</span>
+                                            </div>
+                                            <span class="demo-btn-link"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> Acessar estudo</span>
+                                        </div>
+                                        <div class="demo-study-entry">
+                                            <div class="demo-study-info">
+                                                <span class="demo-study-title">TrustSECO: A Distributed Infrastructure for Providing Trust in the Software Ecosystem – Jansen et al. (2021)</span>
+                                            </div>
+                                            <span class="demo-btn-link"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> Acessar estudo</span>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -1259,12 +1346,12 @@
             solucoes: {
                 
                 label: 'Soluções Identificadas na Literatura',
-                text: 'Práticas, frameworks e ferramentas propostos e/ou validados nos estudos primários do MSL para mitigar este risco. Cada solução tem um código identificador (S01–S21) e uma descrição do mecanismo de ação.'
+                text: 'Práticas, frameworks e ferramentas propostos e/ou validados nos estudos primários do MSL para mitigar este risco. Cada solução tem a descrição e o mecanismo de ação.'
             },
             estudos: {
                 
                 label: 'Estudos Primários',
-                text: 'Códigos dos estudos do MSL que identificaram e analisaram este risco. Cada código (E01–E35) corresponde a um estudo incluído que são a fonte de cada risco e solução do catálogo.'
+                text: 'Estudos do MSL que identificaram e analisaram este risco'
             },
             navAnterior: {
                 
