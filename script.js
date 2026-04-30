@@ -13,7 +13,7 @@ const estudosMapa = {
     "E07": { titulo: "A Cast of Thousands: How the IDEAS Productivity Project Has Advanced Software Productivity and Sustainability", doi: "https://doi.org/10.1109/MCSE.2024.3383799" },
     "E08": { titulo: "Modeling Interconnected Social and Technical Risks in Open Source Software Ecosystems", doi: "https://doi.org/10.1177/26339137241231912" },
     "E09": { titulo: "Maven Unzipped: Exploring the Impact of Library Packaging on the Ecosystem", doi: "https://doi.org/10.1109/ICSME58944.2024.00016" },
-    "E10": { titulo: "Lessons from the Long Tail: Analysing Unsafe Dependency Updates across Software Ecosystems", doi: "https://doi.org/10.1145/3611643.36130" },
+    "E10": { titulo: "Lessons from the Long Tail: Analysing Unsafe Dependency Updates across Software Ecosystems", doi: "https://doi.org/10.1145/3611643.3613086" },
     "E11": { titulo: "On the Discoverability of NPM Vulnerabilities in Node.js Projects", doi: "https://doi.org/10.1145/3571848" },
     "E12": { titulo: "Understanding the Role of External Pull Requests in the NPM Ecosystem", doi: "https://doi.org/10.1007/s10664-023-10315-w" },
     "E13": { titulo: "Vulnerability Management in Linux Distributions: An Empirical Study on Debian and Fedora", doi: "https://doi.org/10.1007/s10664-022-10267-7" },
