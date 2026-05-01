@@ -170,7 +170,10 @@
             <!-- BLOCO 1: Análise SEI -->
             <div class="panel-card">
                 <div class="panel-card-title">
-                    <span>Taxonomia de Risco SEI
+                    <span>Taxonomia de Risco SEI</span>
+                    <button class="help-icon" onclick="abrirAjuda('sei')" aria-label="Ajuda sobre Taxonomia de Risco SEI">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </button>
                 </div>
                 <div class="panel-grid-2">
                     <div>
@@ -195,7 +198,10 @@
             <!-- BLOCO 2a: ECOS mais propício -->
             <div class="panel-card">
                 <div class="panel-card-title">
-                    <span>ECOS mais Propício ao Risco
+                    <span>ECOS mais Propício ao Risco</span>
+                    <button class="help-icon" onclick="abrirAjuda('ecos')" aria-label="Ajuda sobre ECOS mais Propício">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </button>
                 </div>
                 <span class="field-label"></span>
                 <span class="field-value ecos-value" id="riskEcos"></span>
@@ -208,7 +214,10 @@
             <!-- BLOCO 2b: Métrica de Saúde -->
             <div class="panel-card">
                 <div class="panel-card-title">
-                    <span>Métrica de Saúde Atingida pelo Risco
+                    <span>Métrica de Saúde Atingida pelo Risco</span>
+                    <button class="help-icon" onclick="abrirAjuda('metrica')" aria-label="Ajuda sobre Métrica de Saúde">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </button>
                 </div>
                 <span class="field-label"></span>
                 <span class="field-value" id="riskMetric"></span>
@@ -221,7 +230,10 @@
             <!-- BLOCO 2c: Processo de Valor -->
             <div class="panel-card">
                 <div class="panel-card-title">
-                    <span>Processo de Valor Ameaçado pelo Risco
+                    <span>Processo de Valor Ameaçado pelo Risco</span>
+                    <button class="help-icon" onclick="abrirAjuda('processo')" aria-label="Ajuda sobre Processo de Valor">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </button>
                 </div>
                 <span class="field-label"></span>
                 <span class="field-value" id="riskProcesso"></span>
@@ -234,7 +246,10 @@
             <!-- BLOCO 3: Soluções -->
             <div class="panel-card">
                 <div class="panel-card-title">
-                    <span>Soluções Identificadas na Literatura
+                    <span>Soluções Identificadas na Literatura</span>
+                    <button class="help-icon" onclick="abrirAjuda('solucoes')" aria-label="Ajuda sobre Soluções">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </button>
                 </div>
                 <div id="riskSolutions" class="solutions-list"></div>
             </div>
@@ -242,12 +257,30 @@
             <!-- BLOCO 4: Estudos Primários -->
             <div class="panel-card" id="primaryStudiesBlock" style="display:none;">
                 <div class="panel-card-title">
-                    <span>Estudos Primários que Identificaram este Risco
+                    <span>Estudos Primários que Identificaram este Risco</span>
+                    <button class="help-icon" onclick="abrirAjuda('estudos')" aria-label="Ajuda sobre Estudos Primários">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </button>
                 </div>
                 <div id="riskStudies" class="studies-list"></div>
             </div>
 
         </div>
+
+    <!-- MODAL DE AJUDA CONTEXTUAL -->
+    <div id="helpModal" class="help-modal-overlay" onclick="fecharAjudaOverlay(event)" role="dialog" aria-modal="true" aria-labelledby="helpModalTitle">
+        <div class="help-modal-box">
+            <div class="help-modal-header">
+                <div class="help-modal-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                </div>
+                <h3 id="helpModalTitle" class="help-modal-title"></h3>
+                <button class="help-modal-close" onclick="fecharAjuda()" aria-label="Fechar ajuda">&times;</button>
+            </div>
+            <p id="helpModalBody" class="help-modal-body"></p>
+            <div class="help-modal-source" id="helpModalSource"></div>
+        </div>
+    </div>
 
         <!-- RODAPÉ DE NAVEGAÇÃO -->
         <div class="panel-footer">
