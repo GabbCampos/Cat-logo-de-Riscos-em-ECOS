@@ -532,6 +532,7 @@ const filterBtns = document.querySelectorAll('.btn-filter');
 
 let riscoAtualIndex = 0;
 let listaAtiva = [];
+let dimensaoAtual = 'tecnicos'; // rastreia a cor da dimensão do risco aberto
 
 function openRiskDetails(id) {
     const index = dadosRiscos.findIndex(r => r.id === id);
@@ -568,6 +569,7 @@ function renderizarPainel(item) {
     const classeCor = dim.includes("tecnico") ? "tecnicos" : dim.includes("social") ? "sociais" : "negocio";
     sidePanel.classList.add(classeCor);
     riskDimTag.classList.add(classeCor);
+    dimensaoAtual = classeCor; // salva para uso no modal de ajuda
 
     // — Bloco 1: Análise SEI —
     document.getElementById('riskClassSEI').innerText = item.classeSEI || '—';
@@ -789,4 +791,87 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 100);
         }
     }
+
+    // Fechar modal de ajuda com tecla Escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') fecharAjuda();
+    });
 })
+
+/* ══════════════════════════════════════════
+   AJUDA CONTEXTUAL — conteúdo e lógica
+══════════════════════════════════════════ */
+
+const ajudaConteudo = {
+    sei: {
+        titulo: "Taxonomia de Risco SEI",
+        texto: "A Taxonomia de Risco do SEI (Software Engineering Institute) fornece uma estrutura padronizada para identificar e categorizar riscos em projetos de software. Ela organiza as ameaças em classes, elementos e desafios, estabelecendo uma linguagem comum que facilita a comunicação entre equipes e a análise comparativa entre projetos. Este campo indica a categoria onde o risco se enquadra e a área do desenvolvimento impactada.",
+        fonte: "Fonte: Software Ecosystems Risks – Manalif, Capretz & Ho (2014)"
+    },
+    ecos: {
+        titulo: "ECOS mais Propício ao Risco",
+        texto: "Os riscos não se manifestam da mesma forma em todos os cenários. Este campo identifica em qual tipo de ECOS este risco é mais frequente, utilizando a tipologia de Manikas (2016). Essa classificação permite contextualizar a ameaça especificamente para o seu ambiente de desenvolvimento ou negócios",
+        fonte: "Fonte: Revisiting software ecosystems research: A longitudinal literature study – Manikas (2016)"
+    },
+    metrica: {
+        titulo: "Métrica de Saúde Atingida pelo Risco",
+        texto: "Este campo identifica o impacto do risco na saúde do ecossistema, utilizando os indicadores propostos por Iansiti e Levien (2004). O risco pode afetar a Produtividade do sistema, sua Robustez frente a mudanças ou sua capacidade de gerar novos Nichos de Criação (inovação). Identificar essa métrica ajuda a priorizar ações de mitigação estratégicas.",
+        fonte: "Fonte: Strategy as Ecology – Iansiti et al. (2004)"
+    },
+    processo: {
+        titulo: "Processo de Valor Ameaçado pelo Risco",
+        texto: "Com base no modelo de Burström et al. (2022), este campo sinaliza qual dimensão do ecossistema o risco ameaça diretamente: a criação (desenvolvimento), a entrega (disponibilização) e a captura de valor (retorno financeiro ou reputacional). Esses processos compõem o ciclo vital para a sustentabilidade de qualquer solução de software em rede.",
+        fonte: "Fonte: Software ecosystems now and in the future: A definition, systematic literature review, and integration into the business and digital ecosystem literature — Burström et al. (2022)"
+    },
+    solucoes: {
+        titulo: "Soluções Identificadas na Literatura",
+        texto: "Apresentamos as estratégias de mitigação identificadas por meio do MSL. Cada solução, seja ela um framework, modelo, ferramenta ou método, foi proposta e/ou validada. Utilize o botão 'Acessar estudo' para consultar a fundamentação completa no estudo primário.",
+        fonte: "Challenges and Solutions of Risk Management in Software Ecosystems- Campos et al. (2025)"
+    },
+    estudos: {
+        titulo: "Estudos Primários que Identificaram este Risco",
+        texto: "Estes são os estudos que fundamentam a identificação deste risco em nossa base de evidências. Clique em 'Acessar estudo' para consultar a estudo primário",
+        fonte: "Challenges and Solutions of Risk Management in Software Ecosystems- Campos et al. (2025)"
+    }
+};
+
+function abrirAjuda(chave) {
+    const conteudo = ajudaConteudo[chave];
+    if (!conteudo) return;
+
+    document.getElementById('helpModalTitle').textContent = conteudo.titulo;
+    document.getElementById('helpModalBody').textContent  = conteudo.texto;
+    document.getElementById('helpModalSource').textContent = conteudo.fonte || '';
+
+    // Aplica cor da dimensão ao título e ícone do modal
+    const corMap = {
+        tecnicos: 'var(--color-tecnicos)',
+        sociais:  'var(--color-sociais)',
+        negocio:  'var(--color-negocio)'
+    };
+    const cor = corMap[dimensaoAtual] || 'var(--accent)';
+    const title = document.getElementById('helpModalTitle');
+    const icon  = document.querySelector('#helpModal .help-modal-icon');
+    title.style.color = cor;
+    if (icon) {
+        icon.style.color = cor;
+        icon.style.background = `color-mix(in srgb, ${cor} 12%, transparent)`;
+        icon.style.borderColor = `color-mix(in srgb, ${cor} 30%, transparent)`;
+    }
+
+    const modal = document.getElementById('helpModal');
+    modal.classList.add('active');
+    // Foco no botão de fechar para acessibilidade
+    setTimeout(() => modal.querySelector('.help-modal-close')?.focus(), 50);
+}
+
+function fecharAjuda() {
+    document.getElementById('helpModal').classList.remove('active');
+}
+
+function fecharAjudaOverlay(event) {
+    // Fecha apenas se clicou no overlay (fundo escuro), não na caixa
+    if (event.target === document.getElementById('helpModal')) {
+        fecharAjuda();
+    }
+}
