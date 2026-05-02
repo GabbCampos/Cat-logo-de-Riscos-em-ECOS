@@ -7,11 +7,38 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .logo {
+            display: flex !important;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+        .logo-icon {
+            font-size: 1.4rem;
+            color: #38bdf8;
+            line-height: 1;
+            filter: drop-shadow(0 0 6px rgba(56,189,248,0.55));
+        }
+        .logo-text {
+            color: #e2e8f0;
+            font-weight: 600;
+            font-size: 0.88rem;
+            letter-spacing: 0.01em;
+        }
+        .logo-highlight {
+            color: #38bdf8;
+            font-weight: 800;
+        }
+    </style>
 </head>
 <body>
     <header class="navbar">
         <nav class="nav-container">
-            <div class="logo">Catálogo de<span> Riscos</span></div>
+            <div class="logo">
+                <span class="logo-icon">⬡</span>
+                <span class="logo-text">Catálogo de <span class="logo-highlight">Riscos em ECOS</span></span>
+            </div>
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html" onclick="closeMenu()">Início</a></li>
                 <li><a href="comoutilizar.html" onclick="closeMenu()">Como utilizar</a></li>
