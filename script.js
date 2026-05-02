@@ -726,6 +726,15 @@ function exibirRiscos(lista) {
         const classeCSS = rawDim.endsWith('s') ? rawDim.slice(0, -1) : rawDim;
         
         card.className = `card ${classeCSS}`;
+
+        // Cor do botão conforme dimensão
+        const btnColorMap = {
+            tecnico: { bg: 'rgba(56,189,248,0.12)', border: 'rgba(56,189,248,0.35)', color: '#38bdf8' },
+            social:  { bg: 'rgba(251,191,36,0.12)',  border: 'rgba(251,191,36,0.35)',  color: '#fbbf24' },
+            negocio: { bg: 'rgba(74,222,128,0.12)',  border: 'rgba(74,222,128,0.35)',  color: '#4ade80' },
+        };
+        const btnStyle = btnColorMap[classeCSS] || btnColorMap.tecnico;
+
         card.innerHTML = `
             <div class="card-header">
                 <span class="id-tag">${item.id}</span>
@@ -734,7 +743,7 @@ function exibirRiscos(lista) {
             <div class="card-main-content">
                 <h3>${item.risco}</h3>
                 <p class="descricao">${item.descricao.substring(0, 120)}...</p>
-                <button class="btn-ver-mais">Ver análise completa →</button>
+                <button class="btn-ver-mais" style="background:${btnStyle.bg};border:1px solid ${btnStyle.border};color:${btnStyle.color};">Ver análise completa →</button>
             </div>
         `;
         card.onclick = () => openRiskDetails(item.id);
@@ -826,12 +835,12 @@ const ajudaConteudo = {
     solucoes: {
         titulo: "Soluções Identificadas na Literatura",
         texto: "Apresentamos as estratégias de mitigação identificadas por meio do MSL. Cada solução, seja ela um framework, modelo, ferramenta ou método, foi proposta e/ou validada. Utilize o botão 'Acessar estudo' para consultar a fundamentação completa no estudo primário.",
-        fonte: "Challenges and Solutions of Risk Management in Software Ecosystems- Campos et al. (2025)"
+        fonte: "Fonte: Challenges and Solutions of Risk Management in Software Ecosystems- Campos et al. (2025)"
     },
     estudos: {
         titulo: "Estudos Primários que Identificaram este Risco",
         texto: "Estes são os estudos que fundamentam a identificação deste risco em nossa base de evidências. Clique em 'Acessar estudo' para consultar a estudo primário",
-        fonte: "Challenges and Solutions of Risk Management in Software Ecosystems- Campos et al. (2025)"
+        fonte: "Fonte: Challenges and Solutions of Risk Management in Software Ecosystems- Campos et al. (2025)"
     }
 };
 
