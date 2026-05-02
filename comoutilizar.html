@@ -1369,27 +1369,7 @@
         const hints = {
             header: {
                 label: 'Cabeçalho do risco',
-                text: 'Apresenta o nome do risco, o identificador único (ID), a dimensão de classificação e a descrição completa do risco de acordo com o MSL.',
-                fonte: 'Fonte: Challenges and Solutions of Risk Management in Software Ecosystems – Campos et al. (2025)'
-            },
-            id: {
-                label: 'Identificador do risco',
-                text: 'Identificador único do risco (R01–R24). Permite referenciá-lo baseado no MSL.',
-                fonte: 'Fonte: Challenges and Solutions of Risk Management in Software Ecosystems – Campos et al. (2025)'
-            },
-            dim: {
-                label: 'Dimensão do risco em ECOS',
-                text: 'Classifica o risco em Técnico, Social ou Negócio, seguindo Oliveira e Alves (2021), define a natureza do problema.',
-                fonte: 'Fonte: A Systematic Mapping on Risks in Software Ecosystems – Oliveira & Alves (2021)'
-            },
-            title: {
-                label: 'Nome do risco',
-                text: 'Nome derivado da codificação no MSL com base nos 35 estudos analisados.',
-                fonte: 'Fonte: Challenges and Solutions of Risk Management in Software Ecosystems – Campos et al. (2025)'
-            },
-            desc: {
-                label: 'Descrição do risco',
-                text: 'Explica como e por que o risco ocorre no contexto de ECOS.',
+                text: 'Apresenta o nome do risco, seu identificador único (R01–R24), a dimensão (Técnica, Social ou Negócio) e sua descrição. Essas informações foram definidas a partir do MSL.',
                 fonte: 'Fonte: Challenges and Solutions of Risk Management in Software Ecosystems – Campos et al. (2025)'
             },
             sei: {
@@ -1422,14 +1402,9 @@
                 text: "Estes são os estudos que fundamentam a identificação deste risco em nossa base de evidências. Ao clicar em 'Acessar estudo' será direcionado para consultar o estudo primário.",
                 fonte: 'Fonte: Challenges and Solutions of Risk Management in Software Ecosystems – Campos et al. (2025)'
             },
-            navAnterior: {
-                label: 'Botão Anterior',
-                text: 'Navega para o risco anterior na lista. Fica desabilitado quando o primeiro risco está sendo exibido.',
-                fonte: ''
-            },
             navProximo: {
                 label: 'Botão Próximo',
-                text: 'Navega para o próximo risco sem fechar o painel. Ao filtrar por dimensão, a navegação respeita apenas os riscos do filtro ativo.',
+                text: 'Navega para o próximo risco sem fechar o painel.',
                 fonte: ''
             },
             navCount: {
