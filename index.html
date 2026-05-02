@@ -62,7 +62,7 @@
             justify-content: center;
         }
         .image-wrapper {
-            max-width: 520px;
+            max-width: 1000px;
             width: 100%;
         }
     </style>
@@ -124,6 +124,9 @@
                             <span class="stat-number">35</span>
                             <span class="stat-label">Estudos primários</span>
                         </div>
+                        <button class="stats-help-btn" onclick="abrirStatsInfo()" aria-label="Entender os números">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        </button>
                     </div>
                 </div>
             </aside>
@@ -438,6 +441,90 @@
             }
         </style>
     </footer>
+
+    <!-- MODAL DE STATS -->
+    <div id="statsInfoModal" class="help-modal-overlay" onclick="fecharStatsInfo(event)" role="dialog" aria-modal="true" aria-labelledby="statsInfoTitle">
+        <div class="help-modal-box" style="max-width:460px;">
+            <div class="help-modal-header">
+                <div class="help-modal-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                </div>
+                <h3 id="statsInfoTitle" class="help-modal-title">Sobre os números</h3>
+                <button class="help-modal-close" onclick="fecharStatsInfoBtn()" aria-label="Fechar">&times;</button>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:14px;">
+                <div style="display:flex;gap:14px;align-items:flex-start;">
+                    <span style="font-size:1.35rem;font-weight:800;color:#38bdf8;min-width:32px;line-height:1;">24</span>
+                    <div>
+                        <p style="font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:#38bdf8;margin:0 0 4px;">Riscos mapeados</p>
+                        <p style="font-size:0.85rem;color:#94a3b8;line-height:1.6;margin:0;">Riscos identificados por meio do MSL, distribuídos em três dimensões: Técnica (R01–R11), Social (R12–R18) e de Negócio (R19–R24). </p>
+                    </div>
+                </div>
+                <div style="height:1px;background:rgba(255,255,255,0.06);"></div>
+                <div style="display:flex;gap:14px;align-items:flex-start;">
+                    <span style="font-size:1.35rem;font-weight:800;color:#38bdf8;min-width:32px;line-height:1;">21</span>
+                    <div>
+                        <p style="font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:#38bdf8;margin:0 0 4px;">Soluções identificadas</p>
+                        <p style="font-size:0.85rem;color:#94a3b8;line-height:1.6;margin:0;">Estratégias de mitigação extraídas dos estudos primários, seja ela um framework, modelo, prática, ferramenta e método, foi proposta e/ou validada. </p>
+                    </div>
+                </div>
+                <div style="height:1px;background:rgba(255,255,255,0.06);"></div>
+                <div style="display:flex;gap:14px;align-items:flex-start;">
+                    <span style="font-size:1.35rem;font-weight:800;color:#38bdf8;min-width:32px;line-height:1;">35</span>
+                    <div>
+                        <p style="font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:#38bdf8;margin:0 0 4px;">Estudos primários</p>
+                        <p style="font-size:0.85rem;color:#94a3b8;line-height:1.6;margin:0;">Este MSL foi desenvolvido a partir da análise de estudos primários (artigos onde os próprios autores apresentam seus resultados), após aplicação de critérios em 710 estudos recuperados, foi realizados a extração de dados em 35 estudos entre janeiro e julho de 2025.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .hero { min-height: auto !important; padding-bottom: 60px !important; }
+
+        /* Botão ? único posicionado no canto da stats-bar */
+        .stats-bar { position: relative; }
+        .stats-help-btn {
+            position: absolute;
+            top: 10px;
+            right: 12px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: rgba(56,189,248,0.09);
+            border: 1px solid rgba(56,189,248,0.22);
+            color: #38bdf8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            padding: 0;
+            transition: background 0.18s, border-color 0.18s, transform 0.18s;
+            line-height: 1;
+        }
+        .stats-help-btn:hover {
+            background: rgba(56,189,248,0.2);
+            border-color: rgba(56,189,248,0.5);
+            transform: scale(1.15);
+        }
+        .stats-help-btn svg { pointer-events: none; }
+    </style>
+
+    <script>
+        function abrirStatsInfo() {
+            const modal = document.getElementById('statsInfoModal');
+            modal.classList.add('active');
+            setTimeout(() => modal.querySelector('.help-modal-close')?.focus(), 50);
+        }
+        function fecharStatsInfoBtn() {
+            document.getElementById('statsInfoModal').classList.remove('active');
+        }
+        function fecharStatsInfo(e) {
+            if (e.target === document.getElementById('statsInfoModal')) fecharStatsInfoBtn();
+        }
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') fecharStatsInfoBtn(); });
+    </script>
 
     <script src="script.js"></script>
     <script>
