@@ -13,6 +13,30 @@
            COMO UTILIZAR — ENHANCED VISUAL DESIGN
         ═══════════════════════════════════════════ */
 
+        /* ── Logo padronizada ── */
+        .logo {
+            display: flex !important;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+        .logo-icon {
+            font-size: 1.4rem;
+            color: #38bdf8;
+            line-height: 1;
+            filter: drop-shadow(0 0 6px rgba(56,189,248,0.55));
+        }
+        .logo-text {
+            color: #e2e8f0;
+            font-weight: 600;
+            font-size: 0.88rem;
+            letter-spacing: 0.01em;
+        }
+        .logo-highlight {
+            color: #38bdf8;
+            font-weight: 800;
+        }
+
         /* ── Page hero strip ── */
         .page-hero-strip {
             padding: 0 5% 0;
@@ -956,7 +980,10 @@
 
     <header class="navbar">
         <nav class="nav-container">
-            <div class="logo">Catálogo de<span> Riscos</span></div>
+            <div class="logo">
+                <span class="logo-icon">⬡</span>
+                <span class="logo-text">Catálogo de <span class="logo-highlight">Riscos em ECOS</span></span>
+            </div>
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html" onclick="closeMenu()">Início</a></li>
                 <li><a href="comoutilizar.html" onclick="closeMenu()">Como utilizar</a></li>
@@ -1007,7 +1034,7 @@
 
                         <div class="hover-legend">
                             <span class="hover-legend-dot"></span>
-                            Clique na seta presente em cada seção para visualizar a explicação
+                            Clique no ícone <strong style="color:#38bdf8;">?</strong> presente em cada seção para visualizar a explicação
                         </div>
 
                         <!-- ══════════════════════════════════════
@@ -1019,7 +1046,7 @@
                             <div class="demo-panel-header"
                                  data-hint="header">
                                 <button class="hint-arrow-btn" aria-label="Ver explicação do cabeçalho" onclick="toggleHint('header', this)">
-                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
                                 </button>
                                 <div class="demo-panel-header-meta">
                                     <span class="demo-id-tag"
@@ -1043,11 +1070,11 @@
                                 <!-- BLOCO 1: Análise SEI -->
                                 <div class="demo-inner-card"
                                      data-hint="sei">
-                                    <button class="hint-arrow-btn" aria-label="Ver explicação da Taxonomia SEI" onclick="toggleHint('sei', this)">
-                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                                    </button>
-                                    <div class="demo-card-title">
-                                        <span>Taxonomia de Risco SEI
+                                    <div class="demo-card-title" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;">
+                                        <span>Taxonomia de Risco SEI</span>
+                                        <button class="hint-arrow-btn" style="position:static;transform:none;flex-shrink:0;" aria-label="Ver explicação da Taxonomia SEI" onclick="toggleHint('sei', this)">
+                                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                                        </button>
                                     </div>
                                     <div class="demo-grid-2">
                                         <div>
@@ -1068,11 +1095,11 @@
                                 <!-- BLOCO 2a: ECOS mais propício -->
                                 <div class="demo-inner-card"
                                      data-hint="ecos">
-                                    <button class="hint-arrow-btn" aria-label="Ver explicação do ECOS mais propício" onclick="toggleHint('ecos', this)">
-                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                                    </button>
-                                    <div class="demo-card-title">
-                                        <span>ECOS mais Propício ao Risco
+                                    <div class="demo-card-title" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;">
+                                        <span>ECOS mais Propício ao Risco</span>
+                                        <button class="hint-arrow-btn" style="position:static;transform:none;flex-shrink:0;" aria-label="Ver explicação do ECOS mais propício" onclick="toggleHint('ecos', this)">
+                                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                                        </button>
                                     </div>
                                     <span class="demo-field-label"></span>
                                     <span class="demo-field-value">Híbrido / Aberto</span>
@@ -1085,11 +1112,11 @@
                                 <!-- BLOCO 2b: Métrica de Saúde -->
                                 <div class="demo-inner-card"
                                      data-hint="metrica">
-                                    <button class="hint-arrow-btn" aria-label="Ver explicação da Métrica de Saúde" onclick="toggleHint('metrica', this)">
-                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                                    </button>
-                                    <div class="demo-card-title">
-                                        <span>Métrica de Saúde Atingida pelo Risco
+                                    <div class="demo-card-title" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;">
+                                        <span>Métrica de Saúde Atingida pelo Risco</span>
+                                        <button class="hint-arrow-btn" style="position:static;transform:none;flex-shrink:0;" aria-label="Ver explicação da Métrica de Saúde" onclick="toggleHint('metrica', this)">
+                                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                                        </button>
                                     </div>
                                     <span class="demo-field-label"></span>
                                     <span class="demo-field-value">Robustez</span>
@@ -1102,11 +1129,11 @@
                                 <!-- BLOCO 2c: Processo de Valor -->
                                 <div class="demo-inner-card"
                                      data-hint="processo">
-                                    <button class="hint-arrow-btn" aria-label="Ver explicação do Processo de Valor" onclick="toggleHint('processo', this)">
-                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                                    </button>
-                                    <div class="demo-card-title">
-                                        <span>Processo de Valor Ameaçado pelo Risco
+                                    <div class="demo-card-title" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;">
+                                        <span>Processo de Valor Ameaçado pelo Risco</span>
+                                        <button class="hint-arrow-btn" style="position:static;transform:none;flex-shrink:0;" aria-label="Ver explicação do Processo de Valor" onclick="toggleHint('processo', this)">
+                                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                                        </button>
                                     </div>
                                     <span class="demo-field-label"></span>
                                     <span class="demo-field-value">Criação e entrega de valor</span>
@@ -1119,11 +1146,11 @@
                                 <!-- BLOCO 3: Soluções -->
                                 <div class="demo-inner-card"
                                      data-hint="solucoes">
-                                    <button class="hint-arrow-btn" aria-label="Ver explicação das Soluções" onclick="toggleHint('solucoes', this)">
-                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                                    </button>
-                                    <div class="demo-card-title">
-                                        <span>Soluções Identificadas na Literatura
+                                    <div class="demo-card-title" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;">
+                                        <span>Soluções Identificadas na Literatura</span>
+                                        <button class="hint-arrow-btn" style="position:static;transform:none;flex-shrink:0;" aria-label="Ver explicação das Soluções" onclick="toggleHint('solucoes', this)">
+                                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                                        </button>
                                     </div>
                                     <div class="demo-solutions-list">
                                         <div class="demo-solution-item">
@@ -1153,11 +1180,11 @@
                                 <!-- BLOCO 4: Estudos Primários -->
                                 <div class="demo-inner-card"
                                      data-hint="estudos">
-                                    <button class="hint-arrow-btn" aria-label="Ver explicação dos Estudos Primários" onclick="toggleHint('estudos', this)">
-                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                                    </button>
-                                    <div class="demo-card-title">
-                                        <span>Estudos Primários que Identificaram este Risco
+                                    <div class="demo-card-title" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;">
+                                        <span>Estudos Primários que Identificaram este Risco</span>
+                                        <button class="hint-arrow-btn" style="position:static;transform:none;flex-shrink:0;" aria-label="Ver explicação dos Estudos Primários" onclick="toggleHint('estudos', this)">
+                                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                                        </button>
                                     </div>
                                     <div class="demo-studies-list">
                                         <div class="demo-study-entry">
@@ -1342,7 +1369,7 @@
         <div class="hint-modal-card" role="dialog" aria-modal="true" aria-labelledby="hintModalTitle">
             <div class="hint-modal-header">
                 <div class="hint-modal-icon">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
                 </div>
                 <span class="hint-modal-title" id="hintModalTitle"></span>
                 <button class="hint-modal-close" onclick="closeHintModal()" aria-label="Fechar">×</button>
@@ -1392,7 +1419,7 @@
             },
             solucoes: {
                 label: 'Soluções Identificadas na Literatura',
-                text: "Apresentamos as estratégias de mitigação identificadas por meio do MSL. Cada solução, seja ela um framework, modelo, ferramenta ou método, foi proposta e/ou validada. Ao  clicar em 'Acessar estudo' será direcionado para consultar a fundamentação completa no estudo primário.",
+                text: "Apresentamos as estratégias de mitigação identificadas por meio do MSL. Cada solução, seja ela um framework, modelo, prática, ferramenta e método, foi proposta e/ou validada. Ao  clicar em 'Acessar estudo' será direcionado para consultar a fundamentação completa no estudo primário.",
             },
             estudos: {
                 label: 'Estudos Primários',
