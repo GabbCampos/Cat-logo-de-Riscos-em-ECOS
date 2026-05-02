@@ -188,16 +188,16 @@
             border: 1px solid rgba(255,255,255,0.05);
             padding: 20px 22px;
             transition: border-color 0.2s, box-shadow 0.2s;
-            cursor: help;
+            cursor: default;
         }
         .demo-inner-card:hover {
             border-color: rgba(56,189,248,0.35);
             box-shadow: 0 0 0 2px rgba(56,189,248,0.07);
         }
 
-        /* CABEÇALHO DO PAINEL HOVER */
+        /* CABEÇALHO DO PAINEL */
         .demo-panel-header {
-            cursor: help;
+            cursor: default;
         }
 
         /* TÍTULO DOS BLOCOS (= .panel-card-title) */
@@ -388,59 +388,158 @@
 
         /* ── Sublinhados indicativos de hover nos elementos menores ── */
         .demo-hoverable {
-            cursor: help;
-            border-bottom: 1.5px dashed rgba(56,189,248,0.5);
-            padding-bottom: 1px;
+            cursor: default;
         }
         .demo-hoverable-white {
-            cursor: help;
-            border-bottom: 1.5px dashed rgba(255,255,255,0.18);
-            padding-bottom: 2px;
+            cursor: default;
+        }
+
+        /* ── Seta de clique discreta em cada bloco ── */
+        .demo-inner-card,
+        .demo-panel-header {
+            position: relative;
+        }
+
+        .hint-arrow-btn {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(56,189,248,0.10);
+            border: 1px solid rgba(56,189,248,0.22);
+            color: #38bdf8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.18s, border-color 0.18s, transform 0.18s;
+            flex-shrink: 0;
+            z-index: 2;
+            font-size: 0.75rem;
+            line-height: 1;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .hint-arrow-btn:hover {
+            background: rgba(56,189,248,0.22);
+            border-color: rgba(56,189,248,0.5);
+            transform: scale(1.1);
+        }
+        .hint-arrow-btn:active {
+            transform: scale(0.95);
+        }
+        /* Arrow icon via SVG inline */
+        .hint-arrow-btn svg {
+            pointer-events: none;
         }
 
         /* ─────────────────────────────────────────────
-           TOOLTIP FLUTUANTE
+           MODAL DE HINT — estilo idêntico ao catálogo
         ───────────────────────────────────────────── */
-        .hint-tooltip {
+
+        /* Overlay com backdrop blur */
+        .hint-modal-overlay {
+            display: none;
             position: fixed;
-            z-index: 9999;
-            pointer-events: none;
-            opacity: 0;
-            transform: translateY(6px);
-            transition: opacity 0.18s ease, transform 0.18s ease;
-            max-width: 300px;
+            inset: 0;
+            z-index: 4000;
+            background: rgba(5, 12, 30, 0.65);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            align-items: center;
+            justify-content: center;
+            padding: 24px 16px;
         }
-        .hint-tooltip.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .hint-modal-overlay.visible {
+            display: flex;
+            animation: hintOverlayIn 0.18s ease;
         }
-        .hint-tooltip-inner {
-            background: #0f172a;
-            border: 1px solid rgba(56,189,248,0.3);
-            border-radius: 12px;
-            padding: 14px 16px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.7);
+        @keyframes hintOverlayIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
         }
-        .hint-tooltip-header {
+
+        /* Card do modal */
+        .hint-modal-card {
+            background: #1a2540;
+            border: 1px solid rgba(56,189,248,0.22);
+            border-radius: 18px;
+            padding: 28px 28px 24px;
+            max-width: 480px;
+            width: 100%;
+            position: relative;
+            box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+            animation: hintCardIn 0.22s cubic-bezier(0.34,1.3,0.64,1);
+        }
+        @keyframes hintCardIn {
+            from { opacity: 0; transform: scale(0.93) translateY(10px); }
+            to   { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        /* Cabeçalho do modal */
+        .hint-modal-header {
             display: flex;
             align-items: center;
-            gap: 8px;
-            margin-bottom: 8px;
+            gap: 12px;
+            margin-bottom: 18px;
         }
-        .hint-tooltip-icon { font-size: 1rem; }
-        .hint-tooltip-label {
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
+        .hint-modal-icon {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: rgba(56,189,248,0.12);
+            border: 1px solid rgba(56,189,248,0.28);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
             color: #38bdf8;
         }
-        .hint-tooltip-text {
-            font-size: 0.83rem;
-            color: rgba(255,255,255,0.65);
-            line-height: 1.55;
+        .hint-modal-title {
+            font-size: 0.72rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.8px;
+            color: #38bdf8;
+            flex: 1;
+        }
+        .hint-modal-close {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.12);
+            color: rgba(255,255,255,0.55);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 700;
+            transition: background 0.15s, color 0.15s;
+            flex-shrink: 0;
+            line-height: 1;
+            font-family: inherit;
+        }
+        .hint-modal-close:hover {
+            background: rgba(255,255,255,0.13);
+            color: #fff;
+        }
+
+        /* Corpo do modal */
+        .hint-modal-body {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.72);
+            line-height: 1.7;
             margin: 0;
         }
+
+        /* ─────────────────────────────────────────────
+           TOOLTIP FLUTUANTE (não usado — oculto)
+        ───────────────────────────────────────────── */
+        .hint-tooltip { display: none; }
 
         /* ─────────────────────────────────────────────
            HINT BOX ESTÁTICO (abaixo do card)
@@ -514,10 +613,8 @@
             50%       { opacity: 0.6; transform: scale(0.8); box-shadow: 0 0 0 4px rgba(56,189,248,0); }
         }
 
-        /* A versão touch fica oculta por padrão; aparece só quando JS detecta touch */
-        .hover-legend-touch { display: none; }
-        body.touch-device .hover-legend       { display: none; }
-        body.touch-device .hover-legend-touch { display: flex; }
+        /* A versão touch fica oculta — usamos apenas uma legenda universal */
+        .hover-legend-touch { display: none !important; }
 
         /* ── Glossário ── */
         .glossary-grid { display: grid; gap: 14px; }
@@ -790,28 +887,11 @@
             cursor: pointer;
             position: relative;
         }
-        body.touch-device .demo-inner-card::after {
-            content: '';
-            position: absolute;
-            top: 12px;
-            right: 14px;
-            font-size: 0.7rem;
-            color: rgba(56,189,248,0.45);
-            pointer-events: none;
-        }
         body.touch-device .hint-tooltip { display: none !important; }
         body.touch-device .demo-hoverable,
         body.touch-device .demo-hoverable-white { border-bottom: none; cursor: default; }
 
         body.touch-device .demo-panel-header { cursor: pointer; }
-        body.touch-device .demo-panel-header::after {
-            content: '';
-            display: block;
-            font-size: 0.65rem;
-            color: rgba(56,189,248,0.5);
-            margin-top: 8px;
-            letter-spacing: 0.5px;
-        }
 
         @media (max-width: 768px) {
             .methodology-section { padding: calc(var(--nav-height, 64px) + 24px) 4% 60px; }
@@ -847,10 +927,6 @@
 
             /* Hint box estático — mais compacto */
             .hint-box { min-height: auto; padding: 12px 14px; }
-
-            /* Remove sublinhado pontilhado em touch */
-            .demo-hoverable,
-            .demo-hoverable-white { border-bottom: none; cursor: default; }
         }
 
         /* ── Mobile pequeno (≤480px) ── */
@@ -931,11 +1007,7 @@
 
                         <div class="hover-legend">
                             <span class="hover-legend-dot"></span>
-                            Passe o mouse ou toque sobre cada seção para entender o que ela representa
-                        </div>
-                        <div class="hover-legend-touch">
-                            <span class="hover-legend-dot"></span>
-                            Toque sobre cada seção para entender o que ela representa
+                            Clique na seta presente em cada seção para visualizar a explicação
                         </div>
 
                         <!-- ══════════════════════════════════════
@@ -945,30 +1017,22 @@
 
                             <!-- CABEÇALHO -->
                             <div class="demo-panel-header"
-                                 data-hint="header"
-                                 onmouseenter="showHint('header', event)"
-                                 onmouseleave="hideHint()"
-                                 onclick="showMobileHint('header')">
+                                 data-hint="header">
+                                <button class="hint-arrow-btn" aria-label="Ver explicação do cabeçalho" onclick="toggleHint('header', this)">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                                </button>
                                 <div class="demo-panel-header-meta">
-                                    <span class="demo-id-tag demo-hoverable"
-                                          data-hint="id"
-                                          onmouseenter="showHint('id', event); event.stopPropagation();"
-                                          onmouseleave="hideHint()">R01</span>
-                                    <span class="demo-dim-tag demo-hoverable"
-                                          data-hint="dim"
-                                          onmouseenter="showHint('dim', event); event.stopPropagation();"
-                                          onmouseleave="hideHint()">Técnico</span>
+                                    <span class="demo-id-tag"
+                                          data-hint="id">R01</span>
+                                    <span class="demo-dim-tag"
+                                          data-hint="dim">Técnico</span>
                                 </div>
                                 <h2 class="demo-hoverable-white"
-                                    data-hint="title"
-                                    onmouseenter="showHint('title', event); event.stopPropagation();"
-                                    onmouseleave="hideHint()">
+                                    data-hint="title">
                                     Comprometimento da cadeia de suprimentos de software
                                 </h2>
                                 <p class="demo-panel-desc demo-hoverable-white"
-                                   data-hint="desc"
-                                   onmouseenter="showHint('desc', event); event.stopPropagation();"
-                                   onmouseleave="hideHint()">
+                                   data-hint="desc">
                                     A cadeia de suprimentos torna-se um vetor crítico para ameaças de cibersegurança, incluindo a injeção de código malicioso durante o desenvolvimento e distribuição de artefatos. Falhas em dependências upstream podem comprometer todo o ECOS (e.g., Heartbleed, Apache Struts).
                                 </p>
                             </div>
@@ -978,10 +1042,10 @@
 
                                 <!-- BLOCO 1: Análise SEI -->
                                 <div class="demo-inner-card"
-                                     data-hint="sei"
-                                     onmouseenter="showHint('sei', event)"
-                                     onmouseleave="hideHint()"
-                                     onclick="showMobileHint('sei')">
+                                     data-hint="sei">
+                                    <button class="hint-arrow-btn" aria-label="Ver explicação da Taxonomia SEI" onclick="toggleHint('sei', this)">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                                    </button>
                                     <div class="demo-card-title">
                                         <span>Taxonomia de Risco SEI
                                     </div>
@@ -1003,10 +1067,10 @@
 
                                 <!-- BLOCO 2a: ECOS mais propício -->
                                 <div class="demo-inner-card"
-                                     data-hint="ecos"
-                                     onmouseenter="showHint('ecos', event)"
-                                     onmouseleave="hideHint()"
-                                     onclick="showMobileHint('ecos')">
+                                     data-hint="ecos">
+                                    <button class="hint-arrow-btn" aria-label="Ver explicação do ECOS mais propício" onclick="toggleHint('ecos', this)">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                                    </button>
                                     <div class="demo-card-title">
                                         <span>ECOS mais Propício ao Risco
                                     </div>
@@ -1020,10 +1084,10 @@
 
                                 <!-- BLOCO 2b: Métrica de Saúde -->
                                 <div class="demo-inner-card"
-                                     data-hint="metrica"
-                                     onmouseenter="showHint('metrica', event)"
-                                     onmouseleave="hideHint()"
-                                     onclick="showMobileHint('metrica')">
+                                     data-hint="metrica">
+                                    <button class="hint-arrow-btn" aria-label="Ver explicação da Métrica de Saúde" onclick="toggleHint('metrica', this)">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                                    </button>
                                     <div class="demo-card-title">
                                         <span>Métrica de Saúde Atingida pelo Risco
                                     </div>
@@ -1037,10 +1101,10 @@
 
                                 <!-- BLOCO 2c: Processo de Valor -->
                                 <div class="demo-inner-card"
-                                     data-hint="processo"
-                                     onmouseenter="showHint('processo', event)"
-                                     onmouseleave="hideHint()"
-                                     onclick="showMobileHint('processo')">
+                                     data-hint="processo">
+                                    <button class="hint-arrow-btn" aria-label="Ver explicação do Processo de Valor" onclick="toggleHint('processo', this)">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                                    </button>
                                     <div class="demo-card-title">
                                         <span>Processo de Valor Ameaçado pelo Risco
                                     </div>
@@ -1054,10 +1118,10 @@
 
                                 <!-- BLOCO 3: Soluções -->
                                 <div class="demo-inner-card"
-                                     data-hint="solucoes"
-                                     onmouseenter="showHint('solucoes', event)"
-                                     onmouseleave="hideHint()"
-                                     onclick="showMobileHint('solucoes')">
+                                     data-hint="solucoes">
+                                    <button class="hint-arrow-btn" aria-label="Ver explicação das Soluções" onclick="toggleHint('solucoes', this)">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                                    </button>
                                     <div class="demo-card-title">
                                         <span>Soluções Identificadas na Literatura
                                     </div>
@@ -1088,10 +1152,10 @@
 
                                 <!-- BLOCO 4: Estudos Primários -->
                                 <div class="demo-inner-card"
-                                     data-hint="estudos"
-                                     onmouseenter="showHint('estudos', event)"
-                                     onmouseleave="hideHint()"
-                                     onclick="showMobileHint('estudos')">
+                                     data-hint="estudos">
+                                    <button class="hint-arrow-btn" aria-label="Ver explicação dos Estudos Primários" onclick="toggleHint('estudos', this)">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                                    </button>
                                     <div class="demo-card-title">
                                         <span>Estudos Primários que Identificaram este Risco
                                     </div>
@@ -1141,19 +1205,14 @@
                             <div class="demo-panel-footer">
                                 <button class="demo-nav-btn" disabled
                                         data-hint="navAnterior"
-                                        onmouseenter="showHint('navAnterior', event)"
-                                        onmouseleave="hideHint()"
-                                        onclick="showMobileHint('navAnterior')">← Anterior</button>
-                                <span class="demo-nav-count demo-hoverable"
+                                        onclick="toggleHint('navAnterior', this)">← Anterior</button>
+                                <span class="demo-nav-count"
                                       data-hint="navCount"
-                                      onmouseenter="showHint('navCount', event)"
-                                      onmouseleave="hideHint()"
-                                      onclick="showMobileHint('navCount')">1 de 24</span>
+                                      style="cursor:pointer;"
+                                      onclick="toggleHint('navCount', this)">1 de 24</span>
                                 <button class="demo-nav-btn primary"
                                         data-hint="navProximo"
-                                        onmouseenter="showHint('navProximo', event)"
-                                        onmouseleave="hideHint()"
-                                        onclick="showMobileHint('navProximo')">Próximo →</button>
+                                        onclick="toggleHint('navProximo', this)">Próximo →</button>
                             </div>
 
                         </div><!-- /card-demo-wrapper -->
@@ -1277,23 +1336,19 @@
         </section>
     </main>
 
-    <!-- TOOLTIP FLUTUANTE -->
-    <div class="hint-tooltip" id="hintTooltip">
-        <div class="hint-tooltip-inner">
-            <div class="hint-tooltip-header">
-                <span class="hint-tooltip-icon" id="tooltipIcon"></span>
-                <span class="hint-tooltip-label" id="tooltipLabel"></span>
-            </div>
-            <p class="hint-tooltip-text" id="tooltipText"></p>
-        </div>
-    </div>
 
-    <!-- OVERLAY E PAINEL DE HINT MOBILE -->
-    <div class="mobile-hint-overlay" id="mobileHintOverlay" onclick="closeMobileHint()"></div>
-    <div class="mobile-hint-panel" id="mobileHintPanel">
-        <div class="mobile-hint-panel-handle"></div>
-        <div class="mobile-hint-panel-label" id="mobileHintLabel"></div>
-        <p class="mobile-hint-panel-text" id="mobileHintText"></p>
+    <!-- MODAL DE HINT — estilo catálogo -->
+    <div class="hint-modal-overlay" id="hintModalOverlay" onclick="closeHintModal(event)">
+        <div class="hint-modal-card" role="dialog" aria-modal="true" aria-labelledby="hintModalTitle">
+            <div class="hint-modal-header">
+                <div class="hint-modal-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                </div>
+                <span class="hint-modal-title" id="hintModalTitle"></span>
+                <button class="hint-modal-close" onclick="closeHintModal()" aria-label="Fechar">×</button>
+            </div>
+            <p class="hint-modal-body" id="hintModalBody"></p>
+        </div>
     </div>
 
     <script>
@@ -1304,171 +1359,84 @@
                 text: 'Apresenta o identificador único (ID), a dimensão de classificação e a descrição completa do risco. É o ponto de entrada para toda a análise, consolidando os achados do MSL.'
             },
             id: {
-                
                 label: 'Identificador do risco',
-                text: 'Identificador único do risco (R01–R24). Permite referenciá-lo baseado no MSL. '
+                text: 'Identificador único do risco (R01–R24). Permite referenciá-lo baseado no MSL.'
             },
             dim: {
-                
                 label: 'Dimensão do risco em ECOS',
                 text: 'Classifica o risco em Técnico, Social ou Negócio, seguindo Oliveira e Alves (2021), define a natureza do problema.'
             },
             title: {
-                
                 label: 'Nome do risco',
                 text: 'Nome derivado da codificação no MSL com base nos 35 estudos analisados.'
             },
             desc: {
-                
                 label: 'Descrição do risco',
                 text: 'Explica como e por que o risco ocorre no contexto de ECOS.'
             },
             sei: {
-                
                 label: 'Taxonomia de Risco SEI',
-                text: 'Taxonomia do Risco do Software Engineering Institute (SEI) . A Classe indica o tipo geral do risco; o Elemento detalha o aspecto técnico ou organizacional envolvido; a Área de Desafio aponta se o problema se manifesta na arquitetura do produto ou nos processos de desenvolvimento.'
+                text: "A Taxonomia de Risco do SEI (Software Engineering Institute) fornece uma estrutura padronizada para identificar e categorizar riscos em projetos de software. Ela organiza as ameaças em classes, elementos e desafios, estabelecendo uma linguagem comum que facilita a comunicação entre equipes e a análise comparativa entre projetos. Este campo indica a categoria onde o risco se enquadra e a área do desenvolvimento impactada."
             },
             ecos: {
-                
                 label: 'ECOS mais Propício ao Risco',
-                text: 'Tipo de ecossistema onde este risco ocorre com maior frequência: Aberto (ex: NPM, Maven), Proprietário (ex: iOS) e/ou Híbrido (ex: Android). Baseado na tipologia de Manikas (2016). A justificativa explica o vínculo entre a estrutura do ECOS e a manifestação do risco.'
+                text: "Os riscos não se manifestam da mesma forma em todos os cenários. Este campo identifica em qual tipo de ECOS este risco é mais frequente, utilizando a tipologia de Manikas (2016). Essa classificação permite contextualizar a ameaça especificamente para o seu ambiente de desenvolvimento ou negócios",
             },
             metrica: {
-                
                 label: 'Métrica de Saúde Atingida',
-                text: 'Aspecto da saúde do ECOS mais prejudicado: Robustez (resistência a perturbações), Produtividade (eficiência na geração de valor) e/ou Criação de Nichos (capacidade de atrair novos participantes). Base teórica: Iansiti e Levien (2004).'
+                text: "Este campo identifica o impacto do risco na saúde do ecossistema, utilizando os indicadores propostos por Iansiti e Levien (2004). O risco pode afetar a Produtividade do sistema, sua Robustez frente a mudanças ou sua capacidade de gerar novos Nichos de Criação (inovação). Identificar essa métrica ajuda a priorizar ações de mitigação estratégicas.",
             },
             processo: {
-                
                 label: 'Processo de Valor Ameaçado',
-                text: 'Identifica qual etapa do ciclo de valor do ECOS é mais impactada: Criação de valor (o que é produzido), Entrega de valor (como chega ao cliente) e/ou Captura de valor (como o ECOS se sustenta financeiramente). Baseado em Burström et al. (2022).'
+                text: "Com base no modelo de Burström et al. (2022), este campo sinaliza qual dimensão do ecossistema o risco ameaça diretamente: a criação (desenvolvimento), a entrega (disponibilização) e a captura de valor (retorno financeiro ou reputacional). Esses processos compõem o ciclo vital para a sustentabilidade de qualquer solução de software em rede.",
             },
             solucoes: {
-                
                 label: 'Soluções Identificadas na Literatura',
-                text: 'Práticas, frameworks e ferramentas propostos e/ou validados nos estudos primários do MSL para mitigar este risco. Cada solução tem a descrição e o mecanismo de ação.'
+                text: "Apresentamos as estratégias de mitigação identificadas por meio do MSL. Cada solução, seja ela um framework, modelo, ferramenta ou método, foi proposta e/ou validada. Ao  clicar em 'Acessar estudo' será direcionado para consultar a fundamentação completa no estudo primário.",
             },
             estudos: {
-                
                 label: 'Estudos Primários',
-                text: 'Estudos do MSL que identificaram e analisaram este risco'
+                text: "Estes são os estudos que fundamentam a identificação deste risco em nossa base de evidências. Ao clicar em 'Acessar estudo' será direcionado para consultar a estudo primário",
             },
             navAnterior: {
-                
                 label: 'Botão Anterior',
                 text: 'Navega para o risco anterior na lista. Fica desabilitado quando o primeiro risco está sendo exibido.'
             },
             navProximo: {
-                
                 label: 'Botão Próximo',
                 text: 'Navega para o próximo risco sem fechar o painel. Ao filtrar por dimensão, a navegação respeita apenas os riscos do filtro ativo.'
             },
             navCount: {
-                
                 label: 'Posição na lista',
                 text: 'Indica qual risco está sendo exibido em relação ao total disponível. Por exemplo, "14 de 24" significa o 14º risco de um total de 24 mapeados no catálogo.'
             }
         };
 
-        /* ── Detecta touch (funciona em mobile E tablet) ── */
-        const isTouch = () => document.body.classList.contains('touch-device');
-
-        // Marca o body como touch-device no primeiro toque, seja qual for o tamanho da tela
-        window.addEventListener('touchstart', function markTouch() {
-            document.body.classList.add('touch-device');
-            window.removeEventListener('touchstart', markTouch);
-        }, { once: true, passive: true });
-
-        // Marca imediatamente se o navegador já declara suporte a touch
-        if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
-            document.body.classList.add('touch-device');
-        }
-
-        /* ── Tooltip flutuante (desktop sem touch) ── */
-        const tooltip = document.getElementById('hintTooltip');
-        let hideTimer;
-
-        function showHint(key, event) {
+        /* ── Modal de hint ── */
+        function toggleHint(key, triggerBtn) {
             const h = hints[key];
             if (!h) return;
 
-            if (isTouch()) {
-                /* Em touch: mostra o painel fixo na base */
-                showMobileHint(key);
-                return;
-            }
+            document.getElementById('hintModalTitle').textContent = h.label;
+            document.getElementById('hintModalBody').textContent  = h.text;
 
-            document.getElementById('tooltipIcon').textContent  = h.icon;
-            document.getElementById('tooltipLabel').textContent = h.label;
-            document.getElementById('tooltipText').textContent  = h.text;
+            const overlay = document.getElementById('hintModalOverlay');
+            overlay.classList.add('visible');
 
-            positionTooltip(event);
-            clearTimeout(hideTimer);
-            tooltip.classList.add('visible');
+            /* Foco acessível */
+            overlay.querySelector('.hint-modal-close').focus();
         }
 
-        function hideHint() {
-            if (isTouch()) return; /* Touch: fechamento via overlay */
-            hideTimer = setTimeout(() => {
-                tooltip.classList.remove('visible');
-            }, 80);
+        function closeHintModal(event) {
+            /* Fecha só se clicar no overlay (fundo), no botão ×, ou sem argumento */
+            if (event && event.target !== document.getElementById('hintModalOverlay')) return;
+            document.getElementById('hintModalOverlay').classList.remove('visible');
         }
 
-        function positionTooltip(event) {
-            const pad = 16;
-            const tw  = 300;
-            const th  = 150;
-
-            let x = event.clientX + pad;
-            let y = event.clientY + pad;
-
-            if (x + tw > window.innerWidth - 10)  x = event.clientX - tw - pad;
-            if (y + th > window.innerHeight - 10) y = event.clientY - th - pad;
-
-            tooltip.style.left = x + 'px';
-            tooltip.style.top  = y + 'px';
-        }
-
-        document.addEventListener('mousemove', (e) => {
-            if (tooltip.classList.contains('visible')) positionTooltip(e);
+        /* Fechar com Escape */
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeHintModal();
         });
-
-        /* ── Painel mobile ── */
-        function showMobileHint(key) {
-            const h = hints[key];
-            if (!h) return;
-            document.getElementById('mobileHintLabel').textContent = h.label;
-            document.getElementById('mobileHintText').textContent  = h.text;
-            document.getElementById('mobileHintPanel').classList.add('visible');
-            document.getElementById('mobileHintOverlay').classList.add('visible');
-        }
-
-        function closeMobileHint() {
-            document.getElementById('mobileHintPanel').classList.remove('visible');
-            document.getElementById('mobileHintOverlay').classList.remove('visible');
-        }
-
-        /* ── Bind touchend em todos os elementos com data-hint ──
-           Garante funcionamento em tablet/mobile sem depender de onclick */
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('[data-hint]').forEach(function(el) {
-                el.addEventListener('touchend', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    showMobileHint(el.getAttribute('data-hint'));
-                }, { passive: false });
-            });
-        });
-
-        /* Fechar painel mobile ao deslizar para baixo */
-        (function() {
-            const panel = document.getElementById('mobileHintPanel');
-            let startY = 0;
-            panel.addEventListener('touchstart', e => { startY = e.touches[0].clientY; }, { passive: true });
-            panel.addEventListener('touchend', e => {
-                if (e.changedTouches[0].clientY - startY > 60) closeMobileHint();
-            }, { passive: true });
-        })();
 
         /* ── Tabs ── */
         function showTab(name, btn) {
