@@ -813,23 +813,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const ajudaConteudo = {
     sei: {
-        titulo: "Taxonomia de Risco SEI",
-        texto: "A Taxonomia de Risco do SEI (Software Engineering Institute) fornece uma estrutura padronizada para identificar e categorizar riscos em projetos de software. Ela organiza as ameaças em classes, elementos e desafios, estabelecendo uma linguagem comum que facilita a comunicação entre equipes e a análise comparativa entre projetos. Este campo indica a categoria onde o risco se enquadra e a área do desenvolvimento impactada.",
+        titulo: "Classificação do Risco de acordo com a Taxonomia de Risco SEI",
+        texto: "A Taxonomia de Risco do SEI (Software Engineering Institute) fornece uma estrutura padronizada para identificar e categorizar riscos em projetos de software. Ela organiza as ameaças em classes, elementos e desafios, estabelecendo uma linguagem comum que facilita a comunicação entre equipes e a análise comparativa entre projetos, este campo indica a categoria onde o risco se enquadra.",
         fonte: "Fonte: Software Ecosystems Risks – Manalif et al. (2013)"
     },
     ecos: {
-        titulo: "ECOS mais Propício ao Risco",
-        texto: "Os riscos não se manifestam da mesma forma em todos os cenários. Este campo identifica em qual tipo de ECOS este risco é mais frequente, utilizando a tipologia de Manikas (2016). Essa classificação permite contextualizar a ameaça especificamente para o seu ambiente de desenvolvimento ou negócios",
+        titulo: "Tipo de ECOS mais propício ao Risco",
+        texto: "Os riscos não se manifestam da mesma forma em todos os cenários. Este campo identifica em qual tipo de ECOS este risco é mais frequente, utilizando a tipologia de Manikas (2016).",
         fonte: "Fonte: Revisiting software ecosystems research: A longitudinal literature study – Manikas (2016)"
     },
     metrica: {
-        titulo: "Métrica de Saúde Atingida pelo Risco",
+        titulo: "Métricas de Saúde do ECOS atingida pelo Risco",
         texto: "Este campo identifica o impacto do risco na saúde do ecossistema, utilizando os indicadores propostos por Iansiti e Levien (2004). O risco pode afetar a Produtividade do sistema, sua Robustez frente a mudanças ou sua capacidade de gerar novos Nichos de Criação (inovação). Identificar essa métrica ajuda a priorizar ações de mitigação estratégicas.",
         fonte: "Fonte: Fonte: Strategy as Ecology – Iansiti e Levien (2004)"
     },
     processo: {
-        titulo: "Processo de Valor Ameaçado pelo Risco",
-        texto: "Com base no modelo de Burström et al. (2022), este campo sinaliza qual dimensão do ecossistema o risco ameaça diretamente: a criação (desenvolvimento), a entrega (disponibilização) e a captura de valor (retorno financeiro ou reputacional). Esses processos compõem o ciclo vital para a sustentabilidade de qualquer solução de software em rede.",
+        titulo: "Processo de Valor do ECOS Ameaçado pelo Risco",
+        texto: "Com base no modelo de Burström et al. (2022), este campo sinaliza qual dimensão do ecossistema o risco ameaça diretamente: a criação (desenvolvimento), a entrega (disponibilização) e a captura de valor (retorno financeiro ou reputacional). Esses processos compõem o ciclo vital para a sustentabilidade do ECOS.",
         fonte: "Fonte: Software ecosystems now and in the future: A definition, systematic literature review, and integration into the business and digital ecosystem literature — Burström et al. (2022)"
     },
     solucoes: {
