@@ -69,6 +69,65 @@
             width: 100%;
         }
     </style>
+    <style>
+        /* AUTOCOMPLETE */
+        .autocomplete-wrap { position:relative; width:100%; max-width:600px; margin:0 auto 40px; }
+        .autocomplete-wrap #searchInput { width:100%; max-width:100%; margin:0; }
+        .autocomplete-list { position:absolute; top:calc(100% + 4px); left:0; right:0; background:#1e293b; border:1px solid rgba(255,255,255,0.08); border-radius:12px; list-style:none; padding:4px; margin:0; z-index:500; box-shadow:0 8px 24px rgba(0,0,0,0.4); max-height:320px; overflow-y:auto; }
+        .autocomplete-list li { display:flex; align-items:center; gap:10px; padding:9px 12px; border-radius:8px; cursor:pointer; transition:background 0.12s; }
+        .autocomplete-list li:hover, .autocomplete-list li.ac-active { background:rgba(255,255,255,0.05); }
+        .ac-id { font-size:0.67rem; font-weight:700; font-family:monospace; color:#475569; flex-shrink:0; min-width:26px; }
+        .ac-body { flex:1; min-width:0; }
+        .ac-title { font-size:0.875rem; font-weight:400; color:#cbd5e1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; display:block; }
+        .ac-title mark { background:transparent; color:#f8fafc; font-weight:600; }
+        .ac-empty { padding:12px; font-size:0.82rem; color:#475569; text-align:center; }
+
+        /* PAINEL DE CONTEXTO */
+        .ctx-bar { max-width:900px; margin:0 auto 36px; }
+        .ctx-toggle { width:100%; display:flex; align-items:center; gap:10px; padding:12px 18px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:10px; cursor:pointer; font-family:'Inter',sans-serif; font-size:0.85rem; font-weight:600; color:#94a3b8; text-align:left; transition:background 0.2s,border-color 0.2s,color 0.2s; }
+        .ctx-toggle:hover, .ctx-toggle[aria-expanded="true"] { background:rgba(56,189,248,0.05); border-color:rgba(56,189,248,0.22); color:#e2e8f0; }
+        .ctx-toggle[aria-expanded="true"] { border-bottom-left-radius:0; border-bottom-right-radius:0; border-bottom-color:rgba(56,189,248,0.08); }
+        .ctx-toggle-icon { display:flex; align-items:center; color:#38bdf8; flex-shrink:0; }
+        .ctx-toggle-label { flex:1; }
+        .ctx-active-count { background:rgba(56,189,248,0.15); border:1px solid rgba(56,189,248,0.3); color:#38bdf8; font-size:0.68rem; font-weight:800; padding:2px 8px; border-radius:100px; letter-spacing:0.5px; }
+        .ctx-toggle-chevron { display:flex; align-items:center; color:#475569; flex-shrink:0; transition:transform 0.25s cubic-bezier(0.4,0,0.2,1); }
+        .ctx-toggle[aria-expanded="true"] .ctx-toggle-chevron { transform:rotate(180deg); }
+        .ctx-panel { background:rgba(255,255,255,0.02); border:1px solid rgba(56,189,248,0.15); border-top:none; border-radius:0 0 10px 10px; padding:20px 18px 16px; animation:ctxOpen 0.22s cubic-bezier(0.4,0,0.2,1); }
+        @keyframes ctxOpen { from{opacity:0;transform:translateY(-6px)} to{opacity:1;transform:translateY(0)} }
+        .ctx-desc { font-size:0.8rem; color:#475569; line-height:1.6; margin-bottom:18px; }
+        .ctx-group { margin-bottom:14px; }
+        .ctx-group:last-of-type { margin-bottom:0; }
+        .ctx-group-label { display:inline-flex; align-items:center; gap:6px; font-size:0.68rem; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; color:#475569; margin-bottom:8px; }
+        .ctx-chips { display:flex; flex-wrap:wrap; gap:7px; }
+        .ctx-chip { padding:6px 14px; border-radius:100px; border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.04); color:#64748b; font-family:'Inter',sans-serif; font-size:0.78rem; font-weight:600; cursor:pointer; transition:all 0.18s; white-space:nowrap; }
+        .ctx-chip:hover { border-color:rgba(56,189,248,0.3); color:#94a3b8; background:rgba(56,189,248,0.06); }
+        .ctx-chip.active { background:rgba(56,189,248,0.12); border-color:rgba(56,189,248,0.45); color:#38bdf8; }
+        .ctx-actions { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; margin-top:16px; padding-top:14px; border-top:1px solid rgba(255,255,255,0.05); }
+        .ctx-clear { display:inline-flex; align-items:center; gap:6px; background:none; border:none; color:#475569; font-family:'Inter',sans-serif; font-size:0.75rem; font-weight:600; cursor:pointer; padding:0; transition:color 0.18s; }
+        .ctx-clear:hover { color:#94a3b8; }
+        .ctx-hint { font-size:0.73rem; color:#38bdf8; font-weight:500; }
+
+        /* RELEVÂNCIA NOS CARDS */
+        .card-footer-area { display:flex; flex-direction:column; gap:10px; margin-top:auto; }
+        .card-footer-area .btn-ver-mais { margin-top:0; width:100%; }
+        .card-main-content { display:flex; flex-direction:column; flex:1; }
+        .card .ctx-relevance { display:none; align-items:center; gap:5px; font-size:0.65rem; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:#38bdf8; padding:3px 9px; background:rgba(56,189,248,0.10); border:1px solid rgba(56,189,248,0.25); border-radius:100px; width:fit-content; }
+        .card.ctx-highlighted .ctx-relevance { display:inline-flex; }
+        .card.ctx-highlighted { border-color:rgba(56,189,248,0.22); }
+        .card.ctx-dim { opacity:0.42; }
+
+        /* ESTADO VAZIO */
+        .ctx-empty-state { display:none; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:12px; padding:56px 24px; margin-bottom:24px; background:rgba(255,255,255,0.02); border:1px dashed rgba(255,255,255,0.08); border-radius:16px; color:#475569; }
+        .ctx-empty-state svg { opacity:0.35; }
+        .ctx-empty-state p { font-size:0.92rem; font-weight:600; color:#64748b; margin:0; line-height:1.5; }
+        .ctx-empty-state span { font-size:0.78rem; color:#334155; }
+
+        @media (max-width:640px) {
+            .ctx-toggle { padding:10px 14px; font-size:0.82rem; }
+            .ctx-panel  { padding:16px 14px 14px; }
+            .ctx-chip   { font-size:0.74rem; padding:5px 11px; }
+        }
+    </style>
 </head>
 <body>
 
@@ -136,6 +195,538 @@
         </div>
     </section>
 
+    <!-- ══════════════════════════════════════════════════════════
+         METAMODELO CONCEITUAL
+    ══════════════════════════════════════════════════════════ -->
+    <section class="metamodel-section" id="metamodelo">
+        <div class="metamodel-container">
+            <header class="metamodel-header">
+                <span class="metamodel-tag">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                    MAPA CONCEITUAL DO CATÁLOGO
+                </span>
+                <h2 class="metamodel-title">Como o catálogo está estruturado?</h2>
+                <p class="metamodel-subtitle">Uma visão integrada de todos os elementos da pesquisa e suas relações. <strong style="color:#38bdf8;font-weight:600;">Clique em qualquer componente</strong> para acessar uma explicação sobre seu significado e papel dentro da pesquisa.</p>
+            </header>
+
+            <div class="metamodel-diagram">
+
+                <div class="mm-hflow">
+
+                    <!-- COL 1: RISCO + DIMENSÕES -->
+                    <div class="mm-hcol mm-hcol-first">
+                        <div class="mm-hcol-label">Ponto de partida</div>
+                        <div class="mm-node mm-core mm-core-v mm-clickable" data-info="risco">
+                            <div class="mm-node-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                            </div>
+                            <span class="mm-node-label">Risco em ECOS</span>
+                        </div>
+                        <div class="mm-vconn"></div>
+                        <div class="mm-dims-label">Classificado em 3 dimensões</div>
+                        <div class="mm-hcol-sub">
+                            <div class="mm-node mm-dim mm-dim-tec mm-dim-sm mm-clickable" data-info="dim-tec">
+                                <span class="mm-node-label">Dimensão Técnica</span>
+                            </div>
+                            <div class="mm-node mm-dim mm-dim-soc mm-dim-sm mm-clickable" data-info="dim-soc">
+                                <span class="mm-node-label">Dimensão Social</span>
+                            </div>
+                            <div class="mm-node mm-dim mm-dim-neg mm-dim-sm mm-clickable" data-info="dim-neg">
+                                <span class="mm-node-label">Dimensão de Negócio</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mm-hconn">
+                        <div class="mm-hconn-line"></div>
+                        <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><polyline points="2,2 8,5 2,8" stroke="rgba(56,189,248,0.4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+
+                    <!-- COL 2: ATRIBUTOS -->
+                    <div class="mm-hcol">
+                        <div class="mm-hcol-label">Atributos do Catálogo</div>
+                        <div class="mm-hcol-cards">
+
+                            <div class="mm-attr-card mm-attr-sei mm-clickable" data-info="sei">
+                                <div class="mm-attr-icon">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                                </div>
+                                <span class="mm-attr-name">Classificação dos Riscos em Software Ecosystems</span>
+                            </div>
+
+                            <div class="mm-attr-card mm-attr-ecos mm-clickable" data-info="manikas">
+                                <div class="mm-attr-icon">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                                </div>
+                                <span class="mm-attr-name">Taxonomia dos Tipos de ECOS</span>
+                            </div>
+
+                            <div class="mm-attr-card mm-attr-metrica mm-clickable" data-info="iansiti">
+                                <div class="mm-attr-icon">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                                </div>
+                                <span class="mm-attr-name">Métricas de Saúde do ECOS</span>
+                            </div>
+
+                            <div class="mm-attr-card mm-attr-valor mm-clickable" data-info="burstrom">
+                                <div class="mm-attr-icon">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                                </div>
+                                <span class="mm-attr-name">Processos de Criação de Valor</span>
+                            </div>
+
+                            <div class="mm-attr-card mm-attr-desafio mm-clickable" data-info="desafios">
+                                <div class="mm-attr-icon">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                                </div>
+                                <span class="mm-attr-name">Desafios na Gerência de Riscos em ECOS</span>
+                            </div>
+
+                            <div class="mm-attr-card mm-attr-estudos mm-clickable" data-info="estudos">
+                                <div class="mm-attr-icon">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                                </div>
+                                <span class="mm-attr-name">Estudos Primários que Identificaram os Riscos</span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="mm-hconn">
+                        <div class="mm-hconn-line"></div>
+                        <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><polyline points="2,2 8,5 2,8" stroke="rgba(56,189,248,0.4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+
+                    <!-- COL 3: SOLUÇÕES -->
+                    <div class="mm-hcol mm-hcol-sol">
+                        <div class="mm-hcol-label">Soluções Validadas na Literatura</div>
+                        <div class="mm-hcol-cards mm-hcol-cards-centered">
+
+                            <div class="mm-sol-card mm-sol-fw mm-clickable" data-info="sol-fw">
+                                <div class="mm-sol-header">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                                    <span>Frameworks</span>
+                                    <span class="mm-sol-count">7</span>
+                                </div>
+                            </div>
+
+                            <div class="mm-sol-card mm-sol-mod mm-clickable" data-info="sol-mod">
+                                <div class="mm-sol-header">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4"/></svg>
+                                    <span>Modelos</span>
+                                    <span class="mm-sol-count">6</span>
+                                </div>
+                            </div>
+
+                            <div class="mm-sol-card mm-sol-pra mm-clickable" data-info="sol-pra">
+                                <div class="mm-sol-header">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                                    <span>Práticas</span>
+                                    <span class="mm-sol-count">4</span>
+                                </div>
+                            </div>
+
+                            <div class="mm-sol-card mm-sol-fer mm-clickable" data-info="sol-fer">
+                                <div class="mm-sol-header">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                                    <span>Ferramentas</span>
+                                    <span class="mm-sol-count">2</span>
+                                </div>
+                            </div>
+
+                            <div class="mm-sol-card mm-sol-met mm-clickable" data-info="sol-met">
+                                <div class="mm-sol-header">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                                    <span>Métodos</span>
+                                    <span class="mm-sol-count">2</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="mm-hconn">
+                        <div class="mm-hconn-line"></div>
+                        <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><polyline points="2,2 8,5 2,8" stroke="rgba(56,189,248,0.4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+
+                    <!-- COL 4: FLUXO -->
+                    <div class="mm-hcol mm-hcol-last">
+                        <div class="mm-hcol-label">Como usar o catálogo</div>
+                        <div class="mm-hcol-flow">
+                            <div class="mm-flow-step-v mm-clickable" data-info="uso-1">
+                                <div class="mm-flow-num">1</div>
+                                <div class="mm-flow-content">
+                                    <span class="mm-flow-label">Contextualizar</span>
+                                </div>
+                            </div>
+                            <div class="mm-vconn mm-vconn-flow"></div>
+                            <div class="mm-flow-step-v mm-clickable" data-info="uso-2">
+                                <div class="mm-flow-num">2</div>
+                                <div class="mm-flow-content">
+                                    <span class="mm-flow-label">Filtrar</span>
+                                </div>
+                            </div>
+                            <div class="mm-vconn mm-vconn-flow"></div>
+                            <div class="mm-flow-step-v mm-clickable" data-info="uso-3">
+                                <div class="mm-flow-num">3</div>
+                                <div class="mm-flow-content">
+                                    <span class="mm-flow-label">Analisar</span>
+                                </div>
+                            </div>
+                            <div class="mm-vconn mm-vconn-flow"></div>
+                            <div class="mm-flow-step-v mm-clickable" data-info="uso-4">
+                                <div class="mm-flow-num">4</div>
+                                <div class="mm-flow-content">
+                                    <span class="mm-flow-label">Mitigar</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div><!-- /mm-hflow -->
+
+            </div><!-- /mm-diagram -->
+
+            <!-- PAINEL DE EXPLICAÇÃO -->
+            <div class="mm-info-panel" id="mmInfoPanel" hidden>
+                <button class="mm-info-close" id="mmInfoClose" aria-label="Fechar">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+                <div class="mm-info-tag" id="mmInfoTag"></div>
+                <h3 class="mm-info-title" id="mmInfoTitle"></h3>
+                <p class="mm-info-body" id="mmInfoBody"></p>
+                <div class="mm-info-ref" id="mmInfoRef"></div>
+            </div>
+
+            <!-- PAINEL DE EXPLICAÇÃO -->
+            <div class="mm-info-panel" id="mmInfoPanel" hidden>
+                <button class="mm-info-close" id="mmInfoClose" aria-label="Fechar">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+                <div class="mm-info-tag" id="mmInfoTag"></div>
+                <h3 class="mm-info-title" id="mmInfoTitle"></h3>
+                <p class="mm-info-body" id="mmInfoBody"></p>
+                <div class="mm-info-ref" id="mmInfoRef"></div>
+            </div>
+
+            <!-- ══ PAINEL DE EXPLICAÇÃO ══ -->
+            <div class="mm-info-panel" id="mmInfoPanel" hidden>
+                <button class="mm-info-close" id="mmInfoClose" aria-label="Fechar">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+                <div class="mm-info-tag" id="mmInfoTag"></div>
+                <h3 class="mm-info-title" id="mmInfoTitle"></h3>
+                <p class="mm-info-body" id="mmInfoBody"></p>
+                <div class="mm-info-ref" id="mmInfoRef"></div>
+            </div>
+        </div><!-- /mm-container -->
+    </section>
+
+    <style>
+        /* METAMODELO — LAYOUT HORIZONTAL */
+        .metamodel-section { padding:80px 5% 72px; background:linear-gradient(180deg,transparent 0%,rgba(15,23,42,0.6) 100%); border-bottom:1px solid rgba(255,255,255,0.05); overflow-x:auto; }
+        .metamodel-container { max-width:1360px; margin:0 auto; }
+        .metamodel-header { text-align:center; margin-bottom:52px; }
+        .metamodel-tag { display:inline-flex; align-items:center; gap:7px; font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:2px; color:#38bdf8; padding:5px 14px; border-radius:100px; border:1px solid rgba(56,189,248,0.25); background:rgba(56,189,248,0.07); margin-bottom:20px; }
+        .metamodel-title { font-size:clamp(1.6rem,3.5vw,2.4rem); font-weight:800; letter-spacing:-1px; color:#f8fafc; margin-bottom:12px; line-height:1.2; }
+        .metamodel-subtitle { font-size:0.92rem; color:#64748b; max-width:560px; margin:0 auto; line-height:1.7; }
+        .metamodel-diagram { width:100%; }
+
+        .mm-hflow { display:flex; align-items:center; min-width:860px; }
+        .mm-hcol { flex:1; display:flex; flex-direction:column; min-width:0; justify-content:flex-start; }
+        .mm-hcol-first { flex:0 0 190px; }
+        .mm-hcol-last  { flex:0 0 195px; }
+        .mm-hcol-label { font-size:0.63rem; font-weight:700; text-transform:uppercase; letter-spacing:2px; color:#334155; text-align:center; margin-bottom:12px; padding:0 4px; white-space:nowrap; }
+
+        .mm-hconn { display:flex; align-items:center; flex-shrink:0; padding-top:0; }
+        .mm-hconn-line { width:16px; height:2px; background:linear-gradient(90deg,rgba(56,189,248,0.2),rgba(56,189,248,0.4)); }
+
+        .mm-vconn { width:1px; height:8px; background:rgba(56,189,248,0.2); margin:0 auto; }
+        .mm-vconn-flow { height:6px; }
+
+        .mm-core-v { background:rgba(56,189,248,0.08); border:1px solid rgba(56,189,248,0.35); border-radius:12px; padding:14px 12px; display:flex; flex-direction:column; align-items:center; gap:6px; text-align:center; }
+        .mm-node-icon { color:#38bdf8; display:flex; }
+        .mm-node-label { font-size:0.86rem; font-weight:800; color:#f8fafc; }
+        .mm-node-sub   { font-size:0.7rem; color:#64748b; line-height:1.45; }
+
+        .mm-hcol-sub { display:flex; flex-direction:column; gap:5px; }
+        .mm-dim { border-radius:9px; padding:9px 10px; display:flex; flex-direction:column; align-items:center; gap:3px; text-align:center; border:1px solid; }
+        .mm-dim-sm .mm-node-label { font-size:0.78rem; }
+        .mm-dim-sm .mm-node-sub   { font-size:0.66rem; }
+        .mm-dim-count { font-size:0.58rem; font-weight:700; text-transform:uppercase; letter-spacing:1px; padding:2px 6px; border-radius:100px; margin-top:2px; }
+
+        .mm-dim-tec { background:rgba(56,189,248,0.07);  border-color:rgba(56,189,248,0.25); }
+        .mm-dim-tec .mm-node-label { color:#38bdf8; } .mm-dim-tec .mm-dim-count { background:rgba(56,189,248,0.12); color:#38bdf8; }
+        .mm-dim-soc { background:rgba(251,191,36,0.07);  border-color:rgba(251,191,36,0.25); }
+        .mm-dim-soc .mm-node-label { color:#fbbf24; } .mm-dim-soc .mm-dim-count { background:rgba(251,191,36,0.12); color:#fbbf24; }
+        .mm-dim-neg { background:rgba(74,222,128,0.07);  border-color:rgba(74,222,128,0.25); }
+        .mm-dim-neg .mm-node-label { color:#4ade80; }  .mm-dim-neg .mm-dim-count { background:rgba(74,222,128,0.12); color:#4ade80; }
+
+        .mm-hcol-cards { display:flex; flex-direction:column; gap:5px; justify-content:center; }
+        .mm-attr-card { background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.07); border-radius:8px; padding:9px 10px; display:flex; gap:8px; align-items:flex-start; }
+        .mm-attr-icon { width:22px; height:22px; flex-shrink:0; display:flex; align-items:center; justify-content:center; border-radius:5px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.07); }
+        .mm-attr-sei     .mm-attr-icon { color:#a78bfa; }
+        .mm-attr-ecos    .mm-attr-icon { color:#38bdf8; }
+        .mm-attr-metrica .mm-attr-icon { color:#f472b6; }
+        .mm-attr-valor   .mm-attr-icon { color:#4ade80; }
+        .mm-attr-desafio .mm-attr-icon { color:#fb923c; }
+        .mm-attr-estudos .mm-attr-icon { color:#fbbf24; }
+        .mm-attr-content { display:flex; flex-direction:column; gap:4px; flex:1; min-width:0; }
+        .mm-attr-name { font-size:0.74rem; font-weight:700; color:#e2e8f0; line-height:1.3; }
+        .mm-attr-ref  { font-size:0.62rem; color:#475569; font-weight:400; }
+
+        .mm-sol-card { border-radius:8px; padding:9px 10px; border:1px solid; display:flex; flex-direction:column; gap:4px; }
+        .mm-sol-header { display:flex; align-items:center; gap:5px; font-size:0.74rem; font-weight:700; }
+        .mm-sol-count  { margin-left:auto; font-size:0.9rem; font-weight:800; line-height:1; }
+        .mm-sol-items  { font-size:0.6rem; color:#475569; font-weight:600; letter-spacing:0.3px; }
+        .mm-sol-note-inline { font-size:0.63rem; color:#334155; text-align:center; padding-top:6px; border-top:1px solid rgba(255,255,255,0.05); margin-top:2px; }
+        .mm-sol-fw  { background:rgba(139,92,246,0.07); border-color:rgba(139,92,246,0.2); }
+        .mm-sol-fw  .mm-sol-header, .mm-sol-fw  .mm-sol-count { color:#a78bfa; }
+        .mm-sol-mod { background:rgba(56,189,248,0.07);  border-color:rgba(56,189,248,0.2); }
+        .mm-sol-mod .mm-sol-header, .mm-sol-mod .mm-sol-count { color:#38bdf8; }
+        .mm-sol-pra { background:rgba(74,222,128,0.07);  border-color:rgba(74,222,128,0.2); }
+        .mm-sol-pra .mm-sol-header, .mm-sol-pra .mm-sol-count { color:#4ade80; }
+        .mm-sol-fer { background:rgba(251,191,36,0.07);  border-color:rgba(251,191,36,0.2); }
+        .mm-sol-fer .mm-sol-header, .mm-sol-fer .mm-sol-count { color:#fbbf24; }
+        .mm-sol-met { background:rgba(251,146,60,0.07);  border-color:rgba(251,146,60,0.2); }
+        .mm-sol-met .mm-sol-header, .mm-sol-met .mm-sol-count { color:#fb923c; }
+
+        .mm-hcol-flow { display:flex; flex-direction:column; }
+        .mm-flow-step-v { display:flex; align-items:flex-start; gap:8px; background:rgba(56,189,248,0.04); border:1px solid rgba(56,189,248,0.12); border-radius:8px; padding:9px 10px; }
+        .mm-flow-num { width:20px; height:20px; flex-shrink:0; background:rgba(56,189,248,0.15); border:1px solid rgba(56,189,248,0.35); border-radius:5px; display:flex; align-items:center; justify-content:center; font-size:0.7rem; font-weight:800; color:#38bdf8; }
+        .mm-flow-content { display:flex; flex-direction:column; gap:2px; }
+        .mm-flow-label { font-size:0.76rem; font-weight:700; color:#e2e8f0; }
+        .mm-flow-desc  { font-size:0.66rem; color:#64748b; line-height:1.4; }
+
+        /* Coluna de soluções centralizada verticalmente */
+        .mm-hcol-cards-centered {
+            flex: 1;
+            justify-content: center;
+        }
+        .mm-hcol-sol {
+            justify-content: flex-start;
+        }
+        .mm-hcol-sol .mm-hcol-cards {
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+
+
+        /* Rótulo das dimensões */
+        .mm-dims-label {
+            font-size: 0.6rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #334155;
+            text-align: center;
+            margin: 6px 0 6px;
+        }
+
+        /* Dimensões sem contador, só nome */
+        .mm-dim-sm .mm-node-label { font-size: 0.76rem; }
+        .mm-dim-sm .mm-node-sub   { display: none; }
+        .mm-dim-sm .mm-dim-count  { display: none; }
+
+        /* ── Elementos clicáveis ── */
+        .mm-clickable {
+            cursor: pointer;
+            transition: filter 0.18s, transform 0.18s, box-shadow 0.18s;
+            position: relative;
+        }
+        .mm-clickable:hover {
+            filter: brightness(1.12);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+        }
+        .mm-clickable:active { transform: translateY(0); }
+
+        .mm-click-hint {
+            display: block;
+            font-size: 0.58rem;
+            color: rgba(56,189,248,0.5);
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            margin-top: 4px;
+            font-weight: 600;
+        }
+
+        /* ── Painel de explicação ── */
+        .mm-info-panel {
+            position: relative;
+            margin-top: 28px;
+            background: #1e293b;
+            border: 1px solid rgba(56,189,248,0.25);
+            border-radius: 14px;
+            padding: 24px 28px;
+            animation: mmPanelIn 0.25s cubic-bezier(0.4,0,0.2,1);
+            max-width: 100%;
+        }
+
+        @keyframes mmPanelIn {
+            from { opacity:0; transform:translateY(8px); }
+            to   { opacity:1; transform:translateY(0); }
+        }
+
+        .mm-info-close {
+            position: absolute;
+            top: 16px; right: 16px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 6px;
+            width: 28px; height: 28px;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; color: #64748b;
+            transition: background 0.15s, color 0.15s;
+        }
+        .mm-info-close:hover { background: rgba(255,255,255,0.1); color: #e2e8f0; }
+
+        .mm-info-tag {
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 3px 10px;
+            border-radius: 100px;
+            background: rgba(56,189,248,0.1);
+            border: 1px solid rgba(56,189,248,0.25);
+            color: #38bdf8;
+            margin-bottom: 12px;
+        }
+
+        .mm-info-title {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: #f8fafc;
+            margin-bottom: 10px;
+            letter-spacing: -0.3px;
+            line-height: 1.3;
+        }
+
+        .mm-info-body {
+            font-size: 0.88rem;
+            color: #94a3b8;
+            line-height: 1.75;
+            margin: 0;
+        }
+
+        .mm-info-ref {
+            margin-top: 14px;
+            font-size: 0.72rem;
+            color: #475569;
+            font-style: italic;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+
+        /* ── Elementos clicáveis ── */
+        .mm-clickable {
+            cursor: pointer;
+            transition: filter 0.18s, transform 0.18s, box-shadow 0.18s;
+            position: relative;
+        }
+        .mm-clickable:hover {
+            filter: brightness(1.12);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+        }
+        .mm-clickable:active { transform: translateY(0); }
+
+        .mm-click-hint {
+            display: block;
+            font-size: 0.58rem;
+            color: rgba(56,189,248,0.5);
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            margin-top: 4px;
+            font-weight: 600;
+        }
+
+        /* ── Painel de explicação ── */
+        .mm-info-panel {
+            position: relative;
+            margin-top: 28px;
+            background: #1e293b;
+            border: 1px solid rgba(56,189,248,0.25);
+            border-radius: 14px;
+            padding: 24px 28px;
+            animation: mmPanelIn 0.25s cubic-bezier(0.4,0,0.2,1);
+            max-width: 100%;
+        }
+
+        @keyframes mmPanelIn {
+            from { opacity:0; transform:translateY(8px); }
+            to   { opacity:1; transform:translateY(0); }
+        }
+
+        .mm-info-close {
+            position: absolute;
+            top: 16px; right: 16px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 6px;
+            width: 28px; height: 28px;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; color: #64748b;
+            transition: background 0.15s, color 0.15s;
+        }
+        .mm-info-close:hover { background: rgba(255,255,255,0.1); color: #e2e8f0; }
+
+        .mm-info-tag {
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 3px 10px;
+            border-radius: 100px;
+            background: rgba(56,189,248,0.1);
+            border: 1px solid rgba(56,189,248,0.25);
+            color: #38bdf8;
+            margin-bottom: 12px;
+        }
+
+        .mm-info-title {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: #f8fafc;
+            margin-bottom: 10px;
+            letter-spacing: -0.3px;
+            line-height: 1.3;
+        }
+
+        .mm-info-body {
+            font-size: 0.88rem;
+            color: #94a3b8;
+            line-height: 1.75;
+            margin: 0;
+        }
+
+        .mm-info-ref {
+            margin-top: 14px;
+            font-size: 0.72rem;
+            color: #475569;
+            font-style: italic;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .mm-clickable.mm-active {
+            outline: 2px solid rgba(56,189,248,0.6);
+            outline-offset: 2px;
+        }
+
+        @media (max-width:1024px) {
+            .metamodel-section { padding:56px 0 48px; }
+            .metamodel-container { padding:0 16px; }
+        }
+    </style>
+
     <main id="catalogo">
         <header class="section-header">
             <h2>Catálogo de Riscos em Ecossistemas de Software</h2>
@@ -144,7 +735,10 @@
 
         <section class="controls">
             <div class="search-wrapper">
-                <input type="text" id="searchInput" placeholder="Pesquisar risco...">
+                <div class="autocomplete-wrap" id="autocompleteWrap">
+                    <input type="text" id="searchInput" placeholder="Pesquisar risco..." autocomplete="off">
+                    <ul class="autocomplete-list" id="autocompleteList" hidden></ul>
+                </div>
             </div>
             
             <div class="filter-buttons">
@@ -154,6 +748,62 @@
                 <button class="btn-filter" data-filter="Negócio">Negócio</button>
             </div>
         </section>
+
+        <!-- ── PAINEL DE CONTEXTO ── -->
+        <div class="ctx-bar" id="ctxBar">
+            <button class="ctx-toggle" id="ctxToggle" onclick="toggleContextPanel()" aria-expanded="false" aria-controls="ctxPanel">
+                <span class="ctx-toggle-icon">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+                </span>
+                <span class="ctx-toggle-label">Filtrar por contexto do ecossistema</span>
+                <span class="ctx-active-count" id="ctxActiveCount" style="display:none;">0</span>
+                <span class="ctx-toggle-chevron">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </span>
+            </button>
+            <div class="ctx-panel" id="ctxPanel" hidden>
+                <p class="ctx-desc">Selecione os atributos que descrevem o seu ecossistema. Os riscos mais compatíveis serão destacados no topo — o catálogo completo permanece visível.</p>
+                <div class="ctx-group">
+                    <span class="ctx-group-label">
+                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                        Tipo de ECOS
+                    </span>
+                    <div class="ctx-chips">
+                        <button class="ctx-chip" data-group="ecos" data-value="Aberto" onclick="toggleChip(this)">Aberto</button>
+                        <button class="ctx-chip" data-group="ecos" data-value="Híbrido" onclick="toggleChip(this)">Híbrido</button>
+                    </div>
+                </div>
+                <div class="ctx-group">
+                    <span class="ctx-group-label">
+                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                        Saúde do ECOS
+                    </span>
+                    <div class="ctx-chips">
+                        <button class="ctx-chip" data-group="metrica" data-value="Robustez" onclick="toggleChip(this)">Robustez</button>
+                        <button class="ctx-chip" data-group="metrica" data-value="Produtividade" onclick="toggleChip(this)">Produtividade</button>
+                        <button class="ctx-chip" data-group="metrica" data-value="Criação de Nichos" onclick="toggleChip(this)">Criação de Nichos</button>
+                    </div>
+                </div>
+                <div class="ctx-group">
+                    <span class="ctx-group-label">
+                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                        Processo de Valor
+                    </span>
+                    <div class="ctx-chips">
+                        <button class="ctx-chip" data-group="valor" data-value="Criação de valor" onclick="toggleChip(this)">Criação</button>
+                        <button class="ctx-chip" data-group="valor" data-value="Entrega de valor" onclick="toggleChip(this)">Entrega</button>
+                        <button class="ctx-chip" data-group="valor" data-value="Captura de valor" onclick="toggleChip(this)">Captura</button>
+                    </div>
+                </div>
+                <div class="ctx-actions">
+                    <button class="ctx-clear" id="ctxClear" onclick="limparContexto()" style="display:none;">
+                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                        Limpar filtros de contexto
+                    </button>
+                    <span class="ctx-hint" id="ctxHint"></span>
+                </div>
+            </div>
+        </div>
 
         <section id="riscosContainer" class="riscos-grid"></section>
     </main>
@@ -178,7 +828,7 @@
             <div class="panel-card">
                 <div class="panel-card-title">
                     <span>Classificação do Risco de acordo com a Taxonomia de Risco SEI</span>
-                    <button class="help-icon" onclick="abrirAjuda('sei')" aria-label="Ajuda sobre Taxonomia de Risco SEI">
+                    <button class="help-icon" onclick="abrirAjuda('sei')" aria-label="Ajuda sobre Classificação do Risco de acordo com a Taxonomia de Risco SEI">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
                     </button>
                 </div>
@@ -543,5 +1193,247 @@
             document.getElementById('hamburger').classList.remove('active');
         }
     </script>
+
+    <script id="mmInteractive">
+    /* ════════════════════════════════════════
+       METAMODELO INTERATIVO
+    ════════════════════════════════════════ */
+    const mmInfoData = {
+        'risco': {
+            tag: 'Conceito Central',
+            title: 'O que é um Risco em ECOS?',
+            body: 'Em um Ecossistema de Software (ECOS), um risco é qualquer evento ou condição incerta que, se ocorrer, pode prejudicar o funcionamento, a sustentabilidade ou os objetivos do ecossistema. Diferente de projetos de software tradicionais, os riscos em ECOS são amplificados pela interdependência entre múltiplos atores — empresas, desenvolvedores voluntários, plataformas e usuários — que nem sempre se coordenam formalmente. Um único risco não tratado pode desencadear uma cadeia de falhas em todo o ecossistema.',
+            ref: 'Definição baseada em Oliveira e Alves (2021) e Keshani et al. (2024).'
+        },
+        'dim-tec': {
+            tag: 'Dimensão',
+            title: 'Dimensão Técnica (R01–R11)',
+            body: 'Agrupa os 11 riscos relacionados à infraestrutura de código e dependências do ecossistema: vulnerabilidades de segurança, falhas em bibliotecas, incompatibilidade de versões, ataques a pacotes e problemas de manutenção técnica. São riscos que afetam diretamente o software produzido e distribuído — o que o ecossistema entrega ao mundo.',
+            ref: 'Classificação baseada em Oliveira e Alves (2021).'
+        },
+        'dim-soc': {
+            tag: 'Dimensão',
+            title: 'Dimensão Social (R12–R18)',
+            body: 'Agrupa os 7 riscos que emergem das relações humanas dentro do ecossistema: perda de confiança entre atores, conflitos de interesse na governança, falhas de comunicação, sobrecarga de mantenedores voluntários e a dependência crítica de poucas pessoas. Mesmo sem nenhum bug no código, um ecossistema pode falhar por razões puramente sociais.',
+            ref: 'Classificação baseada em Oliveira e Alves (2021).'
+        },
+        'dim-neg': {
+            tag: 'Dimensão',
+            title: 'Dimensão de Negócio (R19–R24)',
+            body: 'Agrupa os 6 riscos ligados à viabilidade e continuidade do ecossistema como negócio ou iniciativa sustentável: falta de documentação, custos elevados de manutenção, percepção insuficiente de valor, fragmentação da plataforma e até a morte do ecossistema. São riscos estratégicos que podem tornar o ecossistema irrelevante ou inviável ao longo do tempo.',
+            ref: 'Classificação baseada em Oliveira e Alves (2021).'
+        },
+        'sei': {
+            tag: 'Framework de Classificação',
+            title: 'Taxonomia SEI — O que é?',
+            body: 'O Software Engineering Institute (SEI) da Universidade Carnegie Mellon desenvolveu uma taxonomia para classificar riscos em projetos de software. Ela organiza os riscos em classes (como Engenharia de Produto, Processo de Desenvolvimento e Restrições do Projeto) e elementos mais específicos dentro de cada classe. No catálogo, essa classificação ajuda a identificar em qual aspecto técnico ou organizacional cada risco se origina, facilitando a criação de estratégias de resposta.',
+            ref: 'SEI — Software Engineering Institute, Carnegie Mellon University.'
+        },
+        'sei-eng': {
+            tag: 'Classe SEI',
+            title: 'Engenharia de Produto',
+            body: 'Classe da Taxonomia SEI que cobre riscos relacionados ao próprio artefato de software: sua arquitetura, código, segurança, compatibilidade e integração de componentes. A maioria dos riscos técnicos do catálogo (R01–R11) se enquadra aqui, pois envolvem falhas no desenvolvimento, na distribuição ou na manutenção dos pacotes e bibliotecas que compõem o ecossistema.',
+            ref: 'Taxonomia de Riscos do SEI — Carnegie Mellon University.'
+        },
+        'sei-rest': {
+            tag: 'Classe SEI',
+            title: 'Restrições do Projeto',
+            body: 'Classe da Taxonomia SEI que abrange riscos oriundos de limitações externas ao desenvolvimento: restrições de custo, prazo, recursos humanos disponíveis e viabilidade econômica. No contexto de ECOS, essa classe aparece em riscos de negócio como os altos custos de manutenção (R20) e o fracasso em fases iniciais (R23), onde as restrições determinam se o ecossistema consegue sobreviver.',
+            ref: 'Taxonomia de Riscos do SEI — Carnegie Mellon University.'
+        },
+        'sei-proc': {
+            tag: 'Classe SEI',
+            title: 'Processo de Desenvolvimento',
+            body: 'Classe da Taxonomia SEI que cobre riscos ligados a como o software é construído: ausência de processos formais, falhas de governança, comunicação deficiente entre equipes e falta de padronização. No catálogo, essa classe aparece em riscos como a ausência de mecanismos formais de governança (R15) e as falhas de comunicação entre atores (R14).',
+            ref: 'Taxonomia de Riscos do SEI — Carnegie Mellon University.'
+        },
+        'manikas': {
+            tag: 'Referência Teórica',
+            title: 'Taxonomia dos Tipos de ECOS (Manikas, 2016)',
+            body: 'O pesquisador Konstantinos Manikas classificou os ecossistemas de software em três tipos: (1) Aberto — código-fonte público, contribuições voluntárias sem fins lucrativos, como NPM e PyPI; (2) Híbrido — combina componentes proprietários e abertos, como o iOS que tem loja proprietária mas aceita contribuições da comunidade; (3) Código proprietário — o código é fechado e gera receita direta. O catálogo utiliza essa tipologia para indicar em qual tipo de ecossistema cada risco é mais propenso a ocorrer.',
+            ref: 'Manikas, K. (2016). Revisiting software ecosystems research: A longitudinal literature study. Journal of Systems and Software, 117, 84–103.'
+        },
+        'ecos-aberto': {
+            tag: 'Tipo de ECOS',
+            title: 'ECOS Aberto',
+            body: 'Ecossistemas de código aberto são mantidos por comunidades de desenvolvedores voluntários, sem remuneração formal. Exemplos: NPM (JavaScript), PyPI (Python), Maven (Java), Eclipse Foundation e Apache Foundation. Por dependerem de voluntários e carecerem de controle centralizado, são especialmente vulneráveis a riscos como abandono de bibliotecas, injeção de código malicioso e sobrecarga de mantenedores.',
+            ref: 'Manikas, K. (2016). Journal of Systems and Software, 117, 84–103.'
+        },
+        'ecos-hibrido': {
+            tag: 'Tipo de ECOS',
+            title: 'ECOS Híbrido',
+            body: 'Ecossistemas híbridos combinam componentes proprietários e abertos. Uma empresa controla partes estratégicas da plataforma enquanto a comunidade contribui com outras partes. Exemplos incluem o iOS (App Store proprietária + ferramentas abertas) e plataformas como SAP. Esse modelo enfrenta riscos específicos de governança, conflitos de interesse e gestão de múltiplas dependências com regras diferentes.',
+            ref: 'Manikas, K. (2016). Journal of Systems and Software, 117, 84–103.'
+        },
+        'iansiti': {
+            tag: 'Referência Teórica',
+            title: 'Métricas de Saúde do ECOS (Iansiti & Levien, 2004)',
+            body: 'Marco Iansiti e Roy Levien propuseram que ecossistemas tecnológicos, assim como ecossistemas naturais, podem ser avaliados por sua saúde. Eles identificaram três métricas principais: Robustez (capacidade de sobreviver a perturbações), Produtividade (eficiência na geração de valor) e Criação de Nichos (capacidade de atrair novos participantes). No catálogo, cada risco indica qual dessas métricas ele ameaça, ajudando gestores a priorizarem intervenções.',
+            ref: 'Iansiti, M. e Levien, R. (2004). The Keystone Advantage. Harvard Business School Press.'
+        },
+        'metrica-rob': {
+            tag: 'Métrica de Saúde',
+            title: 'Robustez',
+            body: 'A robustez mede a capacidade do ecossistema de sobreviver a perturbações, ataques e falhas sistêmicas. Um ecossistema robusto consegue absorver impactos — como a descoberta de uma vulnerabilidade crítica ou o abandono de um mantenedor importante — sem colapsar. Riscos que ameaçam a robustez são geralmente os mais urgentes, pois podem comprometer a existência do ecossistema.',
+            ref: 'Iansiti, M. e Levien, R. (2004). The Keystone Advantage.'
+        },
+        'metrica-prod': {
+            tag: 'Métrica de Saúde',
+            title: 'Produtividade',
+            body: 'A produtividade mede a eficiência com que os participantes do ecossistema geram e entregam valor. Um ecossistema produtivo tem ciclos rápidos de desenvolvimento, atualizações frequentes e baixo custo de manutenção. Riscos que ameaçam a produtividade — como incompatibilidades entre versões ou atualizações inseguras — tornam o trabalho dos desenvolvedores mais lento e custoso.',
+            ref: 'Iansiti, M. e Levien, R. (2004). The Keystone Advantage.'
+        },
+        'metrica-nichos': {
+            tag: 'Métrica de Saúde',
+            title: 'Criação de Nichos',
+            body: 'A criação de nichos mede a capacidade do ecossistema de atrair novos participantes e diversificar suas contribuições. Um ecossistema saudável consegue criar espaço para especialistas, novos projetos e inovações. Riscos que ameaçam essa métrica — como percepção de valor insuficiente ou falta de documentação — dificultam a entrada de novos atores e reduzem a vitalidade do ecossistema a longo prazo.',
+            ref: 'Iansiti, M. e Levien, R. (2004). The Keystone Advantage.'
+        },
+        'burstrom': {
+            tag: 'Referência Teórica',
+            title: 'Processos de Criação de Valor (Burström et al., 2022)',
+            body: 'Burström e colaboradores descrevem o ciclo de valor em ecossistemas de software em três processos: (1) Criação de valor — desenvolvimento dos artefatos de software; (2) Entrega de valor — distribuição e disponibilização para os participantes; (3) Captura de valor — o retorno que os atores obtêm (financeiro, reputacional, técnico). No catálogo, cada risco indica qual processo ele ameaça, permitindo entender onde no ciclo de vida do ecossistema o impacto ocorre.',
+            ref: 'Burström et al. (2022). Referenciado em Campos et al. (2025).'
+        },
+        'valor-cria': {
+            tag: 'Processo de Valor',
+            title: 'Criação de Valor',
+            body: 'O processo de criação de valor engloba tudo que envolve o desenvolvimento dos artefatos de software: escrever código, criar bibliotecas, corrigir bugs, lançar versões. Riscos que ameaçam esse processo — como injeção de código malicioso ou abandono de bibliotecas — comprometem a base sobre a qual todo o ecossistema é construído.',
+            ref: 'Burström et al. (2022), in Campos et al. (2025).'
+        },
+        'valor-entr': {
+            tag: 'Processo de Valor',
+            title: 'Entrega de Valor',
+            body: 'O processo de entrega de valor abrange a distribuição e disponibilização das soluções de software para os participantes do ecossistema — seja via gerenciadores de pacotes (NPM, PyPI), repositórios, lojas de aplicativos ou APIs. Riscos que ameaçam a entrega comprometem a capacidade de levar atualizações e melhorias até quem usa o ecossistema.',
+            ref: 'Burström et al. (2022), in Campos et al. (2025).'
+        },
+        'valor-capt': {
+            tag: 'Processo de Valor',
+            title: 'Captura de Valor',
+            body: 'A captura de valor representa o retorno que os atores do ecossistema obtêm por sua participação: receita financeira, reconhecimento, reputação ou benefícios técnicos. Riscos que ameaçam a captura de valor tornam a participação no ecossistema menos atraente — levando atores a migrar para alternativas ou abandonar o ecossistema.',
+            ref: 'Burström et al. (2022), in Campos et al. (2025).'
+        },
+        'desafios': {
+            tag: 'Elemento do Catálogo',
+            title: 'Desafios na Gerência de Riscos em ECOS (D01–D14)',
+            body: 'O catálogo identificou 14 desafios (D01–D14) que persistem na gestão de riscos em ECOS, mesmo com as soluções existentes. Esses desafios representam lacunas entre o que a pesquisa propõe e o que é praticado — como a dificuldade de coordenar múltiplos atores (D01), reduzir o tempo de exposição a vulnerabilidades (D02) ou integrar riscos técnicos e sociais de forma conjunta (D11). Conhecer os desafios ajuda a entender por que o problema ainda não foi resolvido.',
+            ref: 'Identificados no MSL conduzido por Campos et al. (2025).'
+        },
+        'solucoes-attr': {
+            tag: 'Atributo do Risco',
+            title: 'Soluções Identificadas na Literatura para Gerenciar o Risco',
+            body: 'Cada risco do catálogo é acompanhado das soluções que pesquisadores propuseram para gerenciá-lo. Essas soluções foram extraídas dos mesmos 35 estudos primários que identificaram os riscos. Elas estão classificadas por tipo — framework, modelo, prática, ferramenta ou método — e indicam se já foram avaliadas empiricamente. Ao clicar em "Ver análise completa" de qualquer risco, você verá exatamente quais soluções se aplicam àquele risco específico.',
+            ref: 'Campos et al. (2025). Challenges and Solutions of Risk Management in Software Ecosystems. SBSI 2026.'
+        },
+        'estudos': {
+            tag: 'Base de Evidências',
+            title: 'Estudos Primários que Identificaram os Riscos (E01–E35)',
+            body: 'Cada risco, solução e desafio do catálogo é fundamentado em estudos científicos publicados entre 2013 e 2025. De 710 estudos recuperados nas principais bases digitais (IEEE, Scopus, ACM, ScienceDirect), 35 foram selecionados após rigoroso processo de filtragem. Esses 35 estudos são as evidências científicas que sustentam cada informação do catálogo — ao clicar em "Ver análise completa" de um risco, você pode ver quais estudos o embasam.',
+            ref: 'MSL conduzido por Campos et al. (2025) — Janeiro a Julho de 2025.'
+        },
+        'sol-fw': {
+            tag: 'Tipologia de Solução',
+            title: 'Frameworks',
+            body: 'Um framework é uma estrutura de suporte que organiza e orienta a execução de tarefas complexas. No contexto de gerência de riscos em ECOS, frameworks fornecem arquiteturas conceituais para identificar, classificar e monitorar riscos de forma sistemática. O catálogo identificou 7 frameworks (S01–S07), incluindo o TrustSECO para gestão de confiança e o framework HIN para classificação de pacotes maliciosos. São as soluções mais abrangentes e estruturadas.',
+            ref: 'Classificação baseada em Shaw (2003), in Campos et al. (2025).'
+        },
+        'sol-mod': {
+            tag: 'Tipologia de Solução',
+            title: 'Modelos',
+            body: 'Um modelo é uma representação simplificada de um fenômeno, usada para entender, analisar e prever comportamentos. Os 6 modelos do catálogo (S08–S13) oferecem representações formais dos riscos em ECOS: como as dependências se comportam, como a confiança entre atores se estabelece e como medir o risco de segurança de uma biblioteca. Modelos são especialmente úteis para análise técnica e tomada de decisão baseada em dados.',
+            ref: 'Classificação baseada em Shaw (2003), in Campos et al. (2025).'
+        },
+        'sol-pra': {
+            tag: 'Tipologia de Solução',
+            title: 'Práticas',
+            body: 'Práticas são abordagens concretas que organizações e desenvolvedores podem adotar no dia a dia para reduzir riscos. As 4 práticas do catálogo (S14–S17) incluem: garantir a robustez da arquitetura da plataforma, adotar Service Level Agreements (SLAs), implementar mecanismos de segurança em hubs de modelos e atrair e reter participantes ativamente. São soluções imediatamente aplicáveis, sem necessidade de desenvolvimento técnico complexo.',
+            ref: 'Classificação baseada em Shaw (2003), in Campos et al. (2025).'
+        },
+        'sol-fer': {
+            tag: 'Tipologia de Solução',
+            title: 'Ferramentas',
+            body: 'Ferramentas são artefatos de software que implementam técnicas de gerência de riscos de forma automatizada. O catálogo identificou 2 ferramentas: DepReveal (S18), que analisa vulnerabilidades em projetos NPM e classifica avisos de segurança, e smartPip (S19), que resolve conflitos de dependências em ambientes Python. São soluções que os desenvolvedores podem integrar diretamente ao seu fluxo de trabalho.',
+            ref: 'Classificação baseada em Shaw (2003), in Campos et al. (2025).'
+        },
+        'sol-met': {
+            tag: 'Tipologia de Solução',
+            title: 'Métodos',
+            body: 'Métodos são procedimentos estruturados e passo a passo para realizar uma atividade específica. Os 2 métodos do catálogo (S20–S21) incluem: um método para gerenciar a confiabilidade da cadeia de suprimentos de software usando grafos de conhecimento, e um método multicritério para seleção de tipos de ECOS em eletrônicos de consumo. São soluções que guiam tomadores de decisão por processos rigorosos.',
+            ref: 'Classificação baseada em Shaw (2003), in Campos et al. (2025).'
+        },
+        'uso-1': {
+            tag: 'Etapa de Uso',
+            title: 'Etapa 1 — Contextualizar',
+            body: 'Antes de explorar os riscos, reflita sobre o contexto do seu ecossistema. Que tipo de ECOS você está analisando — aberto, híbrido? Quais aspectos da saúde do ecossistema mais preocupam você agora — robustez, produtividade ou criação de nichos? Qual processo do ciclo de valor está mais ameaçado? Essas respostas guiarão os filtros de contexto disponíveis acima do catálogo.',
+            ref: ''
+        },
+        'uso-2': {
+            tag: 'Etapa de Uso',
+            title: 'Etapa 2 — Filtrar',
+            body: 'Com o contexto em mente, use os filtros do catálogo para focar nos riscos mais relevantes. Você pode filtrar por dimensão (Técnico, Social ou Negócio), usar a barra de busca para pesquisar por termos específicos, ou ativar o painel "Filtrar por contexto do ecossistema" para combinar múltiplos critérios ao mesmo tempo. O catálogo mostrará os riscos mais compatíveis em destaque.',
+            ref: ''
+        },
+        'uso-3': {
+            tag: 'Etapa de Uso',
+            title: 'Etapa 3 — Analisar',
+            body: 'Ao clicar em "Ver análise completa" em um card de risco, você acessa todas as informações detalhadas: descrição técnica, classificação na Taxonomia SEI, tipo de ECOS mais afetado, métrica de saúde ameaçada, processo de valor impactado e os estudos científicos que embasam cada informação. Use essa análise para compreender a fundo o risco antes de tomar decisões.',
+            ref: ''
+        },
+        'uso-4': {
+            tag: 'Etapa de Uso',
+            title: 'Etapa 4 — Mitigar',
+            body: 'Dentro de cada risco, você encontrará as soluções propostas na literatura para mitigá-lo — com links para os estudos de origem. As soluções estão classificadas por tipo (framework, modelo, prática, ferramenta ou método) e avaliadas quanto à sua validação empírica. Use essas informações para fundamentar suas estratégias de gerência de riscos com evidências científicas.',
+            ref: ''
+        }
+    };
+
+    function mmOpenInfo(key) {
+        var data = mmInfoData[key];
+        if (!data) return;
+        var panel = document.getElementById('mmInfoPanel');
+        document.getElementById('mmInfoTag').textContent   = data.tag;
+        document.getElementById('mmInfoTitle').textContent = data.title;
+        document.getElementById('mmInfoBody').textContent  = data.body;
+        var refEl = document.getElementById('mmInfoRef');
+        if (data.ref) {
+            refEl.textContent = data.ref;
+            refEl.style.display = 'block';
+        } else {
+            refEl.style.display = 'none';
+        }
+        panel.hidden = false;
+        panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+        // Highlight active element
+        document.querySelectorAll('.mm-clickable.mm-active').forEach(function(el) {
+            el.classList.remove('mm-active');
+        });
+        document.querySelectorAll('.mm-clickable[data-info="' + key + '"]').forEach(function(el) {
+            el.classList.add('mm-active');
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // Attach click listeners to all clickable elements
+        document.querySelectorAll('.mm-clickable[data-info]').forEach(function(el) {
+            el.addEventListener('click', function(e) {
+                e.stopPropagation();
+                mmOpenInfo(el.getAttribute('data-info'));
+            });
+        });
+
+        // Close button
+        var closeBtn = document.getElementById('mmInfoClose');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', function() {
+                document.getElementById('mmInfoPanel').hidden = true;
+                document.querySelectorAll('.mm-clickable.mm-active').forEach(function(el) {
+                    el.classList.remove('mm-active');
+                });
+            });
+        }
+    });
+    </script>
+
 </body>
 </html>
