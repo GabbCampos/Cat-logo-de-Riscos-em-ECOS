@@ -382,8 +382,8 @@ const dadosRiscos = [
         elementoSEI: "Contrato",
         desafio: "Atividades de desenvolvimento são altamente dependentes de desenvolvedores terceiros",
         justificativaSEI: "O Truck Factor é classificado como Risco de Restrições do Programa porque a dependência crítica de poucos mantenedores impõe uma restrição estrutural ao programa de desenvolvimento do ECOS: a continuidade dos projetos está condicionada à disponibilidade de indivíduos específicos que não possuem vínculo formal com o ecossistema. O elemento Contrato reflete que essa dependência decorre da ausência de acordos formais que garantam a continuidade do trabalho de manutenção por parte de colaboradores externos.",
-        ecos: "ECOS sem fins lucrativos",
-        justificativa: "Ecossistemas sem fins lucrativos dependem fundamentalmente de contribuições voluntárias e não remuneradas, o que torna a concentração de conhecimento em poucos mantenedores um risco estrutural. Sem incentivos financeiros ou contratuais que distribuam as responsabilidades de manutenção, esses ecossistemas são especialmente vulneráveis ao impacto do abandono ou indisponibilidade de seus colaboradores mais críticos.",
+        ecos: "Aberto",
+        justificativa: "Em ecossistemas de código aberto, a manutenção de pacotes depende predominantemente de contribuições voluntárias e não remuneradas, o que torna a concentração de conhecimento em poucos mantenedores um risco estrutural. Sem incentivos financeiros ou contratuais que distribuam as responsabilidades de manutenção, esses ecossistemas são especialmente vulneráveis ao impacto do abandono ou indisponibilidade de seus colaboradores mais críticos.",
         metrica: "Robustez",
         justificativaMetrica: "O Truck Factor ameaça diretamente a robustez do ecossistema (Iansiti e Levien, 2004), pois a concentração de conhecimento essencial em poucos indivíduos cria pontos únicos de falha. Quando esses mantenedores se tornam indisponíveis, o ecossistema perde capacidade de manter e evoluir seus componentes críticos, reduzindo sua resiliência a perturbações e comprometendo sua sobrevivência no longo prazo.",
         processoValor: "Criação de valor",
@@ -735,6 +735,7 @@ function exibirRiscos(lista) {
         };
         const btnStyle = btnColorMap[classeCSS] || btnColorMap.tecnico;
 
+        card.setAttribute('data-id', item.id);
         card.innerHTML = `
             <div class="card-header">
                 <span class="id-tag">${item.id}</span>
@@ -743,7 +744,13 @@ function exibirRiscos(lista) {
             <div class="card-main-content">
                 <h3>${item.risco}</h3>
                 <p class="descricao">${item.descricao.substring(0, 120)}...</p>
-                <button class="btn-ver-mais" style="background:${btnStyle.bg};border:1px solid ${btnStyle.border};color:${btnStyle.color};">Ver análise completa →</button>
+                <div class="card-footer-area">
+                    <button class="btn-ver-mais" style="background:${btnStyle.bg};border:1px solid ${btnStyle.border};color:${btnStyle.color};">Ver análise completa →</button>
+                    <span class="ctx-relevance">
+                        <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        Relevante para seu contexto
+                    </span>
+                </div>
             </div>
         `;
         card.onclick = () => openRiskDetails(item.id);
@@ -751,15 +758,165 @@ function exibirRiscos(lista) {
     });
 }
 
-function configurarEventos() {
-    searchInput?.addEventListener('input', (e) => {
-        const termo = e.target.value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-        const filtrados = dadosRiscos.filter(r => 
-            r.risco.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(termo) || 
-            r.id.toLowerCase().includes(termo)
-        );
-        exibirRiscos(filtrados);
+/* ════ PAINEL DE CONTEXTO ════ */
+const ctxState = { ecos: new Set(), metrica: new Set(), valor: new Set() };
+
+function toggleContextPanel() {
+    var panel = document.getElementById('ctxPanel');
+    var toggle = document.getElementById('ctxToggle');
+    var isOpen = !panel.hidden;
+    panel.hidden = isOpen;
+    toggle.setAttribute('aria-expanded', String(!isOpen));
+}
+
+function toggleChip(chip) {
+    var group = chip.getAttribute('data-group');
+    var value = chip.getAttribute('data-value');
+    chip.classList.toggle('active');
+    if (chip.classList.contains('active')) ctxState[group].add(value);
+    else ctxState[group].delete(value);
+    _syncCtxUI(); _aplicarContexto();
+}
+
+function limparContexto() {
+    ctxState.ecos.clear(); ctxState.metrica.clear(); ctxState.valor.clear();
+    document.querySelectorAll('.ctx-chip.active').forEach(function(c){ c.classList.remove('active'); });
+    _syncCtxUI(); _aplicarContexto();
+}
+
+function _totalAtivos() { return ctxState.ecos.size + ctxState.metrica.size + ctxState.valor.size; }
+
+function _syncCtxUI() {
+    var n = _totalAtivos();
+    var countEl = document.getElementById('ctxActiveCount');
+    var clearEl = document.getElementById('ctxClear');
+    var hintEl  = document.getElementById('ctxHint');
+    if (n > 0) { countEl.style.display='inline-flex'; countEl.textContent=n; clearEl.style.display='inline-flex'; }
+    else        { countEl.style.display='none'; clearEl.style.display='none'; }
+    if (hintEl) {
+        if (n > 0) { var nRel=document.querySelectorAll('.card.ctx-highlighted').length; hintEl.textContent=nRel>0?(nRel+' risco'+(nRel!==1?'s':'')+' em destaque'):''; }
+        else hintEl.textContent='';
+    }
+}
+
+function _calcularRelevanciaCtx(item) {
+    if (_totalAtivos()===0) return 0;
+    if (ctxState.ecos.size>0) {
+        var ecosRisco=item.ecos.toLowerCase(), matchEcos=false;
+        ctxState.ecos.forEach(function(v){ if(ecosRisco.indexOf(v.toLowerCase())!==-1) matchEcos=true; });
+        if (!matchEcos) return 0;
+    }
+    if (ctxState.metrica.size>0) {
+        var metricaRisco=item.metrica.toLowerCase(), matchMetrica=false;
+        ctxState.metrica.forEach(function(v){ if(metricaRisco.indexOf(v.toLowerCase())!==-1) matchMetrica=true; });
+        if (!matchMetrica) return 0;
+    }
+    if (ctxState.valor.size>0) {
+        var valorRisco=item.processoValor.toLowerCase(), matchValor=false;
+        ctxState.valor.forEach(function(v){ if(valorRisco.indexOf(v.toLowerCase())!==-1) matchValor=true; });
+        if (!matchValor) return 0;
+    }
+    return 1;
+}
+
+function _aplicarContexto() {
+    var container = document.getElementById('riscosContainer');
+    if (!container) return;
+    var cards = Array.prototype.slice.call(container.querySelectorAll('.card'));
+    var emptyEl = document.getElementById('ctxEmptyState');
+
+    if (_totalAtivos()===0) {
+        cards.forEach(function(c){ c.classList.remove('ctx-highlighted','ctx-dim'); var b=c.querySelector('.ctx-relevance'); if(b) b.style.display='none'; });
+        cards.sort(function(a,b){ var na=parseInt((a.querySelector('.id-tag')||{textContent:'R99'}).textContent.replace('R','')); var nb=parseInt((b.querySelector('.id-tag')||{textContent:'R99'}).textContent.replace('R','')); return na-nb; });
+        cards.forEach(function(c){ container.appendChild(c); });
+        if (emptyEl) emptyEl.style.display='none';
+        _syncCtxUI(); return;
+    }
+
+    var scored = cards.map(function(card){
+        var idTag=card.querySelector('.id-tag')?card.querySelector('.id-tag').textContent.trim():'';
+        var item=dadosRiscos.find(function(r){ return r.id===idTag; });
+        return { card:card, score:item?_calcularRelevanciaCtx(item):0 };
     });
+
+    scored.forEach(function(s){
+        var badge=s.card.querySelector('.ctx-relevance');
+        if (s.score===1) { s.card.classList.add('ctx-highlighted'); s.card.classList.remove('ctx-dim'); if(badge) badge.style.display='inline-flex'; }
+        else if (s.score===0) { s.card.classList.remove('ctx-highlighted'); s.card.classList.add('ctx-dim'); if(badge) badge.style.display='none'; }
+        else { s.card.classList.remove('ctx-highlighted','ctx-dim'); if(badge) badge.style.display='none'; }
+    });
+
+    scored.sort(function(a,b){ return b.score-a.score; });
+    scored.forEach(function(s){ container.appendChild(s.card); });
+
+    var nDestaque=scored.filter(function(s){ return s.score===1; }).length;
+    if (nDestaque===0) {
+        if (!emptyEl) {
+            emptyEl=document.createElement('div'); emptyEl.id='ctxEmptyState'; emptyEl.className='ctx-empty-state';
+            emptyEl.innerHTML='<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="8" y1="11" x2="14" y2="11"/></svg><p>Nenhum risco corresponde à combinação de filtros selecionada.</p><span>Tente remover um ou mais filtros para ampliar os resultados.</span>';
+            container.parentNode.insertBefore(emptyEl, container);
+        }
+        emptyEl.style.display='flex';
+    } else { if(emptyEl) emptyEl.style.display='none'; }
+    _syncCtxUI();
+}
+
+/* ════ AUTOCOMPLETE ════ */
+
+function configurarEventos() {
+    var acList = document.getElementById('autocompleteList');
+    var acWrap = document.getElementById('autocompleteWrap');
+    var acIndex = -1;
+
+    function normStr(s) { return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,''); }
+
+    function highlightMatch(text, termo) {
+        if (!termo) return text;
+        var escaped = termo.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+        return text.replace(new RegExp('('+escaped+')','gi'),'<mark>$1</mark>');
+    }
+
+    function fecharAC() { if(acList){acList.hidden=true;acList.innerHTML='';} acIndex=-1; }
+
+    function abrirAC(termoRaw, resultados) {
+        if(!acList) return;
+        acList.innerHTML=''; acIndex=-1;
+        if(!termoRaw){acList.hidden=true;return;}
+        if(resultados.length===0){
+            var empty=document.createElement('li'); empty.className='ac-empty'; empty.textContent='Nenhum risco encontrado'; acList.appendChild(empty); acList.hidden=false; return;
+        }
+        resultados.slice(0,8).forEach(function(item){
+            var li=document.createElement('li');
+            var idSpan=document.createElement('span'); idSpan.className='ac-id'; idSpan.textContent=item.id;
+            var body=document.createElement('span'); body.className='ac-body';
+            var titleSpan=document.createElement('span'); titleSpan.className='ac-title'; titleSpan.innerHTML=highlightMatch(item.risco,termoRaw.trim());
+            body.appendChild(titleSpan); li.appendChild(idSpan); li.appendChild(body);
+            li.addEventListener('mousedown',function(e){ e.preventDefault(); searchInput.value=item.risco; exibirRiscos([item]); fecharAC(); });
+            acList.appendChild(li);
+        });
+        acList.hidden=false;
+    }
+
+    searchInput?.addEventListener('input', (e) => {
+        const raw = e.target.value;
+        const termo = normStr(raw);
+        const filtrados = dadosRiscos.filter(r => normStr(r.risco).includes(termo) || normStr(r.id).includes(termo));
+        exibirRiscos(filtrados);
+        if(termo.length>=2) abrirAC(raw,filtrados); else fecharAC();
+    });
+
+    searchInput?.addEventListener('keydown',function(e){
+        if(!acList||acList.hidden) return;
+        var items=acList.querySelectorAll('li:not(.ac-empty)'); if(!items.length) return;
+        if(e.key==='ArrowDown'){e.preventDefault();acIndex=Math.min(acIndex+1,items.length-1);}
+        else if(e.key==='ArrowUp'){e.preventDefault();acIndex=Math.max(acIndex-1,-1);}
+        else if(e.key==='Enter'&&acIndex>=0){e.preventDefault();items[acIndex].dispatchEvent(new MouseEvent('mousedown'));return;}
+        else if(e.key==='Escape'){fecharAC();return;} else return;
+        items.forEach(function(li,i){li.classList.toggle('ac-active',i===acIndex);});
+        if(acIndex>=0) items[acIndex].scrollIntoView({block:'nearest'});
+    });
+    searchInput?.addEventListener('blur',function(){ setTimeout(fecharAC,150); });
+    document.addEventListener('click',function(e){ if(acWrap&&!acWrap.contains(e.target)) fecharAC(); });
 
     filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
