@@ -243,67 +243,86 @@
 
                     <!-- PAINEL 1: Ponto de Partida -->
                     <div class="mmx-tab-panel mmx-tab-panel-active" id="mmx-tab-ponto">
-                        <div class="mmx-panel-intro">
-                            <p>O catálogo tem como ponto de partida o conceito de <strong>Risco em ECOS</strong>, que representa o elemento central da análise. Os riscos identificados podem ser classificados em três dimensões: técnica, social e de negócios. A seguir, são apresentadas as explicações de cada uma delas.</p>
-                        </div>
-                        <div class="mmx-accordion">
-                            <button class="mmx-acc-btn mmx-acc-open" data-acc="risco">
-                                <span class="mmx-acc-label">Risco em ECOS <span class="mmx-acc-tag">
-                                <svg class="mmx-acc-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-                            </button>
-                            <div class="mmx-acc-body" id="acc-risco">
-                                <p>Em ECOS, um risco é qualquer evento ou condição incerta que, se ocorrer, pode prejudicar o funcionamento, a sustentabilidade ou os objetivos do ecossistema. Diferente de projetos tradicionais, os riscos em ECOS são amplificados pela interdependência entre múltiplos atores, desenvolvedores, plataformas e usuários em torno de uma plataforma comum.</p>
-                                <p class="mmx-acc-ref">Definição baseada em Oliveira e Alves (2021) e Keshani et al. (2024).</p>
+
+                        <!-- Bloco central: Risco em ECOS -->
+                        <div class="p1-hero">
+                            <div class="p1-hero-icon">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
                             </div>
-                            <button class="mmx-acc-btn" data-acc="dim-tec">
-                                <span class="mmx-acc-label" style="color:#38bdf8">Dimensão Técnica</span>
-                                <svg class="mmx-acc-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-                            </button>
-                            <div class="mmx-acc-body" id="acc-dim-tec">
-                                <p>Os riscos técnicos incluem vulnerabilidades de segurança, falhas de compatibilidade e problemas decorrentes do acúmulo descontrolado de dependências ou de práticas inadequadas de empacotamento de bibliotecas. Nesse contexto, foram identificados 11 riscos associados a essa dimensão.</p>
-                                <p class="mmx-acc-ref">Classificação baseada em Oliveira e Alves (2021).</p>
-                            </div>
-                            <button class="mmx-acc-btn" data-acc="dim-soc">
-                                <span class="mmx-acc-label" style="color:#f59e0b">Dimensão Social</span>
-                                <svg class="mmx-acc-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-                            </button>
-                            <div class="mmx-acc-body" id="acc-dim-soc">
-                                <p>Os riscos sociais abrangem aspectos como a rotatividade de colaboradores, conflitos entre atores e o declínio da participação comunitária. Nesse contexto, foram identificados 7 riscos associados a essa dimensão.</p>
-                                <p class="mmx-acc-ref">Classificação baseada em Oliveira e Alves (2021).</p>
-                            </div>
-                            <button class="mmx-acc-btn" data-acc="dim-neg">
-                                <span class="mmx-acc-label" style="color:#4ade80">Dimensão de Negócio</span>
-                                <svg class="mmx-acc-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-                            </button>
-                            <div class="mmx-acc-body" id="acc-dim-neg">
-                                <p>Riscos de negócios podem envolver questões relacionadas à propriedade intelectual, licenciamento e conformidade regulatória. Nesse contexto, foram identificados 6 riscos associados a essa dimensão.</p>
-                                <p class="mmx-acc-ref">Classificação baseada em Oliveira e Alves (2021).</p>
+                            <div class="p1-hero-content">
+                                <h4 class="p1-hero-title">Risco em ECOS</h4>
+                                <p class="p1-hero-text">Em ECOS, um risco é qualquer evento ou condição incerta que, se ocorrer, pode prejudicar o funcionamento, a sustentabilidade ou os objetivos do ecossistema. Diferente de projetos tradicionais, os riscos em ECOS são amplificados pela interdependência entre múltiplos atores, desenvolvedores, plataformas e usuários em torno de uma plataforma comum.</p>
+                                <span class="p1-hero-ref">Definição baseada em Oliveira e Alves (2021) e Keshani et al. (2024).</span>
                             </div>
                         </div>
+
+                        <!-- Divisor -->
+                        <div class="p1-divider">
+                            <span>Os riscos são distribuídos em 3 dimensões</span>
+                        </div>
+
+                        <!-- Cards de dimensão -->
+                        <div class="p1-dim-grid">
+                            <div class="p1-dim-card p1-dim-tec">
+                                <div class="p1-dim-header">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                                    <span class="p1-dim-label">Técnica</span>
+                                    <span class="p1-dim-count">11 riscos</span>
+                                </div>
+                                <p class="p1-dim-text">Vulnerabilidades de segurança, falhas de compatibilidade e problemas decorrentes do acúmulo descontrolado de dependências ou de práticas inadequadas de empacotamento de bibliotecas.</p>
+                                <span class="p1-dim-ref">Oliveira e Alves (2021).</span>
+                            </div>
+                            <div class="p1-dim-card p1-dim-soc">
+                                <div class="p1-dim-header">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                                    <span class="p1-dim-label">Social</span>
+                                    <span class="p1-dim-count">7 riscos</span>
+                                </div>
+                                <p class="p1-dim-text">Rotatividade de colaboradores, conflitos entre atores e declínio da participação comunitária que podem comprometer a coesão e a continuidade do ecossistema.</p>
+                                <span class="p1-dim-ref">Oliveira e Alves (2021).</span>
+                            </div>
+                            <div class="p1-dim-card p1-dim-neg">
+                                <div class="p1-dim-header">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+                                    <span class="p1-dim-label">Negócio</span>
+                                    <span class="p1-dim-count">6 riscos</span>
+                                </div>
+                                <p class="p1-dim-text">Questões relacionadas à propriedade intelectual, licenciamento e conformidade regulatória que afetam a viabilidade e sustentabilidade comercial do ecossistema.</p>
+                                <span class="p1-dim-ref">Oliveira e Alves (2021).</span>
+                            </div>
+                        </div>
+
                     </div>
 
                     <!-- PAINEL 2: Atributos -->
                     <div class="mmx-tab-panel" id="mmx-tab-atributos">
                         <div class="mmx-panel-intro">
-                            <p>Cada risco possui quatro atributos que contextualizam onde e como ele ocorre. Clique para explorar.</p>
+                            <p>Cada risco é descrito por quatro atributos que ajudam a compreender seu contexto. Clique em cada atributo para saber mais.</p>
                         </div>
                         <div class="mmx-accordion">
                             <button class="mmx-acc-btn mmx-acc-open" data-acc="sei">
-                                    <span class="mmx-acc-label">
-                                    <span class="mmx-acc-tag" style="background:rgba(167,139,250,.15);color:#a78bfa"></span> Classificação do Risco de Acordo com a Taxonomia de Risco do SEI </span>
+                                    <span class="mmx-acc-label">Classificação do Risco de Acordo com a Taxonomia de Risco do SEI</span>
                                 <svg class="mmx-acc-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
                             </button>
                             <div class="mmx-acc-body" id="acc-sei">
-                                <p>A classificação dos riscos foi realizada com base na Taxonomia de Riscos do Software Engineering Institute (SEI), utilizada para organizar riscos de forma hierárquica. Essa taxonomia permite compreender não apenas qual é o risco, mas também onde ele se origina e qual aspecto do ecossistema ele afeta. Conforme apresentado no artigo, os riscos são organizados em três níveis: Classe do Risco, Elemento do Risco e Área de Desafio</p>
+                                <p>A classificação dos riscos foi realizada com base na Taxonomia de Riscos do <em>Software Engineering Institute</em> (SEI), que organiza os riscos de forma hierárquica em três níveis. Essa estrutura permite compreender não apenas qual é o risco, mas <strong>onde ele se origina</strong> e <strong>qual aspecto do ecossistema ele afeta</strong> — seja a arquitetura do software ou o processo de desenvolvimento.</p>
+
                                 <div class="mmx-sub-items">
-                                    <div class="mmx-sub-item"><strong>Classe do Risco:</strong> A classificação de alto nível (ex.: Engenharia de Software, Ambiente de Desenvolvimento).</div>
-                                    <div class="mmx-sub-item"><strong>Elemento do Risco:</strong> Subdivisão da classe — ex.: Requisitos, Dependências, Segurança.</div>
-                                    <div class="mmx-sub-item"><strong>Área de Desafio:</strong> O problema específico — o nível mais granular da taxonomia.</div>
+                                    <div class="mmx-sub-item">
+                                        <strong>Classe do Risco</strong> — representa a categoria principal à qual o risco pertence. A taxonomia SEI define três classes: <em>Product Engineering Risk</em> (riscos ligados à engenharia do produto), <em>Development Environment Risk</em> (riscos do ambiente de desenvolvimento) e <em>Program Constraints Risk</em> (riscos decorrentes de restrições do programa, como dependência de terceiros).
+                                    </div>
+                                    <div class="mmx-sub-item">
+                                        <strong>Elemento do Risco</strong> — corresponde ao componente específico da classe onde o risco se manifesta. Os elementos identificados no artigo incluem: <em>Requirements</em>, <em>Design</em>, <em>Code and Unit Test</em>, <em>Integration and Test</em>, <em>Engineering Specialities</em>, <em>Development Process</em>, <em>Development System</em>, <em>Management Process</em>, <em>Management Methods</em>, <em>Work Environment</em>, <em>Resources</em>, <em>Contract</em> e <em>Program Interfaces</em>.
+                                    </div>
+                                    <div class="mmx-sub-item">
+                                        <strong>Área de Desafio</strong> — representa a origem prática do risco dentro do ecossistema, relacionando cada elemento a desafios concretos de arquitetura ou processo. Exemplos do artigo: <em>Interface Stability</em> e <em>Reliability Guarantee</em> (arquitetura); <em>No Standardized Process Model</em>, <em>Development Coordination and Management</em>, <em>Requirement Engineering</em> e <em>Quality Assurance</em> (processo); e a alta dependência de desenvolvedores terceiros (restrições de programa).
+                                    </div>
                                 </div>
-                                <p class="mmx-acc-ref">Fonte: Software Ecosystems Risks – Manalif et al. (2013)</p>
+
+                                <p class="mmx-acc-ref">Fonte: Software Ecosystems Risks – Manalif et al. (2013).</p>
                             </div>
                             <button class="mmx-acc-btn" data-acc="manikas">
-                                <span class="mmx-acc-label"><span class="mmx-acc-tag" style="background:rgba(56,189,248,.15);color:#38bdf8">Tipo de ECOS</span> Tipo mais propício ao risco</span>
+                                <span class="mmx-acc-label">Tipo de ECOS — <span style="font-weight:400;color:#94a3b8">Tipo mais propício ao risco</span></span>
                                 <svg class="mmx-acc-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
                             </button>
                             <div class="mmx-acc-body" id="acc-manikas">
@@ -316,7 +335,7 @@
                                 <p class="mmx-acc-ref">Manikas, K. (2016). Journal of Systems and Software, 117, 84–103.</p>
                             </div>
                             <button class="mmx-acc-btn" data-acc="iansiti">
-                                <span class="mmx-acc-label"><span class="mmx-acc-tag" style="background:rgba(244,114,182,.15);color:#f472b6">Saúde do ECOS</span> Métrica afetada pelo risco</span>
+                                <span class="mmx-acc-label">Saúde do ECOS — <span style="font-weight:400;color:#94a3b8">Métrica afetada pelo risco</span></span>
                                 <svg class="mmx-acc-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
                             </button>
                             <div class="mmx-acc-body" id="acc-iansiti">
@@ -329,7 +348,7 @@
                                 <p class="mmx-acc-ref">Iansiti, M. e Levien, R. (2004). The Keystone Advantage. Harvard Business School Press.</p>
                             </div>
                             <button class="mmx-acc-btn" data-acc="burstrom">
-                                <span class="mmx-acc-label"><span class="mmx-acc-tag" style="background:rgba(74,222,128,.15);color:#4ade80">Processo de Valor</span> Ciclo ameaçado pelo risco</span>
+                                <span class="mmx-acc-label">Processo de Valor — <span style="font-weight:400;color:#94a3b8">Ciclo ameaçado pelo risco</span></span>
                                 <svg class="mmx-acc-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
                             </button>
                             <div class="mmx-acc-body" id="acc-burstrom">
@@ -339,7 +358,7 @@
                                     <div class="mmx-sub-item"><strong>Entrega de Valor:</strong> Distribuição via gerenciadores de pacotes, APIs, lojas.</div>
                                     <div class="mmx-sub-item"><strong>Captura de Valor:</strong> O retorno dos atores: receita, reconhecimento, benefícios técnicos.</div>
                                 </div>
-                                <p class="mmx-acc-ref">Burström et al. (2022), in Campos et al. (2025).</p>
+                                <p class="mmx-acc-ref">Burström et al. (2022), e Campos et al. (2025).</p>
                             </div>
                         </div>
                     </div>
@@ -351,7 +370,7 @@
                         </div>
                         <div class="mmx-accordion">
                             <button class="mmx-acc-btn mmx-acc-open" data-acc="sol-fw">
-                                <span class="mmx-acc-label"><span class="mmx-acc-tag">Frameworks</span> S01–S07</span>
+                                <span class="mmx-acc-label">Frameworks</span>
                                 <svg class="mmx-acc-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
                             </button>
                             <div class="mmx-acc-body" id="acc-sol-fw">
@@ -359,7 +378,7 @@
                                 <p class="mmx-acc-ref">Classificação baseada em Shaw (2003), in Campos et al. (2025).</p>
                             </div>
                             <button class="mmx-acc-btn" data-acc="sol-mod">
-                                <span class="mmx-acc-label"><span class="mmx-acc-tag">Modelos</span> S08–S13</span>
+                                <span class="mmx-acc-label">Modelos</span>
                                 <svg class="mmx-acc-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
                             </button>
                             <div class="mmx-acc-body" id="acc-sol-mod">
@@ -367,7 +386,7 @@
                                 <p class="mmx-acc-ref">Classificação baseada em Shaw (2003), in Campos et al. (2025).</p>
                             </div>
                             <button class="mmx-acc-btn" data-acc="sol-pra">
-                                <span class="mmx-acc-label"><span class="mmx-acc-tag">Práticas</span> S14–S17</span>
+                                <span class="mmx-acc-label">Práticas</span>
                                 <svg class="mmx-acc-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
                             </button>
                             <div class="mmx-acc-body" id="acc-sol-pra">
@@ -375,7 +394,7 @@
                                 <p class="mmx-acc-ref">Classificação baseada em Shaw (2003), in Campos et al. (2025).</p>
                             </div>
                             <button class="mmx-acc-btn" data-acc="sol-fer">
-                                <span class="mmx-acc-label"><span class="mmx-acc-tag">Ferramentas</span> S18–S19</span>
+                                <span class="mmx-acc-label">Ferramentas</span>
                                 <svg class="mmx-acc-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
                             </button>
                             <div class="mmx-acc-body" id="acc-sol-fer">
@@ -383,7 +402,7 @@
                                 <p class="mmx-acc-ref">Classificação baseada em Shaw (2003), in Campos et al. (2025).</p>
                             </div>
                             <button class="mmx-acc-btn" data-acc="sol-met">
-                                <span class="mmx-acc-label"><span class="mmx-acc-tag">Métodos</span> S20–S21</span>
+                                <span class="mmx-acc-label">Métodos</span>
                                 <svg class="mmx-acc-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
                             </button>
                             <div class="mmx-acc-body" id="acc-sol-met">
@@ -400,7 +419,7 @@
                         </div>
                         <div class="mmx-accordion">
                             <button class="mmx-acc-btn mmx-acc-open" data-acc="estudos">
-                                <span class="mmx-acc-label"><span class="mmx-acc-tag" style="background:rgba(245,158,11,.15);color:#f59e0b">35 Estudos</span> Estudos Primários (E01–E35)</span>
+                                <span class="mmx-acc-label">Estudos Primários (E01–E35)</span>
                                 <svg class="mmx-acc-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
                             </button>
                             <div class="mmx-acc-body" id="acc-estudos">
@@ -515,6 +534,71 @@
     @media (max-width: 640px) {
         .mmx-tab { padding: 9px 12px; font-size: 0.76rem; }
         .mmx-tab-panels { padding: 18px; }
+    }
+
+    /* ── Painel 1: layout melhorado ── */
+    .p1-hero {
+        display: flex; gap: 18px; align-items: flex-start;
+        background: rgba(56,189,248,.06); border: 1px solid rgba(56,189,248,.18);
+        border-radius: 12px; padding: 20px 22px; margin-bottom: 28px;
+    }
+    .p1-hero-icon {
+        flex-shrink: 0; width: 44px; height: 44px;
+        background: rgba(56,189,248,.12); border: 1px solid rgba(56,189,248,.25);
+        border-radius: 10px; display: flex; align-items: center; justify-content: center;
+        color: #38bdf8;
+    }
+    .p1-hero-content { flex: 1; min-width: 0; }
+    .p1-hero-title {
+        font-size: 1rem; font-weight: 700; color: #f1f5f9;
+        margin: 0 0 8px; letter-spacing: 0.01em;
+    }
+    .p1-hero-text {
+        font-size: 0.88rem; color: #94a3b8; line-height: 1.7; margin: 0 0 10px;
+    }
+    .p1-hero-ref { font-size: 0.75rem; color: #475569; font-style: italic; }
+
+    .p1-divider {
+        display: flex; align-items: center; gap: 12px;
+        margin-bottom: 20px; color: #475569; font-size: 0.75rem;
+        font-weight: 600; text-transform: uppercase; letter-spacing: 1px;
+    }
+    .p1-divider::before, .p1-divider::after {
+        content: ''; flex: 1; height: 1px; background: rgba(255,255,255,.07);
+    }
+
+    .p1-dim-grid {
+        display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+    }
+    .p1-dim-card {
+        border-radius: 10px; padding: 16px 18px;
+        border: 1px solid rgba(255,255,255,.07);
+        background: rgba(255,255,255,.03);
+        display: flex; flex-direction: column; gap: 10px;
+    }
+    .p1-dim-tec { border-top: 3px solid #38bdf8; }
+    .p1-dim-soc { border-top: 3px solid #f59e0b; }
+    .p1-dim-neg { border-top: 3px solid #4ade80; }
+
+    .p1-dim-header {
+        display: flex; align-items: center; gap: 8px;
+    }
+    .p1-dim-tec .p1-dim-header { color: #38bdf8; }
+    .p1-dim-soc .p1-dim-header { color: #f59e0b; }
+    .p1-dim-neg .p1-dim-header { color: #4ade80; }
+
+    .p1-dim-label { font-size: 0.9rem; font-weight: 700; flex: 1; }
+    .p1-dim-count {
+        font-size: 0.68rem; font-weight: 700; padding: 2px 8px;
+        border-radius: 100px; background: rgba(255,255,255,.08);
+        color: #64748b; white-space: nowrap;
+    }
+    .p1-dim-text { font-size: 0.83rem; color: #94a3b8; line-height: 1.65; margin: 0; flex: 1; }
+    .p1-dim-ref { font-size: 0.72rem; color: #475569; font-style: italic; }
+
+    @media (max-width: 768px) {
+        .p1-dim-grid { grid-template-columns: 1fr; }
+        .p1-hero { flex-direction: column; gap: 12px; }
     }
     </style>
 
