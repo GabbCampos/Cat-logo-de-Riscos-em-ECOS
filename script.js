@@ -761,14 +761,6 @@ function exibirRiscos(lista) {
 /* ════ PAINEL DE CONTEXTO ════ */
 const ctxState = { ecos: new Set(), metrica: new Set(), valor: new Set() };
 
-function toggleContextPanel() {
-    var panel = document.getElementById('ctxPanel');
-    var toggle = document.getElementById('ctxToggle');
-    var isOpen = !panel.hidden;
-    panel.hidden = isOpen;
-    toggle.setAttribute('aria-expanded', String(!isOpen));
-}
-
 function toggleChip(chip) {
     var group = chip.getAttribute('data-group');
     var value = chip.getAttribute('data-value');
@@ -788,14 +780,12 @@ function _totalAtivos() { return ctxState.ecos.size + ctxState.metrica.size + ct
 
 function _syncCtxUI() {
     var n = _totalAtivos();
-    var countEl = document.getElementById('ctxActiveCount');
     var clearEl = document.getElementById('ctxClear');
     var hintEl  = document.getElementById('ctxHint');
-    if (n > 0) { countEl.style.display='inline-flex'; countEl.textContent=n; clearEl.style.display='inline-flex'; }
-    else        { countEl.style.display='none'; clearEl.style.display='none'; }
+    if (clearEl) clearEl.style.display = n > 0 ? 'inline-flex' : 'none';
     if (hintEl) {
-        if (n > 0) { var nRel=document.querySelectorAll('.card.ctx-highlighted').length; hintEl.textContent=nRel>0?(nRel+' risco'+(nRel!==1?'s':'')+' em destaque'):''; }
-        else hintEl.textContent='';
+        if (n > 0) { var nRel = document.querySelectorAll('.card.ctx-highlighted').length; hintEl.textContent = nRel > 0 ? (nRel + ' risco' + (nRel !== 1 ? 's' : '') + ' em destaque') : ''; }
+        else hintEl.textContent = '';
     }
 }
 
