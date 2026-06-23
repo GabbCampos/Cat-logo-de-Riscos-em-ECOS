@@ -578,11 +578,13 @@ function renderizarPainel(item) {
 
     const justBox = document.getElementById('riskJustificationBox');
     const justText = document.getElementById('riskJustification');
-    // justificativaSEI é o campo específico da classificação SEI
     const justSEI = item.justificativaSEI || '';
     if (justSEI.trim()) {
         justText.innerText = justSEI.trim();
         justBox.style.display = 'block';
+        var t = document.getElementById('just-trigger-sei'), b = document.getElementById('just-body-sei');
+        if (t) t.setAttribute('aria-expanded','false');
+        if (b) b.classList.remove('open');
     } else {
         justBox.style.display = 'none';
     }
@@ -594,6 +596,9 @@ function renderizarPainel(item) {
     if (item.justificativa && item.justificativa.trim()) {
         ecosJust.innerText = item.justificativa.trim();
         ecosJustBox.style.display = 'block';
+        var t = document.getElementById('just-trigger-ecos'), b = document.getElementById('just-body-ecos');
+        if (t) t.setAttribute('aria-expanded','false');
+        if (b) b.classList.remove('open');
     } else {
         ecosJustBox.style.display = 'none';
     }
@@ -605,6 +610,9 @@ function renderizarPainel(item) {
     if (item.justificativaMetrica && item.justificativaMetrica.trim()) {
         metricJust.innerText = item.justificativaMetrica.trim();
         metricJustBox.style.display = 'block';
+        var t = document.getElementById('just-trigger-metrica'), b = document.getElementById('just-body-metrica');
+        if (t) t.setAttribute('aria-expanded','false');
+        if (b) b.classList.remove('open');
     } else {
         metricJustBox.style.display = 'none';
     }
@@ -616,6 +624,9 @@ function renderizarPainel(item) {
     if (item.justificativaProcesso && item.justificativaProcesso.trim()) {
         processoJust.innerText = item.justificativaProcesso.trim();
         processoJustBox.style.display = 'block';
+        var t = document.getElementById('just-trigger-processo'), b = document.getElementById('just-body-processo');
+        if (t) t.setAttribute('aria-expanded','false');
+        if (b) b.classList.remove('open');
     } else {
         processoJustBox.style.display = 'none';
     }
@@ -703,6 +714,20 @@ function renderizarPainel(item) {
     // Scroll topo do body interno
     const body = sidePanel.querySelector('.panel-body');
     if (body) body.scrollTop = 0;
+}
+
+function toggleJust(key) {
+    var trigger = document.getElementById('just-trigger-' + key);
+    var body    = document.getElementById('just-body-' + key);
+    if (!trigger || !body) return;
+    var isOpen = body.classList.contains('open');
+    if (isOpen) {
+        body.classList.remove('open');
+        trigger.setAttribute('aria-expanded', 'false');
+    } else {
+        body.classList.add('open');
+        trigger.setAttribute('aria-expanded', 'true');
+    }
 }
 
 function closeSidePanel() {
