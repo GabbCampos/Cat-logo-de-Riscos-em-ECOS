@@ -997,7 +997,7 @@ const ajudaConteudo = {
     metrica: {
         titulo: "Métricas de Saúde do ECOS atingida pelo Risco",
         texto: "Este campo identifica o impacto do risco na saúde do ecossistema, utilizando os indicadores propostos por Iansiti e Levien (2004). O risco pode afetar a Produtividade do sistema, sua Robustez frente a mudanças ou sua capacidade de gerar novos Nichos de Criação (inovação). Identificar essa métrica ajuda a priorizar ações de mitigação estratégicas.",
-        fonte: "Fonte: Fonte: Strategy as Ecology – Iansiti e Levien (2004)"
+        fonte: "Fonte: Strategy as Ecology – Iansiti e Levien (2004)"
     },
     processo: {
         titulo: "Processo de Valor do ECOS Ameaçado pelo Risco",
