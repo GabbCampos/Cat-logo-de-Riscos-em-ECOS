@@ -796,19 +796,22 @@ function exibirRiscos(lista) {
 /* ════ PAINEL DE CONTEXTO ════ */
 const ctxState = { ecos: new Set(), metrica: new Set(), valor: new Set() };
 
+// Estado do filtro de dimensão ativo (sincronizado com os botões .btn-filter)
+var filtroAtivoDimensao = 'todos';
+
 function toggleChip(chip) {
     var group = chip.getAttribute('data-group');
     var value = chip.getAttribute('data-value');
     chip.classList.toggle('active');
     if (chip.classList.contains('active')) ctxState[group].add(value);
     else ctxState[group].delete(value);
-    _syncCtxUI(); _aplicarContexto();
+    _syncCtxUI(); _aplicarFiltrosCombinados();
 }
 
 function limparContexto() {
     ctxState.ecos.clear(); ctxState.metrica.clear(); ctxState.valor.clear();
     document.querySelectorAll('.ctx-chip.active').forEach(function(c){ c.classList.remove('active'); });
-    _syncCtxUI(); _aplicarContexto();
+    _syncCtxUI(); _aplicarFiltrosCombinados();
 }
 
 function _totalAtivos() { return ctxState.ecos.size + ctxState.metrica.size + ctxState.valor.size; }
@@ -842,6 +845,32 @@ function _calcularRelevanciaCtx(item) {
         if (!matchValor) return 0;
     }
     return 1;
+}
+
+/**
+ * Função central de filtragem: aplica dimensão E chips de contexto juntos.
+ * Chamada por qualquer alteração (botão de dimensão, chip ou busca).
+ */
+function _aplicarFiltrosCombinados(listaBase) {
+    // Se recebeu lista explícita (busca textual), usa ela; senão filtra por dimensão
+    var lista;
+    if (listaBase !== undefined) {
+        lista = listaBase;
+    } else if (filtroAtivoDimensao === 'todos') {
+        lista = dadosRiscos;
+    } else {
+        lista = dadosRiscos.filter(function(r) {
+            var dRisco  = r.dimensao.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").substring(0, 5);
+            var dFiltro = filtroAtivoDimensao.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").substring(0, 5);
+            return dRisco === dFiltro;
+        });
+    }
+
+    // Renderiza os cards filtrados por dimensão
+    exibirRiscos(lista);
+
+    // Agora aplica contexto sobre os cards renderizados
+    _aplicarContexto();
 }
 
 function _aplicarContexto() {
@@ -916,7 +945,7 @@ function configurarEventos() {
             var body=document.createElement('span'); body.className='ac-body';
             var titleSpan=document.createElement('span'); titleSpan.className='ac-title'; titleSpan.innerHTML=highlightMatch(item.risco,termoRaw.trim());
             body.appendChild(titleSpan); li.appendChild(idSpan); li.appendChild(body);
-            li.addEventListener('mousedown',function(e){ e.preventDefault(); searchInput.value=item.risco; exibirRiscos([item]); fecharAC(); });
+            li.addEventListener('mousedown',function(e){ e.preventDefault(); searchInput.value=item.risco; _aplicarFiltrosCombinados([item]); fecharAC(); });
             acList.appendChild(li);
         });
         acList.hidden=false;
@@ -925,8 +954,16 @@ function configurarEventos() {
     searchInput?.addEventListener('input', (e) => {
         const raw = e.target.value;
         const termo = normStr(raw);
-        const filtrados = dadosRiscos.filter(r => normStr(r.risco).includes(termo) || normStr(r.id).includes(termo));
-        exibirRiscos(filtrados);
+        // Filtra por texto dentro da dimensão ativa
+        const baseList = filtroAtivoDimensao === 'todos'
+            ? dadosRiscos
+            : dadosRiscos.filter(r => {
+                const dRisco  = r.dimensao.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").substring(0,5);
+                const dFiltro = filtroAtivoDimensao.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").substring(0,5);
+                return dRisco === dFiltro;
+              });
+        const filtrados = baseList.filter(r => normStr(r.risco).includes(termo) || normStr(r.id).includes(termo));
+        _aplicarFiltrosCombinados(filtrados);
         if(termo.length>=2) abrirAC(raw,filtrados); else fecharAC();
     });
 
@@ -947,18 +984,9 @@ function configurarEventos() {
         btn.addEventListener('click', () => {
             document.querySelector('.btn-filter.active')?.classList.remove('active');
             btn.classList.add('active');
-            
-            const filtro = btn.getAttribute('data-filter');
-            if (filtro === 'todos') {
-                exibirRiscos(dadosRiscos);
-            } else {
-                const filtrados = dadosRiscos.filter(r => {
-                    const dRisco = r.dimensao.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").substring(0, 5);
-                    const dFiltro = filtro.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").substring(0, 5);
-                    return dRisco === dFiltro;
-                });
-                exibirRiscos(filtrados);
-            }
+
+            filtroAtivoDimensao = btn.getAttribute('data-filter');
+            _aplicarFiltrosCombinados();
         });
     });
 }
