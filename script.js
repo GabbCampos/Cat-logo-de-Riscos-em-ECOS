@@ -52,7 +52,7 @@ const solucoesMapa = {
     "S07": { nome: "Framework SE-GPS baseado em Web Semântica para rastreamento de vulnerabilidades", doi: "https://doi.org/10.1016/j.scico.2016.01.005" },
     "S08": { nome: "Modelo de representação de metas e anti-metas baseadas em confiança", doi: "https://doi.org/10.1109/SESoS-WDES52566.2021.00006" },
     "S09": { nome: "Modelo conceitual de governança de ECOS para mitigar riscos", doi: "https://doi.org/10.1109/SEAA53835.2021.00045" },
-    "S10": { nome: "Modelo de technical leverage para avaliar riscos de dependências em ECOS", doi: "rg/10.1109/ICSE43902.2021.00125" },
+    "S10": { nome: "Modelo de technical leverage para avaliar riscos de dependências em ECOS", doi: "https://doi.org/10.1109/ICSE43902.2021.00125" },
     "S11": { nome: "Modelo teórico sobre relação entre reutilização de software e riscos de segurança", doi: "https://doi.org/10.1016/j.jss.2020.110653" },
     "S12": { nome: "Modelo de envelhecimento de bibliotecas baseado em uso de clientes", doi: "https://doi.org/10.1109/SANER.2017.7884643" },
     "S13": { nome: "Modelo baseado em processos de decisão de Markov para identificar riscos", doi: "https://doi.org/10.5220/0005346902600267" },
