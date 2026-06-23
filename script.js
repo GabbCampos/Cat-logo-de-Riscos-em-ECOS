@@ -1,3 +1,13 @@
+// ── Menu de navegação (hamburguer mobile) ──
+function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('open');
+    document.getElementById('hamburger').classList.toggle('active');
+}
+function closeMenu() {
+    document.getElementById('navLinks').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('active');
+}
+
 /**
  * DADOS DO CATÁLOGO - 24 RISCOS COMPLETOS
  */
