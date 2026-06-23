@@ -1271,6 +1271,34 @@
         .ev-metric-arrow { transform: rotate(90deg); }
         .ev-stats-grid { grid-template-columns: 1fr; }
     }
+
+    /* ── Accordion de justificativas ── */
+    .just-accordion { margin-top: 12px; border-radius: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,.07); }
+    .just-trigger { width:100%; display:flex; align-items:center; gap:7px; background:rgba(255,255,255,.04); border:none; padding:9px 12px; cursor:pointer; font-family:'Inter',sans-serif; font-size:0.78rem; font-weight:600; color:#64748b; text-align:left; transition:background .18s, color .18s; border-radius:7px; }
+    .just-trigger:hover { background:rgba(255,255,255,.07); color:#94a3b8; }
+    .just-trigger[aria-expanded="true"] { border-radius:7px 7px 0 0; }
+    .just-chevron { flex-shrink:0; transition:transform .22s ease; }
+    .just-trigger[aria-expanded="true"] .just-chevron { transform:rotate(180deg); }
+    .just-body { display:none; padding:11px 14px 13px; border-top:1px solid rgba(255,255,255,.07); animation:justSlideDown .2s ease; }
+    .just-body.open { display:block; }
+    .just-body p { font-size:0.82rem; color:#94a3b8; line-height:1.65; margin:0; }
+    @keyframes justSlideDown { from{opacity:0;transform:translateY(-4px)} to{opacity:1;transform:translateY(0)} }
+
+    /* Cor por dimensão */
+    #sidePanel.tecnicos .just-trigger:hover,
+    #sidePanel.tecnicos .just-trigger[aria-expanded="true"] { color:var(--color-tecnicos); background:rgba(56,189,248,.08); }
+    #sidePanel.tecnicos .just-trigger[aria-expanded="true"] .just-chevron { color:var(--color-tecnicos); }
+    #sidePanel.tecnicos .just-body.open { background:rgba(56,189,248,.04); border-top-color:rgba(56,189,248,.18); }
+
+    #sidePanel.sociais .just-trigger:hover,
+    #sidePanel.sociais .just-trigger[aria-expanded="true"] { color:var(--color-sociais); background:rgba(251,191,36,.08); }
+    #sidePanel.sociais .just-trigger[aria-expanded="true"] .just-chevron { color:var(--color-sociais); }
+    #sidePanel.sociais .just-body.open { background:rgba(251,191,36,.04); border-top-color:rgba(251,191,36,.18); }
+
+    #sidePanel.negocio .just-trigger:hover,
+    #sidePanel.negocio .just-trigger[aria-expanded="true"] { color:var(--color-negocio); background:rgba(74,222,128,.08); }
+    #sidePanel.negocio .just-trigger[aria-expanded="true"] .just-chevron { color:var(--color-negocio); }
+    #sidePanel.negocio .just-body.open { background:rgba(74,222,128,.04); border-top-color:rgba(74,222,128,.18); }
     </style>
 
     <main id="catalogo">
@@ -1306,7 +1334,7 @@
             <!-- Linha 2: chips de contexto -->
             <div class="filters-row-chips" id="ctxBar">
                 <div class="filters-chip-group">
-                    <span class="filters-chip-label">Tipo de ECOS mais propício ao Risco</span>
+                    <span class="filters-chip-label">Tipo de ECOS</span>
                     <div class="ctx-chips">
                         <button class="ctx-chip" data-group="ecos" data-value="Aberto" onclick="toggleChip(this)">Aberto</button>
                         <button class="ctx-chip" data-group="ecos" data-value="Híbrido" onclick="toggleChip(this)">Híbrido</button>
@@ -1314,7 +1342,7 @@
                 </div>
                 <div class="filters-chip-sep"></div>
                 <div class="filters-chip-group">
-                    <span class="filters-chip-label">Métricas de Saúde do ECOS atingida pelo Risco</span>
+                    <span class="filters-chip-label">Impacto na saúde</span>
                     <div class="ctx-chips">
                         <button class="ctx-chip" data-group="metrica" data-value="Robustez" onclick="toggleChip(this)">Robustez</button>
                         <button class="ctx-chip" data-group="metrica" data-value="Produtividade" onclick="toggleChip(this)">Produtividade</button>
@@ -1323,11 +1351,11 @@
                 </div>
                 <div class="filters-chip-sep"></div>
                 <div class="filters-chip-group">
-                    <span class="filters-chip-label">Processo de Valor do ECOS Ameaçado pelo Risco</span>
+                    <span class="filters-chip-label">Etapa do valor</span>
                     <div class="ctx-chips">
-                        <button class="ctx-chip" data-group="valor" data-value="Criação de valor" onclick="toggleChip(this)">Criação de valor</button>
-                        <button class="ctx-chip" data-group="valor" data-value="Entrega de valor" onclick="toggleChip(this)">Entrega de valor</button>
-                        <button class="ctx-chip" data-group="valor" data-value="Captura de valor" onclick="toggleChip(this)">Captura de valor</button>
+                        <button class="ctx-chip" data-group="valor" data-value="Criação de valor" onclick="toggleChip(this)">Criação</button>
+                        <button class="ctx-chip" data-group="valor" data-value="Entrega de valor" onclick="toggleChip(this)">Entrega</button>
+                        <button class="ctx-chip" data-group="valor" data-value="Captura de valor" onclick="toggleChip(this)">Captura</button>
                     </div>
                 </div>
                 <button class="ctx-clear" id="ctxClear" onclick="limparContexto()" style="display:none;">
@@ -1381,9 +1409,14 @@
                     <span class="field-label">Área de Desafio</span>
                     <span class="field-value" id="riskDesafio"></span>
                 </div>
-                <div id="riskJustificationBox" class="justification-box" style="margin-top:14px; display:none;">
-                    <div class="justification-label">Por que essa classificação?</div>
-                    <p id="riskJustification"></p>
+                <div id="riskJustificationBox" class="just-accordion" style="display:none;">
+                    <button class="just-trigger" onclick="toggleJust('sei')" aria-expanded="false" id="just-trigger-sei">
+                        <svg class="just-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                        <span>Por que essa classificação?</span>
+                    </button>
+                    <div class="just-body" id="just-body-sei">
+                        <p id="riskJustification"></p>
+                    </div>
                 </div>
             </div>
 
@@ -1397,9 +1430,14 @@
                 </div>
                 <span class="field-label"></span>
                 <span class="field-value ecos-value" id="riskEcos"></span>
-                <div id="riskEcosJustBox" class="justification-box" style="margin-top:14px; display:none;">
-                    <div class="justification-label">Por que este ecossistema?</div>
-                    <p id="riskEcosJust"></p>
+                <div id="riskEcosJustBox" class="just-accordion" style="display:none;">
+                    <button class="just-trigger" onclick="toggleJust('ecos')" aria-expanded="false" id="just-trigger-ecos">
+                        <svg class="just-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                        <span>Por que este ecossistema?</span>
+                    </button>
+                    <div class="just-body" id="just-body-ecos">
+                        <p id="riskEcosJust"></p>
+                    </div>
                 </div>
             </div>
 
@@ -1413,9 +1451,14 @@
                 </div>
                 <span class="field-label"></span>
                 <span class="field-value" id="riskMetric"></span>
-                <div id="riskMetricJustBox" class="justification-box" style="margin-top:14px; display:none;">
-                    <div class="justification-label">Por que esta métrica?</div>
-                    <p id="riskMetricJust"></p>
+                <div id="riskMetricJustBox" class="just-accordion" style="display:none;">
+                    <button class="just-trigger" onclick="toggleJust('metrica')" aria-expanded="false" id="just-trigger-metrica">
+                        <svg class="just-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                        <span>Por que esta métrica?</span>
+                    </button>
+                    <div class="just-body" id="just-body-metrica">
+                        <p id="riskMetricJust"></p>
+                    </div>
                 </div>
             </div>
 
@@ -1429,9 +1472,14 @@
                 </div>
                 <span class="field-label"></span>
                 <span class="field-value" id="riskProcesso"></span>
-                <div id="riskProcessoJustBox" class="justification-box" style="margin-top:14px; display:none;">
-                    <div class="justification-label">Por que este processo?</div>
-                    <p id="riskProcessoJust"></p>
+                <div id="riskProcessoJustBox" class="just-accordion" style="display:none;">
+                    <button class="just-trigger" onclick="toggleJust('processo')" aria-expanded="false" id="just-trigger-processo">
+                        <svg class="just-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                        <span>Por que este processo?</span>
+                    </button>
+                    <div class="just-body" id="just-body-processo">
+                        <p id="riskProcessoJust"></p>
+                    </div>
                 </div>
             </div>
 
