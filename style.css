@@ -400,57 +400,22 @@ main { padding: 120px 5%; max-width: 100%; box-sizing: border-box; }
     margin: 10px auto 0;
 }
 
-/* Controles de busca e filtro */
-.controls { max-width: 900px; margin: 0 auto; }
-
-#searchInput {
-    width: 100%;
-    max-width: 600px;
-    display: block;
-    margin: 0 auto 40px;
-    background: var(--card-bg);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    padding: 1.2rem;
-    border-radius: 12px;
-    color: var(--text-high);
-    font-size: 1rem;
-    outline: none;
-    transition: border-color 0.3s, box-shadow 0.3s;
-    box-sizing: border-box;
-}
-
-#searchInput:focus {
-    border-color: var(--accent);
-    box-shadow: 0 0 15px rgba(56, 189, 248, 0.1);
-}
-
-.filter-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-bottom: 80px;
-    flex-wrap: wrap;
-}
-
-.btn-filter {
-    background: rgba(255, 255, 255, 0.03);
-    color: var(--text-low);
-    padding: 0.8rem 1.8rem;
-    border-radius: 30px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    cursor: pointer;
-    transition: 0.3s;
-    font-weight: 500;
-}
-
-.btn-filter.active {
-    background: var(--accent);
-    color: #0f172a;
-    border-color: var(--accent);
-    font-weight: 700;
-}
+/* ── Controles: regras residuais limpas — ver head style block ── */
+.controls { max-width: 960px; margin: 0 auto; }
 
 /* Grid de cards */
+#catalogo {
+    position: relative;
+}
+#catalogo::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(56,189,248,.18) 30%, rgba(56,189,248,.18) 70%, transparent);
+    position: absolute;
+    top: 0; left: 0;
+}
 .riscos-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(350px, 100%), 1fr));
