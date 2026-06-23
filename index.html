@@ -71,7 +71,7 @@
     </style>
     <style>
         /* AUTOCOMPLETE */
-        .autocomplete-wrap { position:relative; width:100%; max-width:600px; margin:0 auto 40px; }
+        .autocomplete-wrap { position:relative; flex:1; min-width:0; }
         .autocomplete-wrap #searchInput { width:100%; max-width:100%; margin:0; }
         .autocomplete-list { position:absolute; top:calc(100% + 4px); left:0; right:0; background:#1e293b; border:1px solid rgba(255,255,255,0.08); border-radius:12px; list-style:none; padding:4px; margin:0; z-index:500; box-shadow:0 8px 24px rgba(0,0,0,0.4); max-height:320px; overflow-y:auto; }
         .autocomplete-list li { display:flex; align-items:center; gap:10px; padding:9px 12px; border-radius:8px; cursor:pointer; transition:background 0.12s; }
@@ -82,50 +82,101 @@
         .ac-title mark { background:transparent; color:#f8fafc; font-weight:600; }
         .ac-empty { padding:12px; font-size:0.82rem; color:#475569; text-align:center; }
 
-        /* PAINEL DE CONTEXTO */
-        .ctx-bar { max-width:900px; margin:0 auto 36px; }
-        .ctx-toggle { width:100%; display:flex; align-items:center; gap:10px; padding:12px 18px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:10px; cursor:pointer; font-family:'Inter',sans-serif; font-size:0.85rem; font-weight:600; color:#94a3b8; text-align:left; transition:background 0.2s,border-color 0.2s,color 0.2s; }
-        .ctx-toggle:hover, .ctx-toggle[aria-expanded="true"] { background:rgba(56,189,248,0.05); border-color:rgba(56,189,248,0.22); color:#e2e8f0; }
-        .ctx-toggle[aria-expanded="true"] { border-bottom-left-radius:0; border-bottom-right-radius:0; border-bottom-color:rgba(56,189,248,0.08); }
-        .ctx-toggle-icon { display:flex; align-items:center; color:#38bdf8; flex-shrink:0; }
-        .ctx-toggle-label { flex:1; }
-        .ctx-active-count { background:rgba(56,189,248,0.15); border:1px solid rgba(56,189,248,0.3); color:#38bdf8; font-size:0.68rem; font-weight:800; padding:2px 8px; border-radius:100px; letter-spacing:0.5px; }
-        .ctx-toggle-chevron { display:flex; align-items:center; color:#475569; flex-shrink:0; transition:transform 0.25s cubic-bezier(0.4,0,0.2,1); }
-        .ctx-toggle[aria-expanded="true"] .ctx-toggle-chevron { transform:rotate(180deg); }
-        .ctx-panel { background:rgba(255,255,255,0.02); border:1px solid rgba(56,189,248,0.15); border-top:none; border-radius:0 0 10px 10px; padding:20px 18px 16px; animation:ctxOpen 0.22s cubic-bezier(0.4,0,0.2,1); }
-        @keyframes ctxOpen { from{opacity:0;transform:translateY(-6px)} to{opacity:1;transform:translateY(0)} }
-        .ctx-desc { font-size:0.8rem; color:#475569; line-height:1.6; margin-bottom:18px; }
-        .ctx-group { margin-bottom:14px; }
-        .ctx-group:last-of-type { margin-bottom:0; }
-        .ctx-group-label { display:inline-flex; align-items:center; gap:6px; font-size:0.68rem; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; color:#475569; margin-bottom:8px; }
-        .ctx-chips { display:flex; flex-wrap:wrap; gap:7px; }
-        .ctx-chip { padding:6px 14px; border-radius:100px; border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.04); color:#64748b; font-family:'Inter',sans-serif; font-size:0.78rem; font-weight:600; cursor:pointer; transition:all 0.18s; white-space:nowrap; }
-        .ctx-chip:hover { border-color:rgba(56,189,248,0.3); color:#94a3b8; background:rgba(56,189,248,0.06); }
-        .ctx-chip.active { background:rgba(56,189,248,0.12); border-color:rgba(56,189,248,0.45); color:#38bdf8; }
-        .ctx-actions { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; margin-top:16px; padding-top:14px; border-top:1px solid rgba(255,255,255,0.05); }
-        .ctx-clear { display:inline-flex; align-items:center; gap:6px; background:none; border:none; color:#475569; font-family:'Inter',sans-serif; font-size:0.75rem; font-weight:600; cursor:pointer; padding:0; transition:color 0.18s; }
-        .ctx-clear:hover { color:#94a3b8; }
-        .ctx-hint { font-size:0.73rem; color:#38bdf8; font-weight:500; }
+        /* ── ÁREA DE FILTROS UNIFICADA ── */
 
-        /* RELEVÂNCIA NOS CARDS */
+        /* Container geral */
+        .filters-area { max-width:960px; margin:0 auto 48px; display:flex; flex-direction:column; gap:0; }
+
+        /* Linha 1: busca + dimensões */
+        .filters-row-main {
+            display:flex; align-items:center; gap:0;
+            background:var(--card-bg);
+            border:1px solid rgba(255,255,255,.09);
+            border-radius:14px 14px 0 0;
+            border-bottom:1px solid rgba(255,255,255,.05);
+            padding:7px 7px 7px 18px;
+            transition:border-color .25s, box-shadow .25s;
+        }
+        .filters-row-main:focus-within {
+            border-color:rgba(56,189,248,.35);
+            box-shadow:0 0 0 3px rgba(56,189,248,.07);
+        }
+        .filters-search {
+            display:flex; align-items:center; gap:10px; flex:1; min-width:0;
+            color:#475569;
+        }
+        .filters-search svg { flex-shrink:0; transition:color .2s; }
+        .filters-row-main:focus-within .filters-search svg { color:#38bdf8; }
+
+        #searchInput {
+            flex:1; width:100%; max-width:100%; display:block; margin:0;
+            background:transparent; border:none; padding:0.6rem 0;
+            color:var(--text-high); font-size:0.95rem; outline:none;
+            box-sizing:border-box; font-family:'Inter',sans-serif;
+        }
+        #searchInput::placeholder { color:#475569; }
+        #searchInput:focus { border-color:transparent; box-shadow:none; }
+
+        .filters-dim {
+            display:flex; align-items:center; gap:3px;
+            border-left:1px solid rgba(255,255,255,.08); padding-left:8px; flex-shrink:0;
+        }
+        .btn-filter {
+            background:transparent; color:var(--text-low);
+            padding:0.48rem 1rem; border-radius:9px;
+            border:1px solid transparent; cursor:pointer;
+            transition:background .18s, color .18s;
+            font-weight:500; font-size:0.84rem; white-space:nowrap;
+            font-family:'Inter',sans-serif;
+        }
+        .btn-filter:hover { background:rgba(255,255,255,.06); color:var(--text-high); }
+        .btn-filter.active { background:var(--accent); color:#0f172a; font-weight:700; }
+
+        /* Linha 2: chips de contexto */
+        .filters-row-chips {
+            display:flex; align-items:center; flex-wrap:wrap; gap:10px;
+            background:rgba(255,255,255,.02);
+            border:1px solid rgba(255,255,255,.09); border-top:none;
+            border-radius:0 0 14px 14px;
+            padding:10px 16px;
+        }
+        .filters-chip-group { display:flex; align-items:center; gap:7px; flex-wrap:wrap; }
+        .filters-chip-label { font-size:0.66rem; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:#334155; white-space:nowrap; }
+        .filters-chip-sep { width:1px; height:18px; background:rgba(255,255,255,.06); flex-shrink:0; margin:0 2px; }
+
+        /* Chips */
+        .ctx-chips { display:flex; flex-wrap:wrap; gap:5px; }
+        .ctx-chip { padding:4px 11px; border-radius:100px; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.03); color:#64748b; font-family:'Inter',sans-serif; font-size:0.74rem; font-weight:600; cursor:pointer; transition:all .15s; white-space:nowrap; }
+        .ctx-chip:hover { border-color:rgba(56,189,248,.3); color:#94a3b8; background:rgba(56,189,248,.06); }
+        .ctx-chip.active { background:rgba(56,189,248,.12); border-color:rgba(56,189,248,.4); color:#38bdf8; }
+
+        /* Limpar */
+        .ctx-clear { display:inline-flex; align-items:center; gap:5px; margin-left:auto; padding:4px 10px; border-radius:100px; border:1px solid rgba(255,255,255,.07); background:transparent; color:#475569; font-size:0.71rem; font-weight:600; cursor:pointer; font-family:'Inter',sans-serif; transition:all .15s; white-space:nowrap; }
+        .ctx-clear:hover { border-color:rgba(248,113,113,.3); color:#f87171; background:rgba(248,113,113,.05); }
+
+        /* Hint de resultados */
+        .ctx-hint { font-size:0.73rem; color:#38bdf8; font-weight:500; padding:0 2px; }
+
+        /* Relevância nos cards — FIX: não sobrescreve borda da dimensão */
         .card-footer-area { display:flex; flex-direction:column; gap:10px; margin-top:auto; }
         .card-footer-area .btn-ver-mais { margin-top:0; width:100%; }
         .card-main-content { display:flex; flex-direction:column; flex:1; }
-        .card .ctx-relevance { display:none; align-items:center; gap:5px; font-size:0.65rem; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:#38bdf8; padding:3px 9px; background:rgba(56,189,248,0.10); border:1px solid rgba(56,189,248,0.25); border-radius:100px; width:fit-content; }
+        .card .ctx-relevance { display:none; align-items:center; gap:5px; font-size:0.65rem; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:#38bdf8; padding:3px 9px; background:rgba(56,189,248,.10); border:1px solid rgba(56,189,248,.25); border-radius:100px; width:fit-content; }
         .card.ctx-highlighted .ctx-relevance { display:inline-flex; }
-        .card.ctx-highlighted { border-color:rgba(56,189,248,0.22); }
+        /* Removido: .card.ctx-highlighted { border-color:... } — preserva cor da dimensão */
         .card.ctx-dim { opacity:0.42; }
 
-        /* ESTADO VAZIO */
-        .ctx-empty-state { display:none; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:12px; padding:56px 24px; margin-bottom:24px; background:rgba(255,255,255,0.02); border:1px dashed rgba(255,255,255,0.08); border-radius:16px; color:#475569; }
+        /* Estado vazio */
+        .ctx-empty-state { display:none; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:12px; padding:56px 24px; margin-bottom:24px; background:rgba(255,255,255,.02); border:1px dashed rgba(255,255,255,.08); border-radius:16px; color:#475569; }
         .ctx-empty-state svg { opacity:0.35; }
         .ctx-empty-state p { font-size:0.92rem; font-weight:600; color:#64748b; margin:0; line-height:1.5; }
         .ctx-empty-state span { font-size:0.78rem; color:#334155; }
 
-        @media (max-width:640px) {
-            .ctx-toggle { padding:10px 14px; font-size:0.82rem; }
-            .ctx-panel  { padding:16px 14px 14px; }
-            .ctx-chip   { font-size:0.74rem; padding:5px 11px; }
+        @media (max-width:700px) {
+            .filters-row-main { flex-wrap:wrap; padding:10px 12px; gap:8px; }
+            .filters-dim { border-left:none; border-top:1px solid rgba(255,255,255,.07); padding:8px 0 0; width:100%; flex-wrap:wrap; }
+            .filters-row-chips { gap:8px; }
+            .filters-chip-sep { display:none; }
         }
     </style>
 </head>
@@ -221,19 +272,19 @@
                 <!-- Barra de abas -->
                 <div class="mmx-tab-bar" role="tablist">
                     <button class="mmx-tab mmx-tab-active" data-tab="ponto" role="tab" aria-selected="true">
-                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
                         1. Ponto de Partida
                     </button>
                     <button class="mmx-tab" data-tab="atributos" role="tab" aria-selected="false">
-                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
                         2. Atributos
                     </button>
                     <button class="mmx-tab" data-tab="solucoes" role="tab" aria-selected="false">
-                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
                         3. Soluções
                     </button>
                     <button class="mmx-tab" data-tab="evidencias" role="tab" aria-selected="false">
-                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
                         4. Base de Evidências
                     </button>
                 </div>
@@ -258,36 +309,30 @@
 
                         <!-- Divisor -->
                         <div class="p1-divider">
-                            <span>Os riscos são distribuídos em 3 dimensões</span>
+                            <span>Os riscos em ECOS podem ser classificados em três dimensões</span>
                         </div>
 
                         <!-- Cards de dimensão -->
                         <div class="p1-dim-grid">
                             <div class="p1-dim-card p1-dim-tec">
                                 <div class="p1-dim-header">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-                                    <span class="p1-dim-label">Técnica</span>
-                                    <span class="p1-dim-count">11 riscos</span>
+                                    <span class="p1-dim-label">Dimensão Técnica</span>   
                                 </div>
-                                <p class="p1-dim-text">Vulnerabilidades de segurança, falhas de compatibilidade e problemas decorrentes do acúmulo descontrolado de dependências ou de práticas inadequadas de empacotamento de bibliotecas.</p>
+                                <p class="p1-dim-text">Riscos técnicos incluem vulnerabilidades de segurança, falhas de compatibilidade e problemas decorrentes do acúmulo descontrolado de dependências ou de práticas inadequadas de empacotamento de bibliotecas.</p>
                                 <span class="p1-dim-ref">Oliveira e Alves (2021).</span>
                             </div>
                             <div class="p1-dim-card p1-dim-soc">
                                 <div class="p1-dim-header">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-                                    <span class="p1-dim-label">Social</span>
-                                    <span class="p1-dim-count">7 riscos</span>
+                                    <span class="p1-dim-label"> Dimensão Social</span>
                                 </div>
-                                <p class="p1-dim-text">Rotatividade de colaboradores, conflitos entre atores e declínio da participação comunitária que podem comprometer a coesão e a continuidade do ecossistema.</p>
+                                <p class="p1-dim-text">Riscos sociais abrangem a rotatividade de colaboradores, conflitos entre atores e declínio da participação comunitária.</p>
                                 <span class="p1-dim-ref">Oliveira e Alves (2021).</span>
                             </div>
                             <div class="p1-dim-card p1-dim-neg">
                                 <div class="p1-dim-header">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
-                                    <span class="p1-dim-label">Negócio</span>
-                                    <span class="p1-dim-count">6 riscos</span>
+                                    <span class="p1-dim-label">Dimensão de Negócios</span>
                                 </div>
-                                <p class="p1-dim-text">Questões relacionadas à propriedade intelectual, licenciamento e conformidade regulatória que afetam a viabilidade e sustentabilidade comercial do ecossistema.</p>
+                                <p class="p1-dim-text">Riscos de negócios podem envolver questões de propriedade intelectual, licenciamento e conformidade regulatória.</p>
                                 <span class="p1-dim-ref">Oliveira e Alves (2021).</span>
                             </div>
                         </div>
@@ -296,138 +341,404 @@
 
                     <!-- PAINEL 2: Atributos -->
                     <div class="mmx-tab-panel" id="mmx-tab-atributos">
-                        <div class="mmx-panel-intro">
-                            <p>Cada risco é descrito por quatro atributos que ajudam a compreender seu contexto. Clique em cada atributo para saber mais.</p>
-                        </div>
-                        <div class="mmx-accordion">
-                            <button class="mmx-acc-btn mmx-acc-open" data-acc="sei">
-                                    <span class="mmx-acc-label">Classificação do Risco de Acordo com a Taxonomia de Risco do SEI</span>
-                                <svg class="mmx-acc-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-                            </button>
-                            <div class="mmx-acc-body" id="acc-sei">
-                                <p>A classificação dos riscos foi realizada com base na Taxonomia de Riscos do <em>Software Engineering Institute</em> (SEI), que organiza os riscos de forma hierárquica em três níveis. Essa estrutura permite compreender não apenas qual é o risco, mas <strong>onde ele se origina</strong> e <strong>qual aspecto do ecossistema ele afeta</strong> — seja a arquitetura do software ou o processo de desenvolvimento.</p>
 
-                                <div class="mmx-sub-items">
-                                    <div class="mmx-sub-item">
-                                        <strong>Classe do Risco</strong> — representa a categoria principal à qual o risco pertence. A taxonomia SEI define três classes: <em>Product Engineering Risk</em> (riscos ligados à engenharia do produto), <em>Development Environment Risk</em> (riscos do ambiente de desenvolvimento) e <em>Program Constraints Risk</em> (riscos decorrentes de restrições do programa, como dependência de terceiros).
-                                    </div>
-                                    <div class="mmx-sub-item">
-                                        <strong>Elemento do Risco</strong> — corresponde ao componente específico da classe onde o risco se manifesta. Os elementos identificados no artigo incluem: <em>Requirements</em>, <em>Design</em>, <em>Code and Unit Test</em>, <em>Integration and Test</em>, <em>Engineering Specialities</em>, <em>Development Process</em>, <em>Development System</em>, <em>Management Process</em>, <em>Management Methods</em>, <em>Work Environment</em>, <em>Resources</em>, <em>Contract</em> e <em>Program Interfaces</em>.
-                                    </div>
-                                    <div class="mmx-sub-item">
-                                        <strong>Área de Desafio</strong> — representa a origem prática do risco dentro do ecossistema, relacionando cada elemento a desafios concretos de arquitetura ou processo. Exemplos do artigo: <em>Interface Stability</em> e <em>Reliability Guarantee</em> (arquitetura); <em>No Standardized Process Model</em>, <em>Development Coordination and Management</em>, <em>Requirement Engineering</em> e <em>Quality Assurance</em> (processo); e a alta dependência de desenvolvedores terceiros (restrições de programa).
-                                    </div>
-                                </div>
-
-                                <p class="mmx-acc-ref">Fonte: Software Ecosystems Risks – Manalif et al. (2013).</p>
-                            </div>
-                            <button class="mmx-acc-btn" data-acc="manikas">
-                                <span class="mmx-acc-label">Tipo de ECOS — <span style="font-weight:400;color:#94a3b8">Tipo mais propício ao risco</span></span>
-                                <svg class="mmx-acc-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-                            </button>
-                            <div class="mmx-acc-body" id="acc-manikas">
-                                <p>Manikas (2016) classificou os ecossistemas em três tipos conforme o controle do código:</p>
-                                <div class="mmx-sub-items">
-                                    <div class="mmx-sub-item"><strong>Aberto:</strong> Código público, contribuições voluntárias (ex.: NPM, PyPI). Mais vulnerável a abandono e ataques à cadeia de suprimentos.</div>
-                                    <div class="mmx-sub-item"><strong>Híbrido:</strong> Combina componentes proprietários e abertos (ex.: iOS). Enfrenta riscos de governança e conflitos de interesse.</div>
-                                    <div class="mmx-sub-item"><strong>Proprietário:</strong> Controlado por uma empresa (ex.: SaaS). Cria dependência crítica e risco de lock-in.</div>
-                                </div>
-                                <p class="mmx-acc-ref">Manikas, K. (2016). Journal of Systems and Software, 117, 84–103.</p>
-                            </div>
-                            <button class="mmx-acc-btn" data-acc="iansiti">
-                                <span class="mmx-acc-label">Saúde do ECOS — <span style="font-weight:400;color:#94a3b8">Métrica afetada pelo risco</span></span>
-                                <svg class="mmx-acc-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-                            </button>
-                            <div class="mmx-acc-body" id="acc-iansiti">
-                                <p>Iansiti & Levien (2004) propuseram que ecossistemas têm três métricas de saúde:</p>
-                                <div class="mmx-sub-items">
-                                    <div class="mmx-sub-item"><strong>Robustez:</strong> Capacidade de sobreviver a perturbações — ex.: descoberta de vulnerabilidade crítica.</div>
-                                    <div class="mmx-sub-item"><strong>Produtividade:</strong> Eficiência na geração de valor — ciclos de desenvolvimento, velocidade de atualizações.</div>
-                                    <div class="mmx-sub-item"><strong>Criação de Nichos:</strong> Capacidade de atrair novos participantes e diversificar contribuições.</div>
-                                </div>
-                                <p class="mmx-acc-ref">Iansiti, M. e Levien, R. (2004). The Keystone Advantage. Harvard Business School Press.</p>
-                            </div>
-                            <button class="mmx-acc-btn" data-acc="burstrom">
-                                <span class="mmx-acc-label">Processo de Valor — <span style="font-weight:400;color:#94a3b8">Ciclo ameaçado pelo risco</span></span>
-                                <svg class="mmx-acc-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-                            </button>
-                            <div class="mmx-acc-body" id="acc-burstrom">
-                                <p>Burström et al. (2022) descrevem três processos no ciclo de valor de um ECOS:</p>
-                                <div class="mmx-sub-items">
-                                    <div class="mmx-sub-item"><strong>Criação de Valor:</strong> Desenvolvimento dos artefatos — escrever código, lançar versões.</div>
-                                    <div class="mmx-sub-item"><strong>Entrega de Valor:</strong> Distribuição via gerenciadores de pacotes, APIs, lojas.</div>
-                                    <div class="mmx-sub-item"><strong>Captura de Valor:</strong> O retorno dos atores: receita, reconhecimento, benefícios técnicos.</div>
-                                </div>
-                                <p class="mmx-acc-ref">Burström et al. (2022), e Campos et al. (2025).</p>
-                            </div>
+                        <!-- Cabeçalho do painel -->
+                        <div class="at2-header">
+                            <p class="at2-lead">Cada risco é descrito por <strong>quatro atributos</strong> oriundos de perspectivas teóricas distintas. Juntos, eles situam o risco no contexto técnico, estrutural e estratégico do ECOS.</p>
                         </div>
+
+                        <!-- 4 blocos sempre visíveis -->
+                        <div class="at2-blocks">
+
+                            <!-- Bloco 1: SEI -->
+                            <div class="atb atb-sei">
+                                <div class="atb-head">
+                                    <div class="atb-icon atb-icon-sei">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                                    </div>
+                                    <div>
+                                        <span class="atb-source atb-source-sei">SEI · Manalif et al. (2013)</span>
+                                        <h4 class="atb-title">Classificação do Risco</h4>
+                                    </div>
+                                </div>
+                                <p class="atb-desc">Onde e como o risco se manifesta na estrutura do software, seguindo a Taxonomia de Riscos do Software Engineering Institute (SEI).</p>
+                                <div class="atb-body">
+                                    <p class="atb-intro">A taxonomia organiza cada risco em três níveis hierárquicos, permitindo identificar sua origem com precisão:</p>
+                                    <div class="atb-tiers">
+                                        <div class="atb-tier atb-tier-sei">
+                                            <span class="atb-num atb-num-sei">1</span>
+                                            <div>
+                                                <strong>Classe do Risco</strong>
+                                                <p>Representa a categoria mais ampla em que o risco está inserido, identificando se a origem do problema está relacionada ao produto de software, ao ambiente de desenvolvimento ou às restrições do projeto. As classes da Taxonomia do SEI são: <em>Engenharia de Produto</em> (arquitetura, integração, segurança e qualidade técnica), <em>Ambiente de Desenvolvimento</em> (processos, ferramentas, métodos e coordenação da equipe) e <em>Restrições do Programa</em> (recursos, contratos, dependências externas e relações organizacionais).</p>
+                                                <p style="margin-top:6px;font-size:0.78rem;color:#64748b;">💡 Responde à pergunta: <em>"Em qual grande área esse problema se origina?"</em></p>
+                                            </div>
+                                        </div>
+                                        <div class="atb-tier atb-tier-sei">
+                                            <span class="atb-num atb-num-sei">2</span>
+                                            <div>
+                                                <strong>Elemento do Risco</strong>
+                                                <p>Representa a parte específica da classe onde o risco se manifesta, localizando exatamente qual aspecto do ecossistema está sendo afetado. Exemplos de elementos: Requisitos, Projeto e Arquitetura, Código e Testes, Integração, Processos de Desenvolvimento, Métodos de Gerenciamento, Recursos, Interfaces entre organizações.</p>
+                                                <p style="margin-top:6px;font-size:0.78rem;color:#64748b;">💡 Responde à pergunta: <em>"Onde exatamente esse problema acontece?"</em></p>
+                                            </div>
+                                        </div>
+                                        <div class="atb-tier atb-tier-sei">
+                                            <span class="atb-num atb-num-sei">3</span>
+                                            <div>
+                                                <strong>Área de Desafio</strong>
+                                                <p>Representa o desafio prático que favorece o surgimento do risco no ecossistema — a situação concreta que pode comprometer a evolução, a qualidade ou a sustentabilidade da plataforma. Exemplos identificados na literatura: Estabilidade de Interfaces, Garantia de Segurança, Garantia de Confiabilidade, Composição de Funcionalidades Independentes, Gerenciamento da Evolução, Coordenação do Desenvolvimento, Engenharia de Requisitos, Garantia da Qualidade.</p>
+                                                <p style="margin-top:6px;font-size:0.78rem;color:#64748b;">💡 Responde à pergunta: <em>"Qual problema concreto está gerando esse risco?"</em></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="atb-ref">Fonte: Software Ecosystems Risks – Manalif et al. (2013).</p>
+                                </div>
+                            </div>
+
+                            <!-- Bloco 2: Manikas -->
+                            <div class="atb atb-manikas atb-sei">
+                                <div class="atb-head">
+                                    <div class="atb-icon atb-icon-manikas">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                                    </div>
+                                    <div>
+                                        <span class="atb-source atb-source-manikas">Manikas (2016)</span>
+                                        <h4 class="atb-title">Tipo de ECOS Mais Propício</h4>
+                                    </div>
+                                </div>
+                                <p class="atb-desc">Indica qual tipo de ecossistema apresenta características mais favoráveis ao surgimento ou à propagação do risco, conforme a tipologia proposta por Manikas (2016).</p>
+                                <div class="atb-body">
+                                    <p class="atb-intro">A classificação permite compreender em qual contexto organizacional e colaborativo o risco tende a ocorrer com maior frequência ou causar maior impacto.</p>
+                                    <div class="atb-tiers">
+                                        <div class="atb-tier atb-tier-sei">
+                                            <span class="atb-num atb-num-sei">1</span>
+                                            <div>
+                                                <strong>Aberto</strong>
+                                                <p>Participação ampla e distribuída via compartilhamento de código, conhecimento e recursos. A governança é comunitária ou compartilhada, o que pode amplificar riscos de coordenação, dependência de mantenedores e vulnerabilidades em dependências externas.</p>
+                                            </div>
+                                        </div>
+                                        <div class="atb-tier atb-tier-sei">
+                                            <span class="atb-num atb-num-sei">2</span>
+                                            <div>
+                                                <strong>Híbrido</strong>
+                                                <p>Coexistência de componentes abertos e proprietários sob governança parcialmente centralizada. Pode gerar conflitos de interesse, dependências organizacionais e propagação de riscos técnicos entre os dois domínios.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="atb-ref">Fonte: Revisiting software ecosystems research: A longitudinal literature study – Manikas (2016).</p>
+                                </div>
+                            </div>
+
+                            <!-- Bloco 3: Iansiti & Levien -->
+                            <div class="atb atb-iansiti">
+                                <div class="atb-head">
+                                    <div class="atb-icon atb-icon-iansiti">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                                    </div>
+                                    <div>
+                                        <span class="atb-source atb-source-iansiti">Iansiti &amp; Levien (2004)</span>
+                                        <h4 class="atb-title">Saúde do ECOS</h4>
+                                    </div>
+                                </div>
+                                <p class="atb-desc">Aponta qual métrica de saúde do ecossistema é afetada pelo risco, com base nas dimensões propostas por Iansiti e Levien (2004).</p>
+                                <div class="atb-body">
+                                    <p class="atb-intro">Iansiti e Levien (2004) propõem três métricas para avaliar a vitalidade de um ecossistema de negócios:</p>
+                                    <div class="atb-tiers">
+                                        <div class="atb-tier atb-tier-sei">
+                                            <span class="atb-num atb-num-sei">1</span>
+                                            <div>
+                                                <strong>Robustez</strong>
+                                                <p>Representa a capacidade do ecossistema de resistir e se recuperar de mudanças, falhas e eventos inesperados. Um ecossistema robusto consegue continuar operando mesmo diante de vulnerabilidades, abandono de componentes, mudanças tecnológicas ou saída de participantes importantes. Riscos que afetam a robustez podem comprometer a estabilidade e a continuidade do ecossistema ao longo do tempo.</p>
+                                                <p style="margin-top:6px;font-size:0.78rem;color:#64748b;">💡 Responde à pergunta: <em>"O ecossistema continuará funcionando diante de uma crise ou mudança significativa?"</em></p>
+                                            </div>
+                                        </div>
+                                        <div class="atb-tier atb-tier-sei">
+                                            <span class="atb-num atb-num-sei">2</span>
+                                            <div>
+                                                <strong>Produtividade</strong>
+                                                <p>Representa a capacidade do ecossistema de transformar recursos, conhecimento e inovação em valor para seus participantes. Está relacionada à eficiência do desenvolvimento, integração de componentes, entrega de funcionalidades e geração contínua de benefícios para usuários e organizações. Riscos que afetam a produtividade podem aumentar custos, reduzir a velocidade de evolução da plataforma e dificultar a criação de valor.</p>
+                                                <p style="margin-top:6px;font-size:0.78rem;color:#64748b;">💡 Responde à pergunta: <em>"O ecossistema consegue gerar valor de forma eficiente?"</em></p>
+                                            </div>
+                                        </div>
+                                        <div class="atb-tier atb-tier-sei">
+                                            <span class="atb-num atb-num-sei">3</span>
+                                            <div>
+                                                <strong>Criação de Nichos</strong>
+                                                <p>Representa a capacidade do ecossistema de atrair novos participantes, estimular inovação e criar novas oportunidades de negócio ou colaboração. Ecossistemas saudáveis incentivam o surgimento de novos produtos, serviços, extensões e comunidades, ampliando sua diversidade e capacidade de evolução. Riscos que afetam a criação de nichos podem reduzir a inovação, dificultar a entrada de novos atores e limitar o crescimento do ecossistema.</p>
+                                                <p style="margin-top:6px;font-size:0.78rem;color:#64748b;">💡 Responde à pergunta: <em>"O ecossistema continua atraindo inovação e novas oportunidades?"</em></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="atb-ref">Iansiti, M. &amp; Levien, R. (2004). The Keystone Advantage. Harvard Business School Press.</p>
+                                </div>
+                            </div>
+
+                            <!-- Bloco 4: Burström -->
+                            <div class="atb atb-burstrom">
+                                <div class="atb-head">
+                                    <div class="atb-icon atb-icon-burstrom">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                                    </div>
+                                    <div>
+                                        <span class="atb-source atb-source-burstrom">Burström et al. (2022)</span>
+                                        <h4 class="atb-title">Processo de Valor</h4>
+                                    </div>
+                                </div>
+                                <p class="atb-desc">Indica em qual etapa do ciclo de valor do ecossistema o risco atua, segundo o framework de Burström et al. (2022).</p>
+                                <div class="atb-body">
+                                    <p class="atb-intro">O framework de Burström et al. (2022) propõe que o valor em um Ecossistema de Software é gerado, disponibilizado e convertido em benefícios por meio de três processos interdependentes. A identificação do processo afetado permite compreender em qual etapa do ciclo de valor o risco exerce maior impacto.</p>
+                                    <div class="atb-tiers">
+                                        <div class="atb-tier atb-tier-sei">
+                                            <span class="atb-num atb-num-sei">1</span>
+                                            <div>
+                                                <strong>Criação de Valor</strong>
+                                                <p>Representa o processo em que novos produtos, serviços, funcionalidades e inovações são desenvolvidos dentro do ecossistema. Os participantes colaboram para produzir software, componentes, extensões, documentação, conhecimento e demais artefatos que compõem o ECOS. Riscos associados à criação de valor podem comprometer a qualidade do desenvolvimento, a colaboração entre atores e a capacidade de inovação do ecossistema.</p>
+                                                <p style="margin-top:6px;font-size:0.78rem;color:#64748b;">💡 Responde à pergunta: <em>"O risco afeta a capacidade do ecossistema de gerar novos produtos, serviços ou conhecimento?"</em></p>
+                                            </div>
+                                        </div>
+                                        <div class="atb-tier atb-tier-sei">
+                                            <span class="atb-num atb-num-sei">2</span>
+                                            <div>
+                                                <strong>Entrega de Valor</strong>
+                                                <p>Representa o processo pelo qual o valor produzido é disponibilizado aos usuários, clientes e demais participantes do ecossistema. Inclui mecanismos de distribuição, integração, disponibilização de APIs, marketplaces, repositórios de pacotes, lojas de aplicativos e demais canais que conectam o software ao seu público. Riscos associados à entrega de valor podem dificultar o acesso aos artefatos, prejudicar integrações e reduzir a eficiência da distribuição.</p>
+                                                <p style="margin-top:6px;font-size:0.78rem;color:#64748b;">💡 Responde à pergunta: <em>"O risco afeta a forma como o valor chega aos usuários e participantes do ecossistema?"</em></p>
+                                            </div>
+                                        </div>
+                                        <div class="atb-tier atb-tier-sei">
+                                            <span class="atb-num atb-num-sei">3</span>
+                                            <div>
+                                                <strong>Captura de Valor</strong>
+                                                <p>Representa o processo pelo qual os participantes obtêm benefícios a partir de suas contribuições ao ecossistema. Esses benefícios podem incluir receita financeira, ganho de mercado, crescimento da comunidade, aquisição de conhecimento, fortalecimento da reputação ou vantagens estratégicas. Riscos associados à captura de valor podem reduzir incentivos à participação, comprometer a sustentabilidade do ecossistema e dificultar a retenção de atores importantes.</p>
+                                                <p style="margin-top:6px;font-size:0.78rem;color:#64748b;">💡 Responde à pergunta: <em>"O risco afeta a capacidade dos participantes de obter benefícios e manter seu interesse no ecossistema?"</em></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="atb-ref">Burström, T. et al. (2022). Journal of Business Research, 147, 461–471.</p>
+                                </div>
+                            </div>
+
+                        </div><!-- /at2-blocks -->
                     </div>
 
                     <!-- PAINEL 3: Soluções -->
                     <div class="mmx-tab-panel" id="mmx-tab-solucoes">
-                        <div class="mmx-panel-intro">
-                            <p>O catálogo identificou <strong>21 soluções (S01–S21)</strong> propostas pela literatura para gerenciar os riscos em ECOS. Elas estão classificadas em cinco tipos.</p>
+
+                        <!-- Cabeçalho -->
+                        <div class="at2-header">
+                            <p class="at2-lead">O catálogo identificou <strong>21 soluções</strong> propostas pela literatura para gerenciar os riscos em ECOS. Elas estão classificadas em <strong>cinco tipos</strong> conforme sua natureza — de estruturas conceituais a ferramentas prontas para uso. Clique em qualquer tipo para expandir.</p>
                         </div>
-                        <div class="mmx-accordion">
-                            <button class="mmx-acc-btn mmx-acc-open" data-acc="sol-fw">
-                                <span class="mmx-acc-label">Frameworks</span>
-                                <svg class="mmx-acc-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-                            </button>
-                            <div class="mmx-acc-body" id="acc-sol-fw">
-                                <p>Estruturas conceituais para identificar, classificar e monitorar riscos de forma sistemática. São as soluções mais abrangentes — incluem o TrustSECO (gestão de confiança) e o framework HIN (classificação de pacotes maliciosos).</p>
-                                <p class="mmx-acc-ref">Classificação baseada em Shaw (2003), in Campos et al. (2025).</p>
+
+                        <!-- Cards de soluções: 3 na linha 1, 2 na linha 2 centrados -->
+                        <div class="sol-grid">
+
+                            <!-- Card 1: Frameworks -->
+                            <div class="sol-card sol-card-fw" id="sol-card-fw">
+                                <div class="sol-card-head">
+                                    <div class="sol-icon sol-icon-fw">
+                                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                                    </div>
+                                    <div class="sol-card-meta">
+                                        <span class="sol-badge sol-badge-fw">Mais abrangente</span>
+                                        <h4 class="sol-card-title">Frameworks</h4>
+                                    </div>
+                                </div>
+                                <p class="sol-card-desc">Estruturas conceituais completas para identificar, classificar e monitorar riscos de forma sistemática no ecossistema.</p>
+                                <div class="sol-card-body" id="sol-body-fw">
+                                    <p class="sol-body-text">Estruturas conceituais que organizam princípios, processos e diretrizes para apoiar a gestão de riscos em Ecossistemas de Software. Fornecem uma visão abrangente do problema, orientando a análise, a tomada de decisão e a definição de estratégias de mitigação.</p>
+                                    <p class="mmx-acc-ref">Classificação baseada em Shaw (2003) e Campos et al. (2025).</p>
+                                </div>
                             </div>
-                            <button class="mmx-acc-btn" data-acc="sol-mod">
-                                <span class="mmx-acc-label">Modelos</span>
-                                <svg class="mmx-acc-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-                            </button>
-                            <div class="mmx-acc-body" id="acc-sol-mod">
-                                <p>Representações formais dos riscos — como dependências se comportam, como a confiança se estabelece e como medir o risco de segurança de uma biblioteca. Especialmente úteis para análise técnica e tomada de decisão baseada em dados.</p>
-                                <p class="mmx-acc-ref">Classificação baseada em Shaw (2003), in Campos et al. (2025).</p>
+
+                            <!-- Card 2: Modelos -->
+                            <div class="sol-card sol-card-mod" id="sol-card-mod">
+                                <div class="sol-card-head">
+                                    <div class="sol-icon sol-icon-mod">
+                                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                                    </div>
+                                    <div class="sol-card-meta">
+                                        <span class="sol-badge sol-badge-mod">Análise técnica</span>
+                                        <h4 class="sol-card-title">Modelos</h4>
+                                    </div>
+                                </div>
+                                <p class="sol-card-desc">Representações formais de como dependências se comportam, como a confiança se estabelece e como medir riscos de segurança.</p>
+                                <div class="sol-card-body" id="sol-body-mod">
+                                    <p class="sol-body-text">Representações simplificadas de fenômenos, relações ou comportamentos observados no ecossistema. São utilizados para compreender riscos, analisar cenários e apoiar decisões por meio da abstração de elementos complexos da realidade.</p>
+                                    <p class="mmx-acc-ref">Classificação baseada em Shaw (2003) e Campos et al. (2025).</p>
+                                </div>
                             </div>
-                            <button class="mmx-acc-btn" data-acc="sol-pra">
-                                <span class="mmx-acc-label">Práticas</span>
-                                <svg class="mmx-acc-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-                            </button>
-                            <div class="mmx-acc-body" id="acc-sol-pra">
-                                <p>Abordagens concretas para o dia a dia: garantir robustez da arquitetura, adotar SLAs, implementar mecanismos de segurança e atrair participantes. Imediatamente aplicáveis, sem necessidade de desenvolvimento técnico complexo.</p>
-                                <p class="mmx-acc-ref">Classificação baseada em Shaw (2003), in Campos et al. (2025).</p>
+
+                            <!-- Card 3: Práticas -->
+                            <div class="sol-card sol-card-pra" id="sol-card-pra">
+                                <div class="sol-card-head">
+                                    <div class="sol-icon sol-icon-pra">
+                                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                                    </div>
+                                    <div class="sol-card-meta">
+                                        <span class="sol-badge sol-badge-pra">Imediato</span>
+                                        <h4 class="sol-card-title">Práticas</h4>
+                                    </div>
+                                </div>
+                                <p class="sol-card-desc">Abordagens concretas para o dia a dia, aplicáveis sem necessidade de desenvolvimento técnico complexo.</p>
+                                <div class="sol-card-body" id="sol-body-pra">
+                                    <p class="sol-body-text">Conjunto de ações, técnicas e recomendações aplicadas durante o desenvolvimento e a gestão do ecossistema para prevenir, reduzir ou controlar riscos. Representam atividades executadas diretamente pelos atores envolvidos no contexto real.</p>
+                                    <p class="mmx-acc-ref">Classificação baseada em Shaw (2003) e Campos et al. (2025).</p>
+                                </div>
                             </div>
-                            <button class="mmx-acc-btn" data-acc="sol-fer">
-                                <span class="mmx-acc-label">Ferramentas</span>
-                                <svg class="mmx-acc-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-                            </button>
-                            <div class="mmx-acc-body" id="acc-sol-fer">
-                                <p><strong>DepReveal (S18)</strong> analisa vulnerabilidades em projetos NPM. <strong>smartPip (S19)</strong> resolve conflitos de dependências em Python. São soluções que integram diretamente ao fluxo de desenvolvimento.</p>
-                                <p class="mmx-acc-ref">Classificação baseada em Shaw (2003), in Campos et al. (2025).</p>
+
+                            <!-- Card 4: Ferramentas -->
+                            <div class="sol-card sol-card-fer" id="sol-card-fer">
+                                <div class="sol-card-head">
+                                    <div class="sol-icon sol-icon-fer">
+                                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                                    </div>
+                                    <div class="sol-card-meta">
+                                        <span class="sol-badge sol-badge-fer">Integração direta</span>
+                                        <h4 class="sol-card-title">Ferramentas</h4>
+                                    </div>
+                                </div>
+                                <p class="sol-card-desc">Soluções de software prontas que se integram diretamente ao fluxo de desenvolvimento para detecção e mitigação de riscos.</p>
+                                <div class="sol-card-body" id="sol-body-fer">
+                                    <p class="sol-body-text">Recursos tecnológicos utilizados para apoiar atividades relacionadas à identificação, monitoramento, análise e mitigação de riscos. Auxiliam na execução de tarefas, automação de processos e acompanhamento de indicadores do ecossistema.</p>
+                                    <p class="mmx-acc-ref">Classificação baseada em Shaw (2003) e Campos et al. (2025).</p>
+                                </div>
                             </div>
-                            <button class="mmx-acc-btn" data-acc="sol-met">
-                                <span class="mmx-acc-label">Métodos</span>
-                                <svg class="mmx-acc-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-                            </button>
-                            <div class="mmx-acc-body" id="acc-sol-met">
-                                <p>Procedimentos passo a passo: um método para gerenciar a confiabilidade da cadeia de suprimentos usando grafos de conhecimento, e um método multicritério para seleção de tipos de ECOS. Guiam tomadores de decisão por processos rigorosos.</p>
-                                <p class="mmx-acc-ref">Classificação baseada em Shaw (2003), in Campos et al. (2025).</p>
+
+                            <!-- Card 5: Métodos -->
+                            <div class="sol-card sol-card-met" id="sol-card-met">
+                                <div class="sol-card-head">
+                                    <div class="sol-icon sol-icon-met">
+                                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                                    </div>
+                                    <div class="sol-card-meta">
+                                        <span class="sol-badge sol-badge-met">Processo rigoroso</span>
+                                        <h4 class="sol-card-title">Métodos</h4>
+                                    </div>
+                                </div>
+                                <p class="sol-card-desc">Procedimentos passo a passo que guiam tomadores de decisão por processos rigorosos de análise e mitigação.</p>
+                                <div class="sol-card-body" id="sol-body-met">
+                                    <p class="sol-body-text">Procedimentos sistemáticos compostos por etapas, critérios e atividades bem definidas para identificar, avaliar e tratar riscos. Proporcionam uma abordagem estruturada e reproduzível para apoiar a tomada de decisão.</p>
+                                    <p class="mmx-acc-ref">Classificação baseada em Shaw (2003) e Campos et al. (2025).</p>
+                                </div>
                             </div>
+
+                        </div><!-- /sol-grid -->
+
+                        <!-- Rodapé informativo -->
+                        <div class="sol-footer">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                            Cada risco no catálogo é vinculado às soluções que o abordam. Acesse "Ver análise completa" em qualquer risco para ver as soluções específicas recomendadas.
                         </div>
+
                     </div>
 
                     <!-- PAINEL 4: Base de Evidências -->
                     <div class="mmx-tab-panel" id="mmx-tab-evidencias">
-                        <div class="mmx-panel-intro">
-                            <p>Toda informação do catálogo é sustentada por evidências científicas extraídas de um Mapeamento Sistemático da Literatura (MSL).</p>
+
+                        <div class="at2-header">
+                            <p class="at2-lead">Cada risco, solução e desafio presente neste catálogo possui <strong>rastreabilidade direta</strong> para os estudos científicos que os reportaram.</p>
                         </div>
-                        <div class="mmx-accordion">
-                            <button class="mmx-acc-btn mmx-acc-open" data-acc="estudos">
-                                <span class="mmx-acc-label">Estudos Primários (E01–E35)</span>
-                                <svg class="mmx-acc-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-                            </button>
-                            <div class="mmx-acc-body" id="acc-estudos">
-                                <p>De 710 estudos recuperados nas principais bases digitais (IEEE, Scopus, ACM, ScienceDirect), 35 foram selecionados após rigoroso processo de filtragem. São publicações de 2013 a 2025 que identificaram e analisaram riscos em ECOS.</p>
-                                <p>Ao clicar em "Ver análise completa" em qualquer risco, você verá quais estudos específicos o embasam, com links para os originais.</p>
-                                <p class="mmx-acc-ref">MSL conduzido por Campos et al. (2025) — Janeiro a Julho de 2025.</p>
+
+                        <div class="at2-blocks">
+
+                            <!-- Card 1: MSL -->
+                            <div class="atb atb-sei">
+                                <div class="atb-head">
+                                    <div class="atb-icon atb-icon-sei">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                                    </div>
+                                    <div>
+                                        <span class="atb-source atb-source-sei">Método de pesquisa</span>
+                                        <h4 class="atb-title">Mapeamento Sistemático da Literatura</h4>
+                                    </div>
+                                </div>
+                                <p class="atb-desc">Método científico utilizado para identificar, selecionar e analisar evidências publicadas sobre gerenciamento de riscos em Ecossistemas de Software.</p>
+                                <div class="atb-body">
+                                    <div class="ev-metrics">
+                                        <div class="ev-metric">
+                                            <span class="ev-metric-num">710</span>
+                                            <span class="ev-metric-label">estudos identificados</span>
+                                        </div>
+                                        <div class="ev-metric-arrow">→</div>
+                                        <div class="ev-metric ev-metric-highlight">
+                                            <span class="ev-metric-num">35</span>
+                                            <span class="ev-metric-label">estudos selecionados</span>
+                                        </div>
+                                    </div>
+                                    <div class="atb-tiers" style="margin-top: 14px;">
+                                        <div class="atb-tier atb-tier-sei">
+                                            <span class="atb-num atb-num-sei">
+                                                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                                            </span>
+                                            <div><p>Bases consultadas: IEEE Xplore, ACM Digital Library, Scopus e Springer.</p></div>
+                                        </div>
+                                        <div class="atb-tier atb-tier-sei">
+                                            <span class="atb-num atb-num-sei">
+                                                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                                            </span>
+                                            <div><p>Publicações de conferências e periódicos de alto impacto em Engenharia de Software, de 2010 a 2025.</p></div>
+                                        </div>
+                                        <div class="atb-tier atb-tier-sei">
+                                            <span class="atb-num atb-num-sei">
+                                                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                                            </span>
+                                            <div><p>Dados organizados segundo a Teoria Sociotécnica, garantindo cobertura técnica, social e de negócio.</p></div>
+                                        </div>
+                                    </div>
+                                    <p class="atb-ref">Campos et al. (2025). Submetido ao SBSI 2026.</p>
+                                </div>
                             </div>
-                        </div>
+
+                            <!-- Card 2: Evidências do Catálogo -->
+                            <div class="atb atb-sei">
+                                <div class="atb-head">
+                                    <div class="atb-icon atb-icon-sei">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                                    </div>
+                                    <div>
+                                        <span class="atb-source atb-source-sei">Corpus · E01–E35</span>
+                                        <h4 class="atb-title">Evidências do Catálogo</h4>
+                                    </div>
+                                </div>
+                                <p class="atb-desc">Todos os itens do catálogo são rastreáveis até os estudos primários que os identificaram e validaram.</p>
+                                <div class="atb-body">
+                                    <div class="ev-stats-grid">
+                                        <div class="ev-stat ev-stat-tecnico">
+                                            <span class="ev-stat-num">24</span>
+                                            <span class="ev-stat-name">Riscos</span>
+                                            <span class="ev-stat-range">R01–R24</span>
+                                        </div>
+                                        <div class="ev-stat ev-stat-social">
+                                            <span class="ev-stat-num">21</span>
+                                            <span class="ev-stat-name">Soluções</span>
+                                            <span class="ev-stat-range">S01–S21</span>
+                                        </div>
+                                        <div class="ev-stat ev-stat-negocio">
+                                            <span class="ev-stat-num">14</span>
+                                            <span class="ev-stat-name">Desafios</span>
+                                            <span class="ev-stat-range">D01–D14</span>
+                                        </div>
+                                    </div>
+                                    <div class="atb-tiers" style="margin-top:14px;">
+                                        <div class="atb-tier atb-tier-sei">
+                                            <span class="atb-num atb-num-sei">
+                                                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                                            </span>
+                                            <div><p>Riscos distribuídos em três dimensões: Técnica (R01–R11), Social (R12–R18) e Negócio (R19–R24).</p></div>
+                                        </div>
+                                        <div class="atb-tier atb-tier-sei">
+                                            <span class="atb-num atb-num-sei">
+                                                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                                            </span>
+                                            <div><p>Acesse "Ver análise completa" em qualquer risco para visualizar os estudos específicos que o embasam.</p></div>
+                                        </div>
+                                    </div>
+                                    <p class="atb-ref">Campos et al. (2025). Submetido ao SBSI 2026.</p>
+                                </div>
+                            </div>
+
+                        </div><!-- /at2-blocks -->
+
+                        
+
                     </div>
 
                 </div><!-- /mmx-tab-panels -->
@@ -438,7 +749,16 @@
 
     <style>
     /* ── Seção Metamodelo ── */
-    .mmx-section { padding: 80px 5% 72px; }
+    .mmx-section { padding: 80px 5% 72px; position: relative; }
+    .mmx-section::before {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(56,189,248,.18) 30%, rgba(56,189,248,.18) 70%, transparent);
+        position: absolute;
+        top: 0; left: 0;
+    }
     .mmx-container { max-width: 1100px; margin: 0 auto; }
 
     .mmx-header { text-align: center; margin-bottom: 36px; }
@@ -449,7 +769,7 @@
         font-size: 0.65rem; font-weight: 700; letter-spacing: 1px;
         color: #38bdf8; text-transform: uppercase; margin-bottom: 14px;
     }
-    .mmx-title { font-size: clamp(1.5rem,3vw,2rem); font-weight: 700; color: #f1f5f9; margin: 0 0 10px; }
+    .mmx-title { font-size: clamp(2rem,4vw,2.8rem); font-weight: 700; color: #f1f5f9; margin: 0 0 10px; }
     .mmx-sub { color: #94a3b8; font-size: 0.95rem; max-width: 560px; margin: 0 auto; }
 
     /* Imagem estática */
@@ -474,9 +794,9 @@
         cursor: pointer; white-space: nowrap; border-radius: 8px 8px 0 0;
         transition: color .2s, border-color .2s, background .2s;
     }
-    .mmx-tab:hover { color: #cbd5e1; background: rgba(255,255,255,.04); }
+    .mmx-tab:hover { color: #38bdf8; background: rgba(56,189,248,.04); }
     .mmx-tab.mmx-tab-active { color: #38bdf8; border-bottom-color: #38bdf8; background: rgba(56,189,248,.06); }
-    .mmx-tab svg { opacity: .7; }
+    .mmx-tab svg { opacity: .8; }
 
     /* Painéis */
     .mmx-tab-panels {
@@ -577,15 +897,15 @@
         display: flex; flex-direction: column; gap: 10px;
     }
     .p1-dim-tec { border-top: 3px solid #38bdf8; }
-    .p1-dim-soc { border-top: 3px solid #f59e0b; }
-    .p1-dim-neg { border-top: 3px solid #4ade80; }
+    .p1-dim-soc { border-top: 3px solid #38bdf8; }
+    .p1-dim-neg { border-top: 3px solid #38bdf8; }
 
     .p1-dim-header {
         display: flex; align-items: center; gap: 8px;
     }
     .p1-dim-tec .p1-dim-header { color: #38bdf8; }
-    .p1-dim-soc .p1-dim-header { color: #f59e0b; }
-    .p1-dim-neg .p1-dim-header { color: #4ade80; }
+    .p1-dim-soc .p1-dim-header { color: #38bdf8; }
+    .p1-dim-neg .p1-dim-header { color: #38bdf8; }
 
     .p1-dim-label { font-size: 0.9rem; font-weight: 700; flex: 1; }
     .p1-dim-count {
@@ -600,84 +920,424 @@
         .p1-dim-grid { grid-template-columns: 1fr; }
         .p1-hero { flex-direction: column; gap: 12px; }
     }
+
+    /* ══════════════════════════════════════════
+       PAINEL 2 — ATRIBUTOS: 4 blocos sempre visíveis
+    ══════════════════════════════════════════ */
+
+    .at2-header { margin-bottom: 22px; }
+    .at2-lead {
+        font-size: 0.9rem; color: #94a3b8; line-height: 1.7; margin: 0;
+        background: rgba(56,189,248,.06); border: 1px solid rgba(56,189,248,.15);
+        border-radius: 8px; padding: 14px 18px;
+    }
+    .at2-lead strong { color: #cbd5e1; }
+
+    /* Grade: 2 colunas lado a lado, cada bloco ocupa linha inteira verticalmente */
+    .at2-blocks {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        align-items: stretch;
+    }
+
+    /* Bloco base */
+    .atb {
+        border-radius: 12px;
+        border: 1px solid rgba(255,255,255,.07);
+        background: rgba(255,255,255,.03);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Borda superior colorida por fonte */
+    .atb-sei     { border-top: 3px solid #38bdf8; }
+    .atb-manikas { border-top: 3px solid #38bdf8; }
+    .atb-iansiti { border-top: 3px solid #38bdf8; }
+    .atb-burstrom{ border-top: 3px solid #38bdf8; }
+
+    /* Cabeçalho do bloco */
+    .atb-head {
+        display: flex; align-items: center; gap: 12px;
+        padding: 16px 18px 0;
+    }
+
+    /* Ícone */
+    .atb-icon {
+        flex-shrink: 0; width: 36px; height: 36px; border-radius: 9px;
+        display: flex; align-items: center; justify-content: center;
+    }
+    .atb-icon-sei     { background: rgba(56,189,248,.12);  color: #38bdf8; }
+    .atb-icon-manikas { background: rgba(56,189,248,.12);  color: #38bdf8; }
+    .atb-icon-iansiti { background: rgba(56,189,248,.12);  color: #38bdf8; }
+    .atb-icon-burstrom{ background: rgba(56,189,248,.12);  color: #38bdf8; }
+
+    /* Fonte e título */
+    .atb-source {
+        display: block; font-size: 0.67rem; font-weight: 700;
+        text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px;
+    }
+    .atb-source-sei     { color: #38bdf8; }
+    .atb-source-manikas { color: #38bdf8; }
+    .atb-source-iansiti { color: #38bdf8; }
+    .atb-source-burstrom{ color: #38bdf8; }
+
+    .atb-title {
+        font-size: 0.93rem; font-weight: 700; color: #e2e8f0;
+        margin: 0; line-height: 1.3;
+    }
+
+    /* Descrição */
+    .atb-desc {
+        font-size: 0.82rem; color: #64748b; line-height: 1.6;
+        padding: 10px 18px 0; margin: 0;
+    }
+
+    /* Corpo — sempre visível */
+    .atb-body {
+        padding: 14px 18px 18px;
+        border-top: 1px solid rgba(255,255,255,.06);
+        margin-top: 14px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .atb-intro {
+        font-size: 0.83rem; color: #94a3b8; line-height: 1.65;
+        margin: 0 0 12px;
+    }
+
+    /* Tiers (itens com ícone-letra) */
+    .atb-tiers { display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
+
+    .atb-tier {
+        display: flex; gap: 11px; align-items: flex-start;
+        background: rgba(255,255,255,.04); border-radius: 8px;
+        padding: 10px 12px;
+    }
+
+    /* Ícone numérico/letra do tier, colorido por bloco */
+    .atb-num {
+        flex-shrink: 0; width: 24px; height: 24px;
+        font-size: 0.7rem; font-weight: 800;
+        border-radius: 50%; display: flex; align-items: center; justify-content: center;
+        margin-top: 1px;
+    }
+    .atb-num-sei     { background: rgba(56,189,248,.18);  color: #38bdf8; }
+    .atb-num-manikas { background: rgba(245,158,11,.18);  color: #f59e0b; }
+    .atb-num-open    { background: rgba(56,189,248,.18);  color: #38bdf8; }
+    .atb-num-hybrid  { background: rgba(245,158,11,.18);  color: #f59e0b; }
+    .atb-num-prop    { background: rgba(239,68,68,.18);   color: #ef4444; }
+    .atb-num-iansiti { background: rgba(167,139,250,.18); color: #a78bfa; }
+    .atb-num-burstrom{ background: rgba(74,222,128,.18);  color: #4ade80; }
+
+    /* Borda lateral do tier por tipo de bloco */
+    .atb-tier-sei     { border-left: 2px solid rgba(56,189,248,.25); }
+    .atb-tier-open    { border-left: 2px solid rgba(56,189,248,.25); }
+    .atb-tier-hybrid  { border-left: 2px solid rgba(245,158,11,.25); }
+    .atb-tier-prop    { border-left: 2px solid rgba(239,68,68,.25);  }
+    .atb-tier-iansiti { border-left: 2px solid rgba(167,139,250,.25);}
+    .atb-tier-burstrom{ border-left: 2px solid rgba(74,222,128,.25); }
+
+    .atb-tier strong { display: block; font-size: 0.84rem; color: #cbd5e1; margin-bottom: 4px; }
+    .atb-tier p { font-size: 0.8rem; color: #94a3b8; line-height: 1.6; margin: 0; }
+
+    /* Nota de rodapé dos blocos */
+    .atb-note {
+        display: flex; gap: 8px; align-items: flex-start;
+        background: rgba(245,158,11,.06); border: 1px solid rgba(245,158,11,.18);
+        border-radius: 7px; padding: 10px 12px;
+        font-size: 0.78rem; color: #94a3b8; line-height: 1.5;
+        margin-bottom: 14px;
+    }
+    .atb-note svg { flex-shrink: 0; margin-top: 2px; color: #f59e0b; }
+    .atb-note strong { color: #cbd5e1; }
+
+    .atb-ref { font-size: 0.72rem; color: #475569; font-style: italic; margin: auto 0 0; }
+
+    @media (max-width: 860px) {
+        .at2-blocks { grid-template-columns: 1fr; }
+    }
+
+    /* ══════════════════════════════════════════
+       PAINEL 3 — SOLUÇÕES: grid de 5 cards
+    ══════════════════════════════════════════ */
+
+    /* Grid: 3 na primeira linha, 2 centrados na segunda */
+    .sol-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        margin-bottom: 16px;
+    }
+    /* Os últimos 2 cards ocupam colunas 1-2 e 2-3 centrando na linha */
+    .sol-card:nth-child(4) { grid-column: 1; }
+    .sol-card:nth-child(5) { grid-column: 2; }
+
+    /* Card base */
+    .sol-card {
+        border-radius: 12px;
+        border: 1px solid rgba(255,255,255,.07);
+        border-top-width: 3px;
+        background: rgba(255,255,255,.03);
+        cursor: pointer;
+        transition: border-color .2s, background .2s;
+        overflow: hidden;
+    }
+    .sol-card:hover { background: rgba(255,255,255,.05); }
+
+    /* Cores por tipo */
+    .sol-card-fw  { border-top-color: #38bdf8; }
+    .sol-card-mod { border-top-color: #38bdf8; }
+    .sol-card-pra { border-top-color: #38bdf8; }
+    .sol-card-fer { border-top-color: #38bdf8; }
+    .sol-card-met { border-top-color: #38bdf8; }
+
+    /* Estado aberto */
+    .sol-card.sol-open { background: rgba(255,255,255,.05); }
+    .sol-card-fw.sol-open  { border-color: rgba(56,189,248,.3);  border-top-color: #38bdf8; }
+    .sol-card-mod.sol-open { border-color: rgba(56,189,248,.3); border-top-color: #38bdf8; }
+    .sol-card-pra.sol-open { border-color: rgba(56,189,248,.3); border-top-color: #38bdf8; }
+    .sol-card-fer.sol-open { border-color: rgba(56,189,248,.3); border-top-color: #38bdf8; }
+    .sol-card-met.sol-open { border-color: rgba(248,113,113,.3); border-top-color: #f87171; }
+
+    /* Cabeçalho do card */
+    .sol-card-head {
+        display: flex; align-items: center; gap: 11px;
+        padding: 15px 16px 0;
+    }
+
+    /* Ícone */
+    .sol-icon {
+        flex-shrink: 0; width: 34px; height: 34px;
+        border-radius: 9px; display: flex; align-items: center; justify-content: center;
+    }
+    .sol-icon-fw  { background: rgba(56,189,248,.12);  color: #38bdf8; }
+    .sol-icon-mod { background: rgba(56,189,248,.12);  color: #38bdf8; }
+    .sol-icon-pra { background: rgba(56,189,248,.12);  color: #38bdf8; }
+    .sol-icon-fer { background: rgba(56,189,248,.12);  color: #38bdf8; }
+    .sol-icon-met { background: rgba(56,189,248,.12);  color: #38bdf8; }
+
+    .sol-card-meta { flex: 1; min-width: 0; }
+
+    /* Badge de aplicabilidade */
+    .sol-badge {
+        display: inline-block; font-size: 0.62rem; font-weight: 700;
+        text-transform: uppercase; letter-spacing: 0.8px;
+        padding: 2px 7px; border-radius: 100px; margin-bottom: 3px;
+    }
+    .sol-badge-fw  { background: rgba(56,189,248,.12);  color: #38bdf8; }
+    .sol-badge-mod { background: rgba(56,189,248,.12);  color: #38bdf8; }
+    .sol-badge-pra { background: rgba(56,189,248,.12);  color: #38bdf8; }
+    .sol-badge-fer { background: rgba(56,189,248,.12);  color: #38bdf8; }
+    .sol-badge-met { background: rgba(56,189,248,.12);  color: #38bdf8; }
+
+    .sol-card-title {
+        font-size: 0.92rem; font-weight: 700; color: #e2e8f0;
+        margin: 0; line-height: 1.3;
+    }
+
+    .sol-chevron {
+        flex-shrink: 0; color: #475569;
+        transition: transform .25s;
+    }
+    .sol-card.sol-open .sol-chevron { transform: rotate(180deg); color: #94a3b8; }
+
+    /* Descrição sempre visível */
+    .sol-card-desc {
+        font-size: 0.81rem; color: #64748b; line-height: 1.6;
+        padding: 9px 16px 14px; margin: 0;
+    }
+    .sol-card.sol-open .sol-card-desc { color: #94a3b8; }
+
+    /* Corpo expansível */
+    .sol-card-body {
+        display: none;
+        padding: 0 16px 16px;
+        border-top: 1px solid rgba(255,255,255,.06);
+    }
+    .sol-card-body { display: block; padding: 0 18px 18px; border-top: 1px solid rgba(255,255,255,.06); margin-top: 0; }
+    .sol-card { cursor: default; }
+
+    .sol-body-text {
+        font-size: 0.84rem; color: #94a3b8; line-height: 1.65;
+        padding-top: 13px; margin: 0 0 12px;
+    }
+
+    /* Exemplos dentro de cada card */
+    .sol-examples { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
+    .sol-example {
+        display: flex; flex-direction: column; gap: 4px;
+        background: rgba(255,255,255,.04);
+        border-radius: 8px; padding: 9px 12px;
+        border-left: 3px solid rgba(255,255,255,.1);
+    }
+    .sol-card-fw  .sol-example { border-left-color: rgba(56,189,248,.35); }
+    .sol-card-mod .sol-example { border-left-color: rgba(56,189,248,.35); }
+    .sol-card-pra .sol-example { border-left-color: rgba(56,189,248,.35); }
+    .sol-card-fer .sol-example { border-left-color: rgba(56,189,248,.35); }
+    .sol-card-met .sol-example { border-left-color: rgba(56,189,248,.35); }
+
+    .sol-ex-id {
+        font-size: 0.78rem; font-weight: 700; color: #cbd5e1;
+    }
+    /* Estilo de código para ferramentas com ID de estudo */
+    .sol-ex-code {
+        font-family: ui-monospace, 'Cascadia Code', monospace;
+        font-size: 0.76rem; color: #f59e0b;
+        background: rgba(245,158,11,.1); padding: 1px 7px; border-radius: 4px;
+        width: fit-content;
+    }
+    .sol-ex-desc {
+        font-size: 0.8rem; color: #64748b; line-height: 1.55;
+    }
+
+    /* Rodapé do painel */
+    .sol-footer {
+        display: flex; align-items: flex-start; gap: 8px;
+        font-size: 0.78rem; color: #475569; line-height: 1.6;
+        background: rgba(255,255,255,.02); border: 1px solid rgba(255,255,255,.06);
+        border-radius: 8px; padding: 11px 16px;
+    }
+    .sol-footer svg { flex-shrink: 0; margin-top: 2px; color: #38bdf8; }
+
+    @media (max-width: 820px) {
+        .sol-grid { grid-template-columns: repeat(2, 1fr); }
+        .sol-card:nth-child(4),
+        .sol-card:nth-child(5) { grid-column: auto; }
+    }
+    @media (max-width: 500px) {
+        .sol-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ══════════════════════════════════════════
+       PAINEL 4 — BASE DE EVIDÊNCIAS: dashboard
+    ══════════════════════════════════════════ */
+
+    /* Funil 710 → 35 */
+    .ev-metrics {
+        display: flex; align-items: center; justify-content: center;
+        gap: 12px; padding: 18px 0 4px;
+    }
+    .ev-metric {
+        display: flex; flex-direction: column; align-items: center;
+        background: rgba(56,189,248,.06); border: 1px solid rgba(56,189,248,.15);
+        border-radius: 10px; padding: 14px 20px; flex: 1;
+    }
+    .ev-metric-highlight {
+        background: rgba(56,189,248,.14); border-color: rgba(56,189,248,.4);
+    }
+    .ev-metric-num {
+        font-size: 2rem; font-weight: 800; color: #38bdf8;
+        line-height: 1; letter-spacing: -1px;
+    }
+    .ev-metric-label {
+        font-size: 0.7rem; color: #64748b; margin-top: 5px;
+        text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;
+        text-align: center;
+    }
+    .ev-metric-arrow {
+        font-size: 1.2rem; color: rgba(56,189,248,.35); flex-shrink: 0;
+    }
+
+    /* Grade de stats 24 / 21 / 14 */
+    .ev-stats-grid {
+        display: grid; grid-template-columns: repeat(3, 1fr);
+        gap: 10px; padding: 18px 0 4px;
+    }
+    .ev-stat {
+        display: flex; flex-direction: column; align-items: center;
+        border-radius: 10px; padding: 14px 8px;
+        border: 1px solid transparent;
+    }
+    .ev-stat-tecnico { background: rgba(56,189,248,.07);  border-color: rgba(56,189,248,.2); }
+    .ev-stat-social  { background: rgba(56,189,248,.07);  border-color: rgba(56,189,248,.2); }
+    .ev-stat-negocio { background: rgba(56,189,248,.07);  border-color: rgba(56,189,248,.2); }
+    .ev-stat-num { font-size: 2rem; font-weight: 800; line-height: 1; letter-spacing: -1px; }
+    .ev-stat-tecnico .ev-stat-num { color: #38bdf8; }
+    .ev-stat-social  .ev-stat-num { color: #38bdf8; }
+    .ev-stat-negocio .ev-stat-num { color: #38bdf8; }
+    .ev-stat-name {
+        font-size: 0.78rem; font-weight: 700; color: #cbd5e1; margin-top: 5px;
+    }
+    .ev-stat-range {
+        font-size: 0.68rem; color: #475569; margin-top: 2px;
+    }
+
+    @media (max-width: 600px) {
+        .ev-metrics { flex-direction: column; }
+        .ev-metric-arrow { transform: rotate(90deg); }
+        .ev-stats-grid { grid-template-columns: 1fr; }
+    }
     </style>
 
     <main id="catalogo">
         <header class="section-header">
+            <span class="mmx-badge" style="margin-bottom:18px;">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                CATÁLOGO DE RISCOS EM ECOS
+            </span>
             <h2>Catálogo de Riscos em Ecossistemas de Software</h2>
             <p>Filtre por dimensão ou pesquise termos específicos do risco.</p>
         </header>
 
-        <section class="controls">
-            <div class="search-wrapper">
-                <div class="autocomplete-wrap" id="autocompleteWrap">
-                    <input type="text" id="searchInput" placeholder="Pesquisar risco..." autocomplete="off">
-                    <ul class="autocomplete-list" id="autocompleteList" hidden></ul>
+        <!-- ── ÁREA DE BUSCA E FILTROS ── -->
+        <div class="filters-area">
+
+            <!-- Linha 1: busca + dimensão -->
+            <div class="filters-row-main">
+                <div class="filters-search">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    <div class="autocomplete-wrap" id="autocompleteWrap">
+                        <input type="text" id="searchInput" placeholder="Pesquisar risco..." autocomplete="off">
+                        <ul class="autocomplete-list" id="autocompleteList" hidden></ul>
+                    </div>
+                </div>
+                <div class="filters-dim">
+                    <button class="btn-filter active" data-filter="todos">Todos</button>
+                    <button class="btn-filter" data-filter="Técnicos">Técnicos</button>
+                    <button class="btn-filter" data-filter="Sociais">Sociais</button>
+                    <button class="btn-filter" data-filter="Negócio">Negócio</button>
                 </div>
             </div>
-            
-            <div class="filter-buttons">
-                <button class="btn-filter active" data-filter="todos">Todos</button>
-                <button class="btn-filter" data-filter="Técnicos">Técnicos</button>
-                <button class="btn-filter" data-filter="Sociais">Sociais</button>
-                <button class="btn-filter" data-filter="Negócio">Negócio</button>
-            </div>
-        </section>
 
-        <!-- ── PAINEL DE CONTEXTO ── -->
-        <div class="ctx-bar" id="ctxBar">
-            <button class="ctx-toggle" id="ctxToggle" onclick="toggleContextPanel()" aria-expanded="false" aria-controls="ctxPanel">
-                <span class="ctx-toggle-icon">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
-                </span>
-                <span class="ctx-toggle-label">Filtrar por contexto do ecossistema</span>
-                <span class="ctx-active-count" id="ctxActiveCount" style="display:none;">0</span>
-                <span class="ctx-toggle-chevron">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-                </span>
-            </button>
-            <div class="ctx-panel" id="ctxPanel" hidden>
-                <p class="ctx-desc">Selecione os atributos que descrevem o seu ecossistema. Os riscos mais compatíveis serão destacados no topo — o catálogo completo permanece visível.</p>
-                <div class="ctx-group">
-                    <span class="ctx-group-label">
-                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-                        Tipo de ECOS
-                    </span>
+            <!-- Linha 2: chips de contexto -->
+            <div class="filters-row-chips" id="ctxBar">
+                <div class="filters-chip-group">
+                    <span class="filters-chip-label">Tipo de ECOS mais propício ao Risco</span>
                     <div class="ctx-chips">
                         <button class="ctx-chip" data-group="ecos" data-value="Aberto" onclick="toggleChip(this)">Aberto</button>
                         <button class="ctx-chip" data-group="ecos" data-value="Híbrido" onclick="toggleChip(this)">Híbrido</button>
                     </div>
                 </div>
-                <div class="ctx-group">
-                    <span class="ctx-group-label">
-                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-                        Saúde do ECOS
-                    </span>
+                <div class="filters-chip-sep"></div>
+                <div class="filters-chip-group">
+                    <span class="filters-chip-label">Métricas de Saúde do ECOS atingida pelo Risco</span>
                     <div class="ctx-chips">
                         <button class="ctx-chip" data-group="metrica" data-value="Robustez" onclick="toggleChip(this)">Robustez</button>
                         <button class="ctx-chip" data-group="metrica" data-value="Produtividade" onclick="toggleChip(this)">Produtividade</button>
                         <button class="ctx-chip" data-group="metrica" data-value="Criação de Nichos" onclick="toggleChip(this)">Criação de Nichos</button>
                     </div>
                 </div>
-                <div class="ctx-group">
-                    <span class="ctx-group-label">
-                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-                        Processo de Valor
-                    </span>
+                <div class="filters-chip-sep"></div>
+                <div class="filters-chip-group">
+                    <span class="filters-chip-label">Processo de Valor do ECOS Ameaçado pelo Risco</span>
                     <div class="ctx-chips">
-                        <button class="ctx-chip" data-group="valor" data-value="Criação de valor" onclick="toggleChip(this)">Criação</button>
-                        <button class="ctx-chip" data-group="valor" data-value="Entrega de valor" onclick="toggleChip(this)">Entrega</button>
-                        <button class="ctx-chip" data-group="valor" data-value="Captura de valor" onclick="toggleChip(this)">Captura</button>
+                        <button class="ctx-chip" data-group="valor" data-value="Criação de valor" onclick="toggleChip(this)">Criação de valor</button>
+                        <button class="ctx-chip" data-group="valor" data-value="Entrega de valor" onclick="toggleChip(this)">Entrega de valor</button>
+                        <button class="ctx-chip" data-group="valor" data-value="Captura de valor" onclick="toggleChip(this)">Captura de valor</button>
                     </div>
                 </div>
-                <div class="ctx-actions">
-                    <button class="ctx-clear" id="ctxClear" onclick="limparContexto()" style="display:none;">
-                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                        Limpar filtros de contexto
-                    </button>
-                    <span class="ctx-hint" id="ctxHint"></span>
-                </div>
+                <button class="ctx-clear" id="ctxClear" onclick="limparContexto()" style="display:none;">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    Limpar
+                </button>
             </div>
+
+            <!-- Feedback de contexto ativo -->
+            <span class="ctx-hint" id="ctxHint"></span>
         </div>
 
         <section id="riscosContainer" class="riscos-grid"></section>
@@ -1057,6 +1717,29 @@
 
     <script src="script.js"></script>
             <script>
+    // ── Toggle de cards do Painel 2 (Atributos) ──
+    function toggleAt2Card(id) {
+        var card = document.getElementById('at2-card-' + id);
+        if (!card) return;
+        card.classList.toggle('at2-open');
+    }
+
+    // ── Toggle de cards do Painel 3 (Soluções) ──
+    function toggleSolCard(id) {
+        var card = document.getElementById('sol-card-' + id);
+        if (!card) return;
+        card.classList.toggle('sol-open');
+    }
+
+    // ── Toggle de cards do Painel 4 (Evidências) ──
+    function toggleEvCard(id) {
+        var card = document.getElementById('ev-card-' + id);
+        if (!card) return;
+        card.classList.toggle('ev-open');
+    }
+    </script>
+
+    <script>
     (function() {
         // ── Abas ──
         var tabs = document.querySelectorAll('.mmx-tab');
