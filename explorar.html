@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Como Utilizar | Catálogo de Riscos ECOS</title>
+    <title>Explorar Catálogo | Catálogo de Riscos ECOS</title>
         <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><polygon points='50,5 93,27.5 93,72.5 50,95 7,72.5 7,27.5' fill='none' stroke='%2338bdf8' stroke-width='10'/><polygon points='50,22 78,37.5 78,67.5 50,83 22,67.5 22,37.5' fill='%2338bdf8' opacity='0.2'/></svg>">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap">
@@ -1008,8 +1008,8 @@
             </div>
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html" onclick="closeMenu()">Início</a></li>
-                <li><a href="comoutilizar.html" onclick="closeMenu()">Como utilizar</a></li>
                 <li><a href="index.html#catalogo" onclick="closeMenu()">Catálogo</a></li>
+                <li><a href="explorar.html" onclick="closeMenu()">Explorar</a></li>
                 <li><a href="sobre.html" onclick="closeMenu()">Sobre</a></li>
                 <li><a href="index.html#contato" onclick="closeMenu()">Contato</a></li>
             </ul>
@@ -1025,11 +1025,11 @@
 
                 <header class="page-hero-strip">
                     <span class="tag-small" style="color: #38bdf8;">
-                        <i class="fas fa-map" style="font-size:0.7rem;"></i>
-                        COMO UTILIZAR
+                        <i class="fas fa-compass" style="font-size:0.7rem;"></i>
+                        EXPLORAR CATÁLOGO
                     </span>
-                    <h2>Entendendo cada risco do catálogo</h2>
-                    <p>Cada entrada apresenta uma análise multicamada. Veja abaixo o que cada campo significa e como interpretar o conteúdo.</p>
+                    <h2>Explore o catálogo de riscos</h2>
+                    <p>Antes de navegar pelos riscos, conheça os elementos do catálogo, entenda como interpretar cada registro e explore os riscos organizados por dimensão do ecossistema. Escolha o caminho que melhor atende ao seu objetivo.</p>
                 </header>
 
                 <div class="section-divider"></div>
@@ -1047,7 +1047,7 @@
                             <i class="fas fa-eye" style="margin-right:6px;"></i>Exemplo de card
                         </button>
                         <button class="tab-btn" onclick="showTab('perfis', this)">
-                            <i class="fas fa-user" style="margin-right:6px;"></i>Por onde começar?
+                            <i class="fas fa-layer-group" style="margin-right:6px;"></i>Explorar por dimensão
                         </button>
                     </div>
 
@@ -1276,72 +1276,69 @@
                             <div class="gloss-card accent-blue">
                                 <div class="gloss-header">
                                     <span class="gloss-badge blue">Dados sobre o Risco extraídos do MSL</span>
-                                    <span class="gloss-sub">ID · Risco · Dimensão · Descrição</span>
                                     <span class="ref-tag">Campos et al. (2025)</span>
                                 </div>
                                 <p class="gloss-text">
-                                    Apresenta o nome do risco, seu identificador único (R01–R24), a dimensão (técnica, social ou negócio) e sua descrição. A classificação o risco segundo <strong>Oliveira e Alves (2021)</strong>, define se o risco emerge de falhas técnicas (código, dependências, segurança), sociais (pessoas, governança, confiança) ou de negócio (estratégia, valor percebido, mercado).
+                                    Apresenta o nome do risco, seu identificador único (R01–R24), a dimensão (técnica, social ou negócio) e sua descrição. A classificação define se o risco emerge de falhas técnicas (código, dependências, segurança), sociais (pessoas, governança, confiança) ou de negócio (estratégia, valor percebido, mercado), conforme Oliveira e Alves (2021).
                                 </p>
                             </div>
 
                             <div class="gloss-card accent-blue">
                                 <div class="gloss-header">
                                     <span class="gloss-badge blue">Classificação do Risco de acordo com a Taxonomia de Risco SEI</span>
-                                    <span class="gloss-sub">Classe · Elemento · Área de desafio</span>
                                     <span class="ref-tag">Manalif et al. (2013)</span>
                                 </div>
                                 <p class="gloss-text">
-                                    Taxonomia de Risco <strong>Software Engineering Institute</strong>. A <strong>Classe</strong> indica o tipo geral do risco sob a ótica da engenharia; o <strong>Elemento</strong> detalha qual aspecto técnico ou organizacional está envolvido; a <strong>Área de desafio</strong> aponta se o problema se manifesta na arquitetura do produto ou nos processos de desenvolvimento.
+                                    Taxonomia de Risco do Software Engineering Institute. A classe indica o tipo geral do risco sob a ótica da engenharia; o elemento detalha qual aspecto técnico ou organizacional está envolvido; a área de desafio aponta se o problema se manifesta na arquitetura do produto ou nos processos de desenvolvimento.
                                 </p>
                             </div>
 
                             <div class="gloss-card accent-blue">
                                 <div class="gloss-header">
                                     <span class="gloss-badge blue">Tipo de ECOS mais propício ao Risco</span>
-                                    <span class="gloss-sub">Aberto · Proprietário · Híbrido</span>
                                     <span class="ref-tag">Manikas (2016)</span>
                                 </div>
                                 <p class="gloss-text">
-                                    Baseado na tipologia de <strong>Manikas (2016)</strong>. Indica em qual tipo de ecossistema o risco ocorre com maior frequência. <strong>ECOS Abertos</strong> (ex: NPM, Maven) têm dinâmicas distintas de <strong>ECOS Proprietários</strong> (ex: iOS App Store) e <strong>Híbridos</strong> (ex: Android). Cada tipo tem estruturas de governança e incentivos diferentes que amplificam certos riscos.
+                                    Baseado na tipologia de Manikas (2016), indica em qual tipo de ecossistema o risco ocorre com maior frequência. ECOS abertos (ex: NPM, Maven) têm dinâmicas distintas de ECOS proprietários (ex: iOS App Store) e híbridos (ex: Android). Cada tipo tem estruturas de governança e incentivos diferentes que amplificam certos riscos.
                                 </p>
                             </div>
 
                             <div class="gloss-card accent-blue">
                                 <div class="gloss-header">
                                     <span class="gloss-badge blue">Métricas de Saúde do ECOS atingida pelo Risco</span>
-                                    <span class="gloss-sub">Robustez · Produtividade · Criação de Nichos</span>
                                     <span class="ref-tag">Iansiti e Levien (2004)</span>
                                 </div>
                                 <p class="gloss-text">
-                                    Baseado em <strong>Iansiti e Levien (2004)</strong>. A <strong>Robustez</strong> mede a capacidade do ECOS de resistir a perturbações; a <strong>Produtividade</strong> avalia a eficiência na transformação de recursos em valor; a <strong>Criação de Nichos</strong> indica a capacidade de gerar diversidade e atrair novos participantes especializados.
+                                    Baseado em Iansiti e Levien (2004). A robustez mede a capacidade do ECOS de resistir a perturbações; a produtividade avalia a eficiência na transformação de recursos em valor; a criação de nichos indica a capacidade de gerar diversidade e atrair novos participantes especializados.
                                 </p>
                             </div>
 
                             <div class="gloss-card accent-blue">
                                 <div class="gloss-header">
                                     <span class="gloss-badge blue">Processo de Valor do ECOS Ameaçado pelo Risco</span>
-                                    <span class="gloss-sub">Criação · Entrega · Captura</span>
                                     <span class="ref-tag">Burström et al. (2022)</span>
                                 </div>
                                 <p class="gloss-text">
-                                    Baseado em <strong>Burström et al. (2022)</strong>. <strong>Criação de valor</strong>: o que o ECOS produz para gerar valor real (componentes, funcionalidades). <strong>Entrega de valor</strong>: como esse valor chega ao cliente seja infraestrutura, distribuição, integração técnica. <strong>Captura de valor</strong>: como o ECOS se sustenta financeiramente sendo receita, licenças e monetização.
+                                    Baseado em Burström et al. (2022). A criação de valor diz respeito ao que o ECOS produz (componentes, funcionalidades). A entrega de valor refere-se a como esse valor chega ao cliente, por meio de infraestrutura, distribuição e integração técnica. A captura de valor envolve como o ECOS se sustenta economicamente, considerando estrutura de custos, fluxos de receita e viabilidade financeira.
                                 </p>
                             </div>
+
                             <div class="gloss-card accent-blue">
                                 <div class="gloss-header">
                                     <span class="gloss-badge blue">Soluções Identificadas na Literatura para Gerenciar o Risco</span>
-                                    <span class="gloss-sub">Framework · Modelo · Prática · Ferramenta · Método</span>
                                 </div>
                                 <p class="gloss-text">
-                                    Baseado em <strong>Campos et al. (2025)</strong> apresentamos as estratégias de mitigação mais adequadas para cada cenário, estabelecendo uma correlação entre os riscos e as soluções extraídas da literatura por meio do MSL.
+                                    Baseado em Campos et al. (2025), apresentamos as estratégias de mitigação identificadas por meio do MSL, estabelecendo uma correlação entre os riscos e as soluções extraídas da literatura. As soluções são classificadas em framework, modelo, prática, ferramenta ou método.
                                 </p>
                             </div>
+
                             <div class="gloss-card accent-blue">
                                 <div class="gloss-header">
                                     <span class="gloss-badge blue">Estudos Primários que Identificaram esse Risco</span>
                                 </div>
                                 <p class="gloss-text">
-                                    Baseado em <strong>Campos et al. (2025)</strong> o MSL foi desenvolvido a partir da análise de estudos primários (artigos onde os próprios autores apresentam seus resultados), após aplicação de critérios em 710 estudos recuperados, foi realizados a extração de dados em 35 estudos entre janeiro e julho de 2025, onde foi possível identificar os 24 riscos em ECOS.
+                                    Baseado em Campos et al. (2025), o MSL foi conduzido entre janeiro e julho de 2025 com a análise de 710 estudos recuperados, dos quais 35 foram selecionados como estudos primários, ou seja, artigos em que os próprios autores apresentam seus resultados. A partir desses 35 estudos foram identificados os 24 riscos específicos de ECOS presentes neste catálogo.
+                                </p>
                             </div>
 
 
@@ -1349,48 +1346,245 @@
                     </div><!-- /panel-glossario -->
 
 
-                    <!-- TAB 3: PERFIS -->
+                    <!-- TAB 3: EXPLORAR POR DIMENSÃO -->
                     <div class="tab-panel" id="panel-perfis">
 
-                        <p class="profile-hint">
-                            Identifique seu perfil e veja por quais riscos começar sua exploração.
-                        </p>
+                        <style>
+                            .dim-explore-grid {
+                                display: grid;
+                                gap: 24px;
+                            }
 
-                        <div class="profiles-grid">
+                            .dim-card {
+                                border-radius: 18px;
+                                border: 1px solid rgba(255,255,255,0.07);
+                                background: rgba(255,255,255,0.02);
+                                overflow: hidden;
+                                transition: border-color .22s, transform .22s, box-shadow .22s;
+                            }
+                            .dim-card:hover {
+                                transform: translateY(-3px);
+                                box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+                            }
 
-                            <a href="index.html#catalogo" class="profile-card profile-card--tecnico" onclick="setFilter('Técnicos')">
-                                <div class="profile-info">
-                                    <p class="profile-title">Desenvolvedor que usa bibliotecas de terceiros</p>
-                                    <p class="profile-sub">Foco em dependências, vulnerabilidades, compatibilidade e segurança de código</p>
+                            .dim-card--tecnico { border-top: 3px solid #38bdf8; }
+                            .dim-card--tecnico:hover { border-color: #38bdf8; box-shadow: 0 12px 40px rgba(56,189,248,0.12); }
+
+                            .dim-card--social { border-top: 3px solid #fbbf24; }
+                            .dim-card--social:hover { border-color: #fbbf24; box-shadow: 0 12px 40px rgba(251,191,36,0.12); }
+
+                            .dim-card--negocio { border-top: 3px solid #4ade80; }
+                            .dim-card--negocio:hover { border-color: #4ade80; box-shadow: 0 12px 40px rgba(74,222,128,0.12); }
+
+                            .dim-card-header {
+                                padding: 24px 28px 0;
+                                display: flex;
+                                align-items: flex-start;
+                                gap: 16px;
+                            }
+
+                            .dim-icon {
+                                width: 42px;
+                                height: 42px;
+                                border-radius: 12px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                flex-shrink: 0;
+                                font-size: 1rem;
+                            }
+                            .dim-icon--tecnico { background: rgba(56,189,248,0.12); color: #38bdf8; border: 1px solid rgba(56,189,248,0.2); }
+                            .dim-icon--social  { background: rgba(251,191,36,0.12);  color: #fbbf24; border: 1px solid rgba(251,191,36,0.2); }
+                            .dim-icon--negocio { background: rgba(74,222,128,0.12);  color: #4ade80; border: 1px solid rgba(74,222,128,0.2); }
+
+                            .dim-meta { flex: 1; }
+
+                            .dim-badge {
+                                font-size: 0.68rem;
+                                font-weight: 700;
+                                letter-spacing: 1.5px;
+                                text-transform: uppercase;
+                                padding: 3px 10px;
+                                border-radius: 100px;
+                                margin-bottom: 8px;
+                                display: inline-block;
+                            }
+                            .dim-badge--tecnico { background: rgba(56,189,248,0.12); color: #38bdf8; border: 1px solid rgba(56,189,248,0.2); }
+                            .dim-badge--social  { background: rgba(251,191,36,0.12);  color: #fbbf24; border: 1px solid rgba(251,191,36,0.2); }
+                            .dim-badge--negocio { background: rgba(74,222,128,0.12);  color: #4ade80; border: 1px solid rgba(74,222,128,0.2); }
+
+                            .dim-title {
+                                font-size: 1.15rem;
+                                font-weight: 800;
+                                color: #f8fafc;
+                                letter-spacing: -0.3px;
+                                margin: 0;
+                            }
+
+                            .dim-range {
+                                font-size: 0.75rem;
+                                color: rgba(255,255,255,0.3);
+                                font-family: monospace;
+                                margin-top: 2px;
+                            }
+
+                            .dim-body {
+                                padding: 18px 28px 24px;
+                            }
+
+                            .dim-summary {
+                                font-size: 0.88rem;
+                                color: rgba(255,255,255,0.6);
+                                line-height: 1.75;
+                                margin: 0 0 20px;
+                            }
+                            .dim-summary strong { color: rgba(255,255,255,0.88); font-weight: 600; }
+
+                            .dim-tags {
+                                display: flex;
+                                flex-wrap: wrap;
+                                gap: 8px;
+                                margin-bottom: 22px;
+                            }
+
+                            .dim-tag {
+                                font-size: 0.72rem;
+                                font-weight: 600;
+                                padding: 4px 12px;
+                                border-radius: 100px;
+                                background: rgba(255,255,255,0.04);
+                                border: 1px solid rgba(255,255,255,0.09);
+                                color: rgba(255,255,255,0.45);
+                                letter-spacing: 0.2px;
+                            }
+
+                            .dim-cta {
+                                display: inline-flex;
+                                align-items: center;
+                                gap: 8px;
+                                font-size: 0.82rem;
+                                font-weight: 700;
+                                padding: 10px 20px;
+                                border-radius: 10px;
+                                text-decoration: none;
+                                transition: opacity .2s, transform .2s;
+                                letter-spacing: 0.2px;
+                            }
+                            .dim-cta:hover { opacity: 0.85; transform: translateX(3px); }
+                            .dim-cta--tecnico { background: rgba(56,189,248,0.12); color: #38bdf8; border: 1px solid rgba(56,189,248,0.25); }
+                            .dim-cta--social  { background: rgba(251,191,36,0.12);  color: #fbbf24; border: 1px solid rgba(251,191,36,0.25); }
+                            .dim-cta--negocio { background: rgba(74,222,128,0.12);  color: #4ade80; border: 1px solid rgba(74,222,128,0.25); }
+
+                            .dim-divider {
+                                height: 1px;
+                                background: rgba(255,255,255,0.05);
+                                margin: 0 28px 20px;
+                            }
+
+                            @media (max-width: 768px) {
+                                .dim-card-header { padding: 20px 18px 0; gap: 12px; }
+                                .dim-body { padding: 14px 18px 20px; }
+                                .dim-icon { width: 36px; height: 36px; font-size: 0.9rem; }
+                            }
+                        </style>
+
+                        <div class="dim-explore-grid">
+
+                            <!-- DIMENSÃO TÉCNICA -->
+                            <div class="dim-card dim-card--tecnico">
+                                <div class="dim-card-header">
+                                    <div class="dim-icon dim-icon--tecnico">
+                                        <i class="fas fa-microchip"></i>
+                                    </div>
+                                    <div class="dim-meta">
+                                        <span class="dim-badge dim-badge--tecnico">Técnico</span>
+                                        <h3 class="dim-title">Estrutura e integridade do ecossistema</h3>
+                                        <p class="dim-range">R01 – R11 · 11 riscos</p>
+                                    </div>
                                 </div>
-                                <span class="profile-tag blue">R01–R11 →</span>
-                            </a>
-
-                            <a href="index.html#catalogo" class="profile-card profile-card--social" onclick="setFilter('Sociais')">
-                                <div class="profile-info">
-                                    <p class="profile-title">Mantenedor de plataforma open source</p>
-                                    <p class="profile-sub">Foco em governança, sobrecarga de mantenedores, confiança e coordenação entre atores</p>
+                                <div class="dim-body">
+                                    <p class="dim-summary">
+                                        Os riscos técnicos revelam uma tensão central do ECOS: a <strong>reutilização de código é ao mesmo tempo uma vantagem competitiva e um vetor de propagação de falhas</strong>. A grande maioria dos riscos desta dimensão está enraizada na estrutura de dependências — bibliotecas desatualizadas, pacotes abandonados, vulnerabilidades transitivas — e seu impacto tende a se amplificar de forma silenciosa ao longo da rede. O padrão predominante é a <strong>perda de robustez</strong>: o ecossistema se torna frágil não por uma falha isolada, mas pela acumulação de pontos de falha distribuídos que escapam ao controle direto dos desenvolvedores.
+                                    </p>
+                                    <div class="dim-tags">
+                                        <span class="dim-tag">Cadeia de suprimentos</span>
+                                        <span class="dim-tag">Dependências transitivas</span>
+                                        <span class="dim-tag">Vulnerabilidades não corrigidas</span>
+                                        <span class="dim-tag">Abandono de bibliotecas</span>
+                                        <span class="dim-tag">Pacotes maliciosos</span>
+                                        <span class="dim-tag">Infraestrutura de desenvolvimento</span>
+                                    </div>
+                                    <div class="dim-divider"></div>
+                                    <a href="index.html#catalogo" class="dim-cta dim-cta--tecnico" onclick="setFilter('Técnicos')">
+                                        Explorar riscos da dimensão Técnica <i class="fas fa-arrow-right" style="font-size:0.75rem;"></i>
+                                    </a>
                                 </div>
-                                <span class="profile-tag amber">R12–R18 →</span>
-                            </a>
+                            </div>
 
-                            <a href="index.html#catalogo" class="profile-card profile-card--negocio" onclick="setFilter('Negócio')">
-                                <div class="profile-info">
-                                    <p class="profile-title">Gestor de produto ou estratégia de plataforma</p>
-                                    <p class="profile-sub">Foco em valor percebido, custos de migração, documentação e sustentabilidade do ECOS</p>
+                            <!-- DIMENSÃO SOCIAL -->
+                            <div class="dim-card dim-card--social">
+                                <div class="dim-card-header">
+                                    <div class="dim-icon dim-icon--social">
+                                        <i class="fas fa-users"></i>
+                                    </div>
+                                    <div class="dim-meta">
+                                        <span class="dim-badge dim-badge--social">Social</span>
+                                        <h3 class="dim-title">Colaboração, confiança e governança</h3>
+                                        <p class="dim-range">R12 – R18 · 7 riscos</p>
+                                    </div>
                                 </div>
-                                <span class="profile-tag green">R19–R24 →</span>
-                            </a>
+                                <div class="dim-body">
+                                    <p class="dim-summary">
+                                        Os riscos sociais emergem das <strong>relações entre os atores do ecossistema</strong> — e não das tecnologias em si. O padrão mais recorrente é a <strong>ausência de estruturas formais</strong>: sem governança clara, sem remuneração, sem processos de coordenação, o ecossistema sustenta-se sobre vínculos informais e motivação voluntária que, sob pressão, tendem a se romper. Esses riscos afetam tanto a produtividade quanto a capacidade de atrair novos participantes, e são especialmente críticos em ecossistemas abertos, onde a concentração de responsabilidade em poucos mantenedores cria pontos únicos de falha humana.
+                                    </p>
+                                    <div class="dim-tags">
+                                        <span class="dim-tag">Ausência de governança</span>
+                                        <span class="dim-tag">Sobrecarga de mantenedores</span>
+                                        <span class="dim-tag">Confiança entre atores</span>
+                                        <span class="dim-tag">Concentração de conhecimento</span>
+                                        <span class="dim-tag">Ameaças internas</span>
+                                        <span class="dim-tag">Coordenação de equipes</span>
+                                    </div>
+                                    <div class="dim-divider"></div>
+                                    <a href="index.html#catalogo" class="dim-cta dim-cta--social" onclick="setFilter('Sociais')">
+                                        Explorar riscos da dimensão Social <i class="fas fa-arrow-right" style="font-size:0.75rem;"></i>
+                                    </a>
+                                </div>
+                            </div>
 
-                            <a href="index.html#catalogo" class="profile-card profile-card--todos" onclick="setFilter('todos')">
-                                <div class="profile-info">
-                                    <p class="profile-title">Pesquisador em ecossistemas de software</p>
-                                    <p class="profile-sub">Explorar riscos sistêmicos, lacunas de validação e soluções sem avaliação formal na literatura</p>
+                            <!-- DIMENSÃO NEGÓCIO -->
+                            <div class="dim-card dim-card--negocio">
+                                <div class="dim-card-header">
+                                    <div class="dim-icon dim-icon--negocio">
+                                        <i class="fas fa-chart-line"></i>
+                                    </div>
+                                    <div class="dim-meta">
+                                        <span class="dim-badge dim-badge--negocio">Negócio</span>
+                                        <h3 class="dim-title">Valor, sustentabilidade e continuidade</h3>
+                                        <p class="dim-range">R19 – R24 · 6 riscos</p>
+                                    </div>
                                 </div>
-                                <span class="profile-tag purple">Ver todos →</span>
-                            </a>
+                                <div class="dim-body">
+                                    <p class="dim-summary">
+                                        Os riscos de negócio giram em torno de uma questão central: <strong>a capacidade do ecossistema de gerar e sustentar valor ao longo do tempo</strong>. O padrão dominante aqui é a <strong>ameaça à criação de novos nichos</strong> — quando o ECOS não consegue demonstrar valor claro, documentar adequadamente, ou manter sua plataforma coesa, compromete não só os participantes atuais, mas a capacidade de atrair novos. Esses riscos são especialmente sensíveis nas fases iniciais do ecossistema e em ambientes híbridos, onde diferentes expectativas de retorno convivem sob a mesma estrutura.
+                                    </p>
+                                    <div class="dim-tags">
+                                        <span class="dim-tag">Documentação inadequada</span>
+                                        <span class="dim-tag">Percepção de valor</span>
+                                        <span class="dim-tag">Fragmentação de plataforma</span>
+                                        <span class="dim-tag">Custos de migração</span>
+                                        <span class="dim-tag">Falha no MVP</span>
+                                        <span class="dim-tag">Descontinuidade do ECOS</span>
+                                    </div>
+                                    <div class="dim-divider"></div>
+                                    <a href="index.html#catalogo" class="dim-cta dim-cta--negocio" onclick="setFilter('Negócio')">
+                                        Explorar riscos da dimensão Negócio <i class="fas fa-arrow-right" style="font-size:0.75rem;"></i>
+                                    </a>
+                                </div>
+                            </div>
 
                         </div>
+
                     </div><!-- /panel-perfis -->
 
                 </div><!-- /tabs-wrapper -->
