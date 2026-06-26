@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sobre o Catálogo | Gerência de Riscos em ECOS</title>
-        <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><polygon points='50,5 93,27.5 93,72.5 50,95 7,72.5 7,27.5' fill='none' stroke='%2338bdf8' stroke-width='10'/><polygon points='50,22 78,37.5 78,67.5 50,83 22,67.5 22,37.5' fill='%2338bdf8' opacity='0.2'/></svg>">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><polygon points='50,5 93,27.5 93,72.5 50,95 7,72.5 7,27.5' fill='none' stroke='%2338bdf8' stroke-width='10'/><polygon points='50,22 78,37.5 78,67.5 50,83 22,67.5 22,37.5' fill='%2338bdf8' opacity='0.2'/></svg>">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -40,6 +40,201 @@
             .logo-text-short { display: inline; }
             .logo-text { font-size: 0.8rem; }
         }
+
+        /* ── Sobre: grid duas colunas ── */
+        .sobre-section { padding-bottom: 120px; }
+        .sobre-container { max-width: 1200px; }
+        .sobre-header { margin-bottom: 0 !important; }
+
+        /* Grid: sobrescreve o 1fr 1fr do style.css */
+        .sobre-grid {
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .sobre-text p { text-align: left; }
+
+        /* ── Aside direita ── */
+        .sobre-aside {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        /* ── Card de origem ── */
+        .origin-card {
+            background: rgba(56,189,248,0.05);
+            border: 1px solid rgba(56,189,248,0.2);
+            border-radius: 16px;
+            padding: 24px 26px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        .origin-card-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+        }
+        .origin-icon {
+            flex-shrink: 0;
+            width: 38px;
+            height: 38px;
+            background: rgba(56,189,248,0.12);
+            border: 1px solid rgba(56,189,248,0.25);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #38bdf8;
+        }
+        .origin-meta { flex: 1; min-width: 0; }
+        .origin-label {
+            font-size: 0.66rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #38bdf8;
+            margin: 0 0 5px;
+        }
+        .origin-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #f1f5f9;
+            margin: 0 0 4px;
+            line-height: 1.4;
+        }
+        .origin-divider {
+            height: 1px;
+            background: rgba(56,189,248,0.12);
+        }
+        .origin-doi {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.78rem;
+            color: #38bdf8;
+            text-decoration: none;
+            background: rgba(56,189,248,0.08);
+            border: 1px solid rgba(56,189,248,0.2);
+            border-radius: 8px;
+            padding: 7px 13px;
+            transition: background 0.18s, border-color 0.18s;
+            width: fit-content;
+        }
+        .origin-doi:hover {
+            background: rgba(56,189,248,0.15);
+            border-color: rgba(56,189,248,0.4);
+        }
+        .origin-doi svg { flex-shrink: 0; }
+
+        /* ── Accordion: arcabouço teórico ── */
+        .theory-accordion {
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .theory-acc-btn {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 15px 18px;
+            background: rgba(255,255,255,0.03);
+            border: none;
+            cursor: pointer;
+            text-align: left;
+            color: #94a3b8;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.83rem;
+            font-weight: 600;
+            transition: background 0.18s, color 0.18s;
+        }
+        .theory-acc-btn:hover {
+            background: rgba(255,255,255,0.05);
+            color: #cbd5e1;
+        }
+        .theory-acc-btn.open {
+            color: #38bdf8;
+            background: rgba(56,189,248,0.05);
+            border-bottom: 1px solid rgba(56,189,248,0.12);
+        }
+        .theory-acc-icon {
+            flex-shrink: 0;
+            transition: transform 0.25s;
+            color: #475569;
+        }
+        .theory-acc-btn.open .theory-acc-icon {
+            transform: rotate(180deg);
+            color: #38bdf8;
+        }
+        .theory-acc-body {
+            display: none;
+            padding: 18px 20px;
+            background: rgba(255,255,255,0.015);
+        }
+        .theory-acc-body.open { display: block; }
+
+        .theory-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        .theory-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .theory-item:last-child { border-bottom: none; }
+        .theory-ref {
+            font-size: 0.74rem;
+            font-weight: 700;
+            color: #38bdf8;
+        }
+        .theory-desc {
+            font-size: 0.82rem;
+            color: #64748b;
+            line-height: 1.55;
+            margin: 0;
+        }
+        .theory-desc strong { color: #94a3b8; font-weight: 600; }
+        .theory-title {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #cbd5e1 !important;
+            margin-bottom: 2px !important;
+        }
+        .theory-doi-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.73rem;
+            color: #38bdf8;
+            text-decoration: none;
+            margin-top: 6px;
+            opacity: 0.8;
+            transition: opacity 0.15s;
+        }
+        .theory-doi-link:hover { opacity: 1; text-decoration: underline; }
+        .theory-doi-link svg { flex-shrink: 0; }
+        .theory-no-doi {
+            display: inline-block;
+            font-size: 0.71rem;
+            color: #475569;
+            margin-top: 6px;
+            font-style: italic;
+        }
+
+        /* ── Responsivo ── */
+        @media (max-width: 768px) {
+            .sobre-grid { grid-template-columns: 1fr !important; gap: 2.5rem; }
+        }
     </style>
 </head>
 <body>
@@ -51,9 +246,8 @@
             </div>
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html" onclick="closeMenu()">Início</a></li>
-                <li><a href="comoutilizar.html" onclick="closeMenu()">Como utilizar</a></li>
-                
                 <li><a href="index.html#catalogo" onclick="closeMenu()">Catálogo</a></li>
+                <li><a href="explorar.html" onclick="closeMenu()">Explorar</a></li>
                 <li><a href="sobre.html" onclick="closeMenu()">Sobre</a></li>
                 <li><a href="index.html#contato" onclick="closeMenu()">Contato</a></li>
             </ul>
@@ -63,10 +257,13 @@
         </nav>
     </header>
 
+    <section id="sobre" class="sobre-section">
+        <div class="sobre-container">
 
-        <section id="sobre" class="sobre-section">
-            <div class="sobre-container">
-                <header class="sobre-header">
+            <div class="sobre-grid">
+
+                <!-- ── COLUNA ESQUERDA: badge + título + texto + botões ── -->
+                <article class="sobre-text">
                     <span class="tag-small" style="
                         color: #38bdf8;
                         display: inline-flex;
@@ -85,42 +282,86 @@
                         <i class="fas fa-book" style="font-size:0.7rem;"></i>
                         SOBRE O CATÁLOGO
                     </span>
-                    <h2>O que é este catálogo e como foi construído?</h2>
-                </header>
+                    <h2 style="font-size: clamp(1.8rem, 3.5vw, 2.6rem); line-height: 1.15; margin-bottom: 2rem; color: #f8fafc; font-weight: 800;">O que é este catálogo e como foi construído?</h2>
+                    <p>Este catálogo foi desenvolvido com base em um <strong>Mapeamento Sistemático da Literatura (MSL)</strong>, conduzido entre janeiro e julho de 2025. Cada risco é apresentado a partir de uma perspectiva integrada, combinando diferentes modelos teóricos e de classificação. A caracterização dos riscos considera a Taxonomia de Riscos do Software Engineering Institute (SEI), a tipologia de ecossistemas de software proposta por Manikas (2016), as métricas de saúde do ecossistema de Iansiti e Levien (2004) e o modelo de processos de valor de Burström et al. (2022).</p>
+                    <p>O catálogo tem como objetivo apoiar pesquisadores e profissionais na identificação, compreensão e análise de riscos em ecossistemas de software, relacionando cada risco às soluções propostas e às evidências disponíveis na literatura científica.</p>
 
-                <div class="sobre-grid">
-                    <article class="sobre-text">
-                        <p>Este catálogo foi desenvolvido a partir de um <strong>Mapeamento Sistemático da Literatura (MSL)</strong>, conduzido entre janeiro e julho de 2025, no qual foram analisados 710 estudos, dos quais 35 foram selecionados. </p>
-                        <p>Cada risco é descrito a partir de múltiplas perspectivas teóricas, integrando classificações da Taxonomia de Risco do Software Engineering Institute (SEI), a identificação do ecossistema mais propício ao risco com base na tipologia de Manikas (2016), métricas de saúde propostas por Iansiti e Levien (2004) e o processo de valor ameaçado descrito por Burström et al. (2022).</p>
-                        <p>O objetivo é oferecer ao usuário, seja ele pesquisador ou profissional, uma visão integrada dos riscos, conectando-os as soluções já propostas e validadas na literatura.</p>
+                    <div class="sobre-btns">
+                        <a href="explorar.html" class="btn-primary">Explorar</a>
+                        <a href="index.html#catalogo" class="btn-primary">Catálogo</a>
+                    </div>
+                </article>
 
-                        <p class="citation">Este catálogo está associado ao artigo Challenges and Solutions of Risk Management in Software Ecosystems (Campos et al., 2025), submetido ao Simpósio Brasileiro de Sistemas de Informação (SBSI) 2026.</p>
-            
-                        <div class="sobre-btns">
-                            <a href="comoutilizar.html" class="btn-primary">Como utilizar</a>
-                            <a href="index.html#catalogo" class="btn-primary">Catálogo</a>
+                <!-- ── COLUNA DIREITA: card de origem + accordion ── -->
+                <aside class="sobre-aside">
+
+                    <!-- Card de origem -->
+                    <div class="origin-card">
+                        <div class="origin-card-header">
+                            <div class="origin-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                            </div>
+                            <div class="origin-meta">
+                                <p class="origin-label">Artigo de origem</p>
+                                <h3 class="origin-title">Challenges and Solutions of Risk Management in Software Ecosystems</h3>
+                            </div>
                         </div>
-                    </article>
-                    <aside class="sobre-cards">
-                        <div class="card-dim tecnico">
-                            <h3>Dimensão Técnica</h3>
-                            <p>Riscos ligados a vulnerabilidades, dependências, segurança de código, compatibilidade de versões e infraestrutura de desenvolvimento (R01–R11).</p>
+
+                        <div class="origin-divider"></div>
+
+                        <a href="https://doi.org/10.5753/sbsi.2026.248578" target="_blank" rel="noopener" class="origin-doi">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                            doi.org/10.5753/sbsi.2026.248578
+                            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.5;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        </a>
+                    </div>
+
+                    <!-- Accordion: referências teóricas -->
+                    <div class="theory-accordion">
+                        <button class="theory-acc-btn" id="theoryBtn" onclick="toggleTheory()" aria-expanded="false">
+                            <span style="display:flex;align-items:center;gap:9px;">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                                Referências teóricas do catálogo
+                            </span>
+                            <svg class="theory-acc-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                        </button>
+                        <div class="theory-acc-body" id="theoryBody">
+                            <ul class="theory-list">
+                                <li class="theory-item">
+                                    <p class="theory-desc theory-title">Software Ecosystems Risks- Manalif et al. (2013)</p></p>
+                                    <span class="theory-doi-row">
+                                        <a href="https://doi.org/10.5220/0004589904170422" target="_blank" rel="noopener" class="theory-doi-link"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>doi.org/10.5220/0004589904170422</a>
+                                    </span>
+                                </li>
+                                <li class="theory-item">
+                                    <p class="theory-desc theory-title">Revisiting Software Ecosystems Research: A Longitudinal Literature Study- Manikas (2016)</p>
+                                    <a href="https://doi.org/10.1016/j.jss.2016.02.003" target="_blank" rel="noopener" class="theory-doi-link">
+                                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                                        doi.org/10.1016/j.jss.2016.02.003
+                                    </a>
+                                </li>
+                                <li class="theory-item">
+                                    <p class="theory-desc theory-title">Strategy as Ecology- Iansiti e Levien (2004)</p>
+                                    <a href="https://hbr.org/2004/03/strategy-as-ecology" target="_blank" rel="noopener" class="theory-doi-link">
+                                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                        Harvard Business Review · Mar 2004
+                                    </a>
+                                </li>
+                                <li class="theory-item">
+                                    <p class="theory-desc theory-title">Software Ecosystems Now and in the Future: A Definition, Systematic Literature Review, and Integration Into the Business and Digital Ecosystem Literature- Burström et al. (2022)</p>
+                                    <a href="https://doi.org/10.1109/TEM.2022.3216633" target="_blank" rel="noopener" class="theory-doi-link">
+                                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                                        doi.org/10.1109/TEM.2022.3216633
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
-                        <div class="card-dim social">
-                            <h3>Dimensão Social</h3>
-                            <p>Riscos envolvendo confiança, governança, comunicação entre atores, sobrecarga de mantenedores e ameaças internas (R12–R18).</p>
-                        </div>
-                        <div class="card-dim negocio">
-                            <h3>Dimensão de Negócio</h3>
-                            <p>Riscos relacionados a documentação, custos de migração, percepção de valor, fragmentação de plataforma e descontinuidade do ECOS (R19–R24).</p>
-                        </div>
-                    </aside>
-                </div>
+                    </div>
+
+                </aside>
             </div>
-        </section>
-    </main>
-
-    
+        </div>
+    </section>
 
     <script>
         function toggleMenu() {
@@ -130,6 +371,13 @@
         function closeMenu() {
             document.getElementById('navLinks').classList.remove('open');
             document.getElementById('hamburger').classList.remove('active');
+        }
+        function toggleTheory() {
+            const btn  = document.getElementById('theoryBtn');
+            const body = document.getElementById('theoryBody');
+            const open = btn.classList.toggle('open');
+            body.classList.toggle('open', open);
+            btn.setAttribute('aria-expanded', open);
         }
     </script>
 </body>
