@@ -684,7 +684,6 @@ main { padding: 120px 5%; max-width: 100%; box-sizing: border-box; }
     line-height: 1.4;
 }
 
-.ecos-value { color: var(--accent); }
 
 /* Caixa de justificativa */
 .justification-box {
@@ -1407,18 +1406,64 @@ main { padding: 120px 5%; max-width: 100%; box-sizing: border-box; }
 #sidePanel.sociais  .justification-box     { border-left-color: var(--color-sociais);  }
 #sidePanel.negocio  .justification-box     { border-left-color: var(--color-negocio);  }
 
-/* — ECOS: texto simples, mesmo padrão visual de field-value (ex: Robustez) — */
-#sidePanel .ecos-value {
-    display: block;
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--text-high) !important;
+/* — Ecossistemas em que o Risco foi Observado: cards de destaque — */
+.ecos-cards {
+    display: flex;
+    gap: 8px;
+    margin-top: 4px;
+}
+.ecos-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 12px 8px;
+    border-radius: 14px;
+    border: 1.5px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.03);
+    color: rgba(255,255,255,0.32);
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.2;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+.ecos-card svg { opacity: 0.6; transition: opacity 0.2s ease; }
+.ecos-card.active svg { opacity: 1; }
+.ecos-card[data-ecos="naoespecificado"] {
+    font-size: 10.5px;
+}
+.ecos-card.active.tecnicos {
+    border-color: var(--color-tecnicos);
+    background: rgba(56,189,248,0.12);
+    color: var(--color-tecnicos);
+}
+.ecos-card.active.sociais {
+    border-color: var(--color-sociais);
+    background: rgba(251,191,36,0.12);
+    color: var(--color-sociais);
+}
+.ecos-card.active.negocio {
+    border-color: var(--color-negocio);
+    background: rgba(74,222,128,0.12);
+    color: var(--color-negocio);
+}
+@media (max-width: 560px) {
+    .ecos-cards {
+        flex-wrap: wrap;
+    }
+    .ecos-card {
+        flex: 1 1 calc(50% - 4px);
+        min-width: calc(50% - 4px);
+    }
+}
+.ecos-cards-note {
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+    margin: 8px 0 0;
     line-height: 1.4;
-    background: none;
-    border: none;
-    padding: 0;
-    border-radius: 0;
-    margin-top: 0;
 }
 /* ── Links de estudos e soluções ── */
 .study-tag {
