@@ -274,7 +274,7 @@ const dadosRiscos = [
         justificativaSEI: "O abandono de bibliotecas essenciais do ecossistema é classificado como <strong>Risco da Engenharia de Produto</strong> porque compromete diretamente a capacidade do ecossistema de atender aos requisitos técnicos dos projetos que delas dependem. O elemento <strong>Requisitos</strong> se aplica porque, quando uma biblioteca essencial é abandonada, os requisitos de manutenção, segurança e evolução que ela sustentava deixam de ser atendidos, gerando lacunas na engenharia do produto. A área <strong>Engenharia de Requisitos (processo)</strong> foi selecionada porque a identificação e o tratamento de dependências críticas precisam ser considerados já na etapa de levantamento de requisitos, e não apenas quando o abandono já ocorreu.",
         ecos: "Aberto",
         exemplosEcos: {
-            aberto: "Os estudos relataram esse risco em <strong>ECOS de Código Aberto</strong> devido ao abandono de bibliotecas — cerca de uma em cada quatro não sobrevive além do ano de criação — e à saída de mantenedores-chave sem substituição. Os exemplos incluem Maven e Rust, conforme reportado por Hasan et al. (2025) e Schueller e Wachs (2024).",
+            aberto: "Os estudos relataram esse risco em <strong>ECOS de Código Aberto</strong> devido ao abandono de bibliotecas, cerca de uma em cada quatro não sobrevive além do ano de criação — e à saída de mantenedores-chave sem substituição. Os exemplos incluem Maven e Rust, conforme reportado por Hasan et al. (2025) e Schueller e Wachs (2024).",
             hibrido: "",
             proprietario: ""
         },
