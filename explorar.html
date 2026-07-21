@@ -1115,20 +1115,31 @@
                                     </div>
                                 </div>
 
-                                <!-- BLOCO 2a: ECOS mais propício -->
+                                <!-- BLOCO 2a: Exemplos de Ecossistemas em que esse Risco foi Observado -->
                                 <div class="demo-inner-card"
                                      data-hint="ecos">
-                                    <button class="hint-arrow-btn" aria-label="Ver explicação do ECOS mais propício" onclick="toggleHint('ecos', this)">
+                                    <button class="hint-arrow-btn" aria-label="Ver explicação sobre os Exemplos de Ecossistemas" onclick="toggleHint('ecos', this)">
                                         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
                                     </button>
                                     <div class="demo-card-title">
-                                        <span>Tipo de ECOS mais propício ao Risco
+                                        <span>Exemplos de Ecossistemas em que esse Risco foi Observado
                                     </div>
-                                    <span class="demo-field-label"></span>
-                                    <span class="demo-field-value">Híbrido / Aberto</span>
-                                    <div class="demo-just-box" style="margin-top:14px;">
-                                        <div class="demo-just-label">Por que este ecossistema?</div>
-                                        <p>A interconexão e o uso massivo de bibliotecas de terceiros nesses ecossistemas criam vetores críticos para a injeção de código malicioso durante o desenvolvimento e distribuição. Essa dependência estrutural permite que falhas upstream comprometam toda a rede integrada.</p>
+                                    <div class="ecos-cards" style="margin-top:10px;">
+                                        <div class="ecos-card has-example active tecnicos">
+                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
+                                            <span>ECOS de Código Aberto</span>
+                                        </div>
+                                        <div class="ecos-card has-example tecnicos">
+                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                                            <span>ECOS Híbrido</span>
+                                        </div>
+                                        <div class="ecos-card">
+                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                                            <span>ECOS Proprietário</span>
+                                        </div>
+                                    </div>
+                                    <div class="ecos-detail-box">
+                                        <p>Os estudos relataram esse risco em <strong>ECOS de Código Aberto</strong> devido ao comprometimento da cadeia de suprimentos por meio da inserção de código malicioso e da exploração de vulnerabilidades em pacotes amplamente utilizados. Os exemplos incluem NPM, PyPI, RubyGems e Rust, conforme reportado por Jiang et al. (2024), Zhou et al. (2024), Schueller e Wachs (2024), Wattanakriengkrai et al. (2023) e Hou et al. (2021).</p>
                                     </div>
                                 </div>
 
@@ -1296,11 +1307,11 @@
 
                             <div class="gloss-card accent-blue">
                                 <div class="gloss-header">
-                                    <span class="gloss-badge blue">Tipo de ECOS mais propício ao Risco</span>
+                                    <span class="gloss-badge blue">Exemplos de Ecossistemas em que esse Risco foi Observado</span>
                                     <span class="ref-tag">Manikas (2016)</span>
                                 </div>
                                 <p class="gloss-text">
-                                    Baseado na tipologia de Manikas (2016), indica em qual tipo de ecossistema o risco ocorre com maior frequência. ECOS abertos (ex: NPM, Maven) têm dinâmicas distintas de ECOS proprietários (ex: iOS App Store) e híbridos (ex: Android). Cada tipo tem estruturas de governança e incentivos diferentes que amplificam certos riscos.
+                                    Apresenta os ecossistemas concretos em que a ocorrência do risco foi relatada pelos estudos primários, classificados segundo a tipologia de Manikas (2016) em ECOS de Código Aberto, Híbrido ou Proprietário. Cada tipo tem estruturas de governança e incentivos diferentes que amplificam certos riscos.
                                 </p>
                             </div>
 
@@ -1628,8 +1639,8 @@
                 fonte: 'Fonte: Software Ecosystems Risks – Manalif et al. (2013)'
             },
             ecos: {
-                label: 'Tipo de ECOS mais propício ao Risco',
-                text: "Os riscos não se manifestam da mesma forma em todos os cenários. Este campo identifica em qual tipo de ECOS este risco é mais frequente, utilizando a tipologia de Manikas (2016).",
+                label: 'Exemplos de Ecossistemas em que esse Risco foi Observado',
+                text: "Apresenta os exemplos ECOS que a ocorrência deste risco foi relatada pelos estudos primários, classificados de acordo com a tipologia de Manikas (2016) em ECOS de Código Aberto, Híbrido ou Proprietário.",
                 fonte: 'Fonte: Revisiting software ecosystems research: A longitudinal literature study – Manikas (2016)'
             },
             metrica: {
