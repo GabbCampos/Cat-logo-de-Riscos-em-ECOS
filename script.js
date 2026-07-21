@@ -20,13 +20,13 @@ const estudosMapa = {
     "E04": { titulo: "Impact of Minimum Viable Product on Software Ecosystem Failure", autores: "Saarni et al.", ano: "2025", doi: "https://doi.org/10.1016/j.infsof.2024.107612" },
     "E05": { titulo: "OSS Malicious Package Analysis in the Wild", autores: "Zhou et al.", ano: "2024", doi: "https://doi.org/10.1109/DSN64029.2025.00045" },
     "E06": { titulo: "A Framework for Software Vendor Selection by Applying Inconsistency and Conflict Removal (ICR) Method", autores: "Rani et al.", ano: "2024", doi: "https://doi.org/10.1007/s13198-023-02190-x" },
-    "E07": { titulo: "A Cast of Thousands: How the IDEAS Productivity Project Has Advanced Software Productivity and Sustainability", autores: "Mclnnes et al.", ano: "2024", doi: "https://doi.org/10.1109/MCSE.2024.3383799" },
+    "E07": { titulo: "A Cast of Thousands: How the IDEAS Productivity Project Has Advanced Software Productivity and Sustainability", autores: "McInnes et al.", ano: "2024", doi: "https://doi.org/10.1109/MCSE.2024.3383799" },
     "E08": { titulo: "Modeling Interconnected Social and Technical Risks in Open Source Software Ecosystems", autores: "Schueller e Wachs", ano: "2024", doi: "https://doi.org/10.1177/26339137241231912" },
     "E09": { titulo: "Maven Unzipped: Exploring the Impact of Library Packaging on the Ecosystem", autores: "Keshani et al.", ano: "2024", doi: "https://doi.org/10.1109/ICSME58944.2024.00016" },
     "E10": { titulo: "Lessons from the Long Tail: Analysing Unsafe Dependency Updates across Software Ecosystems", autores: "Wattanakriengkrai et al.", ano: "2023", doi: "https://doi.org/10.1145/3611643.3613086" },
     "E11": { titulo: "On the Discoverability of NPM Vulnerabilities in Node.js Projects", autores: "Alfadel et al.", ano: "2023", doi: "https://doi.org/10.1145/3571848" },
     "E12": { titulo: "Understanding the Role of External Pull Requests in the NPM Ecosystem", autores: "Maeprasart et al", ano: "2023", doi: "https://doi.org/10.1007/s10664-023-10315-w" },
-    "E13": { titulo: "Vulnerability Management in Linux Distributions: An Empirical Study on Debian and Fedora", autores: "Lin et al.", ano: "2022", doi: "https://doi.org/10.1007/s10664-022-10267-7" },
+    "E13": { titulo: "Vulnerability Management in Linux Distributions: An Empirical Study on Debian and Fedora", autores: "Lin et al.", ano: "2023", doi: "https://doi.org/10.1007/s10664-022-10267-7" },
     "E14": { titulo: "Maintenance Cost of Software Ecosystem Updates", autores: "Berhe et al.", ano: "2023", doi: "https://doi.org/10.1016/j.procs.2023.03.077" },
     "E15": { titulo: "An Empirical Study of Artifacts and Security Risks in the Pre-trained Model Supply Chain", autores: "Jiang et al.", ano: "2022", doi: "https://doi.org/10.1145/3560835.3564547" },
     "E16": { titulo: "smartPip: A Smart Approach to Resolving Python Dependency Conflict Issues", autores: "Wang et al.", ano: "2022", doi: "https://doi.org/10.1145/3551349.3560437" },
@@ -41,7 +41,7 @@ const estudosMapa = {
     "E25": { titulo: "Risks and Assets: A Qualitative Study of a Software Ecosystem in the Mining Industry", autores: "Olsson e Franke", ano: "2019", doi: "https://doi.org/10.1145/3338906.3340443" },
     "E26": { titulo: "Which Factors Affect the Evangelist's Support During Training Sessions in Mobile Software Ecosystems?", autores: "Fontão et al.", ano: "2018", doi: "https://doi.org/10.1145/3241403.3241427" },
     "E27": { titulo: "An Exploratory Study on Library Aging by Monitoring Client Usage in a Software Ecosystem", autores: "Kula et al.", ano: "2017", doi: "https://doi.org/10.1109/SANER.2017.7884643" },
-    "E28": { titulo: "Towards a Multi-criteria Decision Support Method for Consumer Electronics Software Ecosystems", autores: "Hartmann e Bosh", ano: "2016", doi: "https://doi.org/10.1002/smr.1785" },
+    "E28": { titulo: "Towards a Multi-criteria Decision Support Method for Consumer Electronics Software Ecosystems", autores: "Hartmann e Bosch", ano: "2016", doi: "https://doi.org/10.1002/smr.1785" },
     "E29": { titulo: "The Influence of Developer Multi-homing on Competition between Software Ecosystems", autores: "Hyrynsalmi et al.", ano: "2016", doi: "https://doi.org/10.1016/j.jss.2015.08.053" },
     "E30": { titulo: "Intelligently Transparent Software Ecosystems", autores: "Herbsleb et al..", ano: "2016", doi: "https://doi.org/10.1109/MS.2015.156" },
     "E31": { titulo: "Tracing Known Security Vulnerabilities in Software Repositories – A Semantic Web Enabled Modeling Approach", autores: "Alqahtani et al.", ano: "2016", doi: "https://doi.org/10.1016/j.scico.2016.01.005" },
@@ -81,457 +81,553 @@ const dadosRiscos = [
     {
         id: "R01",
         risco: "Comprometimento da cadeia de suprimentos de software",
-        descricao: "O comprometimento da cadeia de suprimentos de software afeta diretamente a integridade, a confiabilidade e a segurança dos artefatos produzidos e distribuídos no ecossistema. Nesse contexto, a cadeia de suprimentos configura-se como um vetor crítico para ameaças cibernéticas, possibilitando, por exemplo, a inserção de código malicioso durante as etapas de desenvolvimento, integração ou distribuição de componentes.",
+        descricao: "Este risco ocorre quando vulnerabilidades nas etapas de desenvolvimento, integração ou distribuição são exploradas para alterar componentes ou inserir código malicioso. Como consequência, a integridade, a confiabilidade e a segurança dos artefatos produzidos e distribuídos no ecossistema podem ser comprometidas.",
         cenario: "",
         dimensao: "Técnico",
         classeSEI: "Risco de Engenharia de Produto",
         elementoSEI: "Especialidades em engenharia",
         desafio: "Segurança (arquitetura)",
-        justificativaSEI: "Classificado como <strong>Risco de Engenharia de Produto</strong> porque a falha se origina no próprio processo de construção do software, nas etapas de desenvolvimento, integração e distribuição do artefato, não em fatores de mercado ou de gestão. O elemento <strong>Especialidades em engenharia</strong> se aplica porque mitigar esse risco exige conhecimento técnico específico, práticas de desenvolvimento seguro, verificação de integridade de dependências e controle de acesso à cadeia. Já o desafio de <strong>Segurança (arquitetura)</strong> reflete que a vulnerabilidade está na própria estrutura de confiança da cadeia de suprimentos, entre desenvolvimento, integração e distribuição, exigindo controles incorporados e não apenas correções pontuais após o fato.",
+        justificativaSEI: "O comprometimento da cadeia de suprimentos de software é classificado como <strong>Risco de Engenharia de Produto</strong> porque decorre de falhas introduzidas durante o desenvolvimento, a integração ou a distribuição de componentes de software. O elemento <strong>Especialidades em engenharia</strong> se aplica porque sua prevenção exige conhecimento técnico em desenvolvimento seguro, verificação da integridade de dependências e controle de acesso à cadeia de suprimentos. A área <strong>Segurança (arquitetura)</strong> foi selecionada porque a mitigação depende de controles arquiteturais que assegurem a integridade e a confiabilidade da cadeia de suprimentos ao longo de todo o processo de desenvolvimento.",
         ecos: "Híbrido / Aberto",
-        justificativa: "O tipo <strong>Código Aberto</strong> foi marcado porque os estudos relatam o comprometimento da cadeia de suprimentos em ecossistemas como NPM, PyPI, RubyGems e Rust (Jiang et al., 2024; Zhou et al., 2024; Schueller e Wachs, 2024; Wattanakriengkrai et al., 2023; Hou et al., 2021). O tipo <strong>Híbrido</strong> foi marcado devido à reutilização de componentes provenientes de ecossistemas abertos em aplicações proprietárias ao longo da cadeia de suprimentos (Jiang et al., 2022). Não foram encontradas evidências explícitas para o tipo <strong>Proprietário</strong> nos estudos analisados; essa ausência indica apenas que esse contexto não foi reportado na literatura selecionada, e não que o risco seja inexistente nesse tipo de ecossistema.",
+        exemplosEcos: {
+            aberto: "Os estudos relataram esse risco em <strong>ECOS de Código Aberto</strong> devido ao comprometimento da cadeia de suprimentos por meio da inserção de código malicioso e da exploração de vulnerabilidades em pacotes amplamente utilizados. Os exemplos incluem NPM, PyPI, RubyGems e Rust, conforme reportado por Jiang et al. (2024), Zhou et al. (2024), Schueller e Wachs (2024), Wattanakriengkrai et al. (2023) e Hou et al. (2021).",
+            hibrido: "Os estudos relataram esse risco em <strong>ECOS Híbrido</strong> devido à reutilização de componentes provenientes de ecossistemas de código aberto ao longo da cadeia de suprimentos de aplicações proprietárias, sem identificação de sistemas específicos, conforme reportado por Jiang et al. (2022).",
+            proprietario: ""
+        },
         metrica: "Robustez",
-        justificativaMetrica: "A <strong><strong>robustez</strong></strong>, conforme proposta por Iansiti e Levien (2004), mede a capacidade do ecossistema de sobreviver a perturbações. O comprometimento da cadeia de suprimentos representa uma ameaça direta à sobrevivência do ECOS, pois falhas introduzidas em componentes centrais podem propagar-se de forma sistêmica e comprometer a continuidade do ecossistema como um todo.",
+        justificativaMetrica: "O comprometimento da cadeia de suprimentos de software afeta a <strong>robustez</strong> porque falhas introduzidas em componentes centrais podem se propagar de forma sistêmica, comprometendo a continuidade e a capacidade de sobrevivência do ECOS diante de perturbações (Iansiti e Levien, 2004).",
         processoValor: "Criação e entrega de valor",
-        justificativaProcesso: "Segundo Burström et al. (2022), a <strong><strong>criação e entrega de valor</strong></strong> correspondem ao processo pelo qual o ecossistema produz e disponibiliza soluções de software para seus participantes. O comprometimento da cadeia de suprimentos afeta diretamente esse processo, pois introduz falhas e artefatos maliciosos nos próprios produtos entregues, inviabilizando a confiança nas entregas do ecossistema.",
-        solucoes: "S01 (Framework HIN; Metapath2Vec): Reduz a exposição a bibliotecas maliciosas, fortalecendo a cadeia de suprimentos. / S05 (Framework TrustSECO): Registra e calcula fatos de confiança, apoiando a detecção de vulnerabilidades. / S20 (Método de Gerenciamento): Utiliza grafos de conhecimento para identificar vulnerabilidades e calcular escores de confiabilidade na cadeia.",
+        justificativaProcesso: " O comprometimento da cadeia de suprimentos de software afeta o processo de <strong>criação e entrega de valor</strong> porque introduz falhas e artefatos maliciosos nos produtos disponibilizados pelo ECOS, comprometendo a integridade das soluções entregues e a confiança dos participantes nesse processo (Burström et al., 2022).",
+        solucoes: "S01 (Framework HIN; Metapath2Vec): Reduz a exposição a bibliotecas maliciosas, fortalecendo a cadeia de suprimentos. / S05 (Framework TrustSECO): Registra e calcula evidências de confiança, apoiando a detecção de vulnerabilidades. / S20 (Método de Gerenciamento): Utiliza grafos de conhecimento para identificar vulnerabilidades e calcular escores de confiabilidade na cadeia de suprimentos de software.",
         estudos: ["E02", "E05", "E08", "E10", "E15", "E19"]
     },    
     {
         id: "R02",
         risco: "Exposição contínua a vulnerabilidades em múltiplos componentes do ECOS",
-        descricao: "A exposição contínua a vulnerabilidades ocorre quando correções de segurança não são aplicadas em tempo hábil, agravada pelo crescimento constante do número de dependências transitivas, o que amplia progressivamente a superfície de ataque. Como resultado, aplicações permanecem expostas a falhas já conhecidas, e essas vulnerabilidades tendem a se propagar entre múltiplos ecossistemas interconectados.",
+        descricao: "Este risco ocorre quando as correções de segurança não são aplicadas em tempo hábil e o número de dependências transitivas cresce continuamente, ampliando a superfície de ataque. Como consequência, as aplicações permanecem expostas a falhas conhecidas, que podem se propagar entre componentes e ecossistemas interconectados.",
         cenario: "",
         dimensao: "Técnico",
         classeSEI: "Risco de Engenharia de Produto",
         elementoSEI: "Especialidades em engenharia",
         desafio: "Segurança (arquitetura); Garantia de confiabilidade (arquitetura)",
-        justificativaSEI: "Classificado como <strong>Risco de Engenharia de Produto</strong> porque a exposição contínua decorre de decisões tomadas no próprio ciclo de desenvolvimento, como o atraso na aplicação de patches e a gestão inadequada de dependências, e não de fatores externos ao produto. O elemento <strong>Especialidades em engenharia</strong> se aplica porque conter esse risco exige conhecimento técnico especializado em análise de superfície de ataque e gestão de dependências transitivas, já que o fenômeno do Transitive Growth amplia progressivamente os pontos de exposição. Os desafios de <strong>Segurança (arquitetura)</strong> e <strong>Garantia de confiabilidade (arquitetura)</strong> refletem que a mitigação exige controles arquiteturais contínuos, e não apenas correções pontuais, capazes de acompanhar o crescimento da rede de dependências.",
-        ecos: "Híbrido",
-        justificativa: "Este risco foi identificado em ecossistemas do tipo <strong>Híbrido</strong> porque a coexistência de componentes proprietários e abertos dificulta a aplicação uniforme de correções (patches) em toda a base de dependências. O crescimento transitivo dessas dependências amplia a superfície de ataque, deixando as aplicações expostas e propagando vulnerabilidades conhecidas.",
+        justificativaSEI: "A exposição contínua a vulnerabilidades em múltiplos componentes do ECOS é classificada como <strong>Risco de Engenharia de Produto</strong> porque decorre de decisões tomadas durante o desenvolvimento, como atrasos na aplicação de correções e falhas na gestão de dependências. O elemento <strong>Especialidades em engenharia</strong> se aplica porque sua redução exige conhecimento técnico sobre superfície de ataque e dependências transitivas. As áreas <strong>Segurança (arquitetura)</strong> e <strong>Garantia de confiabilidade (arquitetura)</strong> foram selecionadas porque a mitigação depende de controles arquiteturais contínuos, e não apenas de correções pontuais.",
+        ecos: "Híbrido/ Aberto/ Proprietário",
+        exemplosEcos: {
+            aberto: "Os estudos relataram esse risco em <strong>ECOS de Código Aberto</strong> devido ao crescimento exponencial de vulnerabilidades transitivas e à persistência de dependências desatualizadas. Os exemplos incluem Maven, NPM, Debian e Fedora, conforme reportado por Keshani et al. (2024), Alfadel et al. (2023) e Lin et al. (2023).",
+            hibrido: "Os estudos relataram esse risco em <strong>ECOS Híbrido</strong> devido à reutilização em massa de componentes de código aberto em aplicações comerciais e à diferença na dinâmica de correção entre ferramentas abertas e fechadas, sem identificação de sistemas específicos, conforme reportado por Keshani et al. (2024) e Wright et al. (2013).",
+            proprietario: "Os estudos relataram esse risco em <strong>ECOS Proprietário</strong> devido à persistência do risco na fila de correção de ecossistemas comerciais de código fechado. Os exemplos incluem Microsoft Internet Explorer, Microsoft Office e produtos Apple, conforme reportado por Wright et al. (2013)."
+        },
         metrica: "Robustez",
-        justificativaMetrica: "A exposição prolongada a vulnerabilidades conhecidas enfraquece a capacidade do ECOS de resistir a perturbações externas, dimensão central da <strong>robustez</strong> (Iansiti e Levien, 2004). O fenômeno do Transitive Growth aumenta a amplitude do impacto potencial, comprometendo múltiplos componentes simultaneamente e reduzindo a resiliência do ecossistema.",
+        justificativaMetrica: "A exposição contínua a vulnerabilidades em múltiplos componentes do ECOS afeta a <strong>robustez</strong> porque reduz a capacidade do ecossistema de resistir a perturbações e manter seu funcionamento. A permanência de vulnerabilidades conhecidas em componentes interdependentes favorece a propagação de falhas, podendo comprometer diferentes partes do ECOS e reduzir sua resiliência (Iansiti e Levien, 2004).",
         processoValor: "Criação e entrega de valor",
-        justificativaProcesso: "A presença de vulnerabilidades não corrigidas em múltiplos componentes compromete a qualidade e a segurança dos artefatos produzidos e entregues pelo ECOS. Isso afeta diretamente o processo de <strong>criação e entrega de valor</strong> (Burström et al., 2022), uma vez que os participantes não podem confiar na integridade das soluções disponibilizadas pela plataforma.",
+        justificativaProcesso: " A exposição contínua a vulnerabilidades em múltiplos componentes do ECOS afeta o processo de <strong>criação e entrega de valor</strong> porque compromete a qualidade, a segurança e a integridade dos artefatos produzidos e entregues. Como consequência, os participantes passam a confiar menos nas soluções disponibilizadas pelo ecossistema (Burström et al., 2022).",
         solucoes: "S05 (Framework TrustSECO): Apoia a detecção de vulnerabilidades. / S18 (Ferramenta DepReveal): Identifica vulnerabilidades e classifica advisories, reduzindo o tempo de exposição.",
         estudos: ["E09", "E11", "E13", "E35"]
     },
     {
         id: "R03",
         risco: "Vulnerabilidades em dependências transitivas de bibliotecas",
-        descricao: "Bibliotecas incorporam, muitas vezes de forma implícita, outras dependências sobre as quais os desenvolvedores não têm controle direto. Vulnerabilidades presentes nessas dependências transitivas ficam ocultas na estrutura do projeto, e a ampla disseminação do código aberto intensifica sua propagação entre múltiplos ecossistemas.",
+        descricao: "Este risco ocorre quando bibliotecas utilizadas pelo software incorporam outras dependências sobre as quais os desenvolvedores não possuem controle direto. Como consequência, vulnerabilidades presentes nessas dependências transitivas podem permanecer ocultas na estrutura do projeto e se propagar entre diferentes componentes e ecossistemas, especialmente devido à ampla reutilização de software de código aberto.",
         cenario: "",
         dimensao: "Técnico",
         classeSEI: "Risco de Engenharia de Produto",
         elementoSEI: "Especialidades em engenharia",
         desafio: "Segurança (arquitetura)",
-        justificativaSEI: "Classificado como <strong>Risco de Engenharia de Produto</strong> porque a vulnerabilidade reside em componentes que passam a integrar o artefato final, mesmo sem controle direto dos desenvolvedores sobre sua origem. O elemento <strong>Especialidades em engenharia</strong> se aplica porque identificar e mitigar falhas em dependências transitivas exige práticas técnicas específicas, como análise de árvores de dependências e rastreamento de vulnerabilidades em cadeia. O desafio de <strong>Segurança (arquitetura)</strong> reflete que o problema está na estrutura de composição do software, na incorporação implícita de código de terceiros, e não em uma falha isolada e pontual.",
-        ecos: "Aberto",
-        justificativa: "Este risco foi identificado em ecossistemas do tipo <strong>Código Aberto</strong> porque a disseminação do código aberto faz com que falhas se propaguem em múltiplos componentes que estão além do controle direto dos desenvolvedores. A estrutura descentralizada característica desses ecossistemas intensifica esse problema.",
+        justificativaSEI: "As vulnerabilidades em dependências transitivas de bibliotecas são classificadas como <strong>Risco de Engenharia de Produto</strong> porque estão presentes em componentes que passam a integrar o software, mesmo sem controle direto dos desenvolvedores sobre sua origem. O elemento <strong>Especialidades em engenharia</strong> se aplica porque sua identificação e mitigação exigem conhecimentos técnicos sobre análise de árvores de dependências e rastreamento de vulnerabilidades. A área <strong>Segurança (arquitetura)</strong> foi selecionada porque o risco decorre da própria estrutura de composição do software e da incorporação de código de terceiros, e não de uma falha isolada.",
+        ecos: "Híbrido/ Aberto",
+        exemplosEcos: {
+            aberto: "Os estudos relataram esse risco em <strong>ECOS de Código Aberto</strong> devido à ocorrência e ao impacto de vulnerabilidades transitivas em ferramentas de gerenciamento de dependências e automação de builds. Os exemplos incluem Maven, conforme reportado por Alqahtani et al. (2016).",
+            hibrido: "Os estudos relataram esse risco em <strong>ECOS Híbrido</strong> devido à herança oculta de vulnerabilidades transitivas ao reutilizar e integrar componentes de ecossistemas abertos em sistemas e aplicações proprietárias. Os exemplos incluem Maven, conforme reportado por Alqahtani et al. (2016).",
+            proprietario: ""
+        },
         metrica: "Robustez",
-        justificativaMetrica: "Vulnerabilidades em dependências transitivas reduzem a <strong>robustez</strong> do ECOS porque introduzem pontos de falha ocultos que escapam ao controle dos participantes. Conforme Iansiti e Levien (2004), a robustez está associada a capacidade de sobrevivência diante de ameaças; dependências vulneráveis não gerenciadas representam ameaças latentes que podem comprometer essa capacidade.",
+        justificativaMetrica: "As vulnerabilidades em dependências transitivas de bibliotecas afetam a <strong>robustez</strong> porque introduzem pontos de falha ocultos, muitas vezes fora do controle direto dos participantes do ECOS. Essas vulnerabilidades representam ameaças latentes que podem se propagar entre componentes interdependentes, comprometer o funcionamento do ecossistema e reduzir sua capacidade de resistir a perturbações (Iansiti e Levien, 2004).",
         processoValor: "Criação de valor",
-        justificativaProcesso: "As dependências transitivas integram-se ao núcleo dos artefatos produzidos no ECOS, participando diretamente do processo de <strong>criação de valor</strong> (Burström et al., 2022). Vulnerabilidades nesse nível comprometem a qualidade e a segurança do que está sendo criado, sem que os desenvolvedores tenham visibilidade ou controle sobre a origem do risco.",
-        solucoes: "S05 (Framework TrustSECO): Ajuda na detecção de vulnerabilidades em geral. / S18 (Ferramenta DepReveal): Ferramenta de descoberta e análise de vulnerabilidades em projetos NPM.",
+        justificativaProcesso: "As vulnerabilidades em dependências transitivas de bibliotecas afetam o processo de <strong>criação de valor</strong> porque passam a integrar os artefatos produzidos pelo ECOS, influenciando diretamente sua qualidade e segurança. Como essas dependências são incorporadas de forma implícita, vulnerabilidades podem comprometer as soluções criadas sem que os desenvolvedores tenham visibilidade ou controle direto sobre sua origem (Burström et al., 2022).",
+        solucoes: "S05 (Framework TrustSECO): Ajuda na detecção de vulnerabilidades em geral. / S18 (Ferramenta DepReveal): Apoia a descoberta e análise de vulnerabilidades em projetos NPM.",
         estudos: ["E11", "E31"]
     },
     {
         id: "R04",
         risco: "Incompatibilidade entre versões de bibliotecas interdependentes",
-        descricao: "A coexistência de diferentes versões de bibliotecas interdependentes, especialmente em redes extensas de dependências, pode gerar incompatibilidades técnicas não relacionadas a falhas de segurança. O uso de versões desatualizadas agrava esse cenário, provocando impactos em cascata sobre os projetos que dependem dessas bibliotecas.",
+        descricao: "Este risco ocorre quando diferentes versões de bibliotecas interdependentes coexistem em componentes e projetos de um ECOS, especialmente em redes extensas de dependências. Como consequência, incompatibilidades técnicas podem se propagar entre projetos interconectados, dificultando a integração, a manutenção e a evolução do ecossistema.",
         cenario: "",
         dimensao: "Técnico",
         classeSEI: "Risco de Engenharia de Produto",
         elementoSEI: "Integração e teste",
         desafio: "Não identificado",
-        justificativaSEI: "Classificado como <strong>Risco de Engenharia de Produto</strong> porque a incompatibilidade entre versões surge do próprio processo de composição do software, quando bibliotecas interdependentes precisam ser combinadas para formar o produto final. O elemento <strong>Integração e teste</strong> se aplica porque é exatamente nessa etapa, a combinação de componentes com versões potencialmente conflitantes ou desatualizadas, que as falhas se manifestam e se propagam em cascata para os projetos dependentes. O desafio é classificado como <strong>Não identificado</strong> porque os estudos analisados não apontam uma subcategoria mais específica dentro desse elemento, sendo a classificação em nível de elemento suficiente para descrever a natureza técnica do risco.",
-        ecos: "Híbrido",
-        justificativa: "Este risco foi identificado em ecossistemas do tipo <strong>Híbrido</strong> porque a integração de redes extensas de bibliotecas interdependentes, combinando componentes de diferentes origens, aumenta as chances de incompatibilidade de versões. O uso de versões desatualizadas nesse contexto pode gerar impactos em cascata entre os projetos durante a integração e o teste.",
+        justificativaSEI: "A incompatibilidade entre versões de bibliotecas interdependentes é classificada como <strong>Risco de Engenharia de Produto</strong> porque decorre da composição e integração de componentes durante o desenvolvimento do software. O elemento <strong>Integração e teste</strong> se aplica porque as incompatibilidades normalmente são identificadas quando diferentes versões de bibliotecas são integradas e testadas em conjunto. A área de desafio foi classificada como <strong>Não identificada</strong> porque os estudos analisados não permitem associar esse risco a uma subcategoria específica da taxonomia SEI.",
+        ecos: "Híbrido/ Aberto",
+        exemplosEcos: {
+            aberto: "Os estudos relataram esse risco em <strong>ECOS de Código Aberto</strong> devido ao aumento exponencial de projetos potencialmente impactados por vulnerabilidades em dependências transitivas e à alta prevalência de vulnerabilidades divulgadas introduzidas por dependências. Os exemplos incluem Maven, NVD e projetos Java no GitHub, conforme reportado por Alqahtani et al. (2016) e Gkortzis et al. (2021).",
+            hibrido: "Os estudos relataram esse risco em <strong>ECOS Híbrido</strong> devido à herança oculta de vulnerabilidades transitivas ao integrar componentes de ecossistemas abertos em aplicações proprietárias, que passam a depender de serviços externos de monitoramento para serem alertadas sobre vulnerabilidades que não controlam diretamente. Os exemplos incluem Maven, cenário hipotético da empresa TaxCoders e serviço Gemnasium, conforme reportado por Alqahtani et al. (2016) e Herbsleb, Kästner e Bogart (2016).",
+            proprietario: ""
+        },
         metrica: "Produtividade",
-        justificativaMetrica: "A incompatibilidade de versões impacta diretamente a <strong>produtividade</strong> do ecossistema (Iansiti e Levien, 2004), pois aumenta o esforço necessário para manutenção, integração e evolução dos projetos. O tempo e os recursos gastos na resolução de conflitos de versão reduzem a capacidade dos participantes de gerar e entregar valor de forma eficiente.",
+        justificativaMetrica: "A incompatibilidade entre versões de bibliotecas interdependentes afeta a <strong>produtividade</strong> porque aumenta o esforço necessário para integrar, manter e evoluir os projetos do ECOS. A resolução de conflitos entre versões consome tempo e recursos, reduzindo a capacidade dos participantes de desenvolver e disponibilizar novas funcionalidades de forma eficiente (Iansiti e Levien, 2004).",
         processoValor: "Entrega de valor",
-        justificativaProcesso: "A incompatibilidade entre versões de bibliotecas interfere diretamente na <strong>entrega de valor</strong> (Burström et al., 2022), pois impede que atualizações e melhorias cheguem aos usuários finais sem fricção. O risco de impactos em cascata agrava esse problema, tornando o processo de atualização e entrega de software mais lento, custoso e propenso a falhas.",
+        justificativaProcesso: "A incompatibilidade entre versões de bibliotecas interdependentes afeta o processo de <strong>entrega de valor</strong> porque dificulta a disponibilização de atualizações e novas funcionalidades aos usuários. A necessidade de resolver conflitos entre versões torna a entrega de software mais lenta, custosa e suscetível a falhas (Burström et al., 2022).",
         solucoes: "S19 (Ferramenta smartPip): Resolve conflitos de dependência por meio de restrições lógicas e otimização, prevenindo falhas de instalação.",
         estudos: ["E12", "E22", "E30", "E31"]
     },
     {
         id: "R05",
         risco: "Ataques direcionados à infraestrutura e aos pacotes do ecossistema",
-        descricao: "A ampla disponibilidade de repositórios públicos de código aberto amplia a superfície de ataque do ecossistema, criando oportunidades para que agentes mal-intencionados explorem falhas na infraestrutura e nos pacotes distribuídos. Esses ataques comprometem diretamente a proteção dos sistemas que dependem dessa infraestrutura compartilhada.",
+        descricao: "Este risco ocorre quando agentes mal-intencionados exploram falhas na infraestrutura compartilhada e nos pacotes distribuídos por um ECOS. Como consequência, ataques podem comprometer componentes utilizados por diversos projetos, afetando a segurança dos sistemas e ampliando os impactos por toda a rede do ecossistema.",
         cenario: "",
         dimensao: "Técnico",
         classeSEI: "Risco de Engenharia de Produto",
         elementoSEI: "Especialidades em engenharia",
         desafio: "Segurança (arquitetura)",
-        justificativaSEI: "Classificado como <strong>Risco de Engenharia de Produto</strong> porque os ataques exploram diretamente os artefatos e a infraestrutura técnica produzidos e mantidos pelo ecossistema, e não fatores externos de mercado ou gestão. O elemento <strong>Especialidades em engenharia</strong> se aplica porque conter esse risco exige respostas técnicas específicas de segurança, capazes de lidar com a ampla superfície de ataque criada pela abertura dos repositórios. O desafio de <strong>Segurança (arquitetura)</strong> reflete que a exposição está na própria estrutura do ecossistema, na abertura dos repositórios e na extensão da rede de pacotes, exigindo controles incorporados ao design da infraestrutura, e não apenas respostas reativas a incidentes.",
-        ecos: "Aberto",
-        justificativa: "Este risco foi identificado em ecossistemas do tipo <strong>Código Aberto</strong> porque os repositórios públicos, elemento central desse modelo, facilitam a exploração por agentes mal-intencionados. O aumento da superfície de ataque atrelado à disponibilidade irrestrita do código impacta diretamente a segurança dos sistemas.",
+        justificativaSEI: "Os ataques direcionados à infraestrutura e aos pacotes do ecossistema são classificados como <strong>Risco de Engenharia de Produto</strong> porque exploram diretamente os artefatos e a infraestrutura técnica do ECOS. O elemento <strong>Especialidades em engenharia</strong> se aplica porque sua prevenção e mitigação exigem conhecimentos técnicos específicos de segurança. A área <strong>Segurança (arquitetura)</strong> foi selecionada porque a redução desse risco depende de controles incorporados à arquitetura da infraestrutura e dos repositórios, e não apenas de respostas após a ocorrência de ataques.",
+        ecos: "Híbrido/ Aberto",
+        exemplosEcos: {
+            aberto: "Os estudos relataram esse risco em <strong>ECOS de Código Aberto</strong> devido a ataques direcionados a pacotes e à infraestrutura, incluindo sabotagem por injeção deliberada de código malicioso e exploração de vulnerabilidades em componentes centrais. Os exemplos incluem NPM (bibliotecas colors e faker) e OpenSSL (caso Heartbleed), conforme reportado por Maeprasart et al. (2023) e Gkortzis et al. (2021).",
+            hibrido: "Os estudos relataram esse risco em <strong>ECOS Híbrido</strong> devido à exploração de uma vulnerabilidade em biblioteca de código aberto reutilizada como vetor de ataque contra infraestrutura proprietária, expondo dados de milhões de usuários. Os exemplos incluem caso Equifax, conforme reportado por Gkortzis et al. (2021).",
+            proprietario: ""
+        },
         metrica: "Robustez",
-        justificativaMetrica: "Ataques direcionados a infraestrutura ameaçam a sobrevivência e a integridade do ecossistema como um todo, dimensão central da <strong>robustez</strong> (Iansiti e Levien, 2004). A exploração de pacotes utilizados pode comprometer não apenas um projeto isolado, mas toda a rede de dependências do ECOS, reduzindo sua capacidade de resistir e se recuperar de perturbações.",
+        justificativaMetrica: "Os ataques direcionados à infraestrutura e aos pacotes do ecossistema afetam a <strong>robustez</strong> porque reduzem a capacidade do ECOS de resistir e se recuperar de perturbações. O comprometimento de pacotes amplamente utilizados pode atingir vários projetos simultaneamente, afetando a integridade e a continuidade do ecossistema (Iansiti e Levien, 2004).",
         processoValor: "Criação de valor",
-        justificativaProcesso: "Os pacotes e a infraestrutura do ECOS são os meios pelos quais os participantes criam valor (Burström et al., 2022). Ataques que comprometem esses elementos interrompem o processo de <strong>criação de valor</strong> na raiz, inviabilizando o uso seguro das ferramentas e bibliotecas que constituem a base técnica do ecossistema.",
-        solucoes: "S05 (Framework TrustSECO): Ajuda a reconfigurar sistemas após ataques e apoia a detecção. / S17 (Prática SLA): Auxilia na redução de riscos técnicos e organizacionais (o que inclui ataques).",
+        justificativaProcesso: "Os ataques direcionados à infraestrutura e aos pacotes do ecossistema afetam o processo de <strong>criação de valor</strong> porque comprometem as ferramentas, bibliotecas e componentes utilizados pelos participantes na construção de soluções. Como consequência, a produção de novos artefatos pode ser interrompida ou ocorrer sobre uma base técnica insegura (Burström et al., 2022).",
+        solucoes: "S05 (Framework TrustSECO): Ajuda a reconfigurar sistemas após ataques e apoia a detecção. / S17 (Prática SLA): Auxilia na redução de riscos técnicos e organizacionais, incluindo ataques.",
         estudos: ["E03", "E09", "E12", "E13", "E22"]
     },
     {
         id: "R06",
         risco: "Injeção de código malicioso em pacotes distribuídos pelo ecossistema",
-        descricao: "Agentes mal-intencionados comprometem bibliotecas legítimas e utilizam diferentes vetores de ataque para inserir código malicioso em pacotes distribuídos pelo ecossistema, explorando a confiança que os desenvolvedores depositam nesses componentes.",
+        descricao: "Este risco ocorre quando agentes mal-intencionados inserem código malicioso em pacotes distribuídos por um ECOS, comprometendo bibliotecas legítimas e explorando a confiança depositada pelos desenvolvedores nesses componentes. Como consequência, pacotes comprometidos podem ser propagados para diversos projetos, ampliando o impacto do ataque em todo o ecossistema.",
         cenario: "",
         dimensao: "Técnico",
         classeSEI: "Risco de Engenharia de Produto",
         elementoSEI: "Especialidades em engenharia",
         desafio: "Segurança (arquitetura)",
-        justificativaSEI: "Classificado como <strong>Risco de Engenharia de Produto</strong> porque a injeção de código malicioso ocorre diretamente no processo de produção e distribuição de artefatos, atividade central da engenharia de produto. O elemento <strong>Especialidades em engenharia</strong> se aplica porque a defesa contra esse vetor exige controles técnicos específicos ao longo do ciclo de construção e empacotamento do software. O desafio de <strong>Segurança (arquitetura)</strong> reflete que o próprio fluxo de desenvolvimento e distribuição do ECOS é explorado como vetor de ataque, exigindo mecanismos de verificação incorporados a essa arquitetura, e não apenas revisões pontuais de código.",
+        justificativaSEI: "A injeção de código malicioso em pacotes distribuídos pelo ecossistema é classificada como <strong>Risco de Engenharia de Produto</strong> porque ocorre durante a produção e a distribuição dos artefatos de software do ECOS. O elemento <strong>Especialidades em engenharia</strong> se aplica porque sua prevenção e mitigação exigem conhecimentos técnicos e controles de segurança ao longo do ciclo de desenvolvimento e distribuição. A área <strong>Segurança (arquitetura)</strong> foi selecionada porque a mitigação depende de mecanismos de verificação incorporados à arquitetura do processo de desenvolvimento e distribuição, e não apenas de revisões pontuais de código.",
         ecos: "Aberto",
-        justificativa: "Este risco foi identificado em ecossistemas do tipo <strong>Código Aberto</strong> porque qualquer ator pode contribuir com código, e os mecanismos de revisão e auditoria são frequentemente insuficientes ou inexistentes. A ausência de controle centralizado sobre os repositórios públicos amplia os vetores disponíveis para comprometer bibliotecas amplamente utilizadas.",
+        exemplosEcos: {
+            aberto: "Os estudos relataram esse risco em <strong>ECOS de Código Aberto</strong> devido à injeção deliberada de código malicioso em pacotes por meio de sequestro de contas de mantenedores, ataques à infraestrutura de registries ou publicação de pacotes com nomes similares a pacotes legítimos. Os exemplos incluem NPM, conforme reportado por Hou et al. (2021).",
+            hibrido: "",
+            proprietario: ""
+        },
         metrica: "Robustez",
-        justificativaMetrica: "A injeção de código malicioso em pacotes distribuídos compromete a integridade estrutural do ecossistema, afetando sua capacidade de resistir a ameaças internas e externas, dimensão central da <strong>robustez</strong> (Iansiti e Levien, 2004). Como os pacotes comprometidos podem ser consumidos por múltiplos projetos dependentes, o impacto potencial é sistêmico, ameaçando a sobrevivência e a confiabilidade do ECOS como um todo.",
+        justificativaMetrica: "A injeção de código malicioso em pacotes distribuídos pelo ecossistema afeta a <strong>robustez</strong> porque reduz a capacidade do ECOS de resistir a ameaças que comprometem sua integridade e continuidade. Como pacotes comprometidos podem ser reutilizados por diversos projetos, seus impactos podem se propagar pelo ecossistema, reduzindo sua confiabilidade e capacidade de recuperação diante de perturbações (Iansiti e Levien, 2004).",
         processoValor: "Criação de valor",
-        justificativaProcesso: "Os pacotes distribuídos pelo ECOS são os principais artefatos por meio dos quais os participantes criam valor (Burström et al., 2022). A injeção de código malicioso nesses pacotes compromete o processo de <strong>criação de valor</strong> em sua essência, pois transforma os próprios artefatos de software em vetores de dano, inviabilizando sua utilização segura e confiável pelos demais atores do ecossistema.",
+        justificativaProcesso: "A injeção de código malicioso em pacotes distribuídos pelo ecossistema afeta o processo de <strong>criação de valor</strong> porque compromete a integridade dos pacotes utilizados pelos participantes na construção de novas soluções. Como consequência, os próprios artefatos produzidos pelo ECOS tornam-se vetores de ataque, prejudicando a criação de software seguro e confiável (Burström et al., 2022).",
         solucoes: "S01 (Framework HIN; Metapath2Vec): Reduz a exposição a bibliotecas maliciosas. / S05 (Framework TrustSECO): Apoia a detecção de vulnerabilidades e reconfiguração de sistemas. / S16 (Prática de Mecanismos de Segurança): Contribui para prevenir uploads maliciosos e aumenta a rastreabilidade.",
         estudos: ["E05", "E19"]
     },
     {
         id: "R07",
         risco: "Atualizações inseguras de dependências em bibliotecas compartilhadas",
-        descricao: "Esse risco ocorre quando o processo de atualização de dependências permite a incorporação de código sem a devida verificação, como contribuições externas que são aceitas sem revisão adequada, introduzindo falhas nas bibliotecas compartilhadas.",
+        descricao: "Este risco ocorre quando dependências de bibliotecas compartilhadas em um ECOS são atualizadas com código que não passou por revisão e verificação adequadas, como contribuições externas incorporadas sem testes suficientes. Como consequência, falhas podem ser introduzidas nas bibliotecas e propagadas para os diferentes projetos que dependem desses componentes.",
         cenario: "",
         dimensao: "Técnico",
         classeSEI: "Risco de Engenharia de Produto",
         elementoSEI: "Código e teste unitário",
         desafio: "Não identificado",
-        justificativaSEI: "Classificado como <strong>Risco de Engenharia de Produto</strong> porque a falha se origina na introdução de código não verificado durante o próprio processo de desenvolvimento. O elemento <strong>Código e teste unitário</strong> se aplica porque o problema ocorre precisamente na ausência de verificação do código no momento em que contribuições externas, como pull requests, são incorporadas, exigindo práticas de revisão e teste que previnam a execução de código não validado em bibliotecas compartilhadas. O desafio é classificado como <strong>Não identificado</strong> porque os estudos analisados não apontam uma subcategoria mais específica dentro desse elemento, sendo a classificação em nível de elemento suficiente para descrever a natureza técnica do risco.",
-        ecos: "Híbrido / Aberto",
-        justificativa: "Este risco foi identificado em ecossistemas do tipo <strong>Híbrido</strong> e <strong>Código Aberto</strong> porque, nesses ambientes, múltiplos atores externos contribuem com atualizações de código sem necessariamente passar por processos formais de revisão. A ausência de controle centralizado e de mecanismos de validação robustos facilita a introdução de falhas por meio de contribuições não verificadas.",
+        justificativaSEI: "As atualizações inseguras de dependências em bibliotecas compartilhadas são classificadas como <strong>Risco de Engenharia de Produto</strong> porque decorrem da incorporação de código não verificado durante o desenvolvimento do software. O elemento <strong>Código e teste unitário</strong> se aplica porque a prevenção desse risco depende da revisão e da realização de testes antes que contribuições externas sejam incorporadas às bibliotecas. A área de desafio foi classificada como <strong>Não identificada</strong> porque os estudos analisados não permitem associar o risco a uma subcategoria mais específica da taxonomia SEI.",
+        ecos: "Aberto",
+        exemplosEcos: {
+            aberto: "Os estudos relataram esse risco em <strong>ECOS de Código Aberto</strong> devido a atualizações inseguras de dependências, incluindo a adição de novos scripts e o acesso a módulos sensíveis do sistema em pull requests de atualização. Os exemplos incluem NPM, conforme reportado por Wattanakriengkrai et al. (2023).",
+            hibrido: "",
+            proprietario: ""
+        },
         metrica: "Produtividade",
-        justificativaMetrica: "Atualizações inseguras de dependências reduzem a <strong>produtividade</strong> do ecossistema (Iansiti e Levien, 2004) ao introduzir falhas que demandam esforços adicionais de diagnóstico, reversão e correção. O tempo perdido na identificação e na resolução de problemas causados por atualizações mal verificadas diminui a eficiência dos times de desenvolvimento e compromete a cadência de entrega do ECOS.",
+        justificativaMetrica: "As atualizações inseguras de dependências em bibliotecas compartilhadas afetam a <strong>produtividade</strong> porque podem introduzir falhas que exigem esforços adicionais de diagnóstico, reversão e correção. O tempo e os recursos empregados na resolução desses problemas reduzem a eficiência dos participantes e comprometem o ritmo de desenvolvimento do ECOS (Iansiti e Levien, 2004).",
         processoValor: "Entrega de valor",
         justificativaProcesso: "As atualizações de dependências integram o ciclo contínuo de entrega de software no ECOS (Burström et al., 2022). Quando esse processo introduz falhas por ausência de verificação, o fluxo de <strong>entrega de valor</strong> é interrompido ou degradado, gerando instabilidade nos projetos dependentes e comprometendo a confiabilidade das entregas realizadas pelo ecossistema.",
-        solucoes: "S05 (Framework TrustSECO): Pode auxiliar na detecção de vulnerabilidades introduzidas, através do registro de fatos de confiança.",
+        solucoes: "S05 (Framework TrustSECO): Auxilia na detecção de vulnerabilidades introduzidas por meio do registro de fatos de confiança.",
         estudos: ["E05", "E10", "E24"]
     },
     {
         id: "R08",
         risco: "Propagação de bugs não resolvidos entre projetos do ecossistema",
-        descricao: "Bugs não corrigidos em pacotes upstream, dos quais outros projetos dependem, propagam-se por toda a rede de dependências do ecossistema. Como esses projetos dependentes não atualizam ou corrigem essas falhas de forma independente, o problema se espalha em larga escala, comprometendo bibliotecas e sistemas interligados.",
+        descricao: "Este risco ocorre quando bugs não corrigidos em pacotes upstream, dos quais outros projetos dependem, não são atualizados ou corrigidos de forma independente pelos projetos dependentes. Como consequência, essas falhas se propagam por toda a rede de dependências do ecossistema, comprometendo bibliotecas e sistemas interligados em larga escala.",
         cenario: "",
         dimensao: "Técnico",
         classeSEI: "Risco de Engenharia de Produto",
         elementoSEI: "Integração e teste",
         desafio: "Não identificado",
-        justificativaSEI: "Classificado como <strong>Risco de Engenharia de Produto</strong> porque bugs não resolvidos em pacotes upstream são herdados diretamente pelos projetos que deles dependem, afetando a integridade do artefato final. O elemento <strong>Integração e teste</strong> se aplica porque o problema se manifesta justamente no momento em que componentes compartilhados são integrados sem verificação e atualização adequadas, tornando o risco sistêmico à medida que se propaga pela rede de dependências. O desafio é classificado como <strong>Não identificado</strong> porque os estudos analisados não apontam uma subcategoria mais específica dentro desse elemento, sendo a classificação em nível de elemento suficiente para descrever a natureza técnica do risco.",
+        justificativaSEI: "A propagação de bugs não resolvidos entre projetos do ecossistema é classificada como <strong>Risco de Engenharia de Produto</strong> porque bugs não corrigidos em pacotes upstream são herdados diretamente pelos projetos que deles dependem, afetando a integridade do artefato final. O elemento <strong>Integração e teste</strong> se aplica porque o problema se manifesta justamente no momento em que componentes compartilhados são integrados sem verificação e atualização adequadas, tornando o risco sistêmico à medida que se propaga pela rede de dependências. A área de desafio foi classificada como <strong>Não identificada</strong> porque os estudos analisados não apontam uma subcategoria mais específica dentro desse elemento, sendo a classificação em nível de elemento suficiente para descrever a natureza técnica do risco.",
         ecos: "Aberto",
-        justificativa: "Este risco foi identificado em ecossistemas do tipo <strong>Código Aberto</strong> porque a manutenção de pacotes upstream depende frequentemente de voluntários sem obrigação formal de corrigir falhas. A descentralização da governança cria condições propícias para que bugs persistam e se propaguem por toda a rede de dependências.",
+        exemplosEcos: {
+            aberto: "Os estudos relataram esse risco em <strong>ECOS de Código Aberto</strong> devido à propagação em cascata de falhas não resolvidas entre bibliotecas, incluindo a saída de mantenedores e a propagação empírica de bugs e vulnerabilidades não corrigidas por dependências a jusante. Os exemplos incluem Rust, NPM, OpenSSL e Apache Struts, conforme reportado por Schueller e Wachs (2024).",
+            hibrido: "",
+            proprietario: ""
+        },
         metrica: "Produtividade",
-        justificativaMetrica: "A propagação de bugs não resolvidos impacta diretamente a <strong>produtividade</strong> do ecossistema (Iansiti e Levien, 2004), pois força múltiplos projetos dependentes a lidar com falhas herdadas que fogem ao seu controle direto. O esforço necessário para contornar, diagnosticar ou aguardar a correção dessas falhas consome recursos dos participantes e reduz a eficiência operacional do ECOS como um todo.",
+        justificativaMetrica: "A propagação de bugs não resolvidos entre projetos do ecossistema afeta a <strong>produtividade</strong> porque força múltiplos projetos dependentes a lidar com falhas herdadas que fogem ao seu controle direto. O esforço necessário para contornar, diagnosticar ou aguardar a correção dessas falhas consome recursos dos participantes e reduz a eficiência operacional do ECOS como um todo (Iansiti e Levien, 2004).",
         processoValor: "Entrega de valor",
-        justificativaProcesso: "A <strong>entrega de valor</strong> no ECOS (Burström et al., 2022) pressupõe que os artefatos disponibilizados funcionem de forma confiável. A propagação de bugs não resolvidos compromete essa premissa ao introduzir falhas nas entregas do ecossistema, obrigando os participantes a gerenciar instabilidades que deveriam ter sido resolvidas na origem, nos pacotes upstream.",
-        solucoes: "S14 (Prática de Robustez da Plataforma): Mitiga vulnerabilidades estruturais e planeja a evolução, o que é essencial para conter a propagação de bugs.",
+        justificativaProcesso: "A propagação de bugs não resolvidos entre projetos do ecossistema afeta o processo de <strong>entrega de valor</strong> porque introduz falhas nas entregas realizadas pelo ecossistema, comprometendo a premissa de que os artefatos disponibilizados funcionem de forma confiável. Como consequência, os participantes precisam gerenciar instabilidades que deveriam ter sido resolvidas na origem, nos pacotes upstream (Burström et al., 2022).",
+        solucoes: "S14 (Prática de Robustez da Plataforma): Mitiga vulnerabilidades estruturais e planeja a evolução do sistema, contendo a propagação de bugs.",
         estudos: ["E03", "E08"]
     },
     {
         id: "R09",
         risco: "Abandono de bibliotecas essenciais do ecossistema",
-        descricao: "A descontinuidade de bibliotecas essenciais, frequentemente mantidas por voluntários sem vínculo formal com o ecossistema, pode comprometer gravemente os sistemas que delas dependem. Como muitas dependências são transitivas, o abandono de uma única biblioteca amplamente utilizada tende a afetar um número significativo de projetos ao longo da rede.",
+        descricao: "Este risco ocorre quando bibliotecas essenciais, frequentemente mantidas por voluntários sem vínculo formal com o ecossistema, são descontinuadas. Como consequência, os sistemas que delas dependem podem ser gravemente comprometidos e, devido à natureza transitiva de muitas dependências, o abandono de uma única biblioteca amplamente utilizada tende a afetar um número significativo de projetos ao longo da rede.",
         cenario: "",
         dimensao: "Técnico",
         classeSEI: "Risco da Engenharia de Produto",
         elementoSEI: "Requisitos",
         desafio: "Engenharia de Requisitos (processo)",
-        justificativaSEI: "Classificado como <strong>Risco da Engenharia de Produto</strong> porque o abandono de bibliotecas essenciais compromete diretamente a capacidade do ecossistema de atender aos requisitos técnicos dos projetos que delas dependem. O elemento <strong>Requisitos</strong> se aplica porque, quando uma biblioteca essencial é abandonada, os requisitos de manutenção, segurança e evolução que ela sustentava deixam de ser atendidos, gerando lacunas na engenharia do produto. O desafio de <strong>Engenharia de Requisitos (processo)</strong> evidencia que a identificação e o tratamento de dependências críticas precisam ser considerados já na etapa de levantamento de requisitos, e não apenas quando o abandono já ocorreu.",
+        justificativaSEI: "O abandono de bibliotecas essenciais do ecossistema é classificado como <strong>Risco da Engenharia de Produto</strong> porque compromete diretamente a capacidade do ecossistema de atender aos requisitos técnicos dos projetos que delas dependem. O elemento <strong>Requisitos</strong> se aplica porque, quando uma biblioteca essencial é abandonada, os requisitos de manutenção, segurança e evolução que ela sustentava deixam de ser atendidos, gerando lacunas na engenharia do produto. A área <strong>Engenharia de Requisitos (processo)</strong> foi selecionada porque a identificação e o tratamento de dependências críticas precisam ser considerados já na etapa de levantamento de requisitos, e não apenas quando o abandono já ocorreu.",
         ecos: "Aberto",
-        justificativa: "Este risco foi identificado em ecossistemas do tipo <strong>Código Aberto</strong> porque a manutenção de bibliotecas depende predominantemente de voluntários sem vínculos formais ou remuneração. Esse modelo estrutural torna o abandono um risco inerente, já que a continuidade dos projetos está sujeita à disponibilidade e à motivação individual dos mantenedores.",
+        exemplosEcos: {
+            aberto: "Os estudos relataram esse risco em <strong>ECOS de Código Aberto</strong> devido ao abandono de bibliotecas — cerca de uma em cada quatro não sobrevive além do ano de criação — e à saída de mantenedores-chave sem substituição. Os exemplos incluem Maven e Rust, conforme reportado por Hasan et al. (2025) e Schueller e Wachs (2024).",
+            hibrido: "",
+            proprietario: ""
+        },
         metrica: "Robustez",
-        justificativaMetrica: "O abandono de bibliotecas essenciais ameaça diretamente a <strong>robustez</strong> do ecossistema (Iansiti e Levien, 2004), pois retira da rede componentes críticos dos quais outros projetos dependem transitivamente. A descontinuidade de bibliotecas amplamente utilizadas pode comprometer a sobrevivência de múltiplos projetos dependentes, fragilizando a resiliência estrutural do ECOS como um todo.",
+        justificativaMetrica: "O abandono de bibliotecas essenciais do ecossistema afeta a <strong>robustez</strong> porque retira da rede componentes críticos dos quais outros projetos dependem transitivamente. A descontinuidade de bibliotecas amplamente utilizadas pode comprometer a sobrevivência de múltiplos projetos dependentes, fragilizando a resiliência estrutural do ECOS como um todo (Iansiti e Levien, 2004).",
         processoValor: "Criação de valor",
-        justificativaProcesso: "Bibliotecas essenciais constituem a base técnica sobre a qual os participantes do ECOS criam valor (Burström et al., 2022). Seu abandono interrompe ou degrada o processo de <strong>criação de valor</strong>, pois os projetos dependentes perdem acesso a componentes fundamentais sem os quais não conseguem manter, evoluir ou garantir a segurança dos seus produtos.",
-        solucoes: "S12 (Modelo de Envelhecimento): Prever a obsolescência a partir do uso permite planejar atualizações e mitigar o risco de abandono e manutenção. / S15 (Prática de Atrair e Reter Atores): Pode garantir a continuidade do projeto em caso de abandono",
+        justificativaProcesso: "O abandono de bibliotecas essenciais do ecossistema afeta o processo de <strong>criação de valor</strong> porque essas bibliotecas constituem a base técnica sobre a qual os participantes do ECOS criam valor. Como consequência, os projetos dependentes perdem acesso a componentes fundamentais sem os quais não conseguem manter, evoluir ou garantir a segurança dos seus produtos (Burström et al., 2022).",
+        solucoes: "S12 (Modelo de Envelhecimento): Permite prever a obsolescência a partir do uso, apoiando o planejamento de atualizações e a mitigação do risco de abandono e manutenção. / S15 (Prática de Atrair e Reter Atores): Garante a continuidade do projeto em caso de abandono.",
         estudos: ["E03", "E08"]
     },
     {
         id: "R10",
         risco: "Envelhecimento de bibliotecas abertas amplamente utilizadas",
-        descricao: "Bibliotecas amplamente utilizadas que deixam de receber manutenção adequada acumulam incompatibilidades e vulnerabilidades ao longo do tempo. Essa ausência de atualização contínua amplia os riscos de manutenção e segurança para todos os sistemas que dependem desses componentes.",
+        descricao: "Este risco ocorre quando bibliotecas amplamente utilizadas deixam de receber manutenção adequada e acumulam incompatibilidades e vulnerabilidades ao longo do tempo. Como consequência, essa ausência de atualização contínua amplia os riscos de manutenção e segurança para todos os sistemas que dependem desses componentes.",
         cenario: "",
         dimensao: "Técnico",
         classeSEI: "Risco da Engenharia de Produto",
         elementoSEI: "Integração e teste",
         desafio: "Não identificado",
-        justificativaSEI: "Classificado como <strong>Risco da Engenharia de Produto</strong> porque o envelhecimento de bibliotecas se manifesta progressivamente na composição técnica dos componentes integrados ao ECOS. O elemento <strong>Integração e teste</strong> se aplica porque o risco se torna evidente justamente no momento em que versões desatualizadas são integradas a novos projetos ou quando falhas acumuladas comprometem a cobertura de testes existentes, exigindo verificação contínua da compatibilidade entre versões. O desafio é classificado como <strong>Não identificado</strong> porque os estudos analisados não apontam uma subcategoria mais específica dentro desse elemento, sendo a classificação em nível de elemento suficiente para descrever a natureza técnica do risco.",
+        justificativaSEI: "O envelhecimento de bibliotecas abertas amplamente utilizadas é classificado como <strong>Risco da Engenharia de Produto</strong> porque se manifesta progressivamente na composição técnica dos componentes integrados ao ECOS. O elemento <strong>Integração e teste</strong> se aplica porque o risco se torna evidente justamente no momento em que versões desatualizadas são integradas a novos projetos ou quando falhas acumuladas comprometem a cobertura de testes existentes, exigindo verificação contínua da compatibilidade entre versões. A área de desafio foi classificada como <strong>Não identificada</strong> porque os estudos analisados não apontam uma subcategoria mais específica dentro desse elemento, sendo a classificação em nível de elemento suficiente para descrever a natureza técnica do risco.",
         ecos: "Aberto",
-        justificativa: "Este risco foi identificado em ecossistemas do tipo <strong>Código Aberto</strong> porque bibliotecas amplamente utilizadas nesse modelo frequentemente dependem de esforços voluntários de manutenção que tendem a diminuir com o tempo. Sem mecanismos formais de sustentação, o envelhecimento dessas bibliotecas é um risco característico desses ecossistemas.",
+        exemplosEcos: {
+            aberto: "Os estudos relataram esse risco em <strong>ECOS de Código Aberto</strong> devido ao envelhecimento de bibliotecas ao longo do tempo, influenciado pela presença ou ausência de bibliotecas rivais. Os exemplos incluem Maven, conforme reportado por Kula et al. (2017).",
+            hibrido: "",
+            proprietario: ""
+        },
         metrica: "Produtividade",
-        justificativaMetrica: "O envelhecimento de bibliotecas amplamente utilizadas reduz a <strong>produtividade</strong> do ecossistema (Iansiti e Levien, 2004), pois aumenta o custo de manutenção dos projetos dependentes. Desenvolvedores precisam despender esforços crescentes para contornar incompatibilidades, corrigir falhas herdadas e eventualmente migrar para alternativas mais atualizadas, comprometendo a eficiência do desenvolvimento no ECOS.",
+        justificativaMetrica: "O envelhecimento de bibliotecas abertas amplamente utilizadas afeta a <strong>produtividade</strong> porque aumenta o custo de manutenção dos projetos dependentes. Desenvolvedores precisam despender esforços crescentes para contornar incompatibilidades, corrigir falhas herdadas e eventualmente migrar para alternativas mais atualizadas, comprometendo a eficiência do desenvolvimento no ECOS (Iansiti e Levien, 2004).",
         processoValor: "Criação e entrega de valor",
-        justificativaProcesso: "Bibliotecas abertas amplamente utilizadas são insumos essenciais tanto para a <strong>criação</strong> quanto para a <strong>entrega de valor</strong> no ECOS (Burström et al., 2022). Seu envelhecimento compromete ambos os processos: a criação de valor é prejudicada pela dificuldade de construir sobre componentes obsoletos, enquanto a entrega de valor é afetada pela instabilidade e pelas vulnerabilidades que acompanham bibliotecas sem manutenção adequada.",
-        solucoes: "S12 (Modelo de Envelhecimento): Prever a obsolescência permite planejar atualizações e reduzir riscos de manutenção e segurança",
+        justificativaProcesso: "O envelhecimento de bibliotecas abertas amplamente utilizadas afeta o processo de <strong>criação e entrega de valor</strong> porque essas bibliotecas são insumos essenciais para ambos os processos no ECOS. A criação de valor é prejudicada pela dificuldade de construir sobre componentes obsoletos, enquanto a entrega de valor é afetada pela instabilidade e pelas vulnerabilidades que acompanham bibliotecas sem manutenção adequada (Burström et al., 2022).",
+        solucoes: "S12 (Modelo de Envelhecimento): Permite prever a obsolescência, apoiando o planejamento de atualizações e a redução de riscos de manutenção e segurança.",
         estudos: ["E01", "E27"]
     },
     {
         id: "R11",
         risco: "Fragilidades na infraestrutura compartilhada de desenvolvimento",
-        descricao: "A ausência de modelos de processo padronizados, somada a dificuldades na definição de requisitos e à incerteza em manter padrões de qualidade na infraestrutura compartilhada de desenvolvimento, compromete a confiabilidade do ambiente e aumenta a probabilidade de falhas.",
+        descricao: "Este risco ocorre quando há ausência de modelos de processo padronizados, somada a dificuldades na definição de requisitos e à incerteza em manter padrões de qualidade na infraestrutura compartilhada de desenvolvimento. Como consequência, a confiabilidade do ambiente é comprometida e a probabilidade de falhas aumenta.",
         cenario: "",
         dimensao: "Técnico",
         classeSEI: "Risco de Ambiente de Desenvolvimento",
         elementoSEI: "Sistema de Desenvolvimento",
         desafio: "Sem modelo de processo padronizado (processo)",
-        justificativaSEI: "Classificado como <strong>Risco de Ambiente de Desenvolvimento</strong> porque a fragilidade decorre de deficiências no ambiente em que o software é produzido, e não de características intrínsecas do produto em si. O elemento <strong>Sistema de Desenvolvimento</strong> se aplica porque o problema reside na ausência de padrões de processo, ferramentas e práticas de qualidade que deveriam estruturar o ambiente compartilhado do ECOS. O desafio de <strong>Sem modelo de processo padronizado (processo)</strong> reforça que a falta de padronização impede que boas práticas sejam adotadas de forma consistente por todos os participantes.",
-        ecos: "Híbrido",
-        justificativa: "Este risco foi identificado em ecossistemas do tipo <strong>Híbrido</strong> porque a integração de componentes proprietários e abertos, com atores de naturezas distintas, dificulta a adoção de modelos de processo padronizados para a infraestrutura compartilhada. Essa heterogeneidade estrutural torna esses ecossistemas especialmente propensos a fragilidades no ambiente de desenvolvimento.",
+        justificativaSEI: "As fragilidades na infraestrutura compartilhada de desenvolvimento são classificadas como <strong>Risco de Ambiente de Desenvolvimento</strong> porque decorrem de deficiências no ambiente em que o software é produzido, e não de características intrínsecas do produto em si. O elemento <strong>Sistema de Desenvolvimento</strong> se aplica porque o problema reside na ausência de padrões de processo, ferramentas e práticas de qualidade que deveriam estruturar o ambiente compartilhado do ECOS. A área <strong>Sem modelo de processo padronizado (processo)</strong> foi selecionada porque a falta de padronização impede que boas práticas sejam adotadas de forma consistente por todos os participantes.",
+        ecos: "Aberto",
+        exemplosEcos: {
+            aberto: "Os estudos relataram esse risco em <strong>ECOS de Código Aberto</strong> devido à sua utilização como ambiente técnico de desenvolvimento de software em que o risco foi discutido. Os exemplos incluem Ruby, conforme reportado por Manalif, Capretz e Ho (2013).",
+            hibrido: "",
+            proprietario: ""
+        },
         metrica: "Produtividade; Robustez",
-        justificativaMetrica: "Fragilidades na infraestrutura compartilhada comprometem simultaneamente a <strong>produtividade</strong> e a <strong>robustez</strong> do ecossistema (Iansiti e Levien, 2004). A produtividade é afetada pela ineficiência gerada pela ausência de padrões, enquanto a robustez é reduzida porque uma infraestrutura frágil aumenta a probabilidade de falhas sistêmicas que podem comprometer a continuidade e a confiabilidade do ECOS.",
+        justificativaMetrica: "As fragilidades na infraestrutura compartilhada de desenvolvimento afetam a <strong>produtividade</strong> e a <strong>robustez</strong> do ecossistema porque comprometem simultaneamente essas duas dimensões. A produtividade é afetada pela ineficiência gerada pela ausência de padrões, enquanto a robustez é reduzida porque uma infraestrutura frágil aumenta a probabilidade de falhas sistêmicas que podem comprometer a continuidade e a confiabilidade do ECOS (Iansiti e Levien, 2004).",
         processoValor: "Captura de valor",
-        justificativaProcesso: "A infraestrutura compartilhada de desenvolvimento é o substrato técnico que viabiliza a <strong>captura de valor</strong> no ECOS (Burström et al., 2022). Fragilidades nesse ambiente comprometem a capacidade dos participantes de monetizar e apropriar os benefícios gerados pelo ecossistema, pois a incerteza na qualidade e na confiabilidade dos processos dificulta a consolidação de resultados sustentáveis.",
-        solucoes: "S14 (Prática de Robustez da Plataforma): Mitiga vulnerabilidades estruturais e fortalece a arquitetura, o que inclui a infraestrutura",
+        justificativaProcesso: "As fragilidades na infraestrutura compartilhada de desenvolvimento afetam o processo de <strong>captura de valor</strong> porque essa infraestrutura constitui o substrato técnico que viabiliza a apropriação de benefícios no ECOS. Como consequência, a capacidade dos participantes de monetizar e apropriar os resultados gerados pelo ecossistema fica comprometida, pois a incerteza na qualidade e na confiabilidade dos processos dificulta a consolidação de resultados sustentáveis (Burström et al., 2022).",
+        solucoes: "S14 (Prática de Robustez da Plataforma): Mitiga vulnerabilidades estruturais e fortalece a arquitetura, incluindo a infraestrutura.",
         estudos: ["E34"]
     },
     {
         id: "R12",
         risco: "Perda de confiança devido a pacotes maliciosos ou enganosos no ecossistema",
-        descricao: "Pacotes podem ser rotulados de forma enganosa para ocultar funcionalidades prejudiciais, e vulnerabilidades não identificadas podem comprometer a reputação e a relação de confiança entre usuários e provedores. Esse risco se intensifica à medida que o ecossistema cresce e a confiança passa a ser distribuída entre um número maior de atores.",
+        descricao: "Este risco ocorre quando pacotes são rotulados de forma enganosa para ocultar funcionalidades prejudiciais ou quando vulnerabilidades não identificadas permanecem nos componentes distribuídos. Como consequência, a reputação e a relação de confiança entre usuários e provedores podem ser comprometidas, efeito que se intensifica à medida que o ecossistema cresce e a confiança passa a ser distribuída entre um número maior de atores.",
         cenario: "",
         dimensao: "Social",
         classeSEI: "Risco de Ambiente de Desenvolvimento",
         elementoSEI: "Métodos de Gestão",
         desafio: "Garantia de Qualidade (processo); Gestão de Evolução (arquitetura)",
-        justificativaSEI: "Classificado como <strong>Risco de Ambiente de Desenvolvimento</strong> porque a perda de confiança tem natureza sociotécnica, emergindo de falhas nos métodos de gestão do ecossistema, e não de uma falha pontual em um artefato específico. O elemento <strong>Métodos de Gestão</strong> se aplica porque o problema está na falta de práticas institucionalizadas para identificar, auditar e sinalizar pacotes maliciosos ou enganosos. Os desafios de <strong>Garantia de Qualidade (processo)</strong> e <strong>Gestão de Evolução (arquitetura)</strong> refletem que tanto os processos de verificação quanto a governança da evolução dos pacotes precisam ser fortalecidos para impedir que atores mal-intencionados comprometam a reputação do ECOS sem que os participantes sejam alertados.",
-        ecos: "Híbrido",
-        justificativa: "Este risco foi identificado em ecossistemas do tipo <strong>Híbrido</strong> porque a confiança é distribuída entre múltiplos atores com diferentes graus de acesso e responsabilidade. A coexistência de componentes proprietários e abertos dificulta a auditoria unificada dos pacotes, ampliando as oportunidades para que pacotes maliciosos ou enganosos circulem sem detecção adequada.",
+        justificativaSEI: "A perda de confiança devido a pacotes maliciosos ou enganosos no ecossistema é classificada como <strong>Risco de Ambiente de Desenvolvimento</strong> porque tem natureza sociotécnica, emergindo de falhas nos métodos de gestão do ecossistema, e não de uma falha pontual em um artefato específico. O elemento <strong>Métodos de Gestão</strong> se aplica porque o problema está na falta de práticas institucionalizadas para identificar, auditar e sinalizar pacotes maliciosos ou enganosos. As áreas <strong>Garantia de Qualidade (processo)</strong> e <strong>Gestão de Evolução (arquitetura)</strong> foram selecionadas porque tanto os processos de verificação quanto a governança da evolução dos pacotes precisam ser fortalecidos para impedir que atores mal-intencionados comprometam a reputação do ECOS sem que os participantes sejam alertados.",
+        ecos: "Aberto",
+        exemplosEcos: {
+            aberto: "Os estudos relataram esse risco em <strong>ECOS de Código Aberto</strong> devido ao comprometimento de pacotes por meio de sequestro de contas de mantenedores, typosquatting ou inserção de código malicioso por contribuidores. Os exemplos incluem NPM, conforme reportado por Hou, Farshidi e Jansen (2021).",
+            hibrido: "",
+            proprietario: ""
+        },
         metrica: "Criação de Nichos; Robustez",
-        justificativaMetrica: "A perda de confiança compromete duas dimensões centrais de saúde do ECOS segundo Iansiti e Levien (2004). A <strong>criação de nichos</strong> é afetada porque a desconfiança desincentiva novos participantes a adotar e contribuir com o ecossistema. A <strong>robustez</strong> é reduzida porque um ECOS cujos participantes não confiam nos pacotes disponíveis torna-se frágil e propenso ao abandono, comprometendo sua capacidade de sobreviver a perturbações.",
+        justificativaMetrica: "A perda de confiança devido a pacotes maliciosos ou enganosos no ecossistema afeta a <strong>criação de nichos</strong> e a <strong>robustez</strong> do ECOS porque compromete duas dimensões centrais de sua saúde. A criação de nichos é afetada porque a desconfiança desincentiva novos participantes a adotar e contribuir com o ecossistema, enquanto a robustez é reduzida porque um ECOS cujos participantes não confiam nos pacotes disponíveis torna-se frágil e propenso ao abandono, comprometendo sua capacidade de sobreviver a perturbações (Iansiti e Levien, 2004).",
         processoValor: "Captura de valor",
-        justificativaProcesso: "A confiança entre os atores é um pré-requisito para que o valor gerado no ECOS seja efetivamente <strong>capturado</strong> (Burström et al., 2022). Quando pacotes maliciosos ou enganosos minam essa confiança, os participantes passam a questionar a legitimidade das soluções disponíveis, dificultando a adoção, a monetização e a apropriação sustentável dos benefícios do ecossistema.",
-        solucoes: "S05 (Framework TrustSECO): Registra fatos de confiança. / S08 (Modelo de Metas e Anti-Metas): Favorece a análise de riscos ligados a motivações maliciosas ou falhas intencionais, o que ajuda a prevenir a perda de confiança.",
+        justificativaProcesso: "A perda de confiança devido a pacotes maliciosos ou enganosos no ecossistema afeta o processo de <strong>captura de valor</strong> porque a confiança entre os atores é um pré-requisito para que o valor gerado no ECOS seja efetivamente apropriado. Como consequência, os participantes passam a questionar a legitimidade das soluções disponíveis, dificultando a adoção, a monetização e a apropriação sustentável dos benefícios do ecossistema (Burström et al., 2022).",
+        solucoes: "S05 (Framework TrustSECO): Registra fatos de confiança. / S08 (Modelo de Metas e Anti-Metas): Favorece a análise de riscos ligados a motivações maliciosas ou falhas intencionais, prevenindo a perda de confiança.",
         estudos: ["E02", "E13", "E19"]
     },
     {
         id: "R13",
         risco: "Conflitos de interesse na governança do ecossistema (moral hazard)",
-        descricao: "Trata-se de um fenômeno de moral hazard em que desenvolvedores se beneficiam da reutilização de bibliotecas sem arcar com os riscos associados ao seu uso, transferindo essa responsabilidade para os usuários finais. Essa assimetria de incentivos compromete a sustentabilidade do ecossistema no longo prazo.",
+        descricao: "Este risco ocorre quando desenvolvedores se beneficiam da reutilização de bibliotecas sem arcar com os riscos associados ao seu uso, transferindo essa responsabilidade para os usuários finais, em um fenômeno caracterizado como moral hazard. Como consequência, essa assimetria de incentivos compromete a sustentabilidade do ecossistema no longo prazo.",
         cenario: "",
         dimensao: "Social",
         classeSEI: "Risco de Ambiente de Desenvolvimento",
         elementoSEI: "Processo de Gestão",
         desafio: "Coordenação e Gestão de Desenvolvimento (processo)",
-        justificativaSEI: "Classificado como <strong>Risco de Ambiente de Desenvolvimento</strong> porque o moral hazard emerge dos incentivos e das regras que estruturam o comportamento dos participantes, e não de uma falha técnica no produto. O elemento <strong>Processo de Gestão</strong> se aplica porque a assimetria de incentivos, em que desenvolvedores capturam benefícios da reutilização sem arcar com os riscos correspondentes, decorre de falhas no design dos processos de governança do ecossistema. O desafio de <strong>Coordenação e Gestão de Desenvolvimento (processo)</strong> reforça que, sem mecanismos que alinhem responsabilidades e incentivos, o risco moral compromete a sustentabilidade coletiva do ECOS.",
-        ecos: "Híbrido",
-        justificativa: "Este risco foi identificado em ecossistemas do tipo <strong>Híbrido</strong> porque a coexistência de atores com objetivos comerciais e comunitários distintos cria condições propícias para o surgimento de assimetrias de incentivos. Desenvolvedores que reutilizam bibliotecas em contextos proprietários frequentemente não contribuem para a manutenção dos componentes que utilizam, transferindo os custos para os mantenedores voluntários.",
+        justificativaSEI: "Os conflitos de interesse na governança do ecossistema (moral hazard) são classificados como <strong>Risco de Ambiente de Desenvolvimento</strong> porque emergem dos incentivos e das regras que estruturam o comportamento dos participantes, e não de uma falha técnica no produto. O elemento <strong>Processo de Gestão</strong> se aplica porque a assimetria de incentivos, em que desenvolvedores capturam benefícios da reutilização sem arcar com os riscos correspondentes, decorre de falhas no design dos processos de governança do ecossistema. A área <strong>Coordenação e Gestão de Desenvolvimento (processo)</strong> foi selecionada porque, sem mecanismos que alinhem responsabilidades e incentivos, o risco moral compromete a sustentabilidade coletiva do ECOS.",
+        ecos: "Aberto",
+        exemplosEcos: {
+            aberto: "Os estudos relataram esse risco em <strong>ECOS de Código Aberto</strong> devido à ocorrência de moral hazard, em que os benefícios da alavancagem técnica são colhidos pelos desenvolvedores das bibliotecas, enquanto o risco de vulnerabilidades é suportado pelos usuários. Os exemplos incluem Apache Maven (ecossistema FOSS Java), conforme reportado por Massacci e Pashchenko (2021).",
+            hibrido: "",
+            proprietario: ""
+        },
         metrica: "Produtividade; Criação de Nichos",
-        justificativaMetrica: "O moral hazard compromete a <strong>produtividade</strong> do ecossistema ao criar desincentivos para que desenvolvedores investam na qualidade e na segurança das bibliotecas que reutilizam (Iansiti e Levien, 2004). A <strong>criação de nichos</strong> também é afetada, pois a assimetria de incentivos desincentiva o surgimento de novos mantenedores dispostos a sustentar componentes críticos sem a devida compensação ou reconhecimento.",
+        justificativaMetrica: "Os conflitos de interesse na governança do ecossistema (moral hazard) afetam a <strong>produtividade</strong> e a <strong>criação de nichos</strong> porque criam desincentivos para que desenvolvedores invistam na qualidade e na segurança das bibliotecas que reutilizam. A criação de nichos também é comprometida, pois a assimetria de incentivos desestimula o surgimento de novos mantenedores dispostos a sustentar componentes críticos sem a devida compensação ou reconhecimento (Iansiti e Levien, 2004).",
         processoValor: "Captura de valor",
-        justificativaProcesso: "O moral hazard afeta diretamente o processo de <strong>captura de valor</strong> no ECOS (Burström et al., 2022), pois os benefícios da reutilização são capturados de forma assimétrica: desenvolvedores se apropriam do valor sem contribuir proporcionalmente para a sua manutenção. Esse desequilíbrio compromete a sustentabilidade do processo de captura de valor ao longo do tempo, podendo levar ao colapso dos componentes mais reutilizados.",
-        solucoes: "S10 (Modelo de Technical Leverage): Indica projetos mais expostos a falhas, expondo o risco do moral hazard. / S15 (Prática de Atrair e Reter Atores): Práticas de governança podem ajudar a mitigar conflitos e alinhar incentivos.",
+        justificativaProcesso: "Os conflitos de interesse na governança do ecossistema (moral hazard) afetam o processo de <strong>captura de valor</strong> porque os benefícios da reutilização são capturados de forma assimétrica: desenvolvedores se apropriam do valor sem contribuir proporcionalmente para a sua manutenção. Esse desequilíbrio compromete a sustentabilidade do processo de captura de valor ao longo do tempo, podendo levar ao colapso dos componentes mais reutilizados (Burström et al., 2022).",
+        solucoes: "S10 (Modelo de Technical Leverage): Indica projetos mais expostos a falhas, expondo o risco do moral hazard. / S15 (Prática de Atrair e Reter Atores): Ajuda a mitigar conflitos e alinhar incentivos entre os atores por meio de práticas de governança.",
         estudos: ["E20"]
     },
     {
         id: "R14",
         risco: "Falhas de comunicação entre os múltiplos atores do ecossistema",
-        descricao: "Equipes distribuídas, com opiniões divergentes e sem coordenação clara, enfrentam dificuldades para atingir objetivos comuns. A ausência de canais de diálogo eficazes agrava problemas de má gestão, inexperiência e planejamento deficiente entre os múltiplos atores do ecossistema.",
+        descricao: "Este risco ocorre quando equipes distribuídas, com opiniões divergentes e sem coordenação clara, enfrentam dificuldades para atingir objetivos comuns devido à ausência de canais de diálogo eficazes. Como consequência, problemas de má gestão, inexperiência e planejamento deficiente entre os múltiplos atores do ecossistema são agravados.",
         cenario: "",
         dimensao: "Social",
         classeSEI: "Riscos de Ambiente de Desenvolvimento",
         elementoSEI: "Ambiente de Trabalho",
         desafio: "Não identificado",
-        justificativaSEI: "Classificado como <strong>Riscos de Ambiente de Desenvolvimento</strong> porque as falhas de comunicação residem no contexto colaborativo em que equipes distribuídas precisam coordenar esforços, e não em uma característica técnica do produto. O elemento <strong>Ambiente de Trabalho</strong> se aplica porque a ausência de canais e práticas de comunicação eficazes compromete o ambiente social e organizacional do desenvolvimento, gerando desalinhamento, má gestão e planejamento deficiente que afetam a qualidade e a continuidade dos projetos. O desafio é classificado como <strong>Não identificado</strong> porque os estudos analisados não apontam uma subcategoria mais específica dentro desse elemento, sendo a classificação em nível de elemento suficiente para descrever a natureza sociotécnica do risco.",
-        ecos: "Híbrido",
-        justificativa: "Este risco foi identificado em ecossistemas do tipo <strong>Híbrido</strong> porque reúnem atores com diferentes culturas organizacionais, objetivos e graus de comprometimento, o que torna a comunicação entre equipes especialmente complexa. A coexistência de contribuições proprietárias e abertas amplia as oportunidades de divergência e dificulta a construção de consenso.",
+        justificativaSEI: "As falhas de comunicação entre os múltiplos atores do ecossistema são classificadas como <strong>Riscos de Ambiente de Desenvolvimento</strong> porque residem no contexto colaborativo em que equipes distribuídas precisam coordenar esforços, e não em uma característica técnica do produto. O elemento <strong>Ambiente de Trabalho</strong> se aplica porque a ausência de canais e práticas de comunicação eficazes compromete o ambiente social e organizacional do desenvolvimento, gerando desalinhamento, má gestão e planejamento deficiente que afetam a qualidade e a continuidade dos projetos. A área de desafio foi classificada como <strong>Não identificada</strong> porque os estudos analisados não apontam uma subcategoria mais específica dentro desse elemento, sendo a classificação em nível de elemento suficiente para descrever a natureza sociotécnica do risco.",
+        ecos: "Aberto/ Proprietário",
+        exemplosEcos: {
+            aberto: "Os estudos relataram esse risco em <strong>ECOS de Código Aberto</strong> devido às dificuldades de comunicação eficaz entre equipes multi-institucionais dispersas, decorrentes da divergência sobre a melhor forma de atingir objetivos compartilhados. Os exemplos incluem Exascale Computing Project (ECP), xSDK e E4S, conforme reportado por McInnes et al. (2024).",
+            hibrido: "",
+            proprietario: "Os estudos relataram esse risco em <strong>ECOS Proprietário</strong> devido a falhas de comunicação entre atores de desenvolvimento distribuído geograficamente em diferentes países. Os exemplos incluem Company A (gestão de ativos) e Company B / Ocuco Ltd. (setor óptico), conforme reportado por Beecham et al. (2021)."
+        },
         metrica: "Produtividade",
-        justificativaMetrica: "Falhas de comunicação impactam diretamente a <strong>produtividade</strong> do ecossistema (Iansiti e Levien, 2004), pois geram retrabalho, desalinhamento de esforços e planejamento ineficiente. A coordenação entre múltiplos atores é essencial para que o ECOS funcione de forma eficiente; sem ela, os recursos dos participantes são desperdiçados em conflitos e inconsistências que poderiam ser evitados com canais de comunicação adequados.",
+        justificativaMetrica: "As falhas de comunicação entre os múltiplos atores do ecossistema afetam a <strong>produtividade</strong> porque geram retrabalho, desalinhamento de esforços e planejamento ineficiente. A coordenação entre múltiplos atores é essencial para que o ECOS funcione de forma eficiente; sem ela, os recursos dos participantes são desperdiçados em conflitos e inconsistências que poderiam ser evitados com canais de comunicação adequados (Iansiti e Levien, 2004).",
         processoValor: "Entrega de valor",
-        justificativaProcesso: "A <strong>entrega de valor</strong> no ECOS (Burström et al., 2022) depende da coordenação eficaz entre os múltiplos atores que contribuem para os projetos. Falhas de comunicação comprometem essa coordenação, resultando em atrasos, inconsistências e entregas de qualidade inferior. Sem diálogo claro e canais formais de comunicação, o processo de entrega de valor torna-se fragmentado e propenso a falhas.",
-        solucoes: "S15 (Prática de Atrair e Reter Atores): Fundamental para mitigar conflitos e promover coordenação. / S17 (Prática SLA): Formaliza expectativas e comunicação em contextos como serviço.",
+        justificativaProcesso: "As falhas de comunicação entre os múltiplos atores do ecossistema afetam o processo de <strong>entrega de valor</strong> porque comprometem a coordenação eficaz entre os atores que contribuem para os projetos, da qual essa entrega depende. Como consequência, surgem atrasos, inconsistências e entregas de qualidade inferior, tornando o processo fragmentado e propenso a falhas na ausência de diálogo claro e canais formais de comunicação (Burström et al., 2022).",
+        solucoes: "S15 (Prática de Atrair e Reter Atores): Contribui para mitigar conflitos e promover a coordenação entre os atores. / S17 (Prática SLA): Formaliza expectativas e comunicação em contextos de prestação de serviços.",
         estudos: ["E07", "E21"]
     },
     {
         id: "R15",
         risco: "Ausência de mecanismos formais de governança no ecossistema",
-        descricao: "A inexistência de regras ou estruturas de governança formais, especialmente em ecossistemas de código aberto, gera riscos difíceis de controlar e impacta diretamente a sustentabilidade e a segurança do ecossistema.",
+        descricao: "Este risco ocorre quando não existem regras ou estruturas de governança formais, situação especialmente comum em ecossistemas de código aberto. Como consequência, surgem riscos difíceis de controlar, que impactam diretamente a sustentabilidade e a segurança do ecossistema.",
         cenario: "",
         dimensao: "Social",
         classeSEI: "Risco de Ambiente de Desenvolvimento",
         elementoSEI: "Processo de Desenvolvimento",
         desafio: "Sem modelos de processo padronizado (processo)",
-        justificativaSEI: "Classificado como <strong>Risco de Ambiente de Desenvolvimento</strong> porque a ausência de governança afeta diretamente as regras, os papéis e os fluxos pelos quais as decisões de desenvolvimento são tomadas e executadas no ECOS. O elemento <strong>Processo de Desenvolvimento</strong> se aplica porque, sem processos padronizados de governança, o desenvolvimento torna-se desordenado e imprevisível, dificultando a identificação e o controle de riscos. O desafio de <strong>Sem modelos de processo padronizado (processo)</strong> reforça que a lacuna é de natureza processual e organizacional, não técnica.",
-        ecos: "Aberto; Híbrido",
-        justificativa: "Este risco foi identificado em ecossistemas do tipo <strong>Código Aberto</strong> e <strong>Híbrido</strong> porque, nos primeiros, não há uma autoridade central que defina regras e responsabilidades, e nos segundos, a coexistência de componentes proprietários e abertos dificulta a consolidação de estruturas de governança unificadas, amplificando os riscos de inconsistência e falta de controle.",
+        justificativaSEI: "A ausência de mecanismos formais de governança no ecossistema é classificada como <strong>Risco de Ambiente de Desenvolvimento</strong> porque afeta diretamente as regras, os papéis e os fluxos pelos quais as decisões de desenvolvimento são tomadas e executadas no ECOS. O elemento <strong>Processo de Desenvolvimento</strong> se aplica porque, sem processos padronizados de governança, o desenvolvimento torna-se desordenado e imprevisível, dificultando a identificação e o controle de riscos. A área <strong>Sem modelos de processo padronizado (processo)</strong> foi selecionada porque a lacuna é de natureza processual e organizacional, não técnica.",
+        ecos: "Aberto",
+        exemplosEcos: {
+            aberto: "Os estudos relataram esse risco em <strong>ECOS de Código Aberto</strong> devido à ausência de verificações automatizadas mais rígidas no processo de publicação, favorecendo dados inconsistentes. Os exemplos incluem GNOME e Maven Central, conforme reportado por Oliveira e Alves (2021) e Keshani et al. (2024).",
+            hibrido: "",
+            proprietario: ""
+        },
         metrica: "Robustez",
-        justificativaMetrica: "A governança formal é um dos pilares da <strong>robustez</strong> do ecossistema (Iansiti e Levien, 2004), pois fornece os mecanismos pelos quais o ECOS detecta e responde a ameaças à sua sustentabilidade. Na ausência de estruturas de governança, o ecossistema perde capacidade de coordenar respostas a riscos, tornando-se vulnerável a perturbações que poderiam ser mitigadas com regras e processos formalmente estabelecidos.",
+        justificativaMetrica: "A ausência de mecanismos formais de governança no ecossistema afeta a <strong>robustez</strong> porque a governança formal é um dos pilares que fornece os mecanismos pelos quais o ECOS detecta e responde a ameaças à sua sustentabilidade. Na ausência dessas estruturas, o ecossistema perde capacidade de coordenar respostas a riscos, tornando-se vulnerável a perturbações que poderiam ser mitigadas com regras e processos formalmente estabelecidos (Iansiti e Levien, 2004).",
         processoValor: "Captura de valor",
-        justificativaProcesso: "A governança formal é o mecanismo que regula como os participantes do ECOS se apropriam do valor gerado (Burström et al., 2022). Sem regras e estruturas formais, o processo de <strong>captura de valor</strong> torna-se incerto e desequilibrado, favorecendo atores que agem oportunisticamente em detrimento da sustentabilidade coletiva do ecossistema.",
-        solucoes: "S02 (Framework de Seleção de Fornecedores): Permite estruturar critérios de decisão, reduzindo riscos organizacionais. / S10 (Modelo de Technical Leverage): Fornece métricas para a governança. / S15 (Prática de Atrair e Reter Atores): Trata de práticas de governança. / S17 (Prática SLA): Formaliza regras e expectativas.",
+        justificativaProcesso: "A ausência de mecanismos formais de governança no ecossistema afeta o processo de <strong>captura de valor</strong> porque a governança formal é o mecanismo que regula como os participantes do ECOS se apropriam do valor gerado. Sem regras e estruturas formais, esse processo torna-se incerto e desequilibrado, favorecendo atores que agem oportunisticamente em detrimento da sustentabilidade coletiva do ecossistema (Burström et al., 2022).",
+        solucoes: "S02 (Framework de Seleção de Fornecedores): Permite estruturar critérios de decisão, reduzindo riscos organizacionais. / S10 (Modelo de Technical Leverage): Fornece métricas para a governança. / S15 (Prática de Atrair e Reter Atores): Aborda práticas de governança. / S17 (Prática SLA): Formaliza regras e expectativas.",
         estudos: ["E09", "E18"]
     },
     {
         id: "R16",
         risco: "Sobrecarga de mantenedores de múltiplos pacotes críticos",
-        descricao: "A ausência de remuneração e de processos formais para gerenciar contribuições externas aumenta progressivamente a carga de trabalho dos mantenedores, colocando em risco a continuidade dos projetos e ampliando a possibilidade de falhas causadas pela sobrecarga.",
+        descricao: "Este risco ocorre quando há ausência de remuneração e de processos formais para gerenciar contribuições externas, o que aumenta progressivamente a carga de trabalho dos mantenedores. Como consequência, a continuidade dos projetos é colocada em risco e a possibilidade de falhas causadas pela sobrecarga é ampliada.",
         cenario: "",
         dimensao: "Social",
         classeSEI: "Risco de Ambiente de Desenvolvimento",
         elementoSEI: "Processo de Gestão",
         desafio: "Coordenação e Gestão de Desenvolvimento (processo)",
-        justificativaSEI: "Classificado como <strong>Risco de Ambiente de Desenvolvimento</strong> porque a sobrecarga de mantenedores emerge de deficiências no processo de gestão das contribuições e do trabalho voluntário, e não de uma falha no produto em si. O elemento <strong>Processo de Gestão</strong> se aplica porque a ausência de remuneração, de processos formais para triagem de contribuições externas e de mecanismos de reconhecimento sobrecarrega os mantenedores, comprometendo a continuidade dos projetos. O desafio de <strong>Coordenação e Gestão de Desenvolvimento (processo)</strong> reflete que o risco decorre fundamentalmente de lacunas na organização do trabalho colaborativo.",
+        justificativaSEI: "A sobrecarga de mantenedores de múltiplos pacotes críticos é classificada como <strong>Risco de Ambiente de Desenvolvimento</strong> porque emerge de deficiências no processo de gestão das contribuições e do trabalho voluntário, e não de uma falha no produto em si. O elemento <strong>Processo de Gestão</strong> se aplica porque a ausência de remuneração, de processos formais para triagem de contribuições externas e de mecanismos de reconhecimento sobrecarrega os mantenedores, comprometendo a continuidade dos projetos. A área <strong>Coordenação e Gestão de Desenvolvimento (processo)</strong> foi selecionada porque o risco decorre fundamentalmente de lacunas na organização do trabalho colaborativo.",
         ecos: "Aberto",
-        justificativa: "Este risco foi identificado em ecossistemas do tipo <strong>Código Aberto</strong> porque os mantenedores frequentemente atuam sem remuneração e são responsáveis por múltiplos pacotes críticos simultaneamente. A ausência de estruturas formais para distribuir responsabilidades torna o modelo voluntário insustentável em escala, criando condições propícias para a sobrecarga.",
+        exemplosEcos: {
+            aberto: "Os estudos relataram esse risco em <strong>ECOS de Código Aberto</strong> devido à dependência de uma pequena equipe central de mantenedores — por vezes um único mantenedor não remunerado e sobrecarregado — para atender uma base massiva de usuários. Os exemplos incluem caso Log4Shell, conforme reportado por Maeprasart et al. (2023).",
+            hibrido: "",
+            proprietario: ""
+        },
         metrica: "Produtividade; Criação de Nichos",
-        justificativaMetrica: "A sobrecarga de mantenedores reduz a <strong>produtividade</strong> do ecossistema (Iansiti e Levien, 2004) ao comprometer a capacidade de manutenção e evolução dos pacotes críticos. A <strong>criação de nichos</strong> também é afetada, pois a sobrecarga desincentiva novos participantes a assumir responsabilidades de manutenção, estreitando a base de contribuidores e dificultando a diversificação e o crescimento do ecossistema.",
+        justificativaMetrica: "A sobrecarga de mantenedores de múltiplos pacotes críticos afeta a <strong>produtividade</strong> e a <strong>criação de nichos</strong> do ecossistema porque compromete a capacidade de manutenção e evolução dos pacotes críticos. A criação de nichos também é prejudicada, pois a sobrecarga desincentiva novos participantes a assumir responsabilidades de manutenção, estreitando a base de contribuidores e dificultando a diversificação e o crescimento do ecossistema (Iansiti e Levien, 2004).",
         processoValor: "Captura de valor",
-        justificativaProcesso: "Os mantenedores são os atores que garantem a qualidade e a continuidade dos componentes pelos quais o valor é <strong>capturado</strong> no ECOS (Burström et al., 2022). A sobrecarga compromete esse processo ao tornar insustentável o trabalho de manutenção sem o qual os participantes não conseguem se apropriar de forma confiável dos benefícios oferecidos pelo ecossistema.",
-        solucoes: "S15 (Prática de Atrair e Reter Atores): Práticas de governança voltadas a atrair e reter participantes são fundamentais para aliviar a carga de trabalho.",
+        justificativaProcesso: "A sobrecarga de mantenedores de múltiplos pacotes críticos afeta o processo de <strong>captura de valor</strong> porque os mantenedores são os atores que garantem a qualidade e a continuidade dos componentes pelos quais o valor é apropriado no ECOS. Como consequência, esse processo é comprometido ao tornar insustentável o trabalho de manutenção, sem o qual os participantes não conseguem se apropriar de forma confiável dos benefícios oferecidos pelo ecossistema (Burström et al., 2022).",
+        solucoes: "S15 (Prática de Atrair e Reter Atores): Alivia a carga de trabalho dos mantenedores por meio de práticas de governança voltadas a atrair e reter participantes.",
         estudos: ["E12"]
     },
     {
         id: "R17",
         risco: "Dependência crítica de poucos mantenedores (Truck Factor)",
-        descricao: "O conhecimento essencial sobre um projeto fica concentrado em um número reduzido de indivíduos. O abandono ou a indisponibilidade desses colaboradores pode gerar falhas em cascata nas bibliotecas dependentes, ameaçando a estabilidade de todo o ecossistema.",
+        descricao: "Este risco ocorre quando o conhecimento essencial sobre um projeto fica concentrado em um número reduzido de indivíduos. Como consequência, o abandono ou a indisponibilidade desses colaboradores pode gerar falhas em cascata nas bibliotecas dependentes, ameaçando a estabilidade de todo o ecossistema.",
         cenario: "",
         dimensao: "Social",
         classeSEI: "Risco de Restrições do Programa",
         elementoSEI: "Contrato",
         desafio: "Atividades de desenvolvimento são altamente dependentes de desenvolvedores terceiros",
-        justificativaSEI: "Classificado como <strong>Risco de Restrições do Programa</strong> porque o Truck Factor impõe uma restrição estrutural ao programa de desenvolvimento do ECOS: a continuidade dos projetos fica condicionada à disponibilidade de indivíduos específicos, e não a uma característica técnica do produto. O elemento <strong>Contrato</strong> se aplica porque essa dependência decorre da ausência de acordos formais que garantam a continuidade do trabalho de manutenção por parte de colaboradores externos. O desafio <strong>Atividades de desenvolvimento são altamente dependentes de desenvolvedores terceiros</strong> evidencia que a concentração de conhecimento crítico em poucos mantenedores é uma restrição externa à engenharia, e não um problema resolvível apenas com ajustes técnicos.",
+        justificativaSEI: "A dependência crítica de poucos mantenedores (Truck Factor) é classificada como <strong>Risco de Restrições do Programa</strong> porque impõe uma restrição estrutural ao programa de desenvolvimento do ECOS: a continuidade dos projetos fica condicionada à disponibilidade de indivíduos específicos, e não a uma característica técnica do produto. O elemento <strong>Contrato</strong> se aplica porque essa dependência decorre da ausência de acordos formais que garantam a continuidade do trabalho de manutenção por parte de colaboradores externos. A área <strong>Atividades de desenvolvimento são altamente dependentes de desenvolvedores terceiros</strong> foi selecionada porque a concentração de conhecimento crítico em poucos mantenedores é uma restrição externa à engenharia, e não um problema resolvível apenas com ajustes técnicos.",
         ecos: "Aberto",
-        justificativa: "Este risco foi identificado em ecossistemas do tipo <strong>Código Aberto</strong> porque a manutenção de pacotes depende predominantemente de contribuições voluntárias e não remuneradas, o que torna a concentração de conhecimento em poucos mantenedores um risco estrutural. Sem incentivos financeiros ou contratuais que distribuam responsabilidades, esses ecossistemas são especialmente vulneráveis ao abandono de colaboradores críticos.",
+        exemplosEcos: {
+            aberto: "Os estudos relataram esse risco em <strong>ECOS de Código Aberto</strong> devido ao baixo truck factor das bibliotecas utilizadas, que concentra conhecimento essencial em poucos indivíduos, a ponto de a remoção de uma biblioteca por um único desenvolvedor causar falhas em cascata em larga escala. Os exemplos incluem Rust e NPM (caso left-pad), conforme reportado por Schueller e Wachs (2024).",
+            hibrido: "",
+            proprietario: ""
+        },
         metrica: "Robustez",
-        justificativaMetrica: "O Truck Factor ameaça diretamente a <strong>robustez</strong> do ecossistema (Iansiti e Levien, 2004), pois a concentração de conhecimento essencial em poucos indivíduos cria pontos únicos de falha. Quando esses mantenedores se tornam indisponíveis, o ecossistema perde capacidade de manter e evoluir seus componentes críticos, reduzindo sua resiliência a perturbações e comprometendo sua sobrevivência no longo prazo.",
+        justificativaMetrica: "A dependência crítica de poucos mantenedores (Truck Factor) afeta a <strong>robustez</strong> porque a concentração de conhecimento essencial em poucos indivíduos cria pontos únicos de falha. Quando esses mantenedores se tornam indisponíveis, o ecossistema perde capacidade de manter e evoluir seus componentes críticos, reduzindo sua resiliência a perturbações e comprometendo sua sobrevivência no longo prazo (Iansiti e Levien, 2004).",
         processoValor: "Criação de valor",
-        justificativaProcesso: "Os mantenedores centrais são os responsáveis pela criação e pela evolução dos artefatos que sustentam o valor do ECOS (Burström et al., 2022). A dependência crítica de poucos indivíduos fragiliza o processo de <strong>criação de valor</strong>, pois a capacidade de inovar, corrigir e evoluir os componentes do ecossistema fica concentrada em pontos vulneráveis que, se removidos, podem paralisar esse processo de forma abrupta.",
-        solucoes: "S15 (Prática de Atrair e Reter Atores): A retenção e o apoio a colaboradores mitigam o risco de abandono ou indisponibilidade de mantenedores-chave",
+        justificativaProcesso: "A dependência crítica de poucos mantenedores (Truck Factor) afeta o processo de <strong>criação de valor</strong> porque os mantenedores centrais são os responsáveis pela criação e pela evolução dos artefatos que sustentam o valor do ECOS. Como consequência, a capacidade de inovar, corrigir e evoluir os componentes do ecossistema fica concentrada em pontos vulneráveis que, se removidos, podem paralisar esse processo de forma abrupta (Burström et al., 2022).",
+        solucoes: "S15 (Prática de Atrair e Reter Atores): Mitiga o risco de abandono ou indisponibilidade de mantenedores-chave por meio da retenção e do apoio a colaboradores.",
         estudos: ["E08"]
     },
     {
         id: "R18",
         risco: "Ameaças de insiders maliciosos no ecossistema",
-        descricao: "Desenvolvedores insatisfeitos ou mal-intencionados podem comprometer deliberadamente pacotes, introduzindo vulnerabilidades intencionais. Por envolver atores internos com acesso privilegiado, esse risco é particularmente difícil de detectar e mitigar.",
+        descricao: "Este risco ocorre quando desenvolvedores insatisfeitos ou mal-intencionados comprometem deliberadamente pacotes, introduzindo vulnerabilidades intencionais. Como consequência, e por envolver atores internos com acesso privilegiado, esse risco torna-se particularmente difícil de detectar e mitigar.",
         cenario: "",
         dimensao: "Social",
         classeSEI: "Risco de Ambiente de Desenvolvimento",
         elementoSEI: "Processo de Gestão",
         desafio: "Coordenação e Gestão de Desenvolvimento (processo)",
-        justificativaSEI: "Classificado como <strong>Risco de Ambiente de Desenvolvimento</strong> porque as ameaças de insiders maliciosos emergem de falhas no processo de gestão de acesso e de contribuições, e não de uma vulnerabilidade técnica isolada. O elemento <strong>Processo de Gestão</strong> se aplica porque o risco decorre da ausência de mecanismos formais de controle, auditoria e verificação das ações de atores internos com acesso privilegiado. O desafio de <strong>Coordenação e Gestão de Desenvolvimento (processo)</strong> reforça que, sem processos que monitorem e restrinjam o comportamento de contribuidores, o ECOS permanece vulnerável a ações deliberadamente maliciosas difíceis de detectar e mitigar.",
+        justificativaSEI: "As ameaças de insiders maliciosos no ecossistema são classificadas como <strong>Risco de Ambiente de Desenvolvimento</strong> porque emergem de falhas no processo de gestão de acesso e de contribuições, e não de uma vulnerabilidade técnica isolada. O elemento <strong>Processo de Gestão</strong> se aplica porque o risco decorre da ausência de mecanismos formais de controle, auditoria e verificação das ações de atores internos com acesso privilegiado. A área <strong>Coordenação e Gestão de Desenvolvimento (processo)</strong> foi selecionada porque, sem processos que monitorem e restrinjam o comportamento de contribuidores, o ECOS permanece vulnerável a ações deliberadamente maliciosas difíceis de detectar e mitigar.",
         ecos: "Aberto",
-        justificativa: "Este risco foi identificado em ecossistemas do tipo <strong>Código Aberto</strong> porque concedem acesso privilegiado a um conjunto potencialmente amplo de contribuidores, muitos sem vínculos formais ou passagem por processos rigorosos de verificação. Essa abertura estrutural torna esses ecossistemas especialmente vulneráveis a ameaças de insiders, que podem explorar seu acesso ao código e aos pipelines de distribuição.",
+        exemplosEcos: {
+            aberto: "Os estudos relataram esse risco em <strong>ECOS de Código Aberto</strong> devido ao comprometimento de pacotes por desenvolvedores insiders, incluindo contribuidores descontentes ou maliciosos. Os exemplos incluem NPM, conforme reportado por Hou, Farshidi e Jansen (2021).",
+            hibrido: "",
+            proprietario: ""
+        },
         metrica: "Robustez",
-        justificativaMetrica: "Ameaças de insiders maliciosos comprometem a <strong>robustez</strong> do ecossistema (Iansiti e Levien, 2004) ao introduzir vulnerabilidades intencionais que são particularmente difíceis de detectar e mitigar. Por envolver atores com acesso privilegiado e conhecimento específico do projeto, esse tipo de ataque pode comprometer componentes centrais do ECOS de forma silenciosa, reduzindo significativamente a resiliência do ecossistema a ameaças internas.",
+        justificativaMetrica: "As ameaças de insiders maliciosos no ecossistema afetam a <strong>robustez</strong> porque introduzem vulnerabilidades intencionais que são particularmente difíceis de detectar e mitigar. Por envolver atores com acesso privilegiado e conhecimento específico do projeto, esse tipo de ataque pode comprometer componentes centrais do ECOS de forma silenciosa, reduzindo significativamente a resiliência do ecossistema a ameaças internas (Iansiti e Levien, 2004).",
         processoValor: "Criação de valor",
-        justificativaProcesso: "As ameaças de insiders afetam diretamente o processo de <strong>criação de valor</strong> (Burström et al., 2022), pois os próprios atores que deveriam contribuir para a construção e evolução dos artefatos do ECOS passam a ser vetores de dano. Vulnerabilidades intencionais introduzidas por insiders comprometem a integridade dos componentes criados, inviabilizando sua utilização segura e minando a confiança no processo de criação coletiva de valor.",
-        solucoes: "S05 (Framework TrustSECO): Registra fatos de confiança. / S08 (Modelo de Metas e Anti-Metas): Ajuda a analisar riscos ligados a motivações maliciosas. / S16 (Prática de Mecanismos de Segurança): Adoção de mecanismos como controle de permissões e auditoria previne uploads maliciosos",
+        justificativaProcesso: "As ameaças de insiders maliciosos no ecossistema afetam o processo de <strong>criação de valor</strong> porque os próprios atores que deveriam contribuir para a construção e evolução dos artefatos do ECOS passam a ser vetores de dano. Vulnerabilidades intencionais introduzidas por insiders comprometem a integridade dos componentes criados, inviabilizando sua utilização segura e minando a confiança no processo de criação coletiva de valor (Burström et al., 2022).",
+        solucoes: "S05 (Framework TrustSECO): Registra fatos de confiança. / S08 (Modelo de Metas e Anti-Metas): Ajuda a analisar riscos ligados a motivações maliciosas. / S16 (Prática de Mecanismos de Segurança): Previne uploads maliciosos por meio da adoção de mecanismos como controle de permissões e auditoria.",
         estudos: ["E19"]
     },
     {
         id: "R19",
         risco: "Ausência ou deficiência de documentação das plataformas",
-        descricao: "A falta de documentação adequada, ou a existência de documentações incompletas e pouco claras, dificulta o trabalho dos desenvolvedores e reduz sua capacidade de identificar riscos. Essa lacuna compromete tanto a validação de contribuições quanto a segurança geral das plataformas.",
+        descricao: "Este risco ocorre quando há falta de documentação adequada, ou quando as documentações existentes são incompletas e pouco claras. Como consequência, o trabalho dos desenvolvedores é dificultado e sua capacidade de identificar riscos é reduzida, comprometendo tanto a validação de contribuições quanto a segurança geral das plataformas.",
         cenario: "",
         dimensao: "Negócio",
         classeSEI: "Risco de Ambiente de Desenvolvimento",
         elementoSEI: "Processo de Desenvolvimento",
         desafio: "Sem modelo de processo padronizado (processo)",
-        justificativaSEI: "Classificado como <strong>Risco de Ambiente de Desenvolvimento</strong> porque a ausência de documentação emerge do próprio processo de desenvolvimento do ECOS, sendo um produto direto e um requisito implícito desse processo. O elemento <strong>Processo de Desenvolvimento</strong> se aplica porque a padronização documental deve ser incorporada ao fluxo de trabalho, e não tratada como uma etapa acessória. O desafio de <strong>Sem modelo de processo padronizado (processo)</strong> evidencia que, sem padrões que orientem a produção de documentação completa e adequada, os desenvolvedores enfrentam barreiras de uso e ficam expostos a riscos de segurança evitáveis.",
-        ecos: "Híbrido",
-        justificativa: "Este risco foi identificado em ecossistemas do tipo <strong>Híbrido</strong> porque a diversidade de atores e a coexistência de componentes proprietários e abertos tornam a padronização da documentação especialmente desafiadora. A ausência de requisitos documentais obrigatórios e de processos unificados de revisão resulta em documentações fragmentadas ou incompletas.",
+        justificativaSEI: "A ausência ou deficiência de documentação das plataformas é classificada como <strong>Risco de Ambiente de Desenvolvimento</strong> porque emerge do próprio processo de desenvolvimento do ECOS, sendo um produto direto e um requisito implícito desse processo. O elemento <strong>Processo de Desenvolvimento</strong> se aplica porque a padronização documental deve ser incorporada ao fluxo de trabalho, e não tratada como uma etapa acessória. A área <strong>Sem modelo de processo padronizado (processo)</strong> foi selecionada porque, sem padrões que orientem a produção de documentação completa e adequada, os desenvolvedores enfrentam barreiras de uso e ficam expostos a riscos de segurança evitáveis.",
+        ecos: "Aberto",
+        exemplosEcos: {
+            aberto: "Os estudos relataram esse risco em <strong>ECOS de Código Aberto</strong> devido à documentação imprecisa e incompleta, que reduz a capacidade dos usuários de identificar discrepâncias entre o desempenho documentado e o real dos artefatos, e à documentação de governança mal estruturada. Os exemplos incluem Hugging Face e GNOME, conforme reportado por Jiang et al. (2022) e Oliveira e Alves (2021).",
+            hibrido: "",
+            proprietario: ""
+        },
         metrica: "Produtividade; Criação de Nichos",
-        justificativaMetrica: "A ausência de documentação adequada reduz a <strong>produtividade</strong> do ecossistema (Iansiti e Levien, 2004) ao aumentar o custo de entrada e de uso das plataformas para novos desenvolvedores. A <strong>criação de nichos</strong> também é comprometida, pois desenvolvedores que encontram documentação insuficiente têm menos incentivos para adotar e contribuir com o ECOS, reduzindo a diversidade e o crescimento do ecossistema.",
+        justificativaMetrica: "A ausência ou deficiência de documentação das plataformas afeta a <strong>produtividade</strong> e a <strong>criação de nichos</strong> do ecossistema porque aumenta o custo de entrada e de uso das plataformas para novos desenvolvedores. A criação de nichos também é comprometida, pois desenvolvedores que encontram documentação insuficiente têm menos incentivos para adotar e contribuir com o ECOS, reduzindo a diversidade e o crescimento do ecossistema (Iansiti e Levien, 2004).",
         processoValor: "Criação e entrega de valor",
-        justificativaProcesso: "A documentação é um insumo essencial tanto para a <strong>criação</strong> quanto para a <strong>entrega de valor</strong> no ECOS (Burström et al., 2022). Sem ela, os desenvolvedores não conseguem utilizar adequadamente as plataformas para criar novos artefatos, nem os usuários finais conseguem compreender e apropriar corretamente as soluções entregues, comprometendo ambos os processos de forma simultânea.",
-        solucoes: "S21 (Método de Apoio à Decisão Multicritério): A análise conjunta de requisitos de mercado e de engenharia pode mitigar riscos de integração causados pela falta de clareza.",
+        justificativaProcesso: "A ausência ou deficiência de documentação das plataformas afeta o processo de <strong>criação e entrega de valor</strong> porque a documentação é um insumo essencial para ambos os processos no ECOS. Sem ela, os desenvolvedores não conseguem utilizar adequadamente as plataformas para criar novos artefatos, nem os usuários finais conseguem compreender e apropriar corretamente as soluções entregues, comprometendo ambos os processos de forma simultânea (Burström et al., 2022).",
+        solucoes: "S21 (Método de Apoio à Decisão Multicritério): Mitiga riscos de integração causados pela falta de clareza por meio da análise conjunta de requisitos de mercado e de engenharia.",
         estudos: ["E09", "E15", "E18", "E28"]
     },
     {
         id: "R20",
         risco: "Altos custos de manutenção e risco de migração para plataformas concorrentes",
-        descricao: "A perda de participantes para soluções alternativas é um risco significativo, geralmente associado à ausência de suporte ou manutenção adequados. Cabe ao provedor central da plataforma gerenciar a fidelidade dos participantes e reduzir os custos percebidos de migração.",
+        descricao: "Este risco ocorre quando a ausência de suporte ou manutenção adequados leva à perda de participantes para soluções alternativas. Como consequência, cabe ao provedor central da plataforma gerenciar a fidelidade dos participantes e reduzir os custos percebidos de migração.",
         cenario: "",
         dimensao: "Negócio",
         classeSEI: "Risco de Restrições do Programa",
         elementoSEI: "Recursos",
         desafio: "Não identificado",
-        justificativaSEI: "Classificado como <strong>Risco de Restrições do Programa</strong> porque os altos custos de manutenção impõem limitações de ordem econômica e estratégica à sustentabilidade do ECOS, e não uma falha técnica no produto. O elemento <strong>Recursos</strong> se aplica porque o problema central é a alocação insuficiente ou ineficiente de recursos para manutenção e suporte, o que leva participantes a considerar a migração para plataformas concorrentes, uma restrição externa que condiciona a viabilidade do programa de engenharia do ecossistema. O desafio é classificado como <strong>Não identificado</strong> porque os estudos analisados não apontam uma subcategoria mais específica dentro desse elemento, sendo a classificação em nível de elemento suficiente para descrever a natureza econômica do risco.",
-        ecos: "Aberto",
-        justificativa: "Este risco foi identificado em ecossistemas do tipo <strong>Código Aberto</strong> porque o provedor da plataforma frequentemente enfrenta dificuldades para garantir suporte e manutenção sustentáveis sem modelos de receita estabelecidos. A ausência de mecanismos formais de monetização e de fidelização dos participantes torna esses ecossistemas especialmente vulneráveis à perda de participantes para concorrentes.",
+        justificativaSEI: "Os altos custos de manutenção e o risco de migração para plataformas concorrentes são classificados como <strong>Risco de Restrições do Programa</strong> porque impõem limitações de ordem econômica e estratégica à sustentabilidade do ECOS, e não uma falha técnica no produto. O elemento <strong>Recursos</strong> se aplica porque o problema central é a alocação insuficiente ou ineficiente de recursos para manutenção e suporte, o que leva participantes a considerar a migração para plataformas concorrentes, uma restrição externa que condiciona a viabilidade do programa de engenharia do ecossistema. A área de desafio foi classificada como <strong>Não identificada</strong> porque os estudos analisados não apontam uma subcategoria mais específica dentro desse elemento, sendo a classificação em nível de elemento suficiente para descrever a natureza econômica do risco.",
+        ecos: "Proprietário",
+        exemplosEcos: {
+            aberto: "",
+            hibrido: "",
+            proprietario: "Os estudos relataram esse risco em <strong>ECOS Proprietário</strong> devido aos custos de conversão do produto para diferentes plataformas gerados pelo multi-homing, aos esforços adicionais de marketing e manutenção simultânea, e à necessidade de mecanismos que elevem o switching cost para reter clientes. Os exemplos incluem Apple App Store, Google Play, Windows Phone Store, Facebook Platform e Myspace, conforme reportado por Hyrynsalmi et al. (2016) e Belo e Alves (2025)."
+        },
         metrica: "Produtividade",
-        justificativaMetrica: "Os altos custos de manutenção reduzem a <strong>produtividade</strong> do ecossistema (Iansiti e Levien, 2004) ao consumir recursos que poderiam ser investidos em inovação e evolução da plataforma. O risco de migração agrava esse cenário ao ameaçar a base de participantes do ECOS, reduzindo a escala e a eficiência que sustentam a produtividade coletiva do ecossistema.",
+        justificativaMetrica: "Os altos custos de manutenção e o risco de migração para plataformas concorrentes afetam a <strong>produtividade</strong> porque consomem recursos que poderiam ser investidos em inovação e evolução da plataforma. O risco de migração agrava esse cenário ao ameaçar a base de participantes do ECOS, reduzindo a escala e a eficiência que sustentam a produtividade coletiva do ecossistema (Iansiti e Levien, 2004).",
         processoValor: "Captura de valor",
-        justificativaProcesso: "A retenção de participantes e a gestão dos custos de mudança são dimensões centrais do processo de <strong>captura de valor</strong> no ECOS (Burström et al., 2022). Quando os custos de manutenção são elevados e o risco de migração aumenta, o keystone perde capacidade de sustentar e ampliar sua base de participantes, comprometendo a apropriação contínua dos benefícios gerados pelo ecossistema.",
-        solucoes: "S02 (Framework de Seleção de Fornecedores): Reduz riscos organizacionais e alinha decisões. / S14 (Prática de Robustez da Plataforma): Evita falhas que levam à migração. / S15 (Prática de Atrair e Reter Atores): Aumenta a fidelidade dos clientes",
+        justificativaProcesso: "Os altos custos de manutenção e o risco de migração para plataformas concorrentes afetam o processo de <strong>captura de valor</strong> porque a retenção de participantes e a gestão dos custos de mudança são dimensões centrais desse processo no ECOS. Quando os custos de manutenção são elevados e o risco de migração aumenta, o keystone perde capacidade de sustentar e ampliar sua base de participantes, comprometendo a apropriação contínua dos benefícios gerados pelo ecossistema (Burström et al., 2022).",
+        solucoes: "S02 (Framework de Seleção de Fornecedores): Reduz riscos organizacionais e alinha decisões. / S14 (Prática de Robustez da Plataforma): Evita falhas que levam à migração. / S15 (Prática de Atrair e Reter Atores): Aumenta a fidelidade dos clientes.",
         estudos: ["E01", "E29"]
     },
     {
         id: "R21",
         risco: "Percepção de valor insuficiente para adesão e permanência no ECOS",
-        descricao: "Quando o ecossistema não consegue demonstrar valor claro aos participantes, o resultado é o abandono. Mesmo nos casos em que o valor é reconhecido, a incerteza quanto à sua efetiva realização aumenta o risco de insucesso na adesão e permanência.",
+        descricao: "Este risco ocorre quando o ecossistema não consegue demonstrar valor claro aos participantes, ou quando, mesmo havendo reconhecimento desse valor, existe incerteza quanto à sua efetiva realização. Como consequência, aumenta o risco de abandono e de insucesso na adesão e permanência dos participantes.",
         cenario: "",
         dimensao: "Negócio",
         classeSEI: "Risco de Restrições do Programa",
         elementoSEI: "Contrato",
         desafio: "Atividades de desenvolvimento são dependentes de desenvolvedores terceiros",
-        justificativaSEI: "Classificado como <strong>Risco de Restrições do Programa</strong> porque a incapacidade de demonstrar valor claro aos participantes impõe uma restrição fundamental à sustentabilidade do ECOS: sem valor percebido, não há adesão nem permanência. O elemento <strong>Contrato</strong> se aplica porque a relação entre o ECOS e seus participantes é condicionada por expectativas implícitas e explícitas de valor; quando essas expectativas não são atendidas, os vínculos que sustentam o ecossistema se desfazem. O desafio <strong>Atividades de desenvolvimento são dependentes de desenvolvedores terceiros</strong> reforça que a percepção de valor está atrelada ao engajamento de atores externos sobre os quais o ECOS tem controle limitado.",
-        ecos: "Híbrido",
-        justificativa: "Este risco foi identificado em ecossistemas do tipo <strong>Híbrido</strong> porque os participantes avaliam continuamente o valor recebido em relação ao esforço investido, e a coexistência de interesses comerciais e comunitários torna especialmente complexo comunicar e demonstrar valor de forma consistente para todos os tipos de participantes.",
+        justificativaSEI: "A percepção de valor insuficiente para adesão e permanência no ECOS é classificada como <strong>Risco de Restrições do Programa</strong> porque a incapacidade de demonstrar valor claro aos participantes impõe uma restrição fundamental à sustentabilidade do ecossistema: sem valor percebido, não há adesão nem permanência. O elemento <strong>Contrato</strong> se aplica porque a relação entre o ECOS e seus participantes é condicionada por expectativas implícitas e explícitas de valor; quando essas expectativas não são atendidas, os vínculos que sustentam o ecossistema se desfazem. A área <strong>Atividades de desenvolvimento são dependentes de desenvolvedores terceiros</strong> foi selecionada porque a percepção de valor está atrelada ao engajamento de atores externos sobre os quais o ECOS tem controle limitado.",
+        ecos: "Proprietário",
+        exemplosEcos: {
+            aberto: "",
+            hibrido: "",
+            proprietario: "Os estudos relataram esse risco em <strong>ECOS Proprietário</strong> devido à dependência da participação e do comprometimento de longo prazo dos atores em relação à percepção de valor gerado pelo ecossistema, comprometida pela priorização indevida de funcionalidades fora do MVP. Os exemplos incluem Case SECO (ecossistema finlandês), conforme reportado por Saarni et al. (2025)."
+        },
         metrica: "Criação de Nichos",
-        justificativaMetrica: "A percepção de valor insuficiente compromete diretamente a <strong>criação de nichos</strong> no ecossistema (Iansiti e Levien, 2004), pois inibe a adesão de novos participantes e a diversificação das contribuições. Quando os atores não percebem valor claro em sua participação, o ECOS perde capacidade de atrair e reter os participantes especializados que sustentam a vitalidade e a inovação do ecossistema.",
+        justificativaMetrica: "A percepção de valor insuficiente para adesão e permanência no ECOS afeta a <strong>criação de nichos</strong> porque inibe a adesão de novos participantes e a diversificação das contribuições. Quando os atores não percebem valor claro em sua participação, o ecossistema perde capacidade de atrair e reter os participantes especializados que sustentam a vitalidade e a inovação do ECOS (Iansiti e Levien, 2004).",
         processoValor: "Captura de valor",
-        justificativaProcesso: "A percepção de valor é o elemento central que motiva e legitima o processo de <strong>captura de valor</strong> no ECOS (Burström et al., 2022). Quando os participantes não percebem valor suficiente para justificar sua adesão ou permanência, o processo de captura de valor colapsa: sem participantes engajados, o ecossistema perde a base sobre a qual os benefícios são gerados e apropriados.",
-        solucoes: "S02 (Framework de Seleção de Fornecedores): Ajuda a estruturar critérios de decisão sobre investimentos, alinhando a percepção de valor. / S15 (Prática de Atrair e Reter Atores): Práticas para reter participantes mitigam o abandono. / S21 (Método de Apoio à Decisão Multicritério): Ajuda a antecipar riscos e apoiar decisões estratégicas mais seguras",
+        justificativaProcesso: "A percepção de valor insuficiente para adesão e permanência no ECOS afeta o processo de <strong>captura de valor</strong> porque a percepção de valor é o elemento central que motiva e legitima esse processo. Quando os participantes não percebem valor suficiente para justificar sua adesão ou permanência, o processo colapsa: sem participantes engajados, o ecossistema perde a base sobre a qual os benefícios são gerados e apropriados (Burström et al., 2022).",
+        solucoes: "S02 (Framework de Seleção de Fornecedores): Ajuda a estruturar critérios de decisão sobre investimentos, alinhando a percepção de valor. / S15 (Prática de Atrair e Reter Atores): Mitiga o abandono por meio de práticas para reter participantes. / S21 (Método de Apoio à Decisão Multicritério): Ajuda a antecipar riscos e apoiar decisões estratégicas mais seguras.",
         estudos: ["E04", "E06"]
     },
     {
         id: "R22",
         risco: "Perda de controle da plataforma ou fragmentação do ecossistema",
-        descricao: "Falhas em um único serviço central podem paralisar toda a operação do ecossistema. Esse risco é ampliado em ecossistemas de código aberto, nos quais desenvolvedores externos podem modificar diretamente a plataforma sem supervisão centralizada, gerando fragmentação.",
+        descricao: "Este risco ocorre quando falhas em um único serviço central paralisam toda a operação do ecossistema, situação agravada em ecossistemas de código aberto, nos quais desenvolvedores externos podem modificar diretamente a plataforma sem supervisão centralizada. Como consequência, o ecossistema fica sujeito à fragmentação.",
         cenario: "",
         dimensao: "Negócio",
         classeSEI: "Risco de Ambiente de Desenvolvimento",
         elementoSEI: "Sistema de Desenvolvimento",
         desafio: "Sem modelo de processo padronizado (processo)",
-        justificativaSEI: "Classificado como <strong>Risco de Ambiente de Desenvolvimento</strong> porque a perda de controle da plataforma emerge da ausência de padrões e mecanismos de controle que garantam a coerência da plataforma ao longo do tempo, e não de uma falha isolada em um componente. O elemento <strong>Sistema de Desenvolvimento</strong> se aplica porque o problema reside na arquitetura e nos processos que governam como o sistema é construído e evoluído, permitindo que modificações externas não controladas gerem inconsistências. O desafio de <strong>Sem modelo de processo padronizado (processo)</strong> reflete que a fragmentação decorre da falta de governança sobre a evolução do sistema, e não de uma limitação técnica pontual.",
-        ecos: "Híbrido",
-        justificativa: "Este risco foi identificado em ecossistemas do tipo <strong>Híbrido</strong> porque combinam componentes proprietários, que tendem a ser mais controlados, com componentes abertos, que podem ser modificados por desenvolvedores externos sem supervisão centralizada. Essa dualidade torna difícil manter a coerência e o controle da plataforma, aumentando o risco de fragmentação.",
+        justificativaSEI: "A perda de controle da plataforma ou fragmentação do ecossistema é classificada como <strong>Risco de Ambiente de Desenvolvimento</strong> porque emerge da ausência de padrões e mecanismos de controle que garantam a coerência da plataforma ao longo do tempo, e não de uma falha isolada em um componente. O elemento <strong>Sistema de Desenvolvimento</strong> se aplica porque o problema reside na arquitetura e nos processos que governam como o sistema é construído e evoluído, permitindo que modificações externas não controladas gerem inconsistências. A área <strong>Sem modelo de processo padronizado (processo)</strong> foi selecionada porque a fragmentação decorre da falta de governança sobre a evolução do sistema, e não de uma limitação técnica pontual.",
+        ecos: "Proprietário",
+        exemplosEcos: {
+            aberto: "Os estudos relataram esse risco em <strong>ECOS de Código Aberto</strong> devido à abertura da plataforma para múltiplos fabricantes e desenvolvedores, que passam a alterar a API ou o hardware sem envolver o proprietário da plataforma, favorecendo a fragmentação e reduzindo o controle do mantenedor. Os exemplos incluem Android (smartphones, TVs e wearables), conforme reportado por Hartmann e Bosch (2016).",
+            hibrido: "",
+            proprietario: ""
+        },
         metrica: "Robustez; Criação de Nichos",
-        justificativaMetrica: "A fragmentação do ecossistema compromete a <strong>robustez</strong> (Iansiti e Levien, 2004) ao criar inconsistências estruturais que reduzem a capacidade do ECOS de funcionar de forma coesa diante de perturbações. A <strong>criação de nichos</strong> também é afetada, pois a fragmentação dificulta a interoperabilidade e a colaboração entre participantes, desincentivando a especialização e a diversificação que enriquecem o ecossistema.",
+        justificativaMetrica: "A perda de controle da plataforma ou fragmentação do ecossistema afeta a <strong>robustez</strong> e a <strong>criação de nichos</strong> porque cria inconsistências estruturais que reduzem a capacidade do ECOS de funcionar de forma coesa diante de perturbações. A criação de nichos também é prejudicada, pois a fragmentação dificulta a interoperabilidade e a colaboração entre participantes, desincentivando a especialização e a diversificação que enriquecem o ecossistema (Iansiti e Levien, 2004).",
         processoValor: "Criação e entrega de valor",
-        justificativaProcesso: "A integridade e o controle da plataforma são pré-requisitos para que o ECOS <strong>crie</strong> e <strong>entregue valor</strong> de forma consistente (Burström et al., 2022). A fragmentação compromete ambos os processos: a criação de valor é prejudicada pela incoerência entre componentes, enquanto a entrega é afetada pela impossibilidade de garantir uma experiência uniforme e confiável para todos os participantes do ecossistema.",
-        solucoes: "S04 (Framework de Variabilidade): Demonstra que mecanismos de variabilidade ajudam a reduzir riscos de inconsistências e fragmentação. / S14 (Prática de Robustez da Plataforma): Assegurar a robustez da arquitetura evita a paralisação por falha em serviço único.",
+        justificativaProcesso: "A perda de controle da plataforma ou fragmentação do ecossistema afeta o processo de <strong>criação e entrega de valor</strong> porque a integridade e o controle da plataforma são pré-requisitos para que o ECOS crie e entregue valor de forma consistente. A fragmentação compromete ambos os processos: a criação de valor é prejudicada pela incoerência entre componentes, enquanto a entrega é afetada pela impossibilidade de garantir uma experiência uniforme e confiável para todos os participantes do ecossistema (Burström et al., 2022).",
+        solucoes: "S04 (Framework de Variabilidade): Reduz riscos de inconsistências e fragmentação por meio de mecanismos de variabilidade. / S14 (Prática de Robustez da Plataforma): Evita a paralisação por falha em serviço único ao assegurar a robustez da arquitetura.",
         estudos: ["E25", "E28"]
     },
     {
         id: "R23",
         risco: "Fracasso em fases iniciais de implantação do ECOS",
-        descricao: "Falhas no design do produto mínimo viável reduzem sua atratividade para os clientes e comprometem o engajamento dos participantes nas fases iniciais de implantação, aumentando as chances de insucesso do ecossistema.",
+        descricao: "Este risco ocorre quando falhas no design do produto mínimo viável reduzem sua atratividade para os clientes. Como consequência, o engajamento dos participantes nas fases iniciais de implantação é comprometido, aumentando as chances de insucesso do ecossistema.",
         cenario: "",
         dimensao: "Negócio",
         classeSEI: "Risco de Engenharia de Produto",
         elementoSEI: "Requisitos",
         desafio: "Engenharia de Requisitos (processo)",
-        justificativaSEI: "Classificado como <strong>Risco de Engenharia de Produto</strong> porque o fracasso nas fases iniciais decorre de falhas na definição e na validação dos requisitos do produto mínimo viável (MVP), etapa central da construção do produto. O elemento <strong>Requisitos</strong> se aplica porque um MVP mal definido não atende às necessidades dos clientes e falha em engajar os participantes, comprometendo a viabilidade do ecossistema antes mesmo de sua consolidação. O desafio de <strong>Engenharia de Requisitos (processo)</strong> evidencia que as necessidades dos clientes e os critérios de valor do MVP precisam ser adequadamente elicitados e validados desde o início.",
-        ecos: "Aberto",
-        justificativa: "Este risco foi identificado em ecossistemas do tipo <strong>Código Aberto</strong> porque as fases iniciais de implantação são particularmente críticas quando o engajamento de participantes voluntários depende da percepção imediata de valor e utilidade da plataforma. Sem uma proposta de valor clara, potenciais participantes sem obrigações contratuais de adoção tendem a não se engajar, comprometendo o crescimento inicial do ecossistema.",
+        justificativaSEI: "O fracasso em fases iniciais de implantação do ECOS é classificado como <strong>Risco de Engenharia de Produto</strong> porque decorre de falhas na definição e na validação dos requisitos do produto mínimo viável (MVP), etapa central da construção do produto. O elemento <strong>Requisitos</strong> se aplica porque um MVP mal definido não atende às necessidades dos clientes e falha em engajar os participantes, comprometendo a viabilidade do ecossistema antes mesmo de sua consolidação. A área <strong>Engenharia de Requisitos (processo)</strong> foi selecionada porque as necessidades dos clientes e os critérios de valor do MVP precisam ser adequadamente elicitados e validados desde o início.",
+        ecos: "Proprietário",
+        exemplosEcos: {
+            aberto: "",
+            hibrido: "",
+            proprietario: "Os estudos relataram esse risco em <strong>ECOS Proprietário</strong> devido ao fracasso do ecossistema ainda em sua fase inicial de operação, após a priorização indevida de funcionalidades fora do MVP. Os exemplos incluem Case SECO (ecossistema finlandês), conforme reportado por Saarni et al. (2025)."
+        },
         metrica: "Criação de Nichos",
-        justificativaMetrica: "O fracasso nas fases iniciais de implantação compromete diretamente a <strong>criação de nichos</strong> no ecossistema (Iansiti e Levien, 2004), pois impede que os primeiros participantes se estabeleçam e criem as bases para o crescimento do ECOS. Sem um MVP que atraia e engaje participantes iniciais, o ecossistema não consegue atingir a massa crítica necessária para que nichos especializados se desenvolvam.",
+        justificativaMetrica: "O fracasso em fases iniciais de implantação do ECOS afeta a <strong>criação de nichos</strong> porque impede que os primeiros participantes se estabeleçam e criem as bases para o crescimento do ecossistema. Sem um MVP que atraia e engaje participantes iniciais, o ECOS não consegue atingir a massa crítica necessária para que nichos especializados se desenvolvam (Iansiti e Levien, 2004).",
         processoValor: "Captura de valor",
-        justificativaProcesso: "As fases iniciais de implantação são determinantes para o processo de <strong>captura de valor</strong> no ECOS (Burström et al., 2022), pois é nesse momento que os fundamentos da proposta de valor são estabelecidos e testados. O fracasso nessa etapa impede que o ecossistema consolide sua proposta de valor e inicia um ciclo de baixo engajamento que compromete a viabilidade da captura de valor no longo prazo.",
-        solucoes: "S21 (Método de Apoio à Decisão Multicritério): Pode apoiar decisões estratégicas mais seguras, o que é crítico no design do Produto Mínimo Viável (MVP).",
+        justificativaProcesso: "O fracasso em fases iniciais de implantação do ECOS afeta o processo de <strong>captura de valor</strong> porque é nesse momento que os fundamentos da proposta de valor são estabelecidos e testados. O fracasso nessa etapa impede que o ecossistema consolide sua proposta de valor e inicia um ciclo de baixo engajamento que compromete a viabilidade da captura de valor no longo prazo (Burström et al., 2022).",
+        solucoes: "S21 (Método de Apoio à Decisão Multicritério): Apoia decisões estratégicas mais seguras, especialmente no design do Produto Mínimo Viável (MVP).",
         estudos: ["E04"]
     },
     {
         id: "R24",
         risco: "Descontinuidade ou morte do ecossistema",
-        descricao: "Ocorre quando há ausência de conhecimento sobre as peculiaridades de funcionamento dos ecossistemas de software, somada à falta de mecanismos formais de governança. Ao longo do tempo, essa combinação pode levar à obsolescência e, em última instância, à extinção do ecossistema.",
+        descricao: "Este risco ocorre quando há ausência de conhecimento sobre as peculiaridades de funcionamento dos ecossistemas de software, somada à falta de mecanismos formais de governança. Como consequência, ao longo do tempo, essa combinação pode levar à obsolescência e, em última instância, à extinção do ecossistema.",
         cenario: "",
         dimensao: "Negócio",
         classeSEI: "Risco de Ambiente de Desenvolvimento",
         elementoSEI: "Processo de Desenvolvimento",
         desafio: "Sem modelo de processo padronizado (processo)",
-        justificativaSEI: "Classificado como <strong>Risco de Ambiente de Desenvolvimento</strong> porque a descontinuidade do ecossistema resulta do acúmulo de falhas no processo de desenvolvimento e na governança ao longo do tempo, e não de um problema técnico isolado. O elemento <strong>Processo de Desenvolvimento</strong> se aplica porque a ausência de processos padronizados e de mecanismos de governança adequados, que deveriam orientar o ciclo de vida do ecossistema, é a principal causa raiz desse risco. O desafio de <strong>Sem modelo de processo padronizado (processo)</strong> reforça que, sem processos que garantam a sustentabilidade e a evolução contínua do ECOS, a obsolescência e a extinção tornam-se desfechos praticamente inevitáveis.",
-        ecos: "Aberto",
-        justificativa: "Este risco foi identificado em ecossistemas do tipo <strong>Código Aberto</strong> porque dependem de contribuições voluntárias e de modelos de governança informais que, na ausência de mecanismos formais de sustentação, tendem a se deteriorar com o tempo. A falta de estruturas institucionais que garantam a continuidade torna esses ecossistemas propensos à obsolescência.",
+        justificativaSEI: "A descontinuidade ou morte do ecossistema é classificada como <strong>Risco de Ambiente de Desenvolvimento</strong> porque resulta do acúmulo de falhas no processo de desenvolvimento e na governança ao longo do tempo, e não de um problema técnico isolado. O elemento <strong>Processo de Desenvolvimento</strong> se aplica porque a ausência de processos padronizados e de mecanismos de governança adequados, que deveriam orientar o ciclo de vida do ecossistema, é a principal causa raiz desse risco. A área <strong>Sem modelo de processo padronizado (processo)</strong> foi selecionada porque, sem processos que garantam a sustentabilidade e a evolução contínua do ECOS, a obsolescência e a extinção tornam-se desfechos praticamente inevitáveis.",
+        ecos: "Proprietário",
+        exemplosEcos: {
+            aberto: "Os estudos relataram esse risco em <strong>ECOS de Código Aberto</strong> devido à ausência de conhecimento consolidado sobre as peculiaridades de governança da plataforma, evidenciada pela impossibilidade de confirmar diversas práticas de gestão de conflitos e de riscos por falta de documentação formal. Os exemplos incluem GNOME, conforme reportado por Oliveira e Alves (2021).",
+            hibrido: "",
+            proprietario: ""
+        },
         metrica: "Robustez",
-        justificativaMetrica: "A descontinuidade ou morte do ecossistema representa a falha total da <strong>robustez</strong> do ECOS (Iansiti e Levien, 2004). A robustez mede a capacidade do ecossistema de sobreviver a perturbações; sua ausência completa , evidenciada pela extinção do ECOS, indica que o sistema falhou em desenvolver os mecanismos necessários para resistir às pressões acumuladas ao longo do tempo. Prevenir esse risco é, portanto, o objetivo final da gestão da robustez do ecossistema.",
+        justificativaMetrica: "A descontinuidade ou morte do ecossistema afeta a <strong>robustez</strong> porque representa a falha total dessa dimensão de saúde do ECOS. A robustez mede a capacidade do ecossistema de sobreviver a perturbações; sua ausência completa, evidenciada pela extinção do ECOS, indica que o sistema falhou em desenvolver os mecanismos necessários para resistir às pressões acumuladas ao longo do tempo. Prevenir esse risco é, portanto, o objetivo final da gestão da robustez do ecossistema (Iansiti e Levien, 2004).",
         processoValor: "Captura de valor",
-        justificativaProcesso: "A descontinuidade do ECOS inviabiliza permanentemente o processo de <strong>captura de valor</strong> (Burström et al., 2022), pois extingue a plataforma que viabilizava a criação, entrega e apropriação dos benefícios por seus participantes. A morte do ecossistema representa a falha irreversível de todos os processos de valor, tornando este o risco de negócio mais crítico e de maior impacto para todos os atores envolvidos.",
-        solucoes: "S15 (Prática de Atrair e Reter Atores): A ausência de mecanismos de governança pode levar à extinção. A retenção de participantes é crucial para a sustentabilidade",
+        justificativaProcesso: "A descontinuidade ou morte do ecossistema afeta o processo de <strong>captura de valor</strong> porque inviabiliza permanentemente esse processo, extinguindo a plataforma que viabilizava a criação, entrega e apropriação dos benefícios por seus participantes. A morte do ecossistema representa a falha irreversível de todos os processos de valor, tornando este o risco de negócio mais crítico e de maior impacto para todos os atores envolvidos (Burström et al., 2022).",
+        solucoes: "S15 (Prática de Atrair e Reter Atores): Reduz o risco de extinção do ecossistema ao reter participantes e fortalecer mecanismos de governança.",
         estudos: ["E18"]
     }
 ];
@@ -543,6 +639,45 @@ const filterBtns = document.querySelectorAll('.btn-filter');
 let riscoAtualIndex = 0;
 let listaAtiva = [];
 let dimensaoAtual = 'tecnicos'; // rastreia a cor da dimensão do risco aberto
+
+// — Estado da seção "Exemplos de Ecossistemas em que esse Risco foi Observado" —
+let riscoExemplosEcosAtual = {};
+let riscoEcosCorAtual = 'tecnicos';
+
+// Nome de exibição de cada tipo de ECOS, usado na mensagem de ausência de evidências
+const ecosTipoInfo = {
+    aberto: { nome: "ECOS de Código Aberto" },
+    hibrido: { nome: "ECOS Híbrido" },
+    proprietario: { nome: "ECOS Proprietário" }
+};
+
+// Chamado ao clicar (ou ativar via teclado) em um dos cards de tipo de ECOS
+function selecionarEcosCard(tipo) {
+    const info = ecosTipoInfo[tipo];
+    if (!info) return;
+
+    document.querySelectorAll('#riskEcosCards .ecos-card').forEach(card => {
+        const ativo = card.dataset.ecos === tipo;
+        const temExemplo = card.classList.contains('has-example');
+        card.classList.remove('active');
+        // Só remove a cor se ela não estiver marcando a presença permanente de exemplos
+        if (!temExemplo) card.classList.remove('tecnicos', 'sociais', 'negocio');
+        card.setAttribute('aria-pressed', ativo ? 'true' : 'false');
+        if (ativo) card.classList.add('active', riscoEcosCorAtual);
+    });
+
+    const ecosJustBox = document.getElementById('riskEcosJustBox');
+    const ecosJust = document.getElementById('riskEcosJust');
+    if (!ecosJustBox || !ecosJust) return;
+
+    const exemplo = riscoExemplosEcosAtual[tipo];
+    if (exemplo) {
+        ecosJust.innerHTML = `<p>${exemplo}</p>`;
+    } else {
+        ecosJust.innerHTML = `<p>Nenhum ecossistema do tipo "${info.nome}" foi identificado nos estudos primários para este risco.</p>`;
+    }
+    ecosJustBox.style.display = 'block';
+}
 
 function openRiskDetails(id) {
     const index = dadosRiscos.findIndex(r => r.id === id);
@@ -600,32 +735,22 @@ function renderizarPainel(item) {
         justBox.style.display = 'none';
     }
 
-    // — Bloco 2a: Ecossistemas em que o Risco foi Observado —
-    const ecosRaw = (item.ecos || '').toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-    const ecosTipos = {
-        aberto: ecosRaw.includes('aberto'),
-        hibrido: ecosRaw.includes('hibrido'),
-        proprietario: ecosRaw.includes('propriet'),
-        naoespecificado: ecosRaw.includes('especificado') || ecosRaw.trim() === ''
-    };
+    // — Bloco 2a: Exemplos de Ecossistemas em que esse Risco foi Observado —
+    riscoExemplosEcosAtual = item.exemplosEcos || {};
+    riscoEcosCorAtual = classeCor;
+
     document.querySelectorAll('#riskEcosCards .ecos-card').forEach(card => {
+        card.classList.remove('active', 'has-example', 'tecnicos', 'sociais', 'negocio');
+        card.setAttribute('aria-pressed', 'false');
+        // Indicação visual imediata: card já nasce colorido se houver exemplos cadastrados
         const tipo = card.dataset.ecos;
-        card.classList.remove('active', 'tecnicos', 'sociais', 'negocio');
-        if (ecosTipos[tipo]) {
-            card.classList.add('active', classeCor);
+        const exemplo = riscoExemplosEcosAtual[tipo];
+        if (exemplo && exemplo.trim()) {
+            card.classList.add('has-example', classeCor);
         }
     });
     const ecosJustBox = document.getElementById('riskEcosJustBox');
-    const ecosJust = document.getElementById('riskEcosJust');
-    if (item.justificativa && item.justificativa.trim()) {
-        ecosJust.innerHTML = item.justificativa.trim();
-        ecosJustBox.style.display = 'block';
-        var t = document.getElementById('just-trigger-ecos'), b = document.getElementById('just-body-ecos');
-        if (t) t.setAttribute('aria-expanded','false');
-        if (b) b.classList.remove('open');
-    } else {
-        ecosJustBox.style.display = 'none';
-    }
+    if (ecosJustBox) ecosJustBox.style.display = 'none';
 
     // — Bloco 2b: Métrica —
     document.getElementById('riskMetric').innerText = item.metrica || '—';
@@ -844,8 +969,13 @@ function _syncCtxUI() {
 function _calcularRelevanciaCtx(item) {
     if (_totalAtivos()===0) return 0;
     if (ctxState.ecos.size>0) {
-        var ecosRisco=item.ecos.toLowerCase(), matchEcos=false;
-        ctxState.ecos.forEach(function(v){ if(ecosRisco.indexOf(v.toLowerCase())!==-1) matchEcos=true; });
+        var mapaTipoEcos = { 'Aberto': 'aberto', 'Híbrido': 'hibrido', 'Proprietário': 'proprietario' };
+        var matchEcos=false;
+        ctxState.ecos.forEach(function(v){
+            var chave = mapaTipoEcos[v];
+            var exemplo = chave && item.exemplosEcos ? item.exemplosEcos[chave] : '';
+            if (exemplo && exemplo.trim()) matchEcos = true;
+        });
         if (!matchEcos) return 0;
     }
     if (ctxState.metrica.size>0) {
@@ -1042,8 +1172,8 @@ const ajudaConteudo = {
         fonte: "Fonte: Software Ecosystems Risks – Manalif et al. (2013)"
     },
     ecos: {
-        titulo: "Ecossistemas em que o Risco foi Observado",
-        texto: "Este campo não representa uma suposição, mas uma síntese das evidências encontradas nos estudos primários que fundamentam o catálogo: os tipos de ecossistema destacados (Código Aberto, Híbrido ou Proprietário, segundo a tipologia de Manikas, 2016) são aqueles em que este risco foi efetivamente relatado na literatura. Quando os estudos primários não especificam explicitamente o tipo de ecossistema em que o risco foi observado, o card 'Não especificado nos estudos primários' é destacado no lugar dos demais. Isso não significa que o risco seja inaplicável aos tipos não destacados, apenas que não há evidência explícita disso nos estudos analisados.",
+        titulo: "Exemplos de Ecossistemas em que esse Risco foi Observado",
+        texto: "Este campo apresenta uma síntese das evidências encontradas nos estudos primários que fundamentam o catálogo. Ao selecionar um dos três tipos de ecossistema (ECOS de Código Aberto, ECOS Híbrido ou ECOS Proprietário, segundo a tipologia de Manikas, 2016), são exibidos os exemplos citados na literatura para aquele risco, junto com a descrição do respectivo tipo de ECOS. Quando os estudos primários não relatam explicitamente o risco em determinado tipo de ecossistema, a seleção do card correspondente exibe uma mensagem informando a ausência de evidências — o que não significa que o risco seja inaplicável àquele tipo, apenas que não há relato explícito nos estudos analisados.",
         fonte: "Fonte: Revisiting software ecosystems research: A longitudinal literature study – Manikas (2016)"
     },
     metrica: {
