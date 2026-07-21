@@ -1432,8 +1432,37 @@ main { padding: 120px 5%; max-width: 100%; box-sizing: border-box; }
 }
 .ecos-card svg { opacity: 0.6; transition: opacity 0.2s ease; }
 .ecos-card.active svg { opacity: 1; }
-.ecos-card[data-ecos="naoespecificado"] {
-    font-size: 10.5px;
+.ecos-card {
+    cursor: pointer;
+    outline: none;
+}
+.ecos-card:hover {
+    border-color: rgba(255,255,255,0.18);
+    background: rgba(255,255,255,0.06);
+    color: rgba(255,255,255,0.55);
+}
+.ecos-card:focus-visible {
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.35);
+}
+/* Indicação visual imediata: card já nasce colorido quando há exemplos cadastrados para aquele tipo de ECOS */
+.ecos-card.has-example svg { opacity: 0.85; }
+.ecos-card.has-example.tecnicos {
+    border-color: rgba(56,189,248,0.35);
+    background: rgba(56,189,248,0.06);
+    color: rgba(56,189,248,0.85);
+}
+.ecos-card.has-example.sociais {
+    border-color: rgba(251,191,36,0.35);
+    background: rgba(251,191,36,0.06);
+    color: rgba(251,191,36,0.85);
+}
+.ecos-card.has-example.negocio {
+    border-color: rgba(74,222,128,0.35);
+    background: rgba(74,222,128,0.06);
+    color: rgba(74,222,128,0.85);
+}
+.ecos-card.has-example:hover {
+    background: rgba(255,255,255,0.06);
 }
 .ecos-card.active.tecnicos {
     border-color: var(--color-tecnicos);
@@ -1458,13 +1487,37 @@ main { padding: 120px 5%; max-width: 100%; box-sizing: border-box; }
         flex: 1 1 calc(50% - 4px);
         min-width: calc(50% - 4px);
     }
+    .ecos-card:nth-child(3) {
+        flex: 1 1 100%;
+    }
 }
-.ecos-cards-note {
-    font-size: 11px;
-    color: rgba(255,255,255,0.4);
-    margin: 8px 0 0;
+.ecos-cards-hint {
+    font-size: 11.5px;
+    color: rgba(255,255,255,0.42);
+    margin: 0 0 10px;
     line-height: 1.4;
+    font-style: italic;
 }
+.ecos-detail-box {
+    margin-top: 12px;
+    padding: 11px 14px 13px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,.07);
+    background: rgba(255,255,255,.03);
+    animation: justSlideDown .2s ease;
+}
+.ecos-detail-box p {
+    font-size: 0.82rem;
+    color: #94a3b8;
+    line-height: 1.65;
+    margin: 0;
+}
+.ecos-detail-box p + p {
+    margin-top: 10px;
+}
+#sidePanel.tecnicos .ecos-detail-box { border-color: rgba(56,189,248,.18); background: rgba(56,189,248,.04); }
+#sidePanel.sociais  .ecos-detail-box { border-color: rgba(251,191,36,.18); background: rgba(251,191,36,.04); }
+#sidePanel.negocio  .ecos-detail-box { border-color: rgba(74,222,128,.18); background: rgba(74,222,128,.04); }
 /* ── Links de estudos e soluções ── */
 .study-tag {
     display: block;
