@@ -275,28 +275,34 @@
         }
         .demo-field-value.accent { color: #38bdf8; }
 
-        /* JUSTIFICATIVA (= .justification-box) */
-        .demo-just-box {
-            background: rgba(15,23,42,0.6);
-            border-left: 3px solid rgba(56,189,248,0.4);
-            border-radius: 0 8px 8px 0;
-            padding: 14px 16px;
-            margin-top: 16px;
+        /* JUSTIFICATIVA (= .just-accordion / .just-trigger / .just-body do catálogo real, sempre aberta, sem interação) */
+        .demo-just-accordion {
+            margin-top: 12px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.07);
         }
-        .demo-just-box.green { border-left-color: rgba(74,222,128,0.4); }
-        .demo-just-label {
-            font-size: 0.62rem;
-            text-transform: uppercase;
-            letter-spacing: 1.2px;
-            color: #94a3b8;
-            margin-bottom: 8px;
+        .demo-just-header {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            background: rgba(56,189,248,0.08);
+            padding: 9px 12px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.78rem;
             font-weight: 600;
+            color: #38bdf8;
         }
-        .demo-just-box p {
-            font-style: italic;
+        .demo-just-header svg { flex-shrink: 0; transform: rotate(180deg); }
+        .demo-just-body {
+            padding: 11px 14px 13px;
+            border-top: 1px solid rgba(56,189,248,0.18);
+            background: rgba(56,189,248,0.04);
+        }
+        .demo-just-body p {
             color: #94a3b8;
-            font-size: 0.85rem;
-            line-height: 1.6;
+            font-size: 0.82rem;
+            line-height: 1.65;
             margin: 0;
         }
 
@@ -1113,9 +1119,11 @@
                                         <span class="demo-field-label">Área de Desafio</span>
                                         <span class="demo-field-value">Segurança (arquitetura)</span>
                                     </div>
-                                    <div class="demo-just-box" style="margin-top:14px;">
-                                        <div class="demo-just-label">Por que essa classificação?</div>
+                                    <div class="demo-just-accordion">
+                                        <div class="demo-just-header"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg><span>Por que essa classificação?</span></div>
+                                        <div class="demo-just-body">
                                         <p>O comprometimento da cadeia de suprimentos de software é classificado como <strong>Risco de Engenharia de Produto</strong> porque decorre de falhas introduzidas durante o desenvolvimento, a integração ou a distribuição de componentes de software. O elemento <strong>Especialidades em engenharia</strong> se aplica porque sua prevenção exige conhecimento técnico em desenvolvimento seguro, verificação da integridade de dependências e controle de acesso à cadeia de suprimentos. A área <strong>Segurança (arquitetura)</strong> foi selecionada porque a mitigação depende de controles arquiteturais que assegurem a integridade e a confiabilidade da cadeia de suprimentos ao longo de todo o processo de desenvolvimento.</p>
+                                    </div>
                                     </div>
                                 </div>
 
@@ -1158,9 +1166,11 @@
                                     </div>
                                     <span class="demo-field-label"></span>
                                     <span class="demo-field-value">Robustez</span>
-                                    <div class="demo-just-box" style="margin-top:14px;">
-                                        <div class="demo-just-label">Por que esta métrica?</div>
+                                    <div class="demo-just-accordion">
+                                        <div class="demo-just-header"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg><span>Por que esta métrica?</span></div>
+                                        <div class="demo-just-body">
                                         <p>O comprometimento da cadeia de suprimentos de software afeta a <strong>robustez</strong> porque falhas introduzidas em componentes centrais podem se propagar de forma sistêmica, comprometendo a continuidade e a capacidade de sobrevivência do ECOS diante de perturbações (Iansiti e Levien, 2004).</p>
+                                    </div>
                                     </div>
                                 </div>
 
@@ -1175,9 +1185,11 @@
                                     </div>
                                     <span class="demo-field-label"></span>
                                     <span class="demo-field-value">Criação e entrega de valor</span>
-                                    <div class="demo-just-box" style="margin-top:14px;">
-                                        <div class="demo-just-label">Por que este processo?</div>
+                                    <div class="demo-just-accordion">
+                                        <div class="demo-just-header"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg><span>Por que este processo?</span></div>
+                                        <div class="demo-just-body">
                                         <p>O comprometimento da cadeia de suprimentos de software afeta o processo de <strong>criação e entrega de valor</strong> porque introduz falhas e artefatos maliciosos nos produtos disponibilizados pelo ECOS, comprometendo a integridade das soluções entregues e a confiança dos participantes nesse processo (Burström et al., 2022).</p>
+                                    </div>
                                     </div>
                                 </div>
 
