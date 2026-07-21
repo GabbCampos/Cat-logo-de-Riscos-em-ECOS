@@ -195,6 +195,7 @@
                 <li><a href="explorar.html" onclick="closeMenu()">Explorar</a></li>
                 <li><a href="sobre.html" onclick="closeMenu()">Sobre</a></li>
                 <li><a href="index.html#contato" onclick="closeMenu()">Contato</a></li>
+                <li><a href="referencias.html" onclick="closeMenu()">Referências</a></li>
             </ul>
             <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMenu()">
                 <span></span><span></span><span></span>
@@ -401,12 +402,12 @@
                                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
                                     </div>
                                     <div>
-                                        <h4 class="atb-title">Tipo de ECOS mais Propício ao Risco</h4>
+                                        <h4 class="atb-title">Exemplos de Ecossistemas em que esse Risco foi Observado</h4>
                                     </div>
                                 </div>
-                                <p class="atb-desc">Indica qual tipo de ecossistema apresenta características mais favoráveis ao surgimento ou à propagação do risco, considerando a dimensão de estrutura de negócios proposta por Manikas (2016).</p>
+                                <p class="atb-desc">Apresenta os exemplos concretos de ecossistemas de software em que a ocorrência desse risco foi relatada pelos estudos primários, classificados de acordo com a tipologia de Manikas (2016).</p>
                                 <div class="atb-body">
-                                    <p class="atb-intro">A classificação permite compreender em qual modelo de compartilhamento e geração de valor o risco tende a ocorrer com maior frequência:</p>
+                                    <p class="atb-intro">Os exemplos evidenciam em qual modelo de compartilhamento e geração de valor o risco foi efetivamente observado na literatura:</p>
                                     <div class="atb-tiers">
                                         <div class="atb-tier atb-tier-sei">
                                             <span class="atb-num atb-num-sei">1</span>
@@ -1300,10 +1301,11 @@
             <!-- Linha 2: chips de contexto -->
             <div class="filters-row-chips" id="ctxBar">
                 <div class="filters-chip-group">
-                    <span class="filters-chip-label">Tipo de ECOS mais propício ao Risco</span>
+                    <span class="filters-chip-label">Exemplos de Ecossistemas em que esse Risco foi Observado</span>
                     <div class="ctx-chips">
-                        <button class="ctx-chip" data-group="ecos" data-value="Aberto" onclick="toggleChip(this)">Aberto</button>
-                        <button class="ctx-chip" data-group="ecos" data-value="Híbrido" onclick="toggleChip(this)">Híbrido</button>
+                        <button class="ctx-chip" data-group="ecos" data-value="Aberto" onclick="toggleChip(this)">ECOS de Código Aberto</button>
+                        <button class="ctx-chip" data-group="ecos" data-value="Híbrido" onclick="toggleChip(this)">ECOS Híbrido</button>
+                        <button class="ctx-chip" data-group="ecos" data-value="Proprietário" onclick="toggleChip(this)">ECOS Proprietário</button>
                     </div>
                 </div>
                 <div class="filters-chip-sep"></div>
@@ -1386,41 +1388,30 @@
                 </div>
             </div>
 
-            <!-- BLOCO 2a: Ecossistemas em que o Risco foi Observado -->
+            <!-- BLOCO 2a: Exemplos de Ecossistemas em que esse Risco foi Observado -->
             <div class="panel-card">
                 <div class="panel-card-title">
-                    <span>Ecossistemas em que o Risco foi Observado</span>
-                    <button class="help-icon" onclick="abrirAjuda('ecos')" aria-label="Ajuda sobre Ecossistemas em que o Risco foi Observado">
+                    <span>Exemplos de Ecossistemas em que esse Risco foi Observado</span>
+                    <button class="help-icon" onclick="abrirAjuda('ecos')" aria-label="Ajuda sobre Exemplos de Ecossistemas em que esse Risco foi Observado">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
                     </button>
                 </div>
                 <div class="ecos-cards" id="riskEcosCards">
-                    <div class="ecos-card" data-ecos="aberto">
+                    <div class="ecos-card" data-ecos="aberto" role="button" tabindex="0" aria-pressed="false" onclick="selecionarEcosCard('aberto')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selecionarEcosCard('aberto');}">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
-                        <span>Código Aberto</span>
+                        <span>ECOS de Código Aberto</span>
                     </div>
-                    <div class="ecos-card" data-ecos="hibrido">
+                    <div class="ecos-card" data-ecos="hibrido" role="button" tabindex="0" aria-pressed="false" onclick="selecionarEcosCard('hibrido')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selecionarEcosCard('hibrido');}">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
-                        <span>Híbrido</span>
+                        <span>ECOS Híbrido</span>
                     </div>
-                    <div class="ecos-card" data-ecos="proprietario">
+                    <div class="ecos-card" data-ecos="proprietario" role="button" tabindex="0" aria-pressed="false" onclick="selecionarEcosCard('proprietario')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selecionarEcosCard('proprietario');}">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                        <span>Proprietário</span>
-                    </div>
-                    <div class="ecos-card" data-ecos="naoespecificado">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-                        <span>Não especificado nos estudos primários</span>
+                        <span>ECOS Proprietário</span>
                     </div>
                 </div>
-                <p class="ecos-cards-note">Destaque com base nas evidências encontradas nos estudos primários analisados. A ausência de destaque em um card não significa que o risco seja inaplicável àquele tipo de ecossistema, apenas que não há relato explícito nos estudos analisados.</p>
-                <div id="riskEcosJustBox" class="just-accordion" style="display:none;">
-                    <button class="just-trigger" onclick="toggleJust('ecos')" aria-expanded="false" id="just-trigger-ecos">
-                        <svg class="just-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-                        <span>Por que estes ecossistemas?</span>
-                    </button>
-                    <div class="just-body" id="just-body-ecos">
-                        <p id="riskEcosJust"></p>
-                    </div>
+                <div id="riskEcosJustBox" class="ecos-detail-box" style="display:none;">
+                    <div id="riskEcosJust"></div>
                 </div>
             </div>
 
