@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Referências | Gerência de Riscos em ECOS</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><polygon points='50,5 93,27.5 93,72.5 50,95 7,72.5 7,27.5' fill='none' stroke='%2338bdf8' stroke-width='10'/><polygon points='50,22 78,37.5 78,67.5 50,83 22,67.5 22,37.5' fill='%2338bdf8' opacity='0.2'/></svg>">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .logo {
+            display: flex !important;
+            align-items: center;
+            gap: 8px;
+            flex-shrink: 1;
+            min-width: 0;
+        }
+        .logo-icon {
+            font-size: 1.4rem;
+            color: #38bdf8;
+            line-height: 1;
+            filter: drop-shadow(0 0 6px rgba(56,189,248,0.55));
+            flex-shrink: 0;
+        }
+        .logo-text {
+            color: #e2e8f0;
+            font-weight: 600;
+            font-size: 0.88rem;
+            letter-spacing: 0.01em;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .logo-highlight { color: #38bdf8; font-weight: 800; }
+        .logo-text-long  { display: inline; }
+        .logo-text-short { display: none; }
+        @media (max-width: 1024px) {
+            .logo-text-long  { display: none; }
+            .logo-text-short { display: inline; }
+            .logo-text { font-size: 0.8rem; }
+        }
+
+        /* ── Layout geral da página ── */
+        .refs-section { padding-top: calc(var(--nav-height) + 60px); padding-bottom: 120px; }
+        .refs-container { max-width: 980px; margin: 0 auto; padding: 0 24px; }
+        .refs-intro { max-width: 720px; margin: 0 auto 3rem; text-align: center; }
+        .refs-intro p { text-align: center; }
+
+        .refs-block { margin-bottom: 3.5rem; }
+        .refs-block-head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 1.4rem; }
+        .refs-block-title { font-size: 1.3rem; font-weight: 800; color: #f1f5f9; }
+        .refs-block-count {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #38bdf8;
+            background: rgba(56,189,248,0.1);
+            border: 1px solid rgba(56,189,248,0.25);
+            border-radius: 100px;
+            padding: 3px 11px;
+        }
+        .refs-block-desc { color: #64748b; font-size: 0.88rem; margin: -0.8rem 0 1.4rem; line-height: 1.6; }
+
+        /* ── Referências teóricas: grid de cards de texto ── */
+        .theory-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px 28px;
+        }
+        .theory-item {
+            display: flex;
+            padding: 16px 18px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 12px;
+        }
+        .theory-content {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            min-width: 0;
+        }
+        .theory-desc {
+            font-size: 0.82rem;
+            color: #64748b;
+            line-height: 1.5;
+            margin: 0;
+        }
+        .theory-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #cbd5e1 !important;
+            margin-bottom: 2px !important;
+        }
+        .theory-doi-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.73rem;
+            color: #38bdf8;
+            text-decoration: none;
+            margin-top: 4px;
+            opacity: 0.8;
+            transition: opacity 0.15s;
+        }
+        .theory-doi-link:hover { opacity: 1; text-decoration: underline; }
+        .theory-doi-link svg { flex-shrink: 0; }
+
+        /* ── Estudos primários: lista dentro de um card ── */
+        .studies-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 14px;
+            padding: 10px 16px;
+        }
+        .studies-list { display: flex; flex-direction: column; gap: 10px; padding: 10px 0; }
+
+        /* ── Responsivo ── */
+        @media (max-width: 768px) {
+            .theory-list { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <nav class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">⬡</span>
+                <span class="logo-text">Catálogo de <span class="logo-highlight logo-text-long">Riscos em Ecossistemas de Software</span><span class="logo-highlight logo-text-short">Riscos em ECOS</span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" onclick="closeMenu()">Início</a></li>
+                <li><a href="index.html#catalogo" onclick="closeMenu()">Catálogo</a></li>
+                <li><a href="explorar.html" onclick="closeMenu()">Explorar</a></li>
+                <li><a href="sobre.html" onclick="closeMenu()">Sobre</a></li>
+                <li><a href="index.html#contato" onclick="closeMenu()">Contato</a></li>
+                <li><a href="referencias.html" onclick="closeMenu()">Referências</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMenu()">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+    </header>
+
+    <section id="referencias" class="refs-section">
+        <div class="refs-container">
+
+            <div class="refs-intro">
+                <span class="tag-small" style="
+                    color: #38bdf8;
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 8px;
+                    font-size: 0.78rem;
+                    letter-spacing: 2px;
+                    font-weight: 700;
+                    text-transform: uppercase;
+                    padding: 6px 14px;
+                    border: 1px solid rgba(56,189,248,0.25);
+                    border-radius: 100px;
+                    background: rgba(56,189,248,0.07);
+                    margin-bottom: 24px;
+                ">
+                    <i class="fas fa-book" style="font-size:0.7rem;"></i>
+                    REFERÊNCIAS
+                </span>
+                <h2 style="font-size: clamp(1.8rem, 3.5vw, 2.6rem); line-height: 1.15; margin-bottom: 1.4rem; color: #f8fafc; font-weight: 800;">Referências do catálogo</h2>
+                <p style="color:#94a3b8;">Referências que fundamentam o catálogo: os estudos utilizados na classificação dos riscos e os estudos primários do MSL.</p>
+            </div>
+
+            <!-- ── Bloco 1: Referências teóricas ── -->
+            <div class="refs-block">
+                <div class="refs-block-head">
+                    <h3 class="refs-block-title">Estudos que estruturam o catálogo de riscos em ECOS</h3>
+                </div>
+                <ul class="theory-list">
+                            <li class="theory-item">
+                                <div class="theory-content">
+                                    <p class="theory-desc theory-title">Software Ecosystems Risks- Manalif et al. (2013)</p>
+                                    <a href="https://doi.org/10.5220/0004589904170422" target="_blank" rel="noopener" class="theory-doi-link"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>doi.org/10.5220/0004589904170422</a>
+                                </div>
+                            </li>
+                            <li class="theory-item">
+                                <div class="theory-content">
+                                    <p class="theory-desc theory-title">Revisiting Software Ecosystems Research: A Longitudinal Literature Study- Manikas (2016)</p>
+                                    <a href="https://doi.org/10.1016/j.jss.2016.02.003" target="_blank" rel="noopener" class="theory-doi-link">
+                                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                                        doi.org/10.1016/j.jss.2016.02.003
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="theory-item">
+                                <div class="theory-content">
+                                    <p class="theory-desc theory-title">Strategy as Ecology- Iansiti e Levien (2004)</p>
+                                    <a href="https://hbr.org/2004/03/strategy-as-ecology" target="_blank" rel="noopener" class="theory-doi-link">
+                                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                        Harvard Business Review · Mar 2004
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="theory-item">
+                                <div class="theory-content">
+                                    <p class="theory-desc theory-title">Software Ecosystems Now and in the Future: A Definition, Systematic Literature Review, and Integration Into the Business and Digital Ecosystem Literature- Burström et al. (2022)</p>
+                                    <a href="https://doi.org/10.1109/TEM.2022.3216633" target="_blank" rel="noopener" class="theory-doi-link">
+                                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                                        doi.org/10.1109/TEM.2022.3216633
+                                    </a>
+                                </div>
+                            </li>
+                </ul>
+            </div>
+
+            <!-- ── Bloco 2: Estudos primários do MSL ── -->
+            <div class="refs-block">
+                <div class="refs-block-head">
+                    <h3 class="refs-block-title">Estudos primários do MSL</h3>
+                </div>
+                <div class="studies-card">
+                    <div class="studies-list">
+                                <div class="study-entry">
+                                    <div class="study-entry-info">
+                                        <span class="study-entry-title">Strategic Patterns to Foster the Evolution of Emerging Software Ecosystems – Belo e Alves (2025)</span>
+                                    </div>
+                                    <a href="https://doi.org/10.1002/smr.2747" target="_blank" rel="noopener" class="btn-acessar-artigo" title="Abrir artigo original em nova aba">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                        Acessar estudo
+                                    </a>
+                                </div>
+                                <div class="study-entry">
+                                    <div class="study-entry-info">
+                                        <span class="study-entry-title">A Graph-Based Approach for Software Functionality Classification on the Web – Jiang et al. (2024)</span>
+                                    </div>
+                                    <a href="https://doi.org/10.1007/978-981-96-0576-7_5" target="_blank" rel="noopener" class="btn-acessar-artigo" title="Abrir artigo original em nova aba">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                        Acessar estudo
+                                    </a>
+                                </div>
+                                <div class="study-entry">
+                                    <div class="study-entry-info">
+                                        <span class="study-entry-title">Understanding Abandonment and Slowdown Dynamics in the Maven Ecosystem – Hasan et al. (2025)</span>
+                                    </div>
+                                    <a href="https://doi.org/10.1109/MSR66628.2025.00065" target="_blank" rel="noopener" class="btn-acessar-artigo" title="Abrir artigo original em nova aba">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                        Acessar estudo
+                                    </a>
+                                </div>
+                                <div class="study-entry">
+                                    <div class="study-entry-info">
+                                        <span class="study-entry-title">Impact of Minimum Viable Product on Software Ecosystem Failure – Saarni et al. (2025)</span>
+                                    </div>
+                                    <a href="https://doi.org/10.1016/j.infsof.2024.107612" target="_blank" rel="noopener" class="btn-acessar-artigo" title="Abrir artigo original em nova aba">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                        Acessar estudo
+                                    </a>
+                                </div>
+                                <div class="study-entry">
+                                    <div class="study-entry-info">
+                                        <span class="study-entry-title">OSS Malicious Package Analysis in the Wild – Zhou et al. (2024)</span>
+                                    </div>
+                                    <a href="https://doi.org/10.1109/DSN64029.2025.00045" target="_blank" rel="noopener" class="btn-acessar-artigo" title="Abrir artigo original em nova aba">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                        Acessar estudo
+                                    </a>
+                                </div>
+                                <div class="study-entry">
+                                    <div class="study-entry-info">
+                                        <span class="study-entry-title">A Framework for Software Vendor Selection by Applying Inconsistency and Conflict Removal (ICR) Method – Rani et al. (2024)</span>
+                                    </div>
+                                    <a href="https://doi.org/10.1007/s13198-023-02190-x" target="_blank" rel="noopener" class="btn-acessar-artigo" title="Abrir artigo original em nova aba">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                        Acessar estudo
+                                    </a>
+                                </div>
+                                <div class="study-entry">
+                                    <div class="study-entry-info">
+                                        <span class="study-entry-title">A Cast of Thousands: How the IDEAS Productivity Project Has Advanced Software Productivity and Sustainability – McInnes et al. (2024)</span>
+                                    </div>
+                                    <a href="https://doi.org/10.1109/MCSE.2024.3383799" target="_blank" rel="noopener" class="btn-acessar-artigo" title="Abrir artigo original em nova aba">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                        Acessar estudo
+                                    </a>
+                                </div>
+                                <div class="study-entry">
+                                    <div class="study-entry-info">
+                                        <span class="study-entry-title">Modeling Interconnected Social and Technical Risks in Open Source Software Ecosystems – Schueller e Wachs (2024)</span>
+                                    </div>
+                                    <a href="https://doi.org/10.1177/26339137241231912" target="_blank" rel="noopener" class="btn-acessar-artigo" title="Abrir artigo original em nova aba">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                        Acessar estudo
+                                    </a>
+                                </div>
+                                <div class="study-entry">
+                                    <div class="study-entry-info">
+                                        <span class="study-entry-title">Maven Unzipped: Exploring the Impact of Library Packaging on the Ecosystem – Keshani et al. (2024)</span>
+                                    </div>
+                                    <a href="https://doi.org/10.1109/ICSME58944.2024.00016" target="_blank" rel="noopener" class="btn-acessar-artigo" title="Abrir artigo original em nova aba">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                        Acessar estudo
+                                    </a>
+                                </div>
+                                <div class="study-entry">
+                                    <div class="study-entry-info">
+                                        <span class="study-entry-title">Lessons from the Long Tail: Analysing Unsafe Dependency Updates across Software Ecosystems – Wattanakriengkrai et al. (2023)</span>
+                                    </div>
+                                    <a href="https://doi.org/10.1145/3611643.3613086" target="_blank" rel="noopener" class="btn-acessar-artigo" title="Abrir artigo original em nova aba">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                        Acessar estudo
+                                    </a>
+                                </div>
+                                <div class="study-entry">
+                                    <div class="study-entry-info">
+                                        <span class="study-entry-title">On the Discoverability of NPM Vulnerabilities in Node.js Projects – Alfadel et al. (2023)</span>
+                                    </div>
+                                    <a href="https://doi.org/10.1145/3571848" target="_blank" rel="noopener" class="btn-acessar-artigo" title="Abrir artigo original em nova aba">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                        Acessar estudo
+                                    </a>
+                                </div>
+                                <div class="study-entry">
+                                    <div class="study-entry-info">
+                                        <span class="study-entry-title">Understanding the Role of External Pull Requests in the NPM Ecosystem – Maeprasart et al (2023)</span>
+                                    </div>
+                                    <a href="https://doi.org/10.1007/s10664-023-10315-w" target="_blank" rel="noopener" class="btn-acessar-artigo" title="Abrir artigo original em nova aba">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                        Acessar estudo
+                                    </a>
+                                </div>
+                                <div class="study-entry">
+                                    <div class="study-entry-info">
+                                        <span class="study-entry-title">Vulnerability Management in Linux Distributions: An Empirical Study on Debian and Fedora – Lin et al. (2023)</span>
+                                    </div>
+                                    <a href="https://doi.org/10.1007/s10664-022-10267-7" target="_blank" rel="noopener" class="btn-acessar-artigo" title="Abrir artigo original em nova aba">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                        Acessar estudo
+                                    </a>
+                                </div>
+                                <div class="study-entry">
+                                    <div class="study-entry-info">
+                                        <span class="study-entry-title">Maintenance Cost of Software Ecosystem Updates – Berhe et al. (2023)</span>
+                                    </div>
+                                    <a href="https://doi.org/10.1016/j.procs.2023.03.077" target="_blank" rel="noopener" class="btn-acessar-artigo" title="Abrir artigo original em nova aba">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                        Acessar estudo
+                                    </a>
+                                </div>
+                                <div class="study-entry">
+                                    <div class="study-entry-info">
+                                        <span class="study-entry-title">An Empirical Study of Artifacts and Security Risks in the Pre-trained Model Supply Chain – Jiang et al. (2022)</span>
+                                    </div>
+                                    <a href="https://doi.org/10.1145/3560835.3564547" target="_blank" rel="noopener" class="btn-acessar-artigo" title="Abrir artigo original em nova aba">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                        Acessar estudo
+                                    </a>
+                                </div>
+                                <div class="study-entry">
+                                    <div class="study-entry-info">
+                                        <span class="study-entry-title">smartPip: A Smart Approach to Resolving Python Dependency Conflict Issues – Wang et al. (2022)</span>
+                                    </div>
+                                    <a href="https://doi.org/10.1145/3551349.3560437" target="_blank" rel="noopener" class="btn-acessar-artigo" title="Abrir artigo original em nova aba">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                        Acessar estudo
+                                    </a>
+                                </div>
+                                <div class="study-entry">
+                                    <div class="study-entry-info">
+                                        <span class="study-entry-title">Goals within Trust-based Digital Ecosystems – Cioroaica et al. (2021)</span>
+                                    </div>
+                                    <a href="https://doi.org/10.1109/SESoS-WDES52566.2021.00006" target="_blank" rel="noopener" class="btn-acessar-artigo" title="Abrir artigo original em nova aba">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                        Acessar estudo
+                                    </a>
+                                </div>
+                                <div class="study-entry">
+                                    <div class="study-entry-info">
+                                        <span class="study-entry-title">Software Ecosystems Governance - An Analysis of SAP and GNOME Platforms – Oliveira e Alves (2021)</span>
+                                    </div>
+                                    <a href="https://doi.org/10.1109/SEAA53835.2021.00045" target="_blank" rel="noopener" class="btn-acessar-artigo" title="Abrir artigo original em nova aba">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                        Acessar estudo
+                                    </a>
+                                </div>
+                                <div class="study-entry">
+                                    <div class="study-entry-info">
+                                        <span class="study-entry-title">TrustSECO: A Distributed Infrastructure for Providing Trust in the Software Ecosystem – Hou et al (2021)</span>
+                                    </div>
+                                    <a href="https://doi.org/10.1007/978-3-030-79022-6_11" target="_blank" rel="noopener" class="btn-acessar-artigo" title="Abrir artigo original em nova aba">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                        Acessar estudo
+                                    </a>
+                                </div>
+                                <div class="study-entry">
+                                    <div class="study-entry-info">
+                                        <span class="study-entry-title">Technical Leverage in a Software Ecosystem: Development Opportunities and Security Risks – Massacci e Pashchenko (2021)</span>
+                                    </div>
+                                    <a href="https://doi.org/10.1109/ICSE43902.2021.00125" target="_blank" rel="noopener" class="btn-acessar-artigo" title="Abrir artigo original em nova aba">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                        Acessar estudo
+                                    </a>
+                                </div>
+                                <div class="study-entry">
+                                    <div class="study-entry-info">
+                                        <span class="study-entry-title">Do Scaling Agile Frameworks Address Global Software Development Risks? An Empirical Study – Beecham et al. (2021)</span>
+                                    </div>
+                                    <a href="https://doi.org/10.1016/j.jss.2020.110823" target="_blank" rel="noopener" class="btn-acessar-artigo" title="Abrir artigo original em nova aba">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                        Acessar estudo
+                                    </a>
+                                </div>
+                                <div class="study-entry">
+                                    <div class="study-entry-info">
+                                        <span class="study-entry-title">Software Reuse Cuts Both Ways: An Empirical Analysis of Its Relationship with Security Vulnerabilities – Gkortzis et al. (2021)</span>
+                                    </div>
+                                    <a href="https://doi.org/10.1016/j.jss.2020.110653" target="_blank" rel="noopener" class="btn-acessar-artigo" title="Abrir artigo original em nova aba">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                        Acessar estudo
+                                    </a>
+                                </div>
+                                <div class="study-entry">
+                                    <div class="study-entry-info">
+                                        <span class="study-entry-title">Open Source Software Supply Chain for Reliability Assurance of Operating Systems – Zhao et al. (2020)</span>
+                                    </div>
+                                    <a href="https://doi.org/10.13328/j.cnki.jos.006070" target="_blank" rel="noopener" class="btn-acessar-artigo" title="Abrir artigo original em nova aba">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                        Acessar estudo
+                                    </a>
+                                </div>
+                                <div class="study-entry">
+                                    <div class="study-entry-info">
+                                        <span class="study-entry-title">An Empirical Comparison of Dependency Network Evolution in Seven Software Packaging Ecosystems – Decan et al. (2019)</span>
+                                    </div>
+                                    <a href="https://doi.org/10.1007/s10664-017-9589-y" target="_blank" rel="noopener" class="btn-acessar-artigo" title="Abrir artigo original em nova aba">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                        Acessar estudo
+                                    </a>
+                                </div>
+                                <div class="study-entry">
+                                    <div class="study-entry-info">
+                                        <span class="study-entry-title">Risks and Assets: A Qualitative Study of a Software Ecosystem in the Mining Industry – Olsson e Franke (2019)</span>
+                                    </div>
+                                    <a href="https://doi.org/10.1145/3338906.3340443" target="_blank" rel="noopener" class="btn-acessar-artigo" title="Abrir artigo original em nova aba">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                        Acessar estudo
+                                    </a>
+                                </div>
+                                <div class="study-entry">
+                                    <div class="study-entry-info">
+                                        <span class="study-entry-title">Which Factors Affect the Evangelist&#x27;s Support During Training Sessions in Mobile Software Ecosystems? – Fontão et al. (2018)</span>
+                                    </div>
+                                    <a href="https://doi.org/10.1145/3241403.3241427" target="_blank" rel="noopener" class="btn-acessar-artigo" title="Abrir artigo original em nova aba">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                        Acessar estudo
+                                    </a>
+                                </div>
+                                <div class="study-entry">
+                                    <div class="study-entry-info">
+                                        <span class="study-entry-title">An Exploratory Study on Library Aging by Monitoring Client Usage in a Software Ecosystem – Kula et al. (2017)</span>
+                                    </div>
+                                    <a href="https://doi.org/10.1109/SANER.2017.7884643" target="_blank" rel="noopener" class="btn-acessar-artigo" title="Abrir artigo original em nova aba">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                        Acessar estudo
+                                    </a>
+                                </div>
+                                <div class="study-entry">
+                                    <div class="study-entry-info">
+                                        <span class="study-entry-title">Towards a Multi-criteria Decision Support Method for Consumer Electronics Software Ecosystems – Hartmann e Bosch (2016)</span>
+                                    </div>
+                                    <a href="https://doi.org/10.1002/smr.1785" target="_blank" rel="noopener" class="btn-acessar-artigo" title="Abrir artigo original em nova aba">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                        Acessar estudo
+                                    </a>
+                                </div>
+                                <div class="study-entry">
+                                    <div class="study-entry-info">
+                                        <span class="study-entry-title">The Influence of Developer Multi-homing on Competition between Software Ecosystems – Hyrynsalmi et al. (2016)</span>
+                                    </div>
+                                    <a href="https://doi.org/10.1016/j.jss.2015.08.053" target="_blank" rel="noopener" class="btn-acessar-artigo" title="Abrir artigo original em nova aba">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                        Acessar estudo
+                                    </a>
+                                </div>
+                                <div class="study-entry">
+                                    <div class="study-entry-info">
+                                        <span class="study-entry-title">Intelligently Transparent Software Ecosystems – Herbsleb et al.. (2016)</span>
+                                    </div>
+                                    <a href="https://doi.org/10.1109/MS.2015.156" target="_blank" rel="noopener" class="btn-acessar-artigo" title="Abrir artigo original em nova aba">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                        Acessar estudo
+                                    </a>
+                                </div>
+                                <div class="study-entry">
+                                    <div class="study-entry-info">
+                                        <span class="study-entry-title">Tracing Known Security Vulnerabilities in Software Repositories – A Semantic Web Enabled Modeling Approach – Alqahtani et al. (2016)</span>
+                                    </div>
+                                    <a href="https://doi.org/10.1016/j.scico.2016.01.005" target="_blank" rel="noopener" class="btn-acessar-artigo" title="Abrir artigo original em nova aba">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                        Acessar estudo
+                                    </a>
+                                </div>
+                                <div class="study-entry">
+                                    <div class="study-entry-info">
+                                        <span class="study-entry-title">On Using Markov Decision Processes to Model Integration Solutions for Disparate Resources in Software Ecosystems – Frantz et al. (2015)</span>
+                                    </div>
+                                    <a href="https://doi.org/10.5220/0005346902600267" target="_blank" rel="noopener" class="btn-acessar-artigo" title="Abrir artigo original em nova aba">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                        Acessar estudo
+                                    </a>
+                                </div>
+                                <div class="study-entry">
+                                    <div class="study-entry-info">
+                                        <span class="study-entry-title">Variability Mechanisms in Software Ecosystems – Berger et al. (2014)</span>
+                                    </div>
+                                    <a href="https://doi.org/10.1016/j.infsof.2014.05.00" target="_blank" rel="noopener" class="btn-acessar-artigo" title="Abrir artigo original em nova aba">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                        Acessar estudo
+                                    </a>
+                                </div>
+                                <div class="study-entry">
+                                    <div class="study-entry-info">
+                                        <span class="study-entry-title">Software Ecosystems Risks – Manalif et al. (2013)</span>
+                                    </div>
+                                    <a href="https://doi.org/10.5220/0004589904170422" target="_blank" rel="noopener" class="btn-acessar-artigo" title="Abrir artigo original em nova aba">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                        Acessar estudo
+                                    </a>
+                                </div>
+                                <div class="study-entry">
+                                    <div class="study-entry-info">
+                                        <span class="study-entry-title">Analyses of Two End-user Software Vulnerability Exposure Metrics – Wright et al. (2013)</span>
+                                    </div>
+                                    <a href="https://doi.org/10.1109/ARES.2012.33" target="_blank" rel="noopener" class="btn-acessar-artigo" title="Abrir artigo original em nova aba">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                        Acessar estudo
+                                    </a>
+                                </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('open');
+            document.getElementById('hamburger').classList.toggle('active');
+        }
+        function closeMenu() {
+            document.getElementById('navLinks').classList.remove('open');
+            document.getElementById('hamburger').classList.remove('active');
+        }
+    </script>
+</body>
+</html>
