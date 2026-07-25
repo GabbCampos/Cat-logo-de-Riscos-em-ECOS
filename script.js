@@ -419,30 +419,7 @@ const dadosRiscos = [
         estudos: ["E07", "E21"]
     },
     {
-    id: "R15",
-    risco: "Ausência de mecanismos formais de governança no ecossistema",
-    descricao: "Este risco ocorre quando não existem regras ou estruturas de governança formais, situação especialmente comum em ecossistemas de código aberto. Como consequência, surgem riscos difíceis de controlar, que impactam diretamente a sustentabilidade e a segurança do ecossistema.",
-    cenario: "",
-    dimensao: "Social",
-    classeSEI: "Risco de Ambiente de Desenvolvimento",
-    elementoSEI: "Processo de Desenvolvimento",
-    desafio: "Sem modelos de processo padronizado (processo)",
-    justificativaSEI: "A ausência de mecanismos formais de governança no ecossistema é classificada como <strong>Risco de Ambiente de Desenvolvimento</strong> porque afeta diretamente as regras, os papéis e os fluxos pelos quais as decisões de desenvolvimento são tomadas e executadas no ECOS. O elemento <strong>Processo de Desenvolvimento</strong> se aplica porque, sem processos padronizados de governança, o desenvolvimento torna-se desordenado e imprevisível, dificultando a identificação e o controle de riscos. A área <strong>Sem modelos de processo padronizado (processo)</strong> foi selecionada porque a lacuna é de natureza processual e organizacional, não técnica.",
-    ecos: "Aberto",
-    exemplosEcos: {
-        aberto: "<p>Os estudos relataram esse risco em ECOS de Código Aberto devido à ausência de um ator central com autoridade para impor estruturas formais de decisão, o que faz a governança emergir de forma orgânica e informal entre os contribuidores da comunidade. O estudo abaixo citou o risco no seguinte ECOS de Código Aberto:</p><ul><li>Oliveira e Alves (2021): <strong>GNOME</strong>.</li></ul>",
-        hibrido: "Nenhum exemplo de ECOS Híbrido foi identificado nos estudos para esse risco.",
-        proprietario: "Nenhum exemplo de ECOS Proprietário foi identificado nos estudos para esse risco."
-    },
-    metrica: "Robustez",
-    justificativaMetrica: "A ausência de mecanismos formais de governança no ecossistema afeta a <strong>robustez</strong> porque a governança formal é um dos pilares que fornece os mecanismos pelos quais o ECOS detecta e responde a ameaças à sua sustentabilidade. Na ausência dessas estruturas, o ecossistema perde capacidade de coordenar respostas a riscos, tornando-se vulnerável a perturbações que poderiam ser mitigadas com regras e processos formalmente estabelecidos (Iansiti e Levien, 2004).",
-    processoValor: "Captura de valor",
-    justificativaProcesso: "A ausência de mecanismos formais de governança no ecossistema afeta o processo de <strong>captura de valor</strong> porque a governança formal é o mecanismo que regula como os participantes do ECOS se apropriam do valor gerado. Sem regras e estruturas formais, esse processo torna-se incerto e desequilibrado, favorecendo atores que agem oportunisticamente em detrimento da sustentabilidade coletiva do ecossistema (Burström et al., 2022).",
-    solucoes: "S02 (Framework de Seleção de Fornecedores): Permite estruturar critérios de decisão, reduzindo riscos organizacionais. / S10 (Modelo de Technical Leverage): Fornece métricas para a governança. / S15 (Prática de Atrair e Reter Atores): Aborda práticas de governança. / S17 (Prática SLA): Formaliza regras e expectativas.",
-    estudos: ["E09", "E18"]
-},
-    {
-        id: "R16",
+        id: "R15",
         risco: "Sobrecarga de mantenedores de múltiplos pacotes críticos",
         descricao: "Este risco ocorre quando há ausência de remuneração e de processos formais para gerenciar contribuições externas, o que aumenta progressivamente a carga de trabalho dos mantenedores. Como consequência, a continuidade dos projetos é colocada em risco e a possibilidade de falhas causadas pela sobrecarga é ampliada.",
         cenario: "",
@@ -467,7 +444,7 @@ const dadosRiscos = [
         estudos: ["E12"]
     },
     {
-        id: "R17",
+        id: "R16",
         risco: "Dependência crítica de poucos mantenedores (Truck Factor)",
         descricao: "Este risco ocorre quando o conhecimento essencial sobre um projeto fica concentrado em um número reduzido de indivíduos. Como consequência, o abandono ou a indisponibilidade desses colaboradores pode gerar falhas em cascata nas bibliotecas dependentes, ameaçando a estabilidade de todo o ecossistema.",
         cenario: "",
@@ -490,7 +467,7 @@ const dadosRiscos = [
         estudos: ["E08"]
     },
     {
-        id: "R18",
+        id: "R17",
         risco: "Ameaças de insiders maliciosos no ecossistema",
         descricao: "Este risco ocorre quando desenvolvedores insatisfeitos ou mal-intencionados comprometem deliberadamente pacotes, introduzindo vulnerabilidades intencionais. Como consequência, e por envolver atores internos com acesso privilegiado, esse risco torna-se particularmente difícil de detectar e mitigar.",
         cenario: "",
@@ -510,6 +487,29 @@ const dadosRiscos = [
         justificativaProcesso: "As ameaças de insiders maliciosos no ecossistema afetam o processo de <strong>criação de valor</strong> porque os próprios atores que deveriam contribuir para a construção e evolução dos artefatos do ECOS passam a ser vetores de dano. Vulnerabilidades intencionais introduzidas por insiders comprometem a integridade dos componentes criados, inviabilizando sua utilização segura e minando a confiança no processo de criação coletiva de valor (Burström et al., 2022).",
         solucoes: "S05 (Framework TrustSECO): Registra fatos de confiança. / S08 (Modelo de Metas e Anti-Metas): Ajuda a analisar riscos ligados a motivações maliciosas. / S16 (Prática de Mecanismos de Segurança): Previne uploads maliciosos por meio da adoção de mecanismos como controle de permissões e auditoria.",
         estudos: ["E19"]
+    },
+    {
+        id: "R18",
+        risco: "Ausência de mecanismos formais de governança no ecossistema",
+        descricao: "Este risco ocorre quando não existem regras ou estruturas de governança formais, situação especialmente comum em ecossistemas de código aberto. Como consequência, surgem riscos difíceis de controlar, que impactam diretamente a sustentabilidade e a segurança do ecossistema.",
+        cenario: "",
+        dimensao: "Negócio",
+        classeSEI: "Risco de Ambiente de Desenvolvimento",
+        elementoSEI: "Processo de Desenvolvimento",
+        desafio: "Sem modelos de processo padronizado (processo)",
+        justificativaSEI: "A ausência de mecanismos formais de governança no ecossistema é classificada como <strong>Risco de Ambiente de Desenvolvimento</strong> porque afeta diretamente as regras, os papéis e os fluxos pelos quais as decisões de desenvolvimento são tomadas e executadas no ECOS. O elemento <strong>Processo de Desenvolvimento</strong> se aplica porque, sem processos padronizados de governança, o desenvolvimento torna-se desordenado e imprevisível, dificultando a identificação e o controle de riscos. A área <strong>Sem modelos de processo padronizado (processo)</strong> foi selecionada porque a lacuna é de natureza processual e organizacional, não técnica.",
+        ecos: "Aberto",
+        exemplosEcos: {
+            aberto: "<p>Os estudos relataram esse risco em ECOS de Código Aberto devido à ausência de um ator central com autoridade para impor estruturas formais de decisão, o que faz a governança emergir de forma orgânica e informal entre os contribuidores da comunidade. O estudo abaixo citou o risco no seguinte ECOS de Código Aberto:</p><ul><li>Oliveira e Alves (2021): <strong>GNOME</strong>.</li></ul>",
+            hibrido: "Nenhum exemplo de ECOS Híbrido foi identificado nos estudos para esse risco.",
+            proprietario: "Nenhum exemplo de ECOS Proprietário foi identificado nos estudos para esse risco."
+        },
+        metrica: "Robustez",
+        justificativaMetrica: "A ausência de mecanismos formais de governança no ecossistema afeta a <strong>robustez</strong> porque a governança formal é um dos pilares que fornece os mecanismos pelos quais o ECOS detecta e responde a ameaças à sua sustentabilidade. Na ausência dessas estruturas, o ecossistema perde capacidade de coordenar respostas a riscos, tornando-se vulnerável a perturbações que poderiam ser mitigadas com regras e processos formalmente estabelecidos (Iansiti e Levien, 2004).",
+        processoValor: "Captura de valor",
+        justificativaProcesso: "A ausência de mecanismos formais de governança no ecossistema afeta o processo de <strong>captura de valor</strong> porque a governança formal é o mecanismo que regula como os participantes do ECOS se apropriam do valor gerado. Sem regras e estruturas formais, esse processo torna-se incerto e desequilibrado, favorecendo atores que agem oportunisticamente em detrimento da sustentabilidade coletiva do ecossistema (Burström et al., 2022).",
+        solucoes: "S02 (Framework de Seleção de Fornecedores): Permite estruturar critérios de decisão, reduzindo riscos organizacionais. / S10 (Modelo de Technical Leverage): Fornece métricas para a governança. / S15 (Prática de Atrair e Reter Atores): Aborda práticas de governança. / S17 (Prática SLA): Formaliza regras e expectativas.",
+        estudos: ["E09", "E18"]
     },
     {
         id: "R19",
