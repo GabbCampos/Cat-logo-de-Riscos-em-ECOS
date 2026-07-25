@@ -1505,12 +1505,18 @@ main { padding: 120px 5%; max-width: 100%; box-sizing: border-box; }
     border: 1px solid rgba(255,255,255,.07);
     background: rgba(255,255,255,.03);
     animation: justSlideDown .2s ease;
+    font-family: 'Inter', sans-serif;
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    box-sizing: border-box;
 }
 .ecos-detail-box p {
     font-size: 0.82rem;
     color: #94a3b8;
     line-height: 1.65;
     margin: 0;
+    font-family: 'Inter', sans-serif;
 }
 .ecos-detail-box p + p {
     margin-top: 10px;
@@ -1518,6 +1524,37 @@ main { padding: 120px 5%; max-width: 100%; box-sizing: border-box; }
 #sidePanel.tecnicos .ecos-detail-box { border-color: rgba(56,189,248,.18); background: rgba(56,189,248,.04); }
 #sidePanel.sociais  .ecos-detail-box { border-color: rgba(251,191,36,.18); background: rgba(251,191,36,.04); }
 #sidePanel.negocio  .ecos-detail-box { border-color: rgba(74,222,128,.18); background: rgba(74,222,128,.04); }
+
+/* Lista de exemplos: mesma tipografia dos parágrafos da seção, contida dentro do card */
+.ecos-detail-box ul {
+    margin: 10px 0 0;
+    padding-left: 18px;
+    list-style-position: outside;
+    max-width: 100%;
+}
+.ecos-detail-box li {
+    font-size: 0.82rem;
+    color: #94a3b8;
+    line-height: 1.65;
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 4px;
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+.ecos-detail-box li:last-child {
+    margin-bottom: 0;
+}
+
+/* Marcadores (bullets) dos exemplos de ecossistemas: cor dinâmica conforme a dimensão do risco ativo */
+#sidePanel.tecnicos .ecos-detail-box li::marker { color: var(--color-tecnicos); }
+#sidePanel.sociais  .ecos-detail-box li::marker { color: var(--color-sociais); }
+#sidePanel.negocio  .ecos-detail-box li::marker { color: var(--color-negocio); }
+
+/* Nomes dos ECOS em destaque: negrito branco, igual ao padrão de ênfase do restante do catálogo */
+.ecos-detail-box li strong {
+    color: var(--text-high);
+    font-weight: 700;
+}
 /* ── Links de estudos e soluções ── */
 .study-tag {
     display: block;
