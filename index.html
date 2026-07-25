@@ -391,7 +391,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <p class="atb-ref">Fonte: Software Ecosystems Risks – Manalif et al. (2013).</p>
+                                    <p class="atb-ref">Fonte: Software Ecosystems Risks – Manalif et al. (2013)</p>
                                 </div>
                             </div>
 
@@ -431,7 +431,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <p class="atb-ref">Fonte: Revisiting software ecosystems research: A longitudinal literature study – Manikas (2016).</p>
+                                    <p class="atb-ref">Fonte: Revisiting Software Ecosystems Research: A Longitudinal Literature Study – Manikas (2016)</p>
                                 </div>
                             </div>
 
@@ -517,7 +517,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <p class="atb-ref">Fonte: Software ecosystems now and in the future: A definition, systematic literature review, and integration into the business and digital ecosystem literature — Burström et al. (2022)</p>
+                                    <p class="atb-ref">Fonte: Software Ecosystems Now and in the Future: A Definition, Systematic Literature Review, and Integration Into the Business and Digital Ecosystem Literature – Burström et al. (2022)</p>
                                 </div>
                             </div>
 
@@ -658,7 +658,7 @@
                                         </div>
                                     </div>
                                   
-                                    <p class="atb-ref">Campos et al. (2025). </p>
+                                    <p class="atb-ref">Fonte: Campos et al. (2025)</p>
                                 </div>
                             </div>
 
@@ -685,7 +685,7 @@
                                             <span class="ev-metric-label">soluções mapeadas</span>
                                         </div>
                                     </div>
-                                    <p class="atb-ref">Campos et al. (2025).</p>
+                                    <p class="atb-ref">Fonte: Campos et al. (2025)</p>
                                 </div>
                             </div>
 
@@ -858,16 +858,16 @@
         background: rgba(255,255,255,.03);
         display: flex; flex-direction: column; gap: 10px;
     }
-    .p1-dim-tec { border-top: 3px solid #38bdf8; }
-    .p1-dim-soc { border-top: 3px solid #38bdf8; }
-    .p1-dim-neg { border-top: 3px solid #38bdf8; }
+    .p1-dim-tec { border-top: 3px solid var(--color-tecnicos); }
+    .p1-dim-soc { border-top: 3px solid var(--color-sociais); }
+    .p1-dim-neg { border-top: 3px solid var(--color-negocio); }
 
     .p1-dim-header {
         display: flex; align-items: center; gap: 8px;
     }
-    .p1-dim-tec .p1-dim-header { color: #38bdf8; }
-    .p1-dim-soc .p1-dim-header { color: #38bdf8; }
-    .p1-dim-neg .p1-dim-header { color: #38bdf8; }
+    .p1-dim-tec .p1-dim-header { color: var(--color-tecnicos); }
+    .p1-dim-soc .p1-dim-header { color: var(--color-sociais); }
+    .p1-dim-neg .p1-dim-header { color: var(--color-negocio); }
 
     .p1-dim-label { font-size: 0.9rem; font-weight: 700; flex: 1; }
     .p1-dim-count {
@@ -1423,16 +1423,22 @@
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
                     </button>
                 </div>
-                <span class="field-label"></span>
-                <span class="field-value" id="riskMetric"></span>
-                <div id="riskMetricJustBox" class="just-accordion" style="display:none;">
-                    <button class="just-trigger" onclick="toggleJust('metrica')" aria-expanded="false" id="just-trigger-metrica">
-                        <svg class="just-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-                        <span>Por que esta métrica?</span>
-                    </button>
-                    <div class="just-body" id="just-body-metrica">
-                        <p id="riskMetricJust"></p>
+                <div class="ecos-cards" id="riskMetricCards">
+                    <div class="ecos-card" data-metrica="robustez" role="button" tabindex="0" aria-pressed="false" onclick="selecionarMetricaCard('robustez')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selecionarMetricaCard('robustez');}">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        <span>Robustez</span>
                     </div>
+                    <div class="ecos-card" data-metrica="produtividade" role="button" tabindex="0" aria-pressed="false" onclick="selecionarMetricaCard('produtividade')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selecionarMetricaCard('produtividade');}">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                        <span>Produtividade</span>
+                    </div>
+                    <div class="ecos-card" data-metrica="nichos" role="button" tabindex="0" aria-pressed="false" onclick="selecionarMetricaCard('nichos')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selecionarMetricaCard('nichos');}">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>
+                        <span>Criação de Nichos</span>
+                    </div>
+                </div>
+                <div id="riskMetricJustBox" class="ecos-detail-box" style="display:none;">
+                    <div id="riskMetricJust"></div>
                 </div>
             </div>
 
@@ -1444,16 +1450,22 @@
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
                     </button>
                 </div>
-                <span class="field-label"></span>
-                <span class="field-value" id="riskProcesso"></span>
-                <div id="riskProcessoJustBox" class="just-accordion" style="display:none;">
-                    <button class="just-trigger" onclick="toggleJust('processo')" aria-expanded="false" id="just-trigger-processo">
-                        <svg class="just-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-                        <span>Por que este processo?</span>
-                    </button>
-                    <div class="just-body" id="just-body-processo">
-                        <p id="riskProcessoJust"></p>
+                <div class="ecos-cards" id="riskProcessoCards">
+                    <div class="ecos-card" data-processo="criacao" role="button" tabindex="0" aria-pressed="false" onclick="selecionarProcessoCard('criacao')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selecionarProcessoCard('criacao');}">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+                        <span>Criação de Valor</span>
                     </div>
+                    <div class="ecos-card" data-processo="entrega" role="button" tabindex="0" aria-pressed="false" onclick="selecionarProcessoCard('entrega')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selecionarProcessoCard('entrega');}">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                        <span>Entrega de Valor</span>
+                    </div>
+                    <div class="ecos-card" data-processo="captura" role="button" tabindex="0" aria-pressed="false" onclick="selecionarProcessoCard('captura')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selecionarProcessoCard('captura');}">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                        <span>Captura de Valor</span>
+                    </div>
+                </div>
+                <div id="riskProcessoJustBox" class="ecos-detail-box" style="display:none;">
+                    <div id="riskProcessoJust"></div>
                 </div>
             </div>
 
