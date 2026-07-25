@@ -1330,12 +1330,12 @@ const ajudaConteudo = {
     solucoes: {
         titulo: "Soluções Identificadas na Literatura",
         texto: "Apresentamos as estratégias de mitigação identificadas por meio do MSL. Cada solução, seja ela um framework, modelo, ferramenta ou método, foi proposta e/ou validada. Utilize o botão 'Acessar estudo' para consultar a fundamentação completa no estudo primário.",
-        fonte: "Fonte: Challenges and Solutions of Risk Management in Software Ecosystems – Campos et al. (2025)"
+        fonte: "Fonte: Challenges and Solutions of Risk Management in Software Ecosystems – Campos et al. (2026)"
     },
     estudos: {
         titulo: "Estudos Primários que Identificaram este Risco",
         texto: "Estes são os estudos que fundamentam a identificação deste risco em nossa base de evidências. Clique em 'Acessar estudo' para consultar a estudo primário",
-        fonte: "Fonte: Challenges and Solutions of Risk Management in Software Ecosystems – Campos et al. (2025)"
+        fonte: "Fonte: Challenges and Solutions of Risk Management in Software Ecosystems – Campos et al. (2026)"
     }
 };
 
