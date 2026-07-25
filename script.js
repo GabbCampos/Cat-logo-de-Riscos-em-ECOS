@@ -856,9 +856,9 @@ function renderizarPainel(item) {
     dimensaoAtual = classeCor; // salva para uso no modal de ajuda
 
     // — Bloco 1: Análise SEI —
-    document.getElementById('riskClassSEI').innerText = item.classeSEI || '—';
-    document.getElementById('riskElementoSEI').innerText = item.elementoSEI || '—';
-    document.getElementById('riskDesafio').innerText = item.desafio || '—';
+    document.getElementById('riskClassSEI').innerText = item.classeSEI || 'Não identificado';
+    document.getElementById('riskElementoSEI').innerText = item.elementoSEI || 'Não identificado';
+    document.getElementById('riskDesafio').innerText = item.desafio || 'Não identificado';
 
     const justBox = document.getElementById('riskJustificationBox');
     const justText = document.getElementById('riskJustification');
@@ -1314,7 +1314,7 @@ const ajudaConteudo = {
     },
     ecos: {
         titulo: "Exemplos de Ecossistemas em que esse Risco foi Observado",
-        texto: "Este campo apresenta uma síntese das evidências encontradas nos estudos primários que fundamentam o catálogo. Ao selecionar um dos três tipos de ecossistema (ECOS de Código Aberto, ECOS Híbrido ou ECOS Proprietário, segundo a tipologia de Manikas, 2016), são exibidos os exemplos citados na literatura para aquele risco, junto com a descrição do respectivo tipo de ECOS. Quando os estudos primários não relatam explicitamente o risco em determinado tipo de ecossistema, a seleção do card correspondente exibe uma mensagem informando a ausência de evidências — o que não significa que o risco seja inaplicável àquele tipo, apenas que não há relato explícito nos estudos analisados.",
+        texto: "Este campo apresenta uma síntese das evidências encontradas nos estudos primários que fundamentam o catálogo. Ao selecionar um dos três tipos de ecossistema (ECOS de Código Aberto, ECOS Híbrido ou ECOS Proprietário, segundo a tipologia de Manikas, 2016), são exibidos os exemplos citados na literatura para aquele risco, junto com a descrição do respectivo tipo de ECOS. Quando os estudos primários não relatam explicitamente o risco em determinado tipo de ecossistema, a seleção do card correspondente exibe uma mensagem informando a ausência de evidências, o que não significa que o risco seja inaplicável àquele tipo, apenas que não há relato explícito nos estudos analisados.",
         fonte: "Fonte: Revisiting Software Ecosystems Research: A Longitudinal Literature Study – Manikas (2016)"
     },
     metrica: {
