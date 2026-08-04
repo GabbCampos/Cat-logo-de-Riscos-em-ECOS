@@ -92,7 +92,7 @@ const dadosRiscos = [
         exemplosEcos: {
             aberto: "<p>Esse risco foi observado em ECOS de Código Aberto, especialmente em ecossistemas baseados em gerenciadores de pacotes e bibliotecas compartilhadas. Os estudos abaixo citaram o risco nos seguintes ECOS de Código Aberto:</p><ul><li>Zhou et al. (2024): <strong>PyPI</strong>, <strong>SourceForge</strong>, <strong>Composer</strong>, <strong>Rust</strong> e <strong>RubyGems</strong>.</li><li>Schueller e Wachs (2024): <strong>OpenSSL</strong>, <strong>Apache Struts 2</strong> e <strong>log4j</strong>.</li><li>Wattanakriengkrai et al. (2023): <strong>log4j</strong>.</li><li>Jiang et al. (2022): <strong>Hugging Face</strong>.</li></ul>",
             hibrido: "<p>Esse risco também foi observado em ECOS Híbridos, nos quais elementos de código aberto coexistem com componentes, serviços ou atores proprietários. Os estudos abaixo citaram o risco nos seguintes ECOS Híbridos:</p><ul><li>Jiang et al. (2024): <strong>NPM</strong>.</li><li>Zhou et al. (2024): <strong>NPM</strong>, <strong>Maven</strong>, <strong>Cocoapods</strong>, <strong>Docker</strong> e <strong>NuGet</strong>.</li><li>Schueller e Wachs (2024): <strong>NPM</strong>.</li><li>Wattanakriengkrai et al. (2023): <strong>NPM</strong>.</li></ul>",
-            proprietario: "Nenhum exemplo de ECOS Proprietário foi identificado nos estudos para esse risco."
+            proprietario: "Esse risco não foi observado em ECOS Proprietários nos estudos primários analisados no MSL."
         },
         metrica: "Robustez",
         justificativaMetrica: "O comprometimento da cadeia de suprimentos de software afeta a <strong>robustez</strong> porque falhas introduzidas em componentes centrais podem se propagar de forma sistêmica, comprometendo a continuidade e a capacidade de sobrevivência do ECOS diante de perturbações (Iansiti e Levien, 2004).",
@@ -193,7 +193,7 @@ const dadosRiscos = [
             proprietario: "Nenhum exemplo de ECOS Proprietário foi identificado nos estudos para esse risco."
         },
         metrica: "Robustez",
-        justificativaMetrica: "Os ataques direcionados à infraestrutura e aos pacotes do ecossistema afetam a <strong>robustez</strong> porque reduzem a capacidade do ECOS de resistir e se recuperar de perturbações. O comprometimento de pacotes amplamente utilizados pode atingir vários projetos simultaneamente, afetando a integridade e a continuidade do ecossistema (Iansiti e Levien, 2004).",
+        justificativaMetrica: "Os ataques direcionados à infraestrutura e aos pacotes do ecossistema afetam a <strong>robustez</strong> porque reduzem a capacidade do ECOS de resistir e se recuperar de perturbações. O comprometimento de pacotes amplamente utilizados pode sfetar vários projetos simultaneamente, afetando a integridade e a continuidade do ecossistema (Iansiti e Levien, 2004).",
         processoValor: "Criação de valor",
         justificativaProcesso: "Os ataques direcionados à infraestrutura e aos pacotes do ecossistema afetam o processo de <strong>criação de valor</strong> porque comprometem as ferramentas, bibliotecas e componentes utilizados pelos participantes na construção de soluções. Como consequência, a produção de novos artefatos pode ser interrompida ou ocorrer sobre uma base técnica insegura (Burström et al., 2022).",
         solucoes: "S05 (Framework TrustSECO): Ajuda a reconfigurar sistemas após ataques e apoia a detecção. / S17 (Prática SLA): Auxilia na redução de riscos técnicos e organizacionais, incluindo ataques.",
@@ -632,7 +632,7 @@ const dadosRiscos = [
             proprietario: "<p>Esse risco foi observado em ECOS Proprietários devido ao fechamento e falha de ecossistema causados pelo abandono gradual dos atores, decorrente da falta de rentabilidade e incapacidade de atingir as metas de vendas após a eliminação de funcionalidades essenciais do Produto Mínimo Viável (MVP). Os estudos abaixo citaram o risco no seguinte ECOS Proprietário:</p><ul><li>Saarni et al. (2025): <strong>Case SECO (ecossistema finlandês de serviços para novos empreendedores)</strong>.</li></ul>"
         },
         metrica: "Criação de Nichos",
-        justificativaMetrica: "O fracasso em fases iniciais de implantação do ECOS afeta a <strong>criação de nichos</strong> porque impede que os primeiros participantes se estabeleçam e criem as bases para o crescimento do ecossistema. Sem um MVP que atraia e engaje participantes iniciais, o ECOS não consegue atingir a massa crítica necessária para que nichos especializados se desenvolvam (Iansiti e Levien, 2004).",
+        justificativaMetrica: "O fracasso em fases iniciais de implantação do ECOS afeta a <strong>criação de nichos</strong> porque impede que os primeiros participantes se estabeleçam e criem as bases para o crescimento do ecossistema. Sem um MVP que atraia e engaje participantes iniciais, o ECOS não consegue afetar a massa crítica necessária para que nichos especializados se desenvolvam (Iansiti e Levien, 2004).",
         processoValor: "Captura de valor",
         justificativaProcesso: "O fracasso em fases iniciais de implantação do ECOS afeta o processo de <strong>captura de valor</strong> porque é nesse momento que os fundamentos da proposta de valor são estabelecidos e testados. O fracasso nessa etapa impede que o ecossistema consolide sua proposta de valor e inicia um ciclo de baixo engajamento que compromete a viabilidade da captura de valor no longo prazo (Burström et al., 2022).",
         solucoes: "S21 (Método de Apoio à Decisão Multicritério): Apoia decisões estratégicas mais seguras, especialmente no design do Produto Mínimo Viável (MVP).",
@@ -786,12 +786,12 @@ function selecionarMetricaCard(tipo) {
         const texto = textoJustificativaPorCategoria(riscoMetricaJustAtual, tipo);
         metricJust.innerHTML = texto ? `<p>${texto}</p>` : `<p>Este risco não foi identificado como impactando a métrica de ${info.nome} segundo os estudos analisados.</p>`;
     } else {
-        metricJust.innerHTML = `<p>Este risco não foi identificado como impactando a métrica de ${info.nome} segundo os estudos analisados.</p>`;
+        metricJust.innerHTML = `<p>A métrica de ${info.nome} não é afetada por esse risco, de acordo com a análise realizada nos estudos primários do MSL.</p>`;
     }
     metricJustBox.style.display = 'block';
 }
 
-// Chamado ao clicar (ou ativar via teclado) em um dos cards de Processo de Valor
+
 function selecionarProcessoCard(tipo) {
     const info = processoTipoInfo[tipo];
     if (!info) return;
@@ -813,7 +813,7 @@ function selecionarProcessoCard(tipo) {
         const texto = textoJustificativaPorCategoria(riscoProcessoJustAtual, tipo);
         processoJust.innerHTML = texto ? `<p>${texto}</p>` : `<p>Este risco não foi identificado como impactando o processo de ${info.nome} segundo os estudos analisados.</p>`;
     } else {
-        processoJust.innerHTML = `<p>Este risco não foi identificado como impactando o processo de ${info.nome} segundo os estudos analisados.</p>`;
+        processoJust.innerHTML = `<p> O processo de ${info.nome} não é ameaçado por esse risco, de acordo com a análise dos estudos primários do MSL.</p>`;
     }
     processoJustBox.style.display = 'block';
 }
@@ -1318,7 +1318,7 @@ const ajudaConteudo = {
         fonte: "Fonte: Revisiting Software Ecosystems Research: A Longitudinal Literature Study – Manikas (2016)"
     },
     metrica: {
-        titulo: "Métricas de Saúde do ECOS atingida pelo Risco",
+        titulo: "Métricas de Saúde do ECOS Afetadas pelo Risco",
         texto: "Este campo identifica o impacto do risco na saúde do ecossistema, utilizando os indicadores propostos por Iansiti e Levien (2004). O risco pode afetar a Produtividade do sistema, sua Robustez frente a mudanças ou sua capacidade de gerar novos Nichos de Criação (inovação). Identificar essa métrica ajuda a priorizar ações de mitigação estratégicas.",
         fonte: "Fonte: Strategy as Ecology – Iansiti e Levien (2004)"
     },
