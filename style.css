@@ -746,8 +746,16 @@ main { padding: 120px 5%; max-width: 100%; box-sizing: border-box; }
 .solution-name {
     font-size: 0.77rem;
     font-weight: 700;
-    color: #4ade80;
     letter-spacing: 0.2px;
+    flex: 1;
+    min-width: 0;
+}
+
+.solution-name-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #4ade80;
 }
 
 .solution-desc {
@@ -755,6 +763,20 @@ main { padding: 120px 5%; max-width: 100%; box-sizing: border-box; }
     color: var(--text-low);
     line-height: 1.45;
 }
+
+/* ── Ícone de tipo de solução (Framework/Modelo/Ferramenta/Método/Prática) ── */
+.solution-tipo-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    border: 1.5px solid currentColor;
+    opacity: 0.85;
+    flex-shrink: 0;
+}
+.solution-tipo-badge svg { flex-shrink: 0; opacity: 0.95; width: 20px; height: 20px; }
 
 /* ── TAGS DE ESTUDOS ── */
 .studies-tags {
@@ -1380,9 +1402,9 @@ main { padding: 120px 5%; max-width: 100%; box-sizing: border-box; }
 #sidePanel.negocio  .panel-card-title { color: var(--color-negocio);  }
 
 /* — Nome da solução (solution-name) — */
-#sidePanel.tecnicos .solution-name { color: var(--color-tecnicos); }
-#sidePanel.sociais  .solution-name { color: var(--color-sociais);  }
-#sidePanel.negocio  .solution-name { color: var(--color-negocio);  }
+#sidePanel.tecnicos .solution-name-row { color: var(--color-tecnicos); }
+#sidePanel.sociais  .solution-name-row { color: var(--color-sociais);  }
+#sidePanel.negocio  .solution-name-row { color: var(--color-negocio);  }
 
 /* — Tags dos estudos primários (study-tag) — */
 #sidePanel.tecnicos .study-tag {
@@ -1463,6 +1485,12 @@ main { padding: 120px 5%; max-width: 100%; box-sizing: border-box; }
 }
 .ecos-card.has-example:hover {
     background: rgba(255,255,255,0.06);
+}
+/* Card selecionado mas sem informações relevantes: permanece neutro/cinza (não deve sugerir outro significado ao usuário) */
+.ecos-card.active:not(.tecnicos):not(.sociais):not(.negocio) {
+    border-color: rgba(255,255,255,0.22);
+    background: rgba(255,255,255,0.07);
+    color: rgba(255,255,255,0.6);
 }
 .ecos-card.active.tecnicos {
     border-color: var(--color-tecnicos);
