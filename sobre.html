@@ -1,47 +1,17 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+    <script>(function(){try{var t=localStorage.getItem('seco-risk-theme');document.documentElement.setAttribute('data-theme', t==='dark' ? 'dark' : 'light');}catch(e){document.documentElement.setAttribute('data-theme','light');}})();</script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre o Catálogo | Gerência de Riscos em ECOS</title>
+    <title>Sobre | Catálogo de Riscos em Ecossistemas de Software</title>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><polygon points='50,5 93,27.5 93,72.5 50,95 7,72.5 7,27.5' fill='none' stroke='%2338bdf8' stroke-width='10'/><polygon points='50,22 78,37.5 78,67.5 50,83 22,67.5 22,37.5' fill='%2338bdf8' opacity='0.2'/></svg>">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        .logo {
-            display: flex !important;
-            align-items: center;
-            gap: 8px;
-            flex-shrink: 1;
-            min-width: 0;
-        }
-        .logo-icon {
-            font-size: 1.4rem;
-            color: #38bdf8;
-            line-height: 1;
-            filter: drop-shadow(0 0 6px rgba(56,189,248,0.55));
-            flex-shrink: 0;
-        }
-        .logo-text {
-            color: #e2e8f0;
-            font-weight: 600;
-            font-size: 0.88rem;
-            letter-spacing: 0.01em;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        .logo-highlight { color: #38bdf8; font-weight: 800; }
-        .logo-text-long  { display: inline; }
-        .logo-text-short { display: none; }
-        @media (max-width: 1024px) {
-            .logo-text-long  { display: none; }
-            .logo-text-short { display: inline; }
-            .logo-text { font-size: 0.8rem; }
-        }
-
-        /* ── Sobre: grid duas colunas ── */
+                /* ── Sobre: grid duas colunas ── */
         .sobre-section { padding-bottom: 120px; }
         .sobre-container { max-width: 1200px; }
         .sobre-header { margin-bottom: 0 !important; }
@@ -64,8 +34,8 @@
 
         /* ── Card de origem ── */
         .origin-card {
-            background: rgba(56,189,248,0.05);
-            border: 1px solid rgba(56,189,248,0.2);
+            background: rgba(var(--accent-rgb), 0.05);
+            border: 1px solid rgba(var(--accent-rgb), 0.2);
             border-radius: 16px;
             padding: 24px 26px;
             display: flex;
@@ -81,13 +51,13 @@
             flex-shrink: 0;
             width: 38px;
             height: 38px;
-            background: rgba(56,189,248,0.12);
-            border: 1px solid rgba(56,189,248,0.25);
+            background: rgba(var(--accent-rgb), 0.12);
+            border: 1px solid rgba(var(--accent-rgb), 0.25);
             border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #38bdf8;
+            color: var(--accent);
         }
         .origin-meta { flex: 1; min-width: 0; }
         .origin-label {
@@ -95,44 +65,44 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            color: #38bdf8;
+            color: var(--accent);
             margin: 0 0 5px;
         }
         .origin-title {
             font-size: 0.95rem;
             font-weight: 700;
-            color: #f1f5f9;
+            color: var(--text-high);
             margin: 0 0 4px;
             line-height: 1.4;
         }
         .origin-divider {
             height: 1px;
-            background: rgba(56,189,248,0.12);
+            background: rgba(var(--accent-rgb), 0.12);
         }
         .origin-doi {
             display: inline-flex;
             align-items: center;
             gap: 8px;
             font-size: 0.78rem;
-            color: #38bdf8;
+            color: var(--accent);
             text-decoration: none;
-            background: rgba(56,189,248,0.08);
-            border: 1px solid rgba(56,189,248,0.2);
+            background: rgba(var(--accent-rgb), 0.08);
+            border: 1px solid rgba(var(--accent-rgb), 0.2);
             border-radius: 8px;
             padding: 7px 13px;
             transition: background 0.18s, border-color 0.18s;
             width: fit-content;
         }
         .origin-doi:hover {
-            background: rgba(56,189,248,0.15);
-            border-color: rgba(56,189,248,0.4);
+            background: rgba(var(--accent-rgb), 0.15);
+            border-color: rgba(var(--accent-rgb), 0.4);
         }
         .origin-doi svg { flex-shrink: 0; }
         .origin-thumb {
             width: 100%;
             display: block;
             border-radius: 10px;
-            border: 1px solid rgba(56,189,248,0.2);
+            border: 1px solid rgba(var(--accent-rgb), 0.2);
             box-shadow: 0 10px 28px rgba(0,0,0,0.4);
         }
 
@@ -145,10 +115,10 @@
 <body>
     <header class="navbar">
         <nav class="nav-container">
-            <div class="logo">
+            <a href="index.html" class="logo" aria-label="Catálogo de Riscos em Ecossistemas de Software">
                 <span class="logo-icon">⬡</span>
-                <span class="logo-text">Catálogo de <span class="logo-highlight logo-text-long">Riscos em Ecossistemas de Software</span><span class="logo-highlight logo-text-short">Riscos em ECOS</span></span>
-            </div>
+                <span class="logo-text">Catálogo de <span class="logo-highlight">Riscos em Ecossistemas de Software</span></span>
+            </a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html" onclick="closeMenu()">Início</a></li>
                 <li><a href="index.html#catalogo" onclick="closeMenu()">Catálogo</a></li>
@@ -157,6 +127,13 @@
                 <li><a href="index.html#contato" onclick="closeMenu()">Contato</a></li>
                 <li><a href="referencias.html" onclick="closeMenu()">Referências</a></li>
             </ul>
+            <button class="theme-toggle" id="themeToggle" type="button" role="switch" aria-checked="false" aria-label="Alternar entre modo dia e modo noturno">
+                <span class="theme-toggle-track">
+                    <span class="theme-toggle-icon theme-toggle-icon-sun" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></span>
+                    <span class="theme-toggle-icon theme-toggle-icon-moon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 1020.354 15.354z"/></svg></span>
+                    <span class="theme-toggle-thumb"></span>
+                </span>
+            </button>
             <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMenu()">
                 <span></span><span></span><span></span>
             </button>
@@ -171,7 +148,7 @@
                 <!-- ── COLUNA ESQUERDA: badge + título + texto + botões ── -->
                 <article class="sobre-text">
                     <span class="tag-small" style="
-                        color: #38bdf8;
+                        color: var(--accent);
                         display: inline-flex;
                         align-items: center;
                         gap: 8px;
@@ -180,15 +157,15 @@
                         font-weight: 700;
                         text-transform: uppercase;
                         padding: 6px 14px;
-                        border: 1px solid rgba(56,189,248,0.25);
+                        border: 1px solid rgba(var(--accent-rgb), 0.25);
                         border-radius: 100px;
-                        background: rgba(56,189,248,0.07);
+                        background: rgba(var(--accent-rgb), 0.07);
                         margin-bottom: 24px;
                     ">
                         <i class="fas fa-book" style="font-size:0.7rem;"></i>
                         SOBRE O CATÁLOGO
                     </span>
-                    <h2 style="font-size: clamp(1.8rem, 3.5vw, 2.6rem); line-height: 1.15; margin-bottom: 2rem; color: #f8fafc; font-weight: 800;">O que é este catálogo e como foi construído?</h2>
+                    <h2 style="font-size: clamp(1.8rem, 3.5vw, 2.6rem); line-height: 1.15; margin-bottom: 2rem; color: var(--text-high); font-weight: 800;">O que é este catálogo e como foi construído?</h2>
                     <p>Este catálogo foi desenvolvido com base em um <strong>Mapeamento Sistemático da Literatura (MSL)</strong>, conduzido entre janeiro e julho de 2025. Cada risco é apresentado a partir de uma perspectiva integrada, combinando diferentes modelos teóricos e de classificação. A caracterização dos riscos considera a Taxonomia de Riscos do Software Engineering Institute (SEI), a tipologia de ecossistemas de software proposta por Manikas (2016), as métricas de saúde do ecossistema de Iansiti e Levien (2004) e o modelo de processos de valor de Burström et al. (2022).</p>
                     <p>O catálogo tem como objetivo apoiar pesquisadores e profissionais na identificação, compreensão e análise de riscos em ecossistemas de software, relacionando cada risco às soluções propostas e às evidências disponíveis na literatura científica.</p>
 
@@ -232,7 +209,26 @@
         function closeMenu() {
             document.getElementById('navLinks').classList.remove('open');
             document.getElementById('hamburger').classList.remove('active');
+
+        
         }
-    </script>
+    
+        (function() {
+            var btn = document.getElementById('themeToggle');
+            if (!btn) return;
+            function sync() {
+                var isLight = document.documentElement.getAttribute('data-theme') === 'light';
+                btn.setAttribute('aria-checked', isLight ? 'true' : 'false');
+            }
+            btn.addEventListener('click', function() {
+                var current = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+                var next = current === 'light' ? 'dark' : 'light';
+                document.documentElement.setAttribute('data-theme', next);
+                try { localStorage.setItem('seco-risk-theme', next); } catch (e) {}
+                sync();
+            });
+            sync();
+        })();
+</script>
 </body>
 </html>
