@@ -1,47 +1,17 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+    <script>(function(){try{var t=localStorage.getItem('seco-risk-theme');document.documentElement.setAttribute('data-theme', t==='dark' ? 'dark' : 'light');}catch(e){document.documentElement.setAttribute('data-theme','light');}})();</script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Referências | Gerência de Riscos em ECOS</title>
+    <title>Referências | Catálogo de Riscos em Ecossistemas de Software</title>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><polygon points='50,5 93,27.5 93,72.5 50,95 7,72.5 7,27.5' fill='none' stroke='%2338bdf8' stroke-width='10'/><polygon points='50,22 78,37.5 78,67.5 50,83 22,67.5 22,37.5' fill='%2338bdf8' opacity='0.2'/></svg>">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        .logo {
-            display: flex !important;
-            align-items: center;
-            gap: 8px;
-            flex-shrink: 1;
-            min-width: 0;
-        }
-        .logo-icon {
-            font-size: 1.4rem;
-            color: #38bdf8;
-            line-height: 1;
-            filter: drop-shadow(0 0 6px rgba(56,189,248,0.55));
-            flex-shrink: 0;
-        }
-        .logo-text {
-            color: #e2e8f0;
-            font-weight: 600;
-            font-size: 0.88rem;
-            letter-spacing: 0.01em;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        .logo-highlight { color: #38bdf8; font-weight: 800; }
-        .logo-text-long  { display: inline; }
-        .logo-text-short { display: none; }
-        @media (max-width: 1024px) {
-            .logo-text-long  { display: none; }
-            .logo-text-short { display: inline; }
-            .logo-text { font-size: 0.8rem; }
-        }
-
-        /* ── Layout geral da página ── */
+                /* ── Layout geral da página ── */
         .refs-section { padding-top: calc(var(--nav-height) + 60px); padding-bottom: 120px; }
         .refs-container { max-width: 980px; margin: 0 auto; padding: 0 24px; }
         .refs-intro { max-width: 720px; margin: 0 auto 3rem; text-align: center; }
@@ -49,13 +19,13 @@
 
         .refs-block { margin-bottom: 3.5rem; }
         .refs-block-head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 1.4rem; }
-        .refs-block-title { font-size: 1.3rem; font-weight: 800; color: #f1f5f9; }
+        .refs-block-title { font-size: 1.3rem; font-weight: 800; color: var(--text-high); }
         .refs-block-count {
             font-size: 0.75rem;
             font-weight: 700;
-            color: #38bdf8;
-            background: rgba(56,189,248,0.1);
-            border: 1px solid rgba(56,189,248,0.25);
+            color: var(--accent);
+            background: rgba(var(--accent-rgb), 0.1);
+            border: 1px solid rgba(var(--accent-rgb), 0.25);
             border-radius: 100px;
             padding: 3px 11px;
         }
@@ -73,8 +43,8 @@
         .theory-item {
             display: flex;
             padding: 16px 18px;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.07);
+            background: rgba(var(--overlay-rgb), 0.03);
+            border: 1px solid rgba(var(--overlay-rgb), 0.07);
             border-radius: 12px;
             min-height: 122px;
         }
@@ -100,7 +70,7 @@
         .theory-title {
             font-size: 0.85rem;
             font-weight: 600;
-            color: #cbd5e1 !important;
+            color: var(--text-mid) !important;
             margin-bottom: 0 !important;
             flex: 1;
             min-width: 0;
@@ -122,9 +92,9 @@
             font-size: 0.7rem;
             font-weight: 700;
             letter-spacing: 0.1px;
-            color: #38bdf8;
-            background: rgba(56,189,248,0.08);
-            border: 1px solid rgba(56,189,248,0.2);
+            color: var(--accent);
+            background: rgba(var(--accent-rgb), 0.08);
+            border: 1px solid rgba(var(--accent-rgb), 0.2);
             border-radius: 8px;
             padding: 5px 10px;
             margin-bottom: 8px;
@@ -134,8 +104,8 @@
 
         /* ── Estudos primários: lista dentro de um card ── */
         .studies-card {
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.07);
+            background: rgba(var(--overlay-rgb), 0.02);
+            border: 1px solid rgba(var(--overlay-rgb), 0.07);
             border-radius: 14px;
             padding: 16px 16px 10px;
         }
@@ -143,22 +113,22 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.09);
+            background: rgba(var(--overlay-rgb), 0.03);
+            border: 1px solid rgba(var(--overlay-rgb), 0.09);
             border-radius: 10px;
             padding: 10px 14px;
             margin-bottom: 18px;
             color: #64748b;
             transition: border-color 0.15s;
         }
-        .studies-search:focus-within { border-color: rgba(56,189,248,0.4); }
+        .studies-search:focus-within { border-color: rgba(var(--accent-rgb), 0.4); }
         .studies-search svg { flex-shrink: 0; }
         .studies-search input {
             flex: 1;
             background: none;
             border: none;
             outline: none;
-            color: #e2e8f0;
+            color: var(--text-mid);
             font-family: 'Inter', sans-serif;
             font-size: 0.85rem;
         }
@@ -185,7 +155,7 @@
         }
         /* Zebra striping por linha (funciona em pares, já que a grade tem 2 colunas) */
         .studies-card .study-entry:nth-child(4n+1),
-        .studies-card .study-entry:nth-child(4n+2) { background: rgba(255,255,255,0.045); }
+        .studies-card .study-entry:nth-child(4n+2) { background: rgba(var(--overlay-rgb), 0.045); }
 
         /* ── Responsivo ── */
         @media (max-width: 768px) {
@@ -196,10 +166,10 @@
 <body>
     <header class="navbar">
         <nav class="nav-container">
-            <div class="logo">
+            <a href="index.html" class="logo" aria-label="Catálogo de Riscos em Ecossistemas de Software">
                 <span class="logo-icon">⬡</span>
-                <span class="logo-text">Catálogo de <span class="logo-highlight logo-text-long">Riscos em Ecossistemas de Software</span><span class="logo-highlight logo-text-short">Riscos em ECOS</span></span>
-            </div>
+                <span class="logo-text">Catálogo de <span class="logo-highlight">Riscos em Ecossistemas de Software</span></span>
+            </a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html" onclick="closeMenu()">Início</a></li>
                 <li><a href="index.html#catalogo" onclick="closeMenu()">Catálogo</a></li>
@@ -208,6 +178,13 @@
                 <li><a href="index.html#contato" onclick="closeMenu()">Contato</a></li>
                 <li><a href="referencias.html" onclick="closeMenu()">Referências</a></li>
             </ul>
+            <button class="theme-toggle" id="themeToggle" type="button" role="switch" aria-checked="false" aria-label="Alternar entre modo dia e modo noturno">
+                <span class="theme-toggle-track">
+                    <span class="theme-toggle-icon theme-toggle-icon-sun" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></span>
+                    <span class="theme-toggle-icon theme-toggle-icon-moon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 1020.354 15.354z"/></svg></span>
+                    <span class="theme-toggle-thumb"></span>
+                </span>
+            </button>
             <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMenu()">
                 <span></span><span></span><span></span>
             </button>
@@ -219,7 +196,7 @@
 
             <div class="refs-intro">
                 <span class="tag-small" style="
-                    color: #38bdf8;
+                    color: var(--accent);
                     display: inline-flex;
                     align-items: center;
                     gap: 8px;
@@ -228,16 +205,16 @@
                     font-weight: 700;
                     text-transform: uppercase;
                     padding: 6px 14px;
-                    border: 1px solid rgba(56,189,248,0.25);
+                    border: 1px solid rgba(var(--accent-rgb), 0.25);
                     border-radius: 100px;
-                    background: rgba(56,189,248,0.07);
+                    background: rgba(var(--accent-rgb), 0.07);
                     margin-bottom: 24px;
                 ">
                     <i class="fas fa-book" style="font-size:0.7rem;"></i>
                     REFERÊNCIAS
                 </span>
-                <h2 style="font-size: clamp(1.8rem, 3.5vw, 2.6rem); line-height: 1.15; margin-bottom: 1.4rem; color: #f8fafc; font-weight: 800;">Referências do catálogo</h2>
-                <p style="color:#94a3b8;">Referências que fundamentam o catálogo: os estudos utilizados na classificação dos riscos e os estudos primários do MSL.</p>
+                <h2 style="font-size: clamp(1.8rem, 3.5vw, 2.6rem); line-height: 1.15; margin-bottom: 1.4rem; color: var(--text-high); font-weight: 800;">Referências do catálogo</h2>
+                <p style="color:var(--text-low);">Referências que fundamentam o catálogo: os estudos utilizados na classificação dos riscos e os estudos primários do MSL.</p>
             </div>
 
             <!-- ── Bloco 1: Referências teóricas ── -->
@@ -544,7 +521,24 @@
             document.getElementById('hamburger').classList.remove('active');
         }
 
-        // — Busca em tempo real na lista de Estudos Primários do MSL —
+        
+        (function() {
+            var btn = document.getElementById('themeToggle');
+            if (!btn) return;
+            function sync() {
+                var isLight = document.documentElement.getAttribute('data-theme') === 'light';
+                btn.setAttribute('aria-checked', isLight ? 'true' : 'false');
+            }
+            btn.addEventListener('click', function() {
+                var current = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+                var next = current === 'light' ? 'dark' : 'light';
+                document.documentElement.setAttribute('data-theme', next);
+                try { localStorage.setItem('seco-risk-theme', next); } catch (e) {}
+                sync();
+            });
+            sync();
+        })();
+// — Busca em tempo real na lista de Estudos Primários do MSL —
         function normalizarBusca(t) {
             return (t || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
         }
