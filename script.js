@@ -965,7 +965,7 @@ function renderizarPainel(item) {
                             ${badgeTipo}
                             <span class="solution-name">${nomeFinal}</span>
                         </div>
-                        <span class="solution-desc">${sDesc}</span>
+                        <span class="solution-desc${badgeTipo ? ' has-badge' : ''}">${sDesc}</span>
                     </div>
                     ${linkDOI}
                 `;
@@ -1063,9 +1063,9 @@ function exibirRiscos(lista) {
 
         // Cor do botão conforme dimensão
         const btnColorMap = {
-            tecnico: { bg: 'rgba(56,189,248,0.12)', border: 'rgba(56,189,248,0.35)', color: '#38bdf8' },
-            social:  { bg: 'rgba(251,191,36,0.12)',  border: 'rgba(251,191,36,0.35)',  color: '#fbbf24' },
-            negocio: { bg: 'rgba(74,222,128,0.12)',  border: 'rgba(74,222,128,0.35)',  color: '#4ade80' },
+            tecnico: { bg: 'rgba(var(--accent-rgb),0.12)', border: 'rgba(var(--accent-rgb),0.35)', color: 'var(--accent)' },
+            social:  { bg: 'rgba(var(--color-sociais-rgb),0.12)',  border: 'rgba(var(--color-sociais-rgb),0.35)',  color: 'var(--color-sociais)' },
+            negocio: { bg: 'rgba(var(--color-negocio-rgb),0.12)',  border: 'rgba(var(--color-negocio-rgb),0.35)',  color: 'var(--color-negocio)' },
         };
         const btnStyle = btnColorMap[classeCSS] || btnColorMap.tecnico;
 
