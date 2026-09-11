@@ -5,114 +5,156 @@
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre | Catálogo de Riscos em Ecossistemas de Software</title>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><polygon points='50,5 93,27.5 93,72.5 50,95 7,72.5 7,27.5' fill='none' stroke='%2338bdf8' stroke-width='10'/><polygon points='50,22 78,37.5 78,67.5 50,83 22,67.5 22,37.5' fill='%2338bdf8' opacity='0.2'/></svg>">
-    <link rel="stylesheet" href="style.css">
+    <title>Catálogo de Riscos em Ecossistemas de Software</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><polygon points='50,5 93,27.5 93,72.5 50,95 7,72.5 7,27.5' fill='none' stroke='%2338bdf8' stroke-width='10'/><polygon points='50,22 78,37.5 78,67.5 50,83 22,67.5 22,37.5' fill='%2338bdf8' opacity='0.2'/></svg>">
+    <link rel="stylesheet" href="style.css">
     <style>
-                /* ── Sobre: grid duas colunas ── */
-        .sobre-section { padding-bottom: 120px; }
-        .sobre-container { max-width: 1200px; }
-        .sobre-header { margin-bottom: 0 !important; }
-
-        /* Grid: sobrescreve o 1fr 1fr do style.css */
-        .sobre-grid {
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: start;
+                /* ── Hero centralizado (telas estreitas) ── */
+        @media (max-width: 1100px) {
+        .hero-content {
+            flex-direction: column !important;
+            align-items: center !important;
+            text-align: center !important;
         }
-
-        .sobre-text p { text-align: left; }
-
-        /* ── Aside direita ── */
-        .sobre-aside {
+        .hero-text {
+            max-width: 760px;
             display: flex;
             flex-direction: column;
-            gap: 16px;
-        }
-
-        /* ── Card de origem ── */
-        .origin-card {
-            background: rgba(var(--accent-rgb), 0.05);
-            border: 1px solid rgba(var(--accent-rgb), 0.2);
-            border-radius: 16px;
-            padding: 24px 26px;
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-        }
-        .origin-card-header {
-            display: flex;
             align-items: flex-start;
-            gap: 14px;
         }
-        .origin-icon {
-            flex-shrink: 0;
-            width: 38px;
-            height: 38px;
-            background: rgba(var(--accent-rgb), 0.12);
-            border: 1px solid rgba(var(--accent-rgb), 0.25);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent);
+        .hero-text h1,
+        .hero-text p {
+            text-align: left !important;
         }
-        .origin-meta { flex: 1; min-width: 0; }
-        .origin-label {
-            font-size: 0.66rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--accent);
-            margin: 0 0 5px;
+        .hero-btns {
+            justify-content: center !important;
         }
-        .origin-title {
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: var(--text-high);
-            margin: 0 0 4px;
-            line-height: 1.4;
-        }
-        .origin-divider {
-            height: 1px;
-            background: rgba(var(--accent-rgb), 0.12);
-        }
-        .origin-doi {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.78rem;
-            color: var(--accent);
-            text-decoration: none;
-            background: rgba(var(--accent-rgb), 0.08);
-            border: 1px solid rgba(var(--accent-rgb), 0.2);
-            border-radius: 8px;
-            padding: 7px 13px;
-            transition: background 0.18s, border-color 0.18s;
-            width: fit-content;
-        }
-        .origin-doi:hover {
-            background: rgba(var(--accent-rgb), 0.15);
-            border-color: rgba(var(--accent-rgb), 0.4);
-        }
-        .origin-doi svg { flex-shrink: 0; }
-        .origin-thumb {
+        .hero-image {
             width: 100%;
-            display: block;
-            border-radius: 10px;
-            border: 1px solid rgba(var(--accent-rgb), 0.2);
-            box-shadow: 0 10px 28px rgba(0,0,0,0.4);
+            display: flex;
+            justify-content: center;
         }
+        .image-wrapper {
+            max-width: 1000px;
+            width: 100%;
+        }
+        }
+    </style>
+    <style>
+        /* AUTOCOMPLETE */
+        .autocomplete-wrap { position:relative; flex:1; min-width:0; }
+        .autocomplete-wrap #searchInput { width:100%; max-width:100%; margin:0; }
+        .autocomplete-list { position:absolute; top:calc(100% + 4px); left:0; right:0; background:var(--card-bg); border:1px solid rgba(var(--overlay-rgb), 0.08); border-radius:12px; list-style:none; padding:4px; margin:0; z-index:500; box-shadow:0 8px 24px rgba(0,0,0,0.4); max-height:320px; overflow-y:auto; }
+        .autocomplete-list li { display:flex; align-items:center; gap:10px; padding:9px 12px; border-radius:8px; cursor:pointer; transition:background 0.12s; }
+        .autocomplete-list li:hover, .autocomplete-list li.ac-active { background:rgba(var(--overlay-rgb), 0.05); }
+        .ac-id { font-size:0.67rem; font-weight:700; font-family:monospace; color:#475569; flex-shrink:0; min-width:26px; }
+        .ac-body { flex:1; min-width:0; }
+        .ac-title { font-size:0.875rem; font-weight:400; color:var(--text-mid); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; display:block; }
+        .ac-title mark { background:transparent; color:var(--text-high); font-weight:600; }
+        .ac-empty { padding:12px; font-size:0.82rem; color:#475569; text-align:center; }
 
-        /* ── Responsivo ── */
-        @media (max-width: 768px) {
-            .sobre-grid { grid-template-columns: 1fr !important; gap: 2.5rem; }
+        /* ── ÁREA DE FILTROS UNIFICADA ── */
+
+        /* Container geral */
+        .filters-area { max-width:960px; margin:0 auto 48px; display:flex; flex-direction:column; gap:0; }
+
+        /* Linha 1: busca + dimensões */
+        .filters-row-main {
+            display:flex; align-items:center; gap:0;
+            background:var(--card-bg);
+            border:1px solid rgba(var(--overlay-rgb), .09);
+            border-radius:14px 14px 0 0;
+            border-bottom:1px solid rgba(var(--overlay-rgb), .05);
+            padding:7px 7px 7px 18px;
+            transition:border-color .25s, box-shadow .25s;
+        }
+        .filters-row-main:focus-within {
+            border-color:rgba(var(--accent-rgb), .35);
+            box-shadow:0 0 0 3px rgba(var(--accent-rgb), .07);
+        }
+        .filters-search {
+            display:flex; align-items:center; gap:10px; flex:1; min-width:0;
+            color:#475569;
+        }
+        .filters-search svg { flex-shrink:0; transition:color .2s; }
+        .filters-row-main:focus-within .filters-search svg { color:var(--accent); }
+
+        #searchInput {
+            flex:1; width:100%; max-width:100%; display:block; margin:0;
+            background:transparent; border:none; padding:0.6rem 0;
+            color:var(--text-high); font-size:0.95rem; outline:none;
+            box-sizing:border-box; font-family:'Inter',sans-serif;
+        }
+        #searchInput::placeholder { color:#475569; }
+        #searchInput:focus { border-color:transparent; box-shadow:none; }
+
+        .filters-dim {
+            display:flex; align-items:center; gap:3px;
+            border-left:1px solid rgba(var(--overlay-rgb), .08); padding-left:8px; flex-shrink:0;
+        }
+        .btn-filter {
+            background:transparent; color:var(--text-low);
+            padding:0.48rem 1rem; border-radius:9px;
+            border:1px solid transparent; cursor:pointer;
+            transition:background .18s, color .18s;
+            font-weight:500; font-size:0.84rem; white-space:nowrap;
+            font-family:'Inter',sans-serif;
+        }
+        .btn-filter:hover { background:rgba(var(--overlay-rgb), .06); color:var(--text-high); }
+        .btn-filter.active { background:var(--accent); color: var(--on-accent); font-weight:700; }
+
+        /* Linha 2: chips de contexto */
+        .filters-row-chips {
+            display:flex; align-items:center; flex-wrap:wrap; gap:10px;
+            background:rgba(var(--overlay-rgb), .02);
+            border:1px solid rgba(var(--overlay-rgb), .09); border-top:none;
+            border-radius:0 0 14px 14px;
+            padding:10px 16px;
+        }
+        .filters-chip-group { display:flex; align-items:center; gap:7px; flex-wrap:wrap; }
+        .filters-chip-label { font-size:0.66rem; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--text-low); white-space:nowrap; }
+        .filters-chip-sep { width:1px; height:18px; background:rgba(var(--overlay-rgb), .06); flex-shrink:0; margin:0 2px; }
+
+        /* Chips */
+        .ctx-chips { display:flex; flex-wrap:wrap; gap:5px; }
+        .ctx-chip { padding:4px 11px; border-radius:100px; border:1px solid rgba(var(--overlay-rgb), .08); background:rgba(var(--overlay-rgb), .03); color:#64748b; font-family:'Inter',sans-serif; font-size:0.74rem; font-weight:600; cursor:pointer; transition:all .15s; white-space:nowrap; }
+        .ctx-chip:hover { border-color:rgba(var(--accent-rgb), .3); color:var(--text-low); background:rgba(var(--accent-rgb), .06); }
+        .ctx-chip.active { background:rgba(var(--accent-rgb), .12); border-color:rgba(var(--accent-rgb), .4); color:var(--accent); }
+
+        /* Limpar */
+        .ctx-clear { display:inline-flex; align-items:center; gap:5px; margin-left:auto; padding:4px 10px; border-radius:100px; border:1px solid rgba(var(--overlay-rgb), .07); background:transparent; color:#475569; font-size:0.71rem; font-weight:600; cursor:pointer; font-family:'Inter',sans-serif; transition:all .15s; white-space:nowrap; }
+        .ctx-clear:hover { border-color:rgba(248,113,113,.3); color:#f87171; background:rgba(248,113,113,.05); }
+
+        /* Hint de resultados */
+        .ctx-hint { font-size:0.73rem; color:var(--accent); font-weight:500; padding:0 2px; }
+
+        /* Relevância nos cards — FIX: não sobrescreve borda da dimensão */
+        .card-footer-area { display:flex; flex-direction:column; gap:10px; margin-top:auto; }
+        .card-footer-area .btn-ver-mais { margin-top:0; width:100%; }
+        .card-main-content { display:flex; flex-direction:column; flex:1; }
+        .card .ctx-relevance { display:none; align-items:center; gap:5px; font-size:0.65rem; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--accent); padding:3px 9px; background:rgba(var(--accent-rgb), .10); border:1px solid rgba(var(--accent-rgb), .25); border-radius:100px; width:fit-content; }
+        .card.ctx-highlighted .ctx-relevance { display:inline-flex; }
+        /* Removido: .card.ctx-highlighted { border-color:... } — preserva cor da dimensão */
+        .card.ctx-dim { opacity:0.42; }
+
+        /* Estado vazio */
+        .ctx-empty-state { display:none; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:12px; padding:56px 24px; margin-bottom:24px; background:rgba(var(--overlay-rgb), .02); border:1px dashed rgba(var(--overlay-rgb), .08); border-radius:16px; color:#475569; }
+        .ctx-empty-state svg { opacity:0.35; }
+        .ctx-empty-state p { font-size:0.92rem; font-weight:600; color:#64748b; margin:0; line-height:1.5; }
+        .ctx-empty-state span { font-size:0.78rem; color:var(--text-low); }
+
+        @media (max-width:700px) {
+            .filters-row-main { flex-wrap:wrap; padding:10px 12px; gap:8px; }
+            .filters-dim { border-left:none; border-top:1px solid rgba(var(--overlay-rgb), .07); padding:8px 0 0; width:100%; flex-wrap:wrap; }
+            .filters-row-chips { gap:8px; }
+            .filters-chip-sep { display:none; }
         }
     </style>
 </head>
 <body>
+
     <header class="navbar">
         <nav class="nav-container">
             <a href="index.html" class="logo" aria-label="Catálogo de Riscos em Ecossistemas de Software">
@@ -140,66 +182,1629 @@
         </nav>
     </header>
 
-    <section id="sobre" class="sobre-section">
-        <div class="sobre-container">
-
-            <div class="sobre-grid">
-
-                <!-- ── COLUNA ESQUERDA: badge + título + texto + botões ── -->
-                <article class="sobre-text">
-                    <span class="tag-small" style="
-                        color: var(--accent);
-                        display: inline-flex;
-                        align-items: center;
-                        gap: 8px;
-                        font-size: 0.78rem;
-                        letter-spacing: 2px;
-                        font-weight: 700;
-                        text-transform: uppercase;
-                        padding: 6px 14px;
-                        border: 1px solid rgba(var(--accent-rgb), 0.25);
-                        border-radius: 100px;
-                        background: rgba(var(--accent-rgb), 0.07);
-                        margin-bottom: 24px;
-                    ">
-                        <i class="fas fa-book" style="font-size:0.7rem;"></i>
-                        SOBRE O CATÁLOGO
-                    </span>
-                    <h2 style="font-size: clamp(1.8rem, 3.5vw, 2.6rem); line-height: 1.15; margin-bottom: 2rem; color: var(--text-high); font-weight: 800;">O que é este catálogo e como foi construído?</h2>
-                    <p>Este catálogo foi desenvolvido com base em um <strong>Mapeamento Sistemático da Literatura (MSL)</strong>, conduzido entre janeiro e julho de 2025. Cada risco é apresentado a partir de uma perspectiva integrada, combinando diferentes modelos teóricos e de classificação. A caracterização dos riscos considera a Taxonomia de Riscos do Software Engineering Institute (SEI), a tipologia de ecossistemas de software proposta por Manikas (2016), as métricas de saúde do ecossistema de Iansiti e Levien (2004) e o modelo de processos de valor de Burström et al. (2022).</p>
-                    <p>O catálogo tem como objetivo apoiar pesquisadores e profissionais na identificação, compreensão e análise de riscos em ecossistemas de software, relacionando cada risco às soluções propostas e às evidências disponíveis na literatura científica.</p>
-
-                    <div class="sobre-btns">
-                        <a href="explorar.html" class="btn-primary">Explorar</a>
-                        <a href="index.html#catalogo" class="btn-primary">Catálogo</a>
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <article class="hero-text">
+                <h1>Catálogo de Riscos em Ecossistemas de Software</h1>
+                
+                <p>Um catálogo de riscos em Ecossistemas de Software (ECOS), denominado <em>SECO-Risk</em>, construído a partir dos resultados de um Mapeamento Sistemático da Literatura (MSL). Os riscos foram relacionados às soluções reportadas e caracterizados segundo quatro perspectivas complementares, essa estrutura permite uma visão integrada para apoiar a identificação, compreensão e análise de riscos em ECOS.</p>
+                
+                <div class="hero-btns">
+                    <button class="btn-primary" onclick="document.getElementById('catalogo').scrollIntoView({behavior: 'smooth'})">
+                        Explorar o Catálogo
+                    </button>
+                    <a href="sobre.html" style="text-decoration: none;">
+                        <button class="btn-primary">Sobre o catálogo</button>
+                    </a>
+                </div>
+            </article>
+                
+            <aside class="hero-image">
+                <div class="image-wrapper">
+                    <div class="image-placeholder">
+                        <img src="risk.png" alt="Ilustração de Riscos" class="hero-img">
                     </div>
-                </article>
-
-                <!-- ── COLUNA DIREITA: card de origem ── -->
-                <aside class="sobre-aside">
-
-                    <!-- Card de origem -->
-                    <div class="origin-card">
-                        <img src="artigo.png" alt="Primeira página do artigo de origem: Challenges and Solutions of Risk Management in Software Ecosystems" class="origin-thumb">
-
-                        <div class="origin-meta">
-                            <p class="origin-label">Artigo de origem</p>
-                            <h3 class="origin-title">Challenges and Solutions of Risk Management in Software Ecosystems</h3>
+                    
+                    <div class="stats-bar">
+                        <div class="stat-unit">
+                            <span class="stat-number">24</span>
+                            <span class="stat-label">Riscos mapeados</span>
                         </div>
-
-                        <div class="origin-divider"></div>
-
-                        <a href="https://doi.org/10.5753/sbsi.2026.248578" target="_blank" rel="noopener" class="origin-doi">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-                            doi.org/10.5753/sbsi.2026.248578
-                            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.5;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                        </a>
+                        <div class="stat-unit">
+                            <span class="stat-number">21</span>
+                            <span class="stat-label">Soluções identificadas</span>
+                        </div>
+                        <div class="stat-unit">
+                            <span class="stat-number">35</span>
+                            <span class="stat-label">Estudos primários</span>
+                        </div>
+                        <button class="stats-help-btn" onclick="abrirStatsInfo()" aria-label="Entender os números">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        </button>
                     </div>
-
-                </aside>
-            </div>
+                </div>
+            </aside>
         </div>
     </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         METAMODELO CONCEITUAL
+    ══════════════════════════════════════════════════════════ -->
+    <section class="mmx-section" id="metamodelo">
+        <div class="mmx-container">
+
+            <header class="mmx-header">
+                <span class="mmx-badge">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                    MAPA CONCEITUAL DO CATÁLOGO
+                </span>
+                <h2 class="mmx-title">Como o catálogo está estruturado?</h2>
+                <p class="mmx-sub">Visão geral das camadas estruturais do catálogo, conectando o ponto de partida que é o risco até as soluções de mitigação identificadas na literatura.</p>
+            </header>
+
+            <img src="estrutura.png" class="mmx-map-img mmx-map-img-dark" alt="Mapa conceitual do catálogo" draggable="false" />
+            <img src="estrutura-dia.png" class="mmx-map-img mmx-map-img-light" alt="Mapa conceitual do catálogo" draggable="false" />
+
+            <!-- ── ABAS INTERATIVAS ── -->
+            <div class="mmx-tabs" id="mmxTabs">
+
+                <!-- Dica de navegação -->
+                <p class="mmx-tab-hint">Utilize as abas abaixo para acessar o detalhamento de cada camada estrutural do mapa.</p>
+
+                <!-- Barra de abas -->
+                <div class="mmx-tab-bar" role="tablist">
+                    <button class="mmx-tab mmx-tab-active" data-tab="ponto" role="tab" aria-selected="true">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        1. Ponto de Partida
+                    </button>
+                    <button class="mmx-tab" data-tab="atributos" role="tab" aria-selected="false">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                        2. Atributos
+                    </button>
+                    <button class="mmx-tab" data-tab="solucoes" role="tab" aria-selected="false">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                        3. Soluções
+                    </button>
+                    <button class="mmx-tab" data-tab="evidencias" role="tab" aria-selected="false">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                        4. Base de Evidências
+                    </button>
+                </div>
+
+                <!-- Painéis de conteúdo -->
+                <div class="mmx-tab-panels">
+
+                    <!-- PAINEL 1: Ponto de Partida -->
+                    <div class="mmx-tab-panel mmx-tab-panel-active" id="mmx-tab-ponto">
+
+                        <!-- Bloco central: Risco em ECOS -->
+                        <div class="p1-hero">
+                            <div class="p1-hero-icon">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                            </div>
+                            <div class="p1-hero-content">
+                                <h4 class="p1-hero-title">Risco em ECOS</h4>
+                                <p class="p1-hero-text">Riscos são uma parte inerente ao desenvolvimento de software e podem afetar diretamente o desempenho do projeto. Eles podem ser entendidos como eventos incertos que podem gerar efeitos negativos ou positivos em um ou mais objetivos do projeto.</p>
+                                <span class="p1-hero-ref">Manikas (2016) e Jansen (2020)</span>
+                            </div>
+                        </div>
+
+                        <!-- Divisor -->
+                        <div class="p1-divider">
+                            <span>Os riscos em ECOS podem ser classificados em três dimensões</span>
+                        </div>
+
+                        <!-- Cards de dimensão -->
+                        <div class="p1-dim-grid">
+                            <div class="p1-dim-card p1-dim-tec">
+                                <div class="p1-dim-header">
+                                    <span class="p1-dim-label">Dimensão Técnica</span>   
+                                </div>
+                                <p class="p1-dim-text">Riscos técnicos incluem vulnerabilidades de segurança, falhas de compatibilidade e problemas decorrentes do acúmulo descontrolado de dependências ou de práticas inadequadas de empacotamento de bibliotecas.</p>
+                                <span class="p1-dim-ref">Oliveira e Alves (2021)</span>
+                            </div>
+                            <div class="p1-dim-card p1-dim-soc">
+                                <div class="p1-dim-header">
+                                    <span class="p1-dim-label"> Dimensão Social</span>
+                                </div>
+                                <p class="p1-dim-text">Riscos sociais abrangem a rotatividade de colaboradores, conflitos entre atores e declínio da participação comunitária.</p>
+                                <span class="p1-dim-ref">Oliveira e Alves (2021)</span>
+                            </div>
+                            <div class="p1-dim-card p1-dim-neg">
+                                <div class="p1-dim-header">
+                                    <span class="p1-dim-label">Dimensão de Negócios</span>
+                                </div>
+                                <p class="p1-dim-text">Riscos de negócios podem envolver questões de propriedade intelectual, licenciamento e conformidade regulatória.</p>
+                                <span class="p1-dim-ref">Oliveira e Alves (2021)</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- PAINEL 2: Atributos -->
+                    <div class="mmx-tab-panel" id="mmx-tab-atributos">
+
+                        <!-- Cabeçalho do painel -->
+                        <div class="at2-header">
+                            <p class="at2-lead">Cada risco é descrito por <strong>quatro atributos</strong> fundamentados em diferentes perspectivas teóricas. Em conjunto, esses atributos permitem compreender seu posicionamento e suas implicações no contexto estrutural e estratégico do ecossistema.</p>
+                        </div>
+
+                        <!-- 4 blocos sempre visíveis -->
+                        <div class="at2-blocks">
+
+                            <!-- Bloco 1: SEI -->
+                            <div class="atb atb-sei">
+                                <div class="atb-head">
+                                    <div class="atb-icon atb-icon-sei">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="atb-title">Classificação do Risco de acordo com a Taxonomia de Risco SEI</h4>
+                                    </div>
+                                </div>
+                                <p class="atb-desc">O modelo analisa onde e como o risco se manifesta combinando a estrutura formal da Taxonomia de Riscos do SEI com os Desafios práticos de ecossistemas de software identificados na literatura técnica.</p>
+                                <div class="atb-body">
+                                    <p class="atb-intro">A organização segue três níveis lógicos para identificar a origem e a causa do risco:</p>
+                                    <div class="atb-tiers">
+                                        <div class="atb-tier atb-tier-sei">
+                                            <span class="atb-num atb-num-sei">1</span>
+                                            <div>
+                                                <strong>Classe do Risco</strong>
+                                                <p>Representa a categoria macro do risco no desenvolvimento. Seguindo a Taxonomia do SEI, os riscos são divididos em três grandes áreas fundamentais: Engenharia de Produto, Ambiente de Desenvolvimento e Restrições do Programa.</p>
+                                                <p style="margin-top:6px;font-size:0.78rem;color:#64748b;"> Responde à pergunta: <em>"Em qual grande área de engenharia ou gestão esse risco se origina?"</em></p>
+                                            </div>
+                                        </div>
+                                        <div class="atb-tier atb-tier-sei">
+                                            <span class="atb-num atb-num-sei">2</span>
+                                            <div>
+                                                <strong>Elemento do Risco</strong>
+                                                <p>Representa a situação específica do ecossistema de software que dispara o risco, ou seja, as vulnerabilidades geradas. Exemplos: Estabilidade de Interfaces, Garantia de Segurança, Gerenciamento da Evolução, Coordenação do Desenvolvimento e Garantia da Qualidade.</p>
+                                                <p style="margin-top:6px;font-size:0.78rem;color:#64748b;">Responde à pergunta: <em>"Qual aspecto está sendo afetado diretamente?"</em></p>
+                                            </div>
+                                        </div>
+                                        <div class="atb-tier atb-tier-sei">
+                                            <span class="atb-num atb-num-sei">3</span>
+                                            <div>
+                                                <strong>Área de Desafio</strong>
+                                                <p>Representa o desafio prático que favorece o surgimento do risco no ecossistema, a situação concreta que pode comprometer a evolução, a qualidade ou a sustentabilidade da plataforma.</p>
+                                                <p style="margin-top:6px;font-size:0.78rem;color:#64748b;"> Responde à pergunta: <em>"Qual problema real está gerando esse risco?"</em></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="atb-ref">Fonte: Software Ecosystems Risks – Manalif et al. (2013)</p>
+                                </div>
+                            </div>
+
+                            <!-- Bloco 2: Manikas -->
+                            <div class="atb atb-manikas atb-sei">
+                                <div class="atb-head">
+                                    <div class="atb-icon atb-icon-manikas">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="atb-title">Exemplos de Ecossistemas em que esse Risco foi Observado</h4>
+                                    </div>
+                                </div>
+                                <p class="atb-desc">Apresenta os exemplos ECOS em que a ocorrência desse risco foi relatada pelos estudos primários, classificados de acordo com a tipologia de Manikas (2016).</p>
+                                <div class="atb-body">
+                                    <p class="atb-intro">Os exemplos evidenciam em qual modelo de compartilhamento e geração de valor o risco foi efetivamente observado na literatura:</p>
+                                    <div class="atb-tiers">
+                                        <div class="atb-tier atb-tier-sei">
+                                            <span class="atb-num atb-num-sei">1</span>
+                                            <div>
+                                                <strong>Código Aberto</strong>
+                                                <p>Modelo onde as contribuições e o conhecimento são compartilhados publicamente com os atores e a comunidade. A ampla distribuição e a ausência de barreiras comerciais podem amplificar riscos ligados à coordenação descentralizada, dependência de mantenedores voluntários e vulnerabilidades em dependências externas.</p>
+                                            </div>
+                                        </div>
+                                        <div class="atb-tier atb-tier-sei">
+                                            <span class="atb-num atb-num-sei">2</span>
+                                            <div>
+                                                <strong>Híbrido</strong>
+                                                <p>Modelo que suporta a coexistência de componentes de código aberto e proprietários dentro do mesmo ambiente. Essa interação entre diferentes interesses comerciais e comunitários pode gerar conflitos de governança, dependências organizacionais complexas e a propagação de riscos</p>
+                                            </div>
+                                        </div>
+                                        <div class="atb-tier atb-tier-sei">
+                                            <span class="atb-num atb-num-sei">3</span>
+                                            <div>
+                                                <strong>Proprietário</strong>
+                                                <p>Modelo em que os componentes, tecnologias e ativos do ecossistema são controlados por uma organização responsável pela plataforma. As contribuições normalmente seguem regras, licenças e processos definidos pelo proprietário, o que favorece maior controle sobre a governança, a evolução da plataforma e a integração entre participantes. Entretanto, a dependência de um único fornecedor, possíveis restrições ao compartilhamento de conhecimento e o risco de decisões centralizadas podem aumentar a propagação de impactos em caso de falhas estratégicas ou operacionais.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="atb-ref">Fonte: Revisiting Software Ecosystems Research: A Longitudinal Literature Study – Manikas (2016)</p>
+                                </div>
+                            </div>
+
+                            <!-- Bloco 3: Iansiti & Levien -->
+                            <div class="atb atb-iansiti">
+                                <div class="atb-head">
+                                    <div class="atb-icon atb-icon-iansiti">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="atb-title">Métricas de Saúde do ECOS Atingidas pelo Risco</h4>
+                                    </div>
+                                </div>
+                                <p class="atb-desc">Indica onde a vitalidade do ecossistema é prejudicada pelo risco, tendo como base o modelo de Iansiti e Levien (2004).</p>
+                                <div class="atb-body">
+                                    <p class="atb-intro">Estão descritas as três métricas utilizadas para avaliar o impacto do risco na saúde do ecossistema:  </p>
+                                    <div class="atb-tiers">
+                                        <div class="atb-tier atb-tier-sei">
+                                            <span class="atb-num atb-num-sei">1</span>
+                                            <div>
+                                                <strong>Robustez</strong>
+                                                <p>Representa a capacidade de resistir e se recuperar de mudanças, falhas e eventos inesperados.  Um ecossistema robusto consegue continuar operando mesmo diante de vulnerabilidades, abandono de componentes, mudanças tecnológicas ou saída de participantes importantes. Riscos que afetam a robustez podem comprometer a estabilidade e a continuidade do ECOS ao longo do tempo</p>
+                                                <p style="margin-top:6px;font-size:0.78rem;color:#64748b;">Responde à pergunta: <em>"O ecossistema continuará funcionando diante de uma crise ou mudança significativa?"</em></p>
+                                            </div>
+                                        </div>
+                                        <div class="atb-tier atb-tier-sei">
+                                            <span class="atb-num atb-num-sei">2</span>
+                                            <div>
+                                                <strong>Produtividade</strong>
+                                                <p>Representa a capacidade do ecossistema de transformar recursos, conhecimento e inovação em valor para seus participantes. Está relacionada à eficiência do desenvolvimento, integração de componentes, entrega de funcionalidades e geração contínua de benefícios para usuários e organizações. Riscos que afetam a produtividade podem aumentar custos, reduzir a velocidade de evolução da plataforma e dificultar a criação de valor.</p>
+                                                <p style="margin-top:6px;font-size:0.78rem;color:#64748b;">Responde à pergunta: <em>"O ecossistema consegue gerar valor de forma eficiente?"</em></p>
+                                            </div>
+                                        </div>
+                                        <div class="atb-tier atb-tier-sei">
+                                            <span class="atb-num atb-num-sei">3</span>
+                                            <div>
+                                                <strong>Criação de Nichos</strong>
+                                                <p>Representa a capacidade do ecossistema de atrair novos participantes, estimular inovação e criar novas oportunidades de negócio ou colaboração. Ecossistemas saudáveis incentivam o surgimento de novos produtos, serviços, extensões e comunidades, ampliando sua diversidade e capacidade de evolução. Riscos que afetam a criação de nichos podem reduzir a inovação, dificultar a entrada de novos atores e limitar o crescimento do ecossistema.</p>
+                                                <p style="margin-top:6px;font-size:0.78rem;color:#64748b;">Responde à pergunta: <em>"O ecossistema continua atraindo inovação e novas oportunidades?"</em></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="atb-ref">Fonte: Strategy as Ecology – Iansiti e Levien (2004)</p>
+                                </div>
+                            </div>
+
+                            <!-- Bloco 4: Burström -->
+                            <div class="atb atb-burstrom">
+                                <div class="atb-head">
+                                    <div class="atb-icon atb-icon-burstrom">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="atb-title">Processo de Valor do ECOS Ameaçado pelo Risco</h4>
+                                    </div>
+                                </div>
+                                <p class="atb-desc">Indica em qual etapa do ciclo de valor do ecossistema o risco atua, segundo o framework de Burström et al. (2022).</p>
+                                <div class="atb-body">
+                                    <p class="atb-intro">A identificação do processo afetado permite compreender em qual etapa do ciclo de valor o risco exerce maior impacto.</p>
+                                    <div class="atb-tiers">
+                                        <div class="atb-tier atb-tier-sei">
+                                            <span class="atb-num atb-num-sei">1</span>
+                                            <div>
+                                                <strong>Criação de Valor</strong>
+                                                <p>Representa o processo em que novos produtos, serviços, funcionalidades e inovações são desenvolvidos dentro do ecossistema. Riscos associados à criação de valor podem comprometer a qualidade do desenvolvimento, a colaboração entre atores e a capacidade de inovação do ecossistema.</p>
+                                                <p style="margin-top:6px;font-size:0.78rem;color:#64748b;">Responde à pergunta: <em>"O risco afeta a capacidade do ecossistema de gerar novos produtos, serviços ou conhecimento?"</em></p>
+                                            </div>
+                                        </div>
+                                        <div class="atb-tier atb-tier-sei">
+                                            <span class="atb-num atb-num-sei">2</span>
+                                            <div>
+                                                <strong>Entrega de Valor</strong>
+                                                <p>Representa o processo pelo qual o valor produzido é disponibilizado aos usuários, clientes e demais participantes do ecossistema. Riscos associados à entrega de valor podem dificultar o acesso aos artefatos, prejudicar integrações e reduzir a eficiência da distribuição.</p>
+                                                <p style="margin-top:6px;font-size:0.78rem;color:#64748b;"> Responde à pergunta: <em>"O risco afeta a forma como o valor chega aos usuários e participantes do ecossistema?"</em></p>
+                                            </div>
+                                        </div>
+                                        <div class="atb-tier atb-tier-sei">
+                                            <span class="atb-num atb-num-sei">3</span>
+                                            <div>
+                                                <strong>Captura de Valor</strong>
+                                                <p>Representa o processo pelo qual os participantes obtêm benefícios a partir de suas contribuições ao ecossistema. Riscos associados à captura de valor podem reduzir incentivos à participação, comprometer a sustentabilidade do ecossistema e dificultar a retenção de atores importantes.</p>
+                                                <p style="margin-top:6px;font-size:0.78rem;color:#64748b;">Responde à pergunta: <em>"O risco afeta a capacidade dos participantes de obter benefícios e manter seu interesse no ECOS?"</em></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="atb-ref">Fonte: Software Ecosystems Now and in the Future: A Definition, Systematic Literature Review, and Integration Into the Business and Digital Ecosystem Literature – Burström et al. (2022)</p>
+                                </div>
+                            </div>
+
+                        </div><!-- /at2-blocks -->
+                    </div>
+
+                    <!-- PAINEL 3: Soluções -->
+                    <div class="mmx-tab-panel" id="mmx-tab-solucoes">
+
+                        <!-- Cabeçalho -->
+                        <div class="at2-header">
+                            <p class="at2-lead">O catálogo reúne 21 soluções mapeadas na literatura para gerenciar os riscos em ECOS. Elas estão classificadas em <strong>cinco tipos</strong>:</p>
+                        </div>
+
+                        <!-- Cards de soluções: 3 na linha 1, 2 na linha 2 centrados -->
+                        <div class="sol-grid">
+
+                            <!-- Card 1: Frameworks -->
+                            <div class="sol-card sol-card-fw" id="sol-card-fw">
+                                <div class="sol-card-head">
+                                    <div class="sol-icon sol-icon-fw">
+                                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                                    </div>
+                                    <div class="sol-card-meta">
+                                        <h4 class="sol-card-title">Frameworks</h4>
+                                    </div>
+                                </div>
+                                <div class="sol-card-body" id="sol-body-fw">
+                                    <p class="sol-body-text">Estruturas que organizam princípios, processos e diretrizes para gerenciar riscos de forma sistemática. Fornecem uma visão do problema e orientam a definição de estratégias de mitigação</p>
+                                    <p class="mmx-acc-ref">Classificação baseada em Shaw (2003)</p>
+                                </div>
+                            </div>
+
+                            <!-- Card 2: Modelos -->
+                            <div class="sol-card sol-card-mod" id="sol-card-mod">
+                                <div class="sol-card-head">
+                                    <div class="sol-icon sol-icon-mod">
+                                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                                    </div>
+                                    <div class="sol-card-meta">
+                                        <h4 class="sol-card-title">Modelos</h4>
+                                    </div>
+                                </div>
+
+                                <div class="sol-card-body" id="sol-body-mod">
+                                    <p class="sol-body-text">Representações formais, interdependências e comportamentos do ecossistema. São utilizados para analisar cenários, medir variáveis e apoiar decisões.</p>
+                                    <p class="mmx-acc-ref">Classificação baseada em Shaw (2003)</p>
+                                </div>
+                            </div>
+
+                            <!-- Card 3: Práticas -->
+                            <div class="sol-card sol-card-pra" id="sol-card-pra">
+                                <div class="sol-card-head">
+                                    <div class="sol-icon sol-icon-pra">
+                                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                                    </div>
+                                    <div class="sol-card-meta">
+                                        <h4 class="sol-card-title">Práticas</h4>
+                                    </div>
+                                </div>
+
+                                <div class="sol-card-body" id="sol-body-pra">
+                                    <p class="sol-body-text">Abordagens com ações e recomendações aplicáveis no dia a dia do desenvolvimento ou da gerência. Representam atividades executadas diretamente pelos atores no contexto real.</p>
+                                    <p class="mmx-acc-ref">Classificação baseada em Shaw (2003) </p>
+                                </div>
+                            </div>
+
+                            <!-- Card 4: Ferramentas -->
+                            <div class="sol-card sol-card-fer" id="sol-card-fer">
+                                <div class="sol-card-head">
+                                    <div class="sol-icon sol-icon-fer">
+                                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                                    </div>
+                                    <div class="sol-card-meta">
+                                        <h4 class="sol-card-title">Ferramentas</h4>
+                                    </div>
+                                </div>
+
+                                <div class="sol-card-body" id="sol-body-fer">
+                                    <p class="sol-body-text">Recursos tecnológicos e soluções de software prontas para uso que se integram ao fluxo de desenvolvimento. Auxiliam na automação de processos, detecção automática de falhas e acompanhamento de indicadores do ECOS</p>
+                                    <p class="mmx-acc-ref">Classificação baseada em Shaw (2003) </p>
+                                </div>
+                            </div>
+
+                            <!-- Card 5: Métodos -->
+                            <div class="sol-card sol-card-met" id="sol-card-met">
+                                <div class="sol-card-head">
+                                    <div class="sol-icon sol-icon-met">
+                                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                                    </div>
+                                    <div class="sol-card-meta">
+                                        <h4 class="sol-card-title">Métodos</h4>
+                                    </div>
+                                </div>
+
+                                <div class="sol-card-body" id="sol-body-met">
+                                    <p class="sol-body-text">Procedimentos sistemáticos que guiam os tomadores de decisão por meio de etapas, critérios e atividades bem definidas. Garantem uma abordagem estruturada e reproduzível para avaliar e tratar os riscos.</p>
+                                    <p class="mmx-acc-ref">Classificação baseada em Shaw (2003) </p>
+                                </div>
+                            </div>
+
+                        </div><!-- /sol-grid -->
+
+                       
+
+                    </div>
+
+                    <!-- PAINEL 4: Base de Evidências -->
+                    <div class="mmx-tab-panel" id="mmx-tab-evidencias">
+
+                        <div class="at2-header">
+                            <p class="at2-lead">Cada risco e solução presente neste catálogo possui rastreabilidade com o MSL:</p>
+                        </div>
+
+                        <div class="at2-blocks">
+
+                            <!-- Card 1: MSL -->
+                            <div class="atb atb-sei">
+                                <div class="atb-head">
+                                    <div class="atb-icon atb-icon-sei">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="atb-title">Mapeamento Sistemático da Literatura (MSL)</h4>
+                                    </div>
+                                </div>
+                                <p class="atb-desc">Método utilizado para slelecionar, identificar, identicar e analisar evidências sobre gerenciamento de riscos em ECOS.</p>
+                                <div class="atb-body">
+                                    <div class="ev-metrics">
+                                        <div class="ev-metric">
+                                            <span class="ev-metric-num">710</span>
+                                            <span class="ev-metric-label">estudos recuperados</span>
+                                        </div>
+                                        <div class="ev-metric-arrow">→</div>
+                                        <div class="ev-metric ev-metric-highlight">
+                                            <span class="ev-metric-num">35</span>
+                                            <span class="ev-metric-label">estudos selecionados</span>
+                                        </div>
+                                    </div>
+                                  
+                                    <p class="atb-ref">Fonte: Campos et al. (2026)</p>
+                                </div>
+                            </div>
+
+                            <!-- Card 2: Evidências do Catálogo -->
+                            <div class="atb atb-sei">
+                                <div class="atb-head">
+                                    <div class="atb-icon atb-icon-sei">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                                    </div>
+                                    <div>
+                                        <span class="atb-source atb-source-sei">Corpus · E01–E35</span>
+                                        <h4 class="atb-title">Evidências do Catálogo</h4>
+                                    </div>
+                                </div>
+                                <p class="atb-desc">Todos os itens do catálogo são rastreáveis até os estudos primários que os identificaram.</p>
+                                <div class="atb-body">
+                                    <div class="ev-metrics">
+                                        <div class="ev-metric ev-metric-highlight">
+                                            <span class="ev-metric-num">24</span>
+                                            <span class="ev-metric-label">riscos identificados</span>
+                                        </div>
+                                        <div class="ev-metric ev-metric-highlight">
+                                            <span class="ev-metric-num">21</span>
+                                            <span class="ev-metric-label">soluções mapeadas</span>
+                                        </div>
+                                    </div>
+                                    <p class="atb-ref">Fonte: Campos et al. (2026)</p>
+                                </div>
+                            </div>
+
+                        </div><!-- /at2-blocks -->
+
+                        
+
+                    </div>
+
+                </div><!-- /mmx-tab-panels -->
+            </div><!-- /mmx-tabs -->
+
+        </div>
+    </section>
+
+    <style>
+    /* ── Seção Metamodelo ── */
+    .mmx-section { padding: 80px 5% 72px; position: relative; }
+    .mmx-section::before {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(var(--accent-rgb), .18) 30%, rgba(var(--accent-rgb), .18) 70%, transparent);
+        position: absolute;
+        top: 0; left: 0;
+    }
+    .mmx-container { max-width: 1100px; margin: 0 auto; }
+
+    .mmx-header { text-align: center; margin-bottom: 36px; }
+    .mmx-badge {
+        display: inline-flex; align-items: center; gap: 6px;
+        background: rgba(var(--accent-rgb), .1); border: 1px solid rgba(var(--accent-rgb), .25);
+        border-radius: 100px; padding: 4px 14px;
+        font-size: 0.65rem; font-weight: 700; letter-spacing: 1px;
+        color: var(--accent); text-transform: uppercase; margin-bottom: 14px;
+    }
+    .mmx-title { font-size: clamp(2rem,4vw,2.8rem); font-weight: 700; color: var(--text-high); margin: 0 0 10px; }
+    .mmx-sub { color: var(--text-low); font-size: 0.95rem; max-width: 560px; margin: 0 auto; }
+
+    /* Imagem estática */
+    .mmx-map-static {
+        border-radius: 12px; overflow: hidden;
+        border: 1px solid rgba(var(--overlay-rgb), .06);
+        margin-bottom: 40px; background: var(--bg-body);
+    }
+    .mmx-map-img { width: 100%; height: auto; display: block; }
+    .mmx-map-img-light { display: none; }
+    [data-theme="light"] .mmx-map-img-dark  { display: none; }
+    [data-theme="light"] .mmx-map-img-light { display: block; }
+
+    /* Abas */
+    .mmx-tab-hint {
+        font-size: 0.78rem;
+        color: #475569;
+        text-align: center;
+        margin: 0 0 14px;
+        letter-spacing: 0.01em;
+    }
+
+    .mmx-tab-bar {
+        display: flex; gap: 4px; border-bottom: 1px solid rgba(var(--overlay-rgb), .08);
+        overflow-x: auto; scrollbar-width: none; padding-bottom: 0; margin-bottom: 0;
+        flex-wrap: nowrap;
+    }
+    .mmx-tab-bar::-webkit-scrollbar { display: none; }
+    .mmx-tab {
+        display: inline-flex; align-items: center; gap: 7px;
+        padding: 10px 18px; border: none; border-bottom: 2px solid transparent;
+        background: transparent; color: #64748b; font-size: 0.82rem; font-weight: 600;
+        cursor: pointer; white-space: nowrap; border-radius: 8px 8px 0 0;
+        transition: color .2s, border-color .2s, background .2s;
+    }
+    .mmx-tab:hover { color: var(--accent); background: rgba(var(--accent-rgb), .04); }
+    .mmx-tab.mmx-tab-active { color: var(--accent); border-bottom-color: var(--accent); background: rgba(var(--accent-rgb), .06); }
+    .mmx-tab svg { opacity: .8; }
+
+    /* Painéis */
+    .mmx-tab-panels {
+        border: 1px solid rgba(var(--overlay-rgb), .08); border-top: none;
+        border-radius: 0 0 12px 12px; background: rgba(var(--overlay-rgb), .02); padding: 28px;
+    }
+    .mmx-tab-panel { display: none; }
+    .mmx-tab-panel.mmx-tab-panel-active { display: block; }
+
+    .mmx-panel-intro {
+        background: rgba(var(--accent-rgb), .06); border: 1px solid rgba(var(--accent-rgb), .15);
+        border-radius: 8px; padding: 14px 18px; margin-bottom: 20px;
+    }
+    .mmx-panel-intro p { margin: 0; color: var(--text-mid); font-size: 0.9rem; line-height: 1.6; }
+
+    /* Acordeão */
+    .mmx-accordion { display: flex; flex-direction: column; gap: 4px; }
+    .mmx-acc-btn {
+        width: 100%; display: flex; align-items: center; justify-content: space-between;
+        gap: 12px; padding: 13px 16px;
+        background: rgba(var(--overlay-rgb), .04); border: 1px solid rgba(var(--overlay-rgb), .07);
+        border-radius: 8px; cursor: pointer; text-align: left;
+        transition: background .2s, border-color .2s;
+    }
+    .mmx-acc-btn:hover { background: rgba(var(--overlay-rgb), .07); border-color: rgba(var(--accent-rgb), .25); }
+    .mmx-acc-btn.mmx-acc-open { border-color: rgba(var(--accent-rgb), .3); background: rgba(var(--accent-rgb), .06); }
+    .mmx-acc-label { font-size: 0.88rem; font-weight: 600; color: var(--text-mid); display: flex; align-items: center; gap: 9px; flex-wrap: wrap; }
+    .mmx-acc-tag {
+        font-size: 0.68rem; font-weight: 700; padding: 2px 9px;
+        background: rgba(var(--overlay-rgb), .1); color: var(--text-low);
+        border-radius: 100px; letter-spacing: .4px;
+    }
+    .mmx-acc-icon { flex-shrink: 0; color: #64748b; transition: transform .25s; }
+    .mmx-acc-btn.mmx-acc-open .mmx-acc-icon { transform: rotate(180deg); color: var(--accent); }
+    .mmx-acc-body {
+        display: none; padding: 16px 18px 18px;
+        border: 1px solid rgba(var(--accent-rgb), .15); border-top: none;
+        border-radius: 0 0 8px 8px; background: rgba(var(--accent-rgb), .03);
+        margin-top: -4px; margin-bottom: 4px;
+    }
+    .mmx-acc-body.mmx-acc-body-open { display: block; }
+    .mmx-acc-body p { margin: 0 0 10px; color: var(--text-low); font-size: 0.87rem; line-height: 1.7; }
+    .mmx-acc-body p:last-child { margin-bottom: 0; }
+    .mmx-acc-ref { font-size: 0.75rem !important; color: #475569 !important; font-style: italic; margin: auto 0 0 !important; }
+
+    /* Sub-items */
+    .mmx-sub-items { display: flex; flex-direction: column; gap: 8px; margin: 10px 0; }
+    .mmx-sub-item {
+        background: rgba(var(--overlay-rgb), .04); border-left: 3px solid rgba(var(--accent-rgb), .4);
+        border-radius: 0 6px 6px 0; padding: 8px 12px;
+        font-size: 0.85rem; color: var(--text-low); line-height: 1.5;
+    }
+    .mmx-sub-item strong { color: var(--text-mid); }
+
+    @media (max-width: 640px) {
+        .mmx-tab { padding: 9px 12px; font-size: 0.76rem; }
+        .mmx-tab-panels { padding: 18px; }
+    }
+
+    /* ── Painel 1: layout melhorado ── */
+    .p1-hero {
+        display: flex; gap: 18px; align-items: flex-start;
+        background: rgba(var(--accent-rgb), .06); border: 1px solid rgba(var(--accent-rgb), .18);
+        border-radius: 12px; padding: 20px 22px; margin-bottom: 28px;
+    }
+    .p1-hero-icon {
+        flex-shrink: 0; width: 44px; height: 44px;
+        background: rgba(var(--accent-rgb), .12); border: 1px solid rgba(var(--accent-rgb), .25);
+        border-radius: 10px; display: flex; align-items: center; justify-content: center;
+        color: var(--accent);
+    }
+    .p1-hero-content { flex: 1; min-width: 0; }
+    .p1-hero-title {
+        font-size: 1rem; font-weight: 700; color: var(--text-high);
+        margin: 0 0 8px; letter-spacing: 0.01em;
+    }
+    .p1-hero-text {
+        font-size: 0.88rem; color: var(--text-low); line-height: 1.7; margin: 0 0 10px;
+    }
+    .p1-hero-ref { font-size: 0.75rem; color: #475569; font-style: italic; }
+
+    .p1-divider {
+        display: flex; align-items: center; gap: 12px;
+        margin-bottom: 20px; color: #475569; font-size: 0.75rem;
+        font-weight: 600; text-transform: uppercase; letter-spacing: 1px;
+    }
+    .p1-divider::before, .p1-divider::after {
+        content: ''; flex: 1; height: 1px; background: rgba(var(--overlay-rgb), .07);
+    }
+
+    .p1-dim-grid {
+        display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+    }
+    .p1-dim-card {
+        border-radius: 10px; padding: 16px 18px;
+        border: 1px solid rgba(var(--overlay-rgb), .07);
+        background: rgba(var(--overlay-rgb), .03);
+        display: flex; flex-direction: column; gap: 10px;
+    }
+    .p1-dim-tec { border-top: 3px solid var(--color-tecnicos); }
+    .p1-dim-soc { border-top: 3px solid var(--color-sociais); }
+    .p1-dim-neg { border-top: 3px solid var(--color-negocio); }
+
+    .p1-dim-header {
+        display: flex; align-items: center; gap: 8px;
+    }
+    .p1-dim-tec .p1-dim-header { color: var(--color-tecnicos); }
+    .p1-dim-soc .p1-dim-header { color: var(--color-sociais); }
+    .p1-dim-neg .p1-dim-header { color: var(--color-negocio); }
+
+    .p1-dim-label { font-size: 0.9rem; font-weight: 700; flex: 1; }
+    .p1-dim-count {
+        font-size: 0.68rem; font-weight: 700; padding: 2px 8px;
+        border-radius: 100px; background: rgba(var(--overlay-rgb), .08);
+        color: #64748b; white-space: nowrap;
+    }
+    .p1-dim-text { font-size: 0.83rem; color: var(--text-low); line-height: 1.65; margin: 0; flex: 1; }
+    .p1-dim-ref { font-size: 0.72rem; color: #475569; font-style: italic; }
+
+    @media (max-width: 768px) {
+        .p1-dim-grid { grid-template-columns: 1fr; }
+        .p1-hero { flex-direction: column; gap: 12px; }
+    }
+
+    /* ══════════════════════════════════════════
+       PAINEL 2 — ATRIBUTOS: 4 blocos sempre visíveis
+    ══════════════════════════════════════════ */
+
+    .at2-header { margin-bottom: 22px; }
+    .at2-lead {
+        font-size: 0.9rem; color: var(--text-low); line-height: 1.7; margin: 0;
+        background: rgba(var(--accent-rgb), .06); border: 1px solid rgba(var(--accent-rgb), .15);
+        border-radius: 8px; padding: 14px 18px;
+    }
+    .at2-lead strong { color: var(--text-mid); }
+
+    /* Grade: 2 colunas lado a lado, cada bloco ocupa linha inteira verticalmente */
+    .at2-blocks {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        align-items: stretch;
+    }
+
+    /* Bloco base */
+    .atb {
+        border-radius: 12px;
+        border: 1px solid rgba(var(--overlay-rgb), .07);
+        background: rgba(var(--overlay-rgb), .03);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Borda superior colorida por fonte */
+    .atb-sei     { border-top: 3px solid var(--accent); }
+    .atb-manikas { border-top: 3px solid var(--accent); }
+    .atb-iansiti { border-top: 3px solid var(--accent); }
+    .atb-burstrom{ border-top: 3px solid var(--accent); }
+
+    /* Cabeçalho do bloco */
+    .atb-head {
+        display: flex; align-items: center; gap: 12px;
+        padding: 16px 18px 0;
+    }
+
+    /* Ícone */
+    .atb-icon {
+        flex-shrink: 0; width: 36px; height: 36px; border-radius: 9px;
+        display: flex; align-items: center; justify-content: center;
+    }
+    .atb-icon-sei     { background: rgba(var(--accent-rgb), .12);  color: var(--accent); }
+    .atb-icon-manikas { background: rgba(var(--accent-rgb), .12);  color: var(--accent); }
+    .atb-icon-iansiti { background: rgba(var(--accent-rgb), .12);  color: var(--accent); }
+    .atb-icon-burstrom{ background: rgba(var(--accent-rgb), .12);  color: var(--accent); }
+
+    /* Fonte e título */
+    .atb-source {
+        display: block; font-size: 0.67rem; font-weight: 700;
+        text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px;
+    }
+    .atb-source-sei     { color: var(--accent); }
+    .atb-source-manikas { color: var(--accent); }
+    .atb-source-iansiti { color: var(--accent); }
+    .atb-source-burstrom{ color: var(--accent); }
+
+    .atb-title {
+        font-size: 0.93rem; font-weight: 700; color: var(--text-mid);
+        margin: 0; line-height: 1.3;
+    }
+
+    /* Descrição */
+    .atb-desc {
+        font-size: 0.82rem; color: #64748b; line-height: 1.6;
+        padding: 10px 18px 0; margin: 0;
+    }
+
+    /* Corpo — sempre visível */
+    .atb-body {
+        padding: 14px 18px 18px;
+        border-top: 1px solid rgba(var(--overlay-rgb), .06);
+        margin-top: 14px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .atb-intro {
+        font-size: 0.83rem; color: var(--text-low); line-height: 1.65;
+        margin: 0 0 12px;
+    }
+
+    /* Tiers (itens com ícone-letra) */
+    .atb-tiers { display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
+
+    .atb-tier {
+        display: flex; gap: 11px; align-items: flex-start;
+        background: rgba(var(--overlay-rgb), .04); border-radius: 8px;
+        padding: 10px 12px;
+    }
+
+    /* Ícone numérico/letra do tier, colorido por bloco */
+    .atb-num {
+        flex-shrink: 0; width: 24px; height: 24px;
+        font-size: 0.7rem; font-weight: 800;
+        border-radius: 50%; display: flex; align-items: center; justify-content: center;
+        margin-top: 1px;
+    }
+    .atb-num-sei     { background: rgba(var(--accent-rgb), .18);  color: var(--accent); }
+    .atb-num-manikas { background: rgba(245,158,11,.18);  color: #f59e0b; }
+    .atb-num-open    { background: rgba(var(--accent-rgb), .18);  color: var(--accent); }
+    .atb-num-hybrid  { background: rgba(245,158,11,.18);  color: #f59e0b; }
+    .atb-num-prop    { background: rgba(239,68,68,.18);   color: #ef4444; }
+    .atb-num-iansiti { background: rgba(167,139,250,.18); color: #a78bfa; }
+    .atb-num-burstrom{ background: rgba(var(--color-negocio-rgb), .18);  color: var(--color-negocio); }
+
+    /* Borda lateral do tier por tipo de bloco */
+    .atb-tier-sei     { border-left: 2px solid rgba(var(--accent-rgb), .25); }
+    .atb-tier-open    { border-left: 2px solid rgba(var(--accent-rgb), .25); }
+    .atb-tier-hybrid  { border-left: 2px solid rgba(245,158,11,.25); }
+    .atb-tier-prop    { border-left: 2px solid rgba(239,68,68,.25);  }
+    .atb-tier-iansiti { border-left: 2px solid rgba(167,139,250,.25);}
+    .atb-tier-burstrom{ border-left: 2px solid rgba(var(--color-negocio-rgb), .25); }
+
+    .atb-tier strong { display: block; font-size: 0.84rem; color: var(--text-mid); margin-bottom: 4px; }
+    .atb-tier p { font-size: 0.8rem; color: var(--text-low); line-height: 1.6; margin: 0; }
+
+    /* Nota de rodapé dos blocos */
+    .atb-note {
+        display: flex; gap: 8px; align-items: flex-start;
+        background: rgba(245,158,11,.06); border: 1px solid rgba(245,158,11,.18);
+        border-radius: 7px; padding: 10px 12px;
+        font-size: 0.78rem; color: var(--text-low); line-height: 1.5;
+        margin-bottom: 14px;
+    }
+    .atb-note svg { flex-shrink: 0; margin-top: 2px; color: #f59e0b; }
+    .atb-note strong { color: var(--text-mid); }
+
+    .atb-ref { font-size: 0.72rem; color: #475569; font-style: italic; margin: auto 0 0; }
+
+    @media (max-width: 860px) {
+        .at2-blocks { grid-template-columns: 1fr; }
+    }
+
+    /* ══════════════════════════════════════════
+       PAINEL 3 — SOLUÇÕES: grid de 5 cards
+    ══════════════════════════════════════════ */
+
+    /* Grid: 3 na primeira linha, 2 centrados na segunda */
+    .sol-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        margin-bottom: 16px;
+    }
+    /* Os últimos 2 cards ocupam colunas 1-2 e 2-3 centrando na linha */
+    .sol-card:nth-child(4) { grid-column: 1; }
+    .sol-card:nth-child(5) { grid-column: 2; }
+
+    /* Card base */
+    .sol-card {
+        border-radius: 12px;
+        border: 1px solid rgba(var(--overlay-rgb), .07);
+        border-top-width: 3px;
+        background: rgba(var(--overlay-rgb), .03);
+        cursor: pointer;
+        transition: border-color .2s, background .2s;
+        overflow: hidden;
+    }
+    .sol-card:hover { background: rgba(var(--overlay-rgb), .05); }
+
+    /* Cores por tipo */
+    .sol-card-fw  { border-top-color: var(--accent); }
+    .sol-card-mod { border-top-color: var(--accent); }
+    .sol-card-pra { border-top-color: var(--accent); }
+    .sol-card-fer { border-top-color: var(--accent); }
+    .sol-card-met { border-top-color: var(--accent); }
+
+    /* Estado aberto */
+    .sol-card.sol-open { background: rgba(var(--overlay-rgb), .05); }
+    .sol-card-fw.sol-open  { border-color: rgba(var(--accent-rgb), .3);  border-top-color: var(--accent); }
+    .sol-card-mod.sol-open { border-color: rgba(var(--accent-rgb), .3); border-top-color: var(--accent); }
+    .sol-card-pra.sol-open { border-color: rgba(var(--accent-rgb), .3); border-top-color: var(--accent); }
+    .sol-card-fer.sol-open { border-color: rgba(var(--accent-rgb), .3); border-top-color: var(--accent); }
+    .sol-card-met.sol-open { border-color: rgba(248,113,113,.3); border-top-color: #f87171; }
+
+    /* Cabeçalho do card */
+    .sol-card-head {
+        display: flex; align-items: center; gap: 11px;
+        padding: 15px 16px 14px;
+    }
+
+    /* Ícone */
+    .sol-icon {
+        flex-shrink: 0; width: 34px; height: 34px;
+        border-radius: 9px; display: flex; align-items: center; justify-content: center;
+    }
+    .sol-icon-fw  { background: rgba(var(--accent-rgb), .12);  color: var(--accent); }
+    .sol-icon-mod { background: rgba(var(--accent-rgb), .12);  color: var(--accent); }
+    .sol-icon-pra { background: rgba(var(--accent-rgb), .12);  color: var(--accent); }
+    .sol-icon-fer { background: rgba(var(--accent-rgb), .12);  color: var(--accent); }
+    .sol-icon-met { background: rgba(var(--accent-rgb), .12);  color: var(--accent); }
+
+    .sol-card-meta { flex: 1; min-width: 0; }
+
+    /* Badge de aplicabilidade */
+    .sol-badge {
+        display: inline-block; font-size: 0.62rem; font-weight: 700;
+        text-transform: uppercase; letter-spacing: 0.8px;
+        padding: 2px 7px; border-radius: 100px; margin-bottom: 3px;
+    }
+    .sol-badge-fw  { background: rgba(var(--accent-rgb), .12);  color: var(--accent); }
+    .sol-badge-mod { background: rgba(var(--accent-rgb), .12);  color: var(--accent); }
+    .sol-badge-pra { background: rgba(var(--accent-rgb), .12);  color: var(--accent); }
+    .sol-badge-fer { background: rgba(var(--accent-rgb), .12);  color: var(--accent); }
+    .sol-badge-met { background: rgba(var(--accent-rgb), .12);  color: var(--accent); }
+
+    .sol-card-title {
+        font-size: 0.92rem; font-weight: 700; color: var(--text-mid);
+        margin: 0; line-height: 1.3;
+    }
+
+    .sol-chevron {
+        flex-shrink: 0; color: #475569;
+        transition: transform .25s;
+    }
+    .sol-card.sol-open .sol-chevron { transform: rotate(180deg); color: var(--text-low); }
+
+    /* Descrição sempre visível */
+    .sol-card-desc {
+        font-size: 0.81rem; color: #64748b; line-height: 1.6;
+        padding: 9px 16px 14px; margin: 0;
+    }
+    .sol-card.sol-open .sol-card-desc { color: var(--text-low); }
+
+    /* Corpo expansível */
+    .sol-card-body {
+        display: none;
+        padding: 0 16px 16px;
+        border-top: 1px solid rgba(var(--overlay-rgb), .06);
+    }
+    .sol-card-body {
+        display: flex; flex-direction: column; flex: 1;
+        padding: 14px 18px 18px;
+        border-top: 1px solid rgba(var(--overlay-rgb), .06);
+        margin-top: 0;
+    }
+    .sol-card { cursor: default; display: flex; flex-direction: column; }
+
+    .sol-body-text {
+        font-size: 0.84rem; color: var(--text-low); line-height: 1.65;
+        margin: 0 0 12px;
+    }
+
+    /* Exemplos dentro de cada card */
+    .sol-examples { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
+    .sol-example {
+        display: flex; flex-direction: column; gap: 4px;
+        background: rgba(var(--overlay-rgb), .04);
+        border-radius: 8px; padding: 9px 12px;
+        border-left: 3px solid rgba(var(--overlay-rgb), .1);
+    }
+    .sol-card-fw  .sol-example { border-left-color: rgba(var(--accent-rgb), .35); }
+    .sol-card-mod .sol-example { border-left-color: rgba(var(--accent-rgb), .35); }
+    .sol-card-pra .sol-example { border-left-color: rgba(var(--accent-rgb), .35); }
+    .sol-card-fer .sol-example { border-left-color: rgba(var(--accent-rgb), .35); }
+    .sol-card-met .sol-example { border-left-color: rgba(var(--accent-rgb), .35); }
+
+    .sol-ex-id {
+        font-size: 0.78rem; font-weight: 700; color: var(--text-mid);
+    }
+    /* Estilo de código para ferramentas com ID de estudo */
+    .sol-ex-code {
+        font-family: ui-monospace, 'Cascadia Code', monospace;
+        font-size: 0.76rem; color: #f59e0b;
+        background: rgba(245,158,11,.1); padding: 1px 7px; border-radius: 4px;
+        width: fit-content;
+    }
+    .sol-ex-desc {
+        font-size: 0.8rem; color: #64748b; line-height: 1.55;
+    }
+
+    /* Rodapé do painel */
+    .sol-footer {
+        display: flex; align-items: flex-start; gap: 8px;
+        font-size: 0.78rem; color: #475569; line-height: 1.6;
+        background: rgba(var(--overlay-rgb), .02); border: 1px solid rgba(var(--overlay-rgb), .06);
+        border-radius: 8px; padding: 11px 16px;
+    }
+    .sol-footer svg { flex-shrink: 0; margin-top: 2px; color: var(--accent); }
+
+    @media (max-width: 820px) {
+        .sol-grid { grid-template-columns: repeat(2, 1fr); }
+        .sol-card:nth-child(4),
+        .sol-card:nth-child(5) { grid-column: auto; }
+    }
+    @media (max-width: 500px) {
+        .sol-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ══════════════════════════════════════════
+       PAINEL 4 — BASE DE EVIDÊNCIAS: dashboard
+    ══════════════════════════════════════════ */
+
+    /* Funil 710 → 35 */
+    .ev-metrics {
+        display: flex; align-items: center; justify-content: center;
+        gap: 12px; padding: 18px 0 4px;
+    }
+    .ev-metric {
+        display: flex; flex-direction: column; align-items: center;
+        background: rgba(var(--accent-rgb), .06); border: 1px solid rgba(var(--accent-rgb), .15);
+        border-radius: 10px; padding: 14px 20px; flex: 1;
+    }
+    .ev-metric-highlight {
+        background: rgba(var(--accent-rgb), .14); border-color: rgba(var(--accent-rgb), .4);
+    }
+    .ev-metric-num {
+        font-size: 2rem; font-weight: 800; color: var(--accent);
+        line-height: 1; letter-spacing: -1px;
+    }
+    .ev-metric-label {
+        font-size: 0.7rem; color: #64748b; margin-top: 5px;
+        text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;
+        text-align: center;
+    }
+    .ev-metric-arrow {
+        font-size: 1.2rem; color: rgba(var(--accent-rgb), .35); flex-shrink: 0;
+    }
+
+    /* Grade de stats 24 / 21 / 14 */
+    .ev-stats-grid {
+        display: grid; grid-template-columns: repeat(3, 1fr);
+        gap: 10px; padding: 18px 0 4px;
+    }
+    .ev-stat {
+        display: flex; flex-direction: column; align-items: center;
+        border-radius: 10px; padding: 14px 8px;
+        border: 1px solid transparent;
+    }
+    .ev-stat-tecnico { background: rgba(var(--accent-rgb), .07);  border-color: rgba(var(--accent-rgb), .2); }
+    .ev-stat-social  { background: rgba(var(--accent-rgb), .07);  border-color: rgba(var(--accent-rgb), .2); }
+    .ev-stat-negocio { background: rgba(var(--accent-rgb), .07);  border-color: rgba(var(--accent-rgb), .2); }
+    .ev-stat-num { font-size: 2rem; font-weight: 800; line-height: 1; letter-spacing: -1px; }
+    .ev-stat-tecnico .ev-stat-num { color: var(--accent); }
+    .ev-stat-social  .ev-stat-num { color: var(--accent); }
+    .ev-stat-negocio .ev-stat-num { color: var(--accent); }
+    .ev-stat-name {
+        font-size: 0.78rem; font-weight: 700; color: var(--text-mid); margin-top: 5px;
+    }
+    .ev-stat-range {
+        font-size: 0.68rem; color: #475569; margin-top: 2px;
+    }
+
+    @media (max-width: 600px) {
+        .ev-metrics { flex-direction: column; }
+        .ev-metric-arrow { transform: rotate(90deg); }
+        .ev-stats-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── Accordion de justificativas ── */
+    .just-accordion { margin-top: 12px; border-radius: 8px; overflow: hidden; border: 1px solid rgba(var(--overlay-rgb), .07); }
+    .just-trigger { width:100%; display:flex; align-items:center; gap:7px; background:rgba(var(--overlay-rgb), .04); border:none; padding:9px 12px; cursor:pointer; font-family:'Inter',sans-serif; font-size:0.78rem; font-weight:600; color:#64748b; text-align:left; transition:background .18s, color .18s; border-radius:7px; }
+    .just-trigger:hover { background:rgba(var(--overlay-rgb), .07); color:var(--text-low); }
+    .just-trigger[aria-expanded="true"] { border-radius:7px 7px 0 0; }
+    .just-chevron { flex-shrink:0; transition:transform .22s ease; }
+    .just-trigger[aria-expanded="true"] .just-chevron { transform:rotate(180deg); }
+    .just-body { display:none; padding:11px 14px 13px; border-top:1px solid rgba(var(--overlay-rgb), .07); animation:justSlideDown .2s ease; }
+    .just-body.open { display:block; }
+    .just-body p { font-size:0.82rem; color:var(--text-low); line-height:1.65; margin:0; }
+    @keyframes justSlideDown { from{opacity:0;transform:translateY(-4px)} to{opacity:1;transform:translateY(0)} }
+
+    /* Cor por dimensão */
+    #sidePanel.tecnicos .just-trigger:hover,
+    #sidePanel.tecnicos .just-trigger[aria-expanded="true"] { color:var(--color-tecnicos); background:rgba(var(--accent-rgb), .08); }
+    #sidePanel.tecnicos .just-trigger[aria-expanded="true"] .just-chevron { color:var(--color-tecnicos); }
+    #sidePanel.tecnicos .just-body.open { background:rgba(var(--accent-rgb), .04); border-top-color:rgba(var(--accent-rgb), .18); }
+
+    #sidePanel.sociais .just-trigger:hover,
+    #sidePanel.sociais .just-trigger[aria-expanded="true"] { color:var(--color-sociais); background:rgba(var(--color-sociais-rgb), .08); }
+    #sidePanel.sociais .just-trigger[aria-expanded="true"] .just-chevron { color:var(--color-sociais); }
+    #sidePanel.sociais .just-body.open { background:rgba(var(--color-sociais-rgb), .04); border-top-color:rgba(var(--color-sociais-rgb), .18); }
+
+    #sidePanel.negocio .just-trigger:hover,
+    #sidePanel.negocio .just-trigger[aria-expanded="true"] { color:var(--color-negocio); background:rgba(var(--color-negocio-rgb), .08); }
+    #sidePanel.negocio .just-trigger[aria-expanded="true"] .just-chevron { color:var(--color-negocio); }
+    #sidePanel.negocio .just-body.open { background:rgba(var(--color-negocio-rgb), .04); border-top-color:rgba(var(--color-negocio-rgb), .18); }
+    </style>
+
+    <main id="catalogo">
+        <header class="section-header">
+            <span class="mmx-badge" style="margin-bottom:18px;">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                CATÁLOGO DE RISCOS EM ECOS
+            </span>
+            <h2>Catálogo de Riscos em Ecossistemas de Software</h2>
+            <p>Filtre por dimensão ou pesquise termos específicos do risco.</p>
+        </header>
+
+        <!-- ── ÁREA DE BUSCA E FILTROS ── -->
+        <div class="filters-area">
+
+            <!-- Linha 1: busca + dimensão -->
+            <div class="filters-row-main">
+                <div class="filters-search">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    <div class="autocomplete-wrap" id="autocompleteWrap">
+                        <input type="text" id="searchInput" placeholder="Pesquisar risco..." autocomplete="off">
+                        <ul class="autocomplete-list" id="autocompleteList" hidden></ul>
+                    </div>
+                </div>
+                <div class="filters-dim">
+                    <button class="btn-filter active" data-filter="todos">Todos</button>
+                    <button class="btn-filter" data-filter="Técnicos">Técnicos</button>
+                    <button class="btn-filter" data-filter="Sociais">Sociais</button>
+                    <button class="btn-filter" data-filter="Negócio">Negócio</button>
+                </div>
+            </div>
+
+            <!-- Linha 2: chips de contexto -->
+            <div class="filters-row-chips" id="ctxBar">
+                <div class="filters-chip-group">
+                    <span class="filters-chip-label">Exemplos de Ecossistemas em que esse Risco foi Observado</span>
+                    <div class="ctx-chips">
+                        <button class="ctx-chip" data-group="ecos" data-value="Aberto" onclick="toggleChip(this)">ECOS de Código Aberto</button>
+                        <button class="ctx-chip" data-group="ecos" data-value="Híbrido" onclick="toggleChip(this)">ECOS Híbrido</button>
+                        <button class="ctx-chip" data-group="ecos" data-value="Proprietário" onclick="toggleChip(this)">ECOS Proprietário</button>
+                    </div>
+                </div>
+                <div class="filters-chip-sep"></div>
+                <div class="filters-chip-group">
+                    <span class="filters-chip-label">Métricas de Saúde do ECOS Afetadas pelo Risco</span>
+                    <div class="ctx-chips">
+                        <button class="ctx-chip" data-group="metrica" data-value="Robustez" onclick="toggleChip(this)">Robustez</button>
+                        <button class="ctx-chip" data-group="metrica" data-value="Produtividade" onclick="toggleChip(this)">Produtividade</button>
+                        <button class="ctx-chip" data-group="metrica" data-value="Criação de Nichos" onclick="toggleChip(this)">Criação de Nichos</button>
+                    </div>
+                </div>
+                <div class="filters-chip-sep"></div>
+                <div class="filters-chip-group">
+                    <span class="filters-chip-label">Processo de Valor do ECOS Ameaçado pelo Risco</span>
+                    <div class="ctx-chips">
+                        <button class="ctx-chip" data-group="valor" data-value="Criação de valor" onclick="toggleChip(this)">Criação de Valor</button>
+                        <button class="ctx-chip" data-group="valor" data-value="Entrega de valor" onclick="toggleChip(this)">Entrega de Valor</button>
+                        <button class="ctx-chip" data-group="valor" data-value="Captura de valor" onclick="toggleChip(this)">Captura de Valor</button>
+                    </div>
+                </div>
+                <button class="ctx-clear" id="ctxClear" onclick="limparContexto()" style="display:none;">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    Limpar
+                </button>
+            </div>
+
+            <!-- Feedback de contexto ativo -->
+            <span class="ctx-hint" id="ctxHint"></span>
+        </div>
+
+        <section id="riscosContainer" class="riscos-grid"></section>
+    </main>
+
+    <div id="sidePanel" class="side-panel">
+        
+        <!-- CABEÇALHO DO PAINEL -->
+        <div class="panel-header">
+            <div class="panel-header-meta">
+                <span id="riskId" class="id-tag"></span>
+                <span id="riskDim" class="risk-dim-tag"></span>
+            </div>
+            <h2 id="riskTitle"></h2>
+            <p id="riskCenario" class="panel-desc"></p>
+            <button onclick="closeSidePanel()" class="close-btn">&times;</button>
+        </div>
+
+        <!-- CORPO DO PAINEL -->
+        <div class="panel-body">
+
+            <!-- BLOCO 1: Análise SEI -->
+            <div class="panel-card">
+                <div class="panel-card-title">
+                    <span>Classificação do Risco de acordo com a Taxonomia de Risco SEI</span>
+                    <button class="help-icon" onclick="abrirAjuda('sei')" aria-label="Ajuda sobre Classificação do Risco de acordo com a Taxonomia de Risco SEI">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </button>
+                </div>
+                <div class="panel-grid-2">
+                    <div>
+                        <span class="field-label">Classe do Risco</span>
+                        <span class="field-value" id="riskClassSEI"></span>
+                    </div>
+                    <div>
+                        <span class="field-label">Elemento do Risco</span>
+                        <span class="field-value" id="riskElementoSEI"></span>
+                    </div>
+                </div>
+                <div style="margin-top: 16px;">
+                    <span class="field-label">Área de Desafio</span>
+                    <span class="field-value" id="riskDesafio"></span>
+                </div>
+                <div id="riskJustificationBox" class="just-accordion" style="display:none;">
+                    <button class="just-trigger" onclick="toggleJust('sei')" aria-expanded="false" id="just-trigger-sei">
+                        <svg class="just-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                        <span>Por que essa classificação?</span>
+                    </button>
+                    <div class="just-body" id="just-body-sei">
+                        <p id="riskJustification"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BLOCO 2a: Exemplos de Ecossistemas em que esse Risco foi Observado -->
+            <div class="panel-card">
+                <div class="panel-card-title">
+                    <span>Exemplos de Ecossistemas em que esse Risco foi Observado</span>
+                    <button class="help-icon" onclick="abrirAjuda('ecos')" aria-label="Ajuda sobre Exemplos de Ecossistemas em que esse Risco foi Observado">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </button>
+                </div>
+                <div class="ecos-cards" id="riskEcosCards">
+                    <div class="ecos-card" data-ecos="aberto" role="button" tabindex="0" aria-pressed="false" onclick="selecionarEcosCard('aberto')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selecionarEcosCard('aberto');}">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
+                        <span>ECOS de Código Aberto</span>
+                    </div>
+                    <div class="ecos-card" data-ecos="hibrido" role="button" tabindex="0" aria-pressed="false" onclick="selecionarEcosCard('hibrido')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selecionarEcosCard('hibrido');}">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                        <span>ECOS Híbrido</span>
+                    </div>
+                    <div class="ecos-card" data-ecos="proprietario" role="button" tabindex="0" aria-pressed="false" onclick="selecionarEcosCard('proprietario')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selecionarEcosCard('proprietario');}">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                        <span>ECOS Proprietário</span>
+                    </div>
+                </div>
+                <div id="riskEcosJustBox" class="ecos-detail-box" style="display:none;">
+                    <div id="riskEcosJust"></div>
+                </div>
+            </div>
+
+            <!-- BLOCO 2b: Métrica de Saúde -->
+            <div class="panel-card">
+                <div class="panel-card-title">
+                    <span>Métricas de Saúde do ECOS Afetadas pelo Risco</span>
+                    <button class="help-icon" onclick="abrirAjuda('metrica')" aria-label="Ajuda sobre Métrica de Saúde">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </button>
+                </div>
+                <div class="ecos-cards" id="riskMetricCards">
+                    <div class="ecos-card" data-metrica="robustez" role="button" tabindex="0" aria-pressed="false" onclick="selecionarMetricaCard('robustez')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selecionarMetricaCard('robustez');}">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        <span>Robustez</span>
+                    </div>
+                    <div class="ecos-card" data-metrica="produtividade" role="button" tabindex="0" aria-pressed="false" onclick="selecionarMetricaCard('produtividade')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selecionarMetricaCard('produtividade');}">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                        <span>Produtividade</span>
+                    </div>
+                    <div class="ecos-card" data-metrica="nichos" role="button" tabindex="0" aria-pressed="false" onclick="selecionarMetricaCard('nichos')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selecionarMetricaCard('nichos');}">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>
+                        <span>Criação de Nichos</span>
+                    </div>
+                </div>
+                <div id="riskMetricJustBox" class="ecos-detail-box" style="display:none;">
+                    <div id="riskMetricJust"></div>
+                </div>
+            </div>
+
+            <!-- BLOCO 2c: Processo de Valor -->
+            <div class="panel-card">
+                <div class="panel-card-title">
+                    <span>Processo de Valor do ECOS Ameaçado pelo Risco</span>
+                    <button class="help-icon" onclick="abrirAjuda('processo')" aria-label="Ajuda sobre Processo de Valor">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </button>
+                </div>
+                <div class="ecos-cards" id="riskProcessoCards">
+                    <div class="ecos-card" data-processo="criacao" role="button" tabindex="0" aria-pressed="false" onclick="selecionarProcessoCard('criacao')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selecionarProcessoCard('criacao');}">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+                        <span>Criação de Valor</span>
+                    </div>
+                    <div class="ecos-card" data-processo="entrega" role="button" tabindex="0" aria-pressed="false" onclick="selecionarProcessoCard('entrega')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selecionarProcessoCard('entrega');}">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                        <span>Entrega de Valor</span>
+                    </div>
+                    <div class="ecos-card" data-processo="captura" role="button" tabindex="0" aria-pressed="false" onclick="selecionarProcessoCard('captura')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selecionarProcessoCard('captura');}">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                        <span>Captura de Valor</span>
+                    </div>
+                </div>
+                <div id="riskProcessoJustBox" class="ecos-detail-box" style="display:none;">
+                    <div id="riskProcessoJust"></div>
+                </div>
+            </div>
+
+            <!-- BLOCO 3: Soluções -->
+            <div class="panel-card">
+                <div class="panel-card-title">
+                    <span>Soluções Identificadas na Literatura para Gerenciar o Risco</span>
+                    <button class="help-icon" onclick="abrirAjuda('solucoes')" aria-label="Ajuda sobre Soluções">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </button>
+                </div>
+                <div id="riskSolutions" class="solutions-list"></div>
+            </div>
+
+            <!-- BLOCO 4: Estudos Primários -->
+            <div class="panel-card" id="primaryStudiesBlock" style="display:none;">
+                <div class="panel-card-title">
+                    <span>Estudos Primários que Identificaram este Risco</span>
+                    <button class="help-icon" onclick="abrirAjuda('estudos')" aria-label="Ajuda sobre Estudos Primários">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </button>
+                </div>
+                <div id="riskStudies" class="studies-list"></div>
+            </div>
+
+        </div>
+
+    <!-- MODAL DE AJUDA CONTEXTUAL -->
+    <div id="helpModal" class="help-modal-overlay" onclick="fecharAjudaOverlay(event)" role="dialog" aria-modal="true" aria-labelledby="helpModalTitle">
+        <div class="help-modal-box">
+            <div class="help-modal-header">
+                <div class="help-modal-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                </div>
+                <h3 id="helpModalTitle" class="help-modal-title"></h3>
+                <button class="help-modal-close" onclick="fecharAjuda()" aria-label="Fechar ajuda">&times;</button>
+            </div>
+            <p id="helpModalBody" class="help-modal-body"></p>
+            <div class="help-modal-source" id="helpModalSource"></div>
+        </div>
+    </div>
+
+        <!-- RODAPÉ DE NAVEGAÇÃO -->
+        <div class="panel-footer">
+            <button id="btnAnterior" class="nav-btn" onclick="navegarRisco(-1)">← Anterior</button>
+            <span id="navCount" class="nav-count"></span>
+            <button id="btnProximo" class="nav-btn nav-btn-primary" onclick="navegarRisco(1)">Próximo →</button>
+        </div>
+    </div>
+
+    <div id="overlay" class="overlay" onclick="closeSidePanel()"></div>
+
+    <footer id="contato" class="contact-section" style="padding: 28px 24px 20px;">
+        <div class="contact-inner" style="max-width: 860px; margin: 0 auto;">
+
+            <span class="footer-badge" style="margin-bottom: 8px; display: inline-flex;">
+                <svg width="11" height="11" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="var(--accent)" stroke-width="1.5"/><path d="M8 5v3.5l2 1.2" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/></svg>
+                Contato
+            </span>
+
+            <p class="contact-desc" style="margin: 0 auto 20px; max-width: 520px; font-size: 0.87rem; line-height: 1.6; color: var(--text-low); text-align: center;">
+                Para dúvidas, sugestões ou colaborações sobre o catálogo de riscos em ECOS, entre em contato com os autores.
+            </p>
+
+            <div class="team-grid">
+
+                <div class="team-card">
+                    <div class="team-avatar">
+                        <img src="gabriele.jpg" alt="Gabriele Campos" style="width:100%; height:100%; object-fit:cover; object-position: center top; border-radius:50%;">
+                    </div>
+                    <p class="team-name">Gabriele Campos</p>
+                    <a href="mailto:gabbcampos64@gmail.com" class="team-email">gabbcampos64@gmail.com</a>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-avatar">
+                        <img src="ismael.jpeg" alt="Ismael Silva" style="width:100%; height:100%; object-fit:cover; object-position: center top; border-radius:50%;">
+                    </div>
+                    <p class="team-name">Ismael Silva</p>
+                    <a href="mailto:frismaellsilva180@gmail.com" class="team-email">frismaellsilva180@gmail.com</a>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-avatar">
+                        <img src="paulo.png" alt="Paulo Malcher" style="width:100%; height:100%; object-fit:cover; object-position: center top; border-radius:50%;">
+                    </div>
+                    <p class="team-name">Paulo Malcher</p>
+                    <a href="mailto:paulo.malcher@ufra.edu.br" class="team-email">paulo.malcher@ufra.edu.br</a>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-avatar">
+                        <img src="rodrigo.png" alt="Rodrigo Santos" style="width:100%; height:100%; object-fit:cover; object-position: center top; border-radius:50%;">
+                    </div>
+                    <p class="team-name">Rodrigo Santos</p>
+                    <a href="mailto:rps@uniriotec.br" class="team-email">rps@uniriotec.br</a>
+                </div>
+
+            </div>
+
+            <div class="footer-divider" style="margin: 16px 0 10px;"></div>
+            <p class="footer-credits" style="font-size: 0.75rem; color: #475569; text-align: center; margin: 0;">© 2026 Catálogo de Riscos em Ecossistemas de Software · Artigo publicado no SBSI 2026</p>
+        </div>
+
+        <style>
+            .team-grid {
+                display: flex;
+                flex-wrap: nowrap;
+                gap: 28px;
+                justify-content: center;
+                margin-bottom: 0;
+            }
+            .team-card {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 6px;
+            }
+            .team-avatar {
+                width: 88px;
+                height: 88px;
+                border-radius: 50%;
+                overflow: hidden;
+                box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.2), 0 6px 20px rgba(0,0,0,0.4);
+                border: 2px solid rgba(var(--accent-rgb), 0.15);
+                transition: transform 0.25s ease, box-shadow 0.25s ease;
+                flex-shrink: 0;
+            }
+            .team-avatar:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.45), 0 10px 28px rgba(0,0,0,0.5);
+            }
+            .team-name {
+                font-size: 0.85rem;
+                font-weight: 700;
+                color: var(--text-mid);
+                margin: 0;
+                text-align: center;
+                white-space: nowrap;
+            }
+            .team-email {
+                font-size: 0.71rem;
+                color: var(--accent);
+                text-decoration: none;
+                text-align: center;
+                opacity: 0.75;
+                transition: opacity 0.2s;
+                white-space: nowrap;
+            }
+            .team-email:hover {
+                opacity: 1;
+                text-decoration: underline;
+            }
+
+            /* ── Tablet ── */
+            @media (max-width: 768px) {
+                .team-grid {
+                    gap: 24px;
+                }
+                .team-avatar {
+                    width: 76px;
+                    height: 76px;
+                }
+                .team-name {
+                    font-size: 0.78rem;
+                }
+                .team-email {
+                    font-size: 0.65rem;
+                }
+            }
+
+            /* ── Mobile ── */
+            @media (max-width: 540px) {
+                .team-grid {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 28px 16px;
+                    width: 100%;
+                }
+                .team-card {
+                    gap: 8px;
+                }
+                .team-avatar {
+                    width: 80px;
+                    height: 80px;
+                }
+                .team-name {
+                    font-size: 0.82rem;
+                    white-space: normal;
+                }
+                .team-email {
+                    font-size: 0.67rem;
+                    white-space: normal;
+                    word-break: break-all;
+                }
+            }
+        </style>
+    </footer>
+
+    <!-- MODAL DE STATS -->
+    <div id="statsInfoModal" class="help-modal-overlay" onclick="fecharStatsInfo(event)" role="dialog" aria-modal="true" aria-labelledby="statsInfoTitle">
+        <div class="help-modal-box" style="max-width:460px;">
+            <div class="help-modal-header">
+                <div class="help-modal-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                </div>
+                <h3 id="statsInfoTitle" class="help-modal-title">Sobre os números</h3>
+                <button class="help-modal-close" onclick="fecharStatsInfoBtn()" aria-label="Fechar">&times;</button>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:14px;">
+                <div style="display:flex;gap:14px;align-items:flex-start;">
+                    <span style="font-size:1.35rem;font-weight:800;color:var(--accent);min-width:32px;line-height:1;">24</span>
+                    <div>
+                        <p style="font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:var(--accent);margin:0 0 4px;">Riscos mapeados</p>
+                        <p style="font-size:0.85rem;color:var(--text-low);line-height:1.6;margin:0;">Riscos identificados por meio do MSL, distribuídos em três dimensões: Técnica (R01–R11), Social (R12–R17) e de Negócio (R18–R24). </p>
+                    </div>
+                </div>
+                <div style="height:1px;background:rgba(var(--overlay-rgb), 0.06);"></div>
+                <div style="display:flex;gap:14px;align-items:flex-start;">
+                    <span style="font-size:1.35rem;font-weight:800;color:var(--accent);min-width:32px;line-height:1;">21</span>
+                    <div>
+                        <p style="font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:var(--accent);margin:0 0 4px;">Soluções identificadas</p>
+                        <p style="font-size:0.85rem;color:var(--text-low);line-height:1.6;margin:0;">Estratégias de mitigação extraídas dos estudos primários, seja ela um framework, modelo, prática, ferramenta e método, foi proposta e/ou validada. </p>
+                    </div>
+                </div>
+                <div style="height:1px;background:rgba(var(--overlay-rgb), 0.06);"></div>
+                <div style="display:flex;gap:14px;align-items:flex-start;">
+                    <span style="font-size:1.35rem;font-weight:800;color:var(--accent);min-width:32px;line-height:1;">35</span>
+                    <div>
+                        <p style="font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:var(--accent);margin:0 0 4px;">Estudos primários</p>
+                        <p style="font-size:0.85rem;color:var(--text-low);line-height:1.6;margin:0;">O MSL foi desenvolvido a partir da análise de estudos primários (artigos onde os próprios autores apresentam seus resultados), após aplicação de critérios em 710 estudos recuperados, foi realizados a extração de dados em 35 estudos entre janeiro e julho de 2025.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .hero { min-height: auto !important; padding-bottom: 60px !important; }
+
+        /* Botão ? único posicionado no canto da stats-bar */
+        .stats-bar { position: relative; }
+        .stats-help-btn {
+            position: absolute;
+            top: 10px;
+            right: 12px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: rgba(var(--accent-rgb), 0.09);
+            border: 1px solid rgba(var(--accent-rgb), 0.22);
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            padding: 0;
+            transition: background 0.18s, border-color 0.18s, transform 0.18s;
+            line-height: 1;
+        }
+        .stats-help-btn:hover {
+            background: rgba(var(--accent-rgb), 0.2);
+            border-color: rgba(var(--accent-rgb), 0.5);
+            transform: scale(1.15);
+        }
+        .stats-help-btn svg { pointer-events: none; }
+    </style>
+
+    <script>
+        function abrirStatsInfo() {
+            const modal = document.getElementById('statsInfoModal');
+            modal.classList.add('active');
+            setTimeout(() => modal.querySelector('.help-modal-close')?.focus(), 50);
+        }
+        function fecharStatsInfoBtn() {
+            document.getElementById('statsInfoModal').classList.remove('active');
+        }
+        function fecharStatsInfo(e) {
+            if (e.target === document.getElementById('statsInfoModal')) fecharStatsInfoBtn();
+        }
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') fecharStatsInfoBtn(); });
+    </script>
+
+    <script src="script.js"></script>
+            <script>
+    // ── Toggle de cards do Painel 2 (Atributos) ──
+    function toggleAt2Card(id) {
+        var card = document.getElementById('at2-card-' + id);
+        if (!card) return;
+        card.classList.toggle('at2-open');
+    }
+
+    // ── Toggle de cards do Painel 3 (Soluções) ──
+    function toggleSolCard(id) {
+        var card = document.getElementById('sol-card-' + id);
+        if (!card) return;
+        card.classList.toggle('sol-open');
+    }
+
+    // ── Toggle de cards do Painel 4 (Evidências) ──
+    function toggleEvCard(id) {
+        var card = document.getElementById('ev-card-' + id);
+        if (!card) return;
+        card.classList.toggle('ev-open');
+    }
+    </script>
+
+    <script>
+    (function() {
+        // ── Abas ──
+        var tabs = document.querySelectorAll('.mmx-tab');
+        var panels = document.querySelectorAll('.mmx-tab-panel');
+        tabs.forEach(function(tab) {
+            tab.addEventListener('click', function() {
+                tabs.forEach(function(t) { t.classList.remove('mmx-tab-active'); t.setAttribute('aria-selected','false'); });
+                panels.forEach(function(p) { p.classList.remove('mmx-tab-panel-active'); });
+                tab.classList.add('mmx-tab-active');
+                tab.setAttribute('aria-selected','true');
+                var target = document.getElementById('mmx-tab-' + tab.dataset.tab);
+                if (target) {
+                    target.classList.add('mmx-tab-panel-active');
+                    // open first accordion in panel
+                    var firstBtn = target.querySelector('.mmx-acc-btn');
+                    if (firstBtn && !firstBtn.classList.contains('mmx-acc-open')) firstBtn.click();
+                }
+            });
+        });
+
+        // ── Acordeão ──
+        var accBtns = document.querySelectorAll('.mmx-acc-btn');
+        // Open initial open ones
+        accBtns.forEach(function(btn) {
+            if (btn.classList.contains('mmx-acc-open')) {
+                var body = document.getElementById('acc-' + btn.dataset.acc);
+                if (body) body.classList.add('mmx-acc-body-open');
+            }
+            btn.addEventListener('click', function() {
+                var body = document.getElementById('acc-' + btn.dataset.acc);
+                if (!body) return;
+                var isOpen = btn.classList.contains('mmx-acc-open');
+                // close all in same accordion group
+                var group = btn.closest('.mmx-accordion');
+                group.querySelectorAll('.mmx-acc-btn').forEach(function(b) {
+                    b.classList.remove('mmx-acc-open');
+                    var bd = document.getElementById('acc-' + b.dataset.acc);
+                    if (bd) bd.classList.remove('mmx-acc-body-open');
+                });
+                if (!isOpen) {
+                    btn.classList.add('mmx-acc-open');
+                    body.classList.add('mmx-acc-body-open');
+                }
+            });
+        });
+    })();
+    </script>
+
 
     <script>
         function toggleMenu() {
@@ -209,8 +1814,6 @@
         function closeMenu() {
             document.getElementById('navLinks').classList.remove('open');
             document.getElementById('hamburger').classList.remove('active');
-
-        
         }
     
         (function() {
